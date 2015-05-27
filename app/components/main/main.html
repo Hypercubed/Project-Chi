@@ -3,12 +3,7 @@
   <h1>JSPM</h1>
   <h1>AngularJS</h1>
   <h1>Bootstrap</h1>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Great!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
-
-<div class="row marketing">
-  This seed project includes:
-  <div ng-repeat="thing in main.awesomeThings">
-    <h4>{{thing}}</h4>
-  </div>
+  <p><a class="btn btn-lg btn-success" ng-href="#/" ng-click="main.clicks.value = main.clicks.value+1">
+    {{main.clicks.value || 'Great!'}} <span class="glyphicon glyphicon-ok"></span>
+  </a></p>
 </div>

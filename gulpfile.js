@@ -15,19 +15,28 @@ var path = {
 };
 
 gulp.task('test', [], function (done) {
-	karma.start({
-		configFile: __dirname + '/karma.conf.js',
-		singleRun: true
-	}, function(){
-		done();
-	});
+  karma.start({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, function(){
+    done();
+  });
+});
+
+gulp.task('test:watch', [], function (done) {
+  karma.start({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: false
+  }, function(){
+    done();
+  });
 });
 
 gulp.task('copy', function () {
   return gulp.src([
       path.base+'/*.{js,json,html,ico,txt}',
       path.base+'/{jspm_packages,lib}/*.{js,map}',
-			path.base+'/{jspm_packages,lib}/**/*.{svg,png,eot,ttf,wot,gif}',
+      path.base+'/{jspm_packages,lib}/**/*.{svg,png,eot,ttf,wot,woff,woff2,gif}',
       path.base+'/{components,images}/**/*.{json,html,csv,png}'
     ])
     .pipe(cache('copy'))
@@ -50,14 +59,14 @@ gulp.task('builder', function() {
         sourceMaps: true,
         minify: true,
         mangle: true,
-				runtime: true
+        runtime: true
       });
   });
 });
 
 gulp.task('serve', [], function (done) {
   browserSync({
-    open: true,
+    open: false,
     port: 9000,
     server: {
       baseDir: [path.base],
@@ -71,7 +80,7 @@ gulp.task('serve', [], function (done) {
 
 gulp.task('serve:dist', ['build'], function (done) {
   browserSync({
-    open: true,
+    open: false,
     port: 9000,
     server: {
       baseDir: [path.dist],
@@ -101,3 +110,4 @@ gulp.task('deploy', ['build'], function() {
 });
 
 gulp.task('build', ['copy', 'builder']);
+gulp.task('run',['test:watch','watch']);

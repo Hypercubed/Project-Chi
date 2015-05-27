@@ -1,15 +1,4 @@
-<div class="jumbotron">
-  <h1>This is the about view.</h1>
-  <p><a class="btn btn-lg btn-success" ng-click="about.value = about.value+1">
-  	Clicks: {{about.value}}
-  </a></p>
-</div>
-
-<div class="row marketing">
-
-  <div ng-repeat="(key, value) in awesomeThings">
-    <h4>{{key}}</h4>
-    <p>{{value}}</p>
-  </div>
-
-</div>
+This seed project includes:
+<ul ng-repeat="thing in about.awesomeThings">
+  <li>{{thing}}</li>
+</ul>

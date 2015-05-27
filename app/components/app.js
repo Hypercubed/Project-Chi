@@ -5,14 +5,19 @@ import angular from 'angular';
 import './app.css!';
 
 import 'angular-route';
+import 'angular-animate';
+import 'angular-cookies';
+import 'angular-sanitize';
+import 'angular-touch';
 
 export default angular
   .module('myApp', [
-    'ngRoute'
+    'ngRoute',
+    'ngAnimate',
+    'ngCookies',
+    'ngSanitize',
+    'ngTouch'
   ])
-  .run(['$rootScope', '$location', function($rootScope, $location){
-    var path = function() { return $location.path();};
-    $rootScope.$watch(path, function(newVal){
-      $rootScope.activepath = newVal;
-    });
+  .run(['$rootScope', '$location', function isPath($rootScope, $location){
+    $rootScope.isPath = (path) => path === $location.path();
   }]);

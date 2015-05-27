@@ -16,8 +16,11 @@ System.config({
   "map": {
     "angular": "github:angular/bower-angular@1.3.8",
     "angular-animate": "github:angular/bower-angular-animate@1.3.8",
+    "angular-cookies": "github:angular/bower-angular-cookies@1.4.0",
     "angular-mocks": "github:angular/bower-angular-mocks@1.4.0",
     "angular-route": "github:angular/bower-angular-route@1.3.8",
+    "angular-sanitize": "github:angular/bower-angular-sanitize@1.4.0",
+    "angular-touch": "github:angular/bower-angular-touch@1.4.0",
     "babel": "npm:babel-core@5.1.13",
     "babel-runtime": "npm:babel-runtime@5.1.13",
     "bootstrap": "github:twbs/bootstrap@3.3.4",
@@ -26,10 +29,19 @@ System.config({
     "github:angular/bower-angular-animate@1.3.8": {
       "angular": "github:angular/bower-angular@1.3.8"
     },
+    "github:angular/bower-angular-cookies@1.4.0": {
+      "angular": "github:angular/bower-angular@1.3.8"
+    },
     "github:angular/bower-angular-mocks@1.4.0": {
       "angular": "github:angular/bower-angular@1.3.8"
     },
     "github:angular/bower-angular-route@1.3.8": {
+      "angular": "github:angular/bower-angular@1.3.8"
+    },
+    "github:angular/bower-angular-sanitize@1.4.0": {
+      "angular": "github:angular/bower-angular@1.3.8"
+    },
+    "github:angular/bower-angular-touch@1.4.0": {
       "angular": "github:angular/bower-angular@1.3.8"
     },
     "github:jspm/nodelibs-assert@0.1.0": {

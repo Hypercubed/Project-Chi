@@ -20,6 +20,6 @@ describe('Controller: AboutCtrl', function () {
   }));
 
   it('should attach a list of awesomeThings to the scope', function () {
-    expect(AboutCtrl.value).toBe(0);
+    expect(AboutCtrl.awesomeThings.length).toBeGreaterThan(8);
   });
 });

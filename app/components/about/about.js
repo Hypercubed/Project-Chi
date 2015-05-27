@@ -4,8 +4,18 @@ import app from 'components/app';
 
 class AboutCtrl{
   constructor(){
-    this.value = 0;
-    //console.log('about!');
+    this.awesomeThings = [
+      'ES6 Syntax',
+      'ES6 Modules via SystemJS',
+      'Simple Gulpfile',
+      'Component based file structure',
+      'Install using NPM and JSPM',
+      'Deploy to gh-pages',
+      'Bundle builds via SystemJS Builder',
+      'Karma / Jasmine unit tests',
+      'Angular Framework',
+      'Bootstrap Theme'
+    ];
   }
 }
 

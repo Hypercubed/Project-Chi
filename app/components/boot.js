@@ -7,7 +7,8 @@ import app from 'components/app';
 
 import 'components/routes';
 
-angular.element(document).ready(function() {
-  //console.log('angular ready');
+function boot() {
   angular.bootstrap(document.body, [ app.name ]);
-});
+}
+
+angular.element(document).ready(boot);
