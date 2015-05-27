@@ -33,4 +33,5 @@ gulp watch
 * `gulp watch`, run development server and watch for file changes
 * `gulp test`, run karma tests
 * `gulp build`, build distribution directory
-* `gulp serve:dist`, run distribution server
+* `gulp serve:dist`, run distribution server for testing
+* `gulp deploy`, push to gh-pages

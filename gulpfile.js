@@ -96,7 +96,7 @@ gulp.task('clean', function (cb) {
 });
 
 gulp.task('deploy', ['build'], function() {
-  return gulp.src(path.base+'/**/*')
+  return gulp.src(path.dist+'/**/*')
     .pipe(ghPages());
 });
 
