@@ -1,0 +1,7 @@
+{
+	"name": "BioJS Example",
+	"resources": [
+		"data/test_data.json"
+	],
+	"image": "bar.png"
+}

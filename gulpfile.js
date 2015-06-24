@@ -5,6 +5,9 @@ var del = require('del');
 var cache = require('gulp-cached');
 var ghPages = require('gulp-gh-pages');
 var karma = require('karma').server;
+var args   = require('yargs').argv;
+var ngAnnotate = require('gulp-ng-annotate');
+//var babel = require('gulp-babel');
 
 var path = {
   base: 'app',
@@ -12,6 +15,7 @@ var path = {
   systemConfig: 'app/system.config.js',
   dist: 'dist',
   bundle: 'dist/components/bundle.js',
+  dataset: args.dataset ? 'dataset/' + args.dataset : null
 };
 
 gulp.task('test', [], function (done) {
@@ -32,44 +36,68 @@ gulp.task('test:watch', [], function (done) {
   });
 });
 
-gulp.task('copy', function () {
-  return gulp.src([
-      path.base+'/*.{js,json,html,ico,txt}',
-      path.base+'/{jspm_packages,lib}/*.{js,map}',
-      path.base+'/{jspm_packages,lib}/**/*.{svg,png,eot,ttf,wot,woff,woff2,gif}',
-      path.base+'/{components,images}/**/*.{json,html,csv,png}'
-    ])
+gulp.task('copy', ['clean'], function () {
+  var paths = [
+      path.base+'/*.{json,html,ico,txt}',
+      path.base+'/{jspm_packages,lib}/**/*.{css,svg,png,eot,ttf,wot,woff,woff2,gif}',
+      path.base+'/{components,images}/**/*.{css,json,html,csv,png,svg,tsv,txt,md}'
+    ];
+
+  if (path.dataset) {
+    paths.push(path.dataset+'/*.{json,html,ico,txt}');
+    paths.push(path.dataset+'/{components,images}/**/*.{css,json,html,csv,png,svg,tsv,txt,md}');
+  }
+
+  return gulp.src(paths)
     .pipe(cache('copy'))
-    .pipe(gulp.dest(path.dist))
-    .pipe(browserSync.reload({ stream: true }));
+    .pipe(gulp.dest(path.dist));
 });
 
-gulp.task('builder', function() {
+gulp.task('copy:js', ['clean'], function () {
+  var paths = [
+    path.base+'/*.js',
+    path.base+'/{jspm_packages,lib}/*.{js,map}',
+    path.base+'/{jspm_packages,lib}/**/*.js',
+    path.base+'/{components,services}/**/*.js'
+  ];
+
+  if (path.dataset) {
+    paths.push(path.dataset+'/{components,services}/**/*.js');
+  }
+
+  return gulp.src(paths)
+    .pipe(cache('copy'))
+    //.pipe(ngAnnotate({
+    //  sourceType: 'module'
+    //}))
+    .pipe(gulp.dest(path.dist));
+});
+
+gulp.task('builder', ['copy:js'], function() {
   var builder = new jspm.Builder();
 
   return builder.loadConfig(path.systemConfig)
   .then(function() {
     builder.config({
-      baseURL: path.base,
-      lib: path.base
+      baseURL: path.dist,
+      lib: path.dist,
+      buildCSS: false
     });
 
     return builder.build(path.build, path.bundle,
-      {
-        sourceMaps: true,
-        minify: true,
+      { sourceMaps: true,
+        minify: false,
         mangle: true,
-        runtime: true
-      });
+        runtime: true });
   });
 });
 
-gulp.task('serve', [], function (done) {
+gulp.task('server', [], function (done) {
   browserSync({
     open: false,
     port: 9000,
     server: {
-      baseDir: [path.base],
+      baseDir: path.dataset ? [path.dataset,path.base] : path.base,        // dataset overrides base
       middleware: function (req, res, next) {
         res.setHeader('Access-Control-Allow-Origin', '*');
         next();
@@ -78,7 +106,7 @@ gulp.task('serve', [], function (done) {
   }, done);
 });
 
-gulp.task('serve:dist', ['build'], function (done) {
+gulp.task('serve:dist', [], function (done) {
   browserSync({
     open: false,
     port: 9000,
@@ -92,7 +120,7 @@ gulp.task('serve:dist', ['build'], function (done) {
   }, done);
 });
 
-gulp.task('watch', ['serve'], function() {
+gulp.task('watch', ['server'], function() {
   gulp.watch([path.base+'/**/*.{js,css,html,json}'], function(file){
     browserSync.reload(file.path);
   }).on('change', function(event) {
@@ -109,5 +137,5 @@ gulp.task('deploy', ['build'], function() {
     .pipe(ghPages());
 });
 
-gulp.task('build', ['copy', 'builder']);
-gulp.task('run',['test:watch','watch']);
+gulp.task('build', ['clean', 'copy', 'copy:js', 'builder']);
+gulp.task('run',['test:watch','serve']);

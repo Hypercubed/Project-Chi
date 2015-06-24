@@ -1,0 +1,22 @@
+{
+  "name": "Index",
+  "description": "Index of Example Visualizations",
+  "resources": [
+    {
+      "path": "bars/datapackage.json",
+      "link": "#/examples/bars/"
+    },
+    {
+      "path": "biojs/datapackage.json",
+      "link": "#/examples/biojs/"
+    },
+    {
+      "path": "chiasm/datapackage.json",
+      "link": "#/examples/chiasm/"
+    },
+    {
+      "path": "hexbin/datapackage.json",
+      "link": "#/examples/hexbin/"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "layout": {
+    "plugin": "chiasm/plugins/layout",
+    "state": {
+      "layout": {
+        "orientation": "vertical",
+        "children": [
+          "barChart"
+        ]
+      }
+    }
+  },
+  "barChart": {
+    "plugin": "chiasm/plugins/barChart",
+    "state": {
+      "xColumn": "letter",
+      "xAxisLabel": "Letter",
+      "yColumn": "frequency",
+      "yAxisLabel": "Frequency",
+      "xAxisLabelOffset": 1.9,
+      "yAxisLabelOffset": 1.4,
+      "colorDefault": "#059e00",
+      "title": "Bar Chart",
+      "titleOffset": -0.269568,
+      "yDomainMin": 0
+    }
+  }
+}

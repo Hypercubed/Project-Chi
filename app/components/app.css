@@ -17,6 +17,11 @@ body {
   padding-right: 15px;
 }
 
+.footer {
+  color: #767676;
+  text-align: center;
+}
+
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
   margin-top: 0;
@@ -59,12 +64,12 @@ body {
   display: inline-block;
 }
 
+.header .navbar {
+  margin-bottom: 0;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-
   /* Remove the padding we set earlier */
   .header,
   .marketing,
@@ -74,10 +79,24 @@ body {
   }
   /* Space out the masthead */
   .header {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
   }
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
+  }
+}
+
+@media print {
+  .container-fluid {
+    width: 800px;
+  }
+
+  #charts {
+    width: 800px;
+  }
+
+  svg {
+    max-width: 800px;
   }
 }

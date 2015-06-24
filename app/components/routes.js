@@ -1,29 +1,21 @@
 'use strict';
 
-import 'components/main/main';
-import 'components/about/about';
+import './examples/routes';
 
-import app from 'components/app';
-
-
+/*@ngInject*/
 function configRoutes($routeProvider) {
-	$routeProvider
-	.when('/', {
-		templateUrl: 'components/main/main.html',
-		controller: 'MainCtrl',
-		controllerAs: 'main'
-	})
-	.when('/about', {
-		templateUrl: 'components/about/about.html',
-		controller: 'AboutCtrl',
-		controllerAs: 'about'
-	})
-	.otherwise({
-		redirectTo: '/'
-	});
+  $routeProvider
+  .when('/about', {
+    templateUrl: 'components/about/about.html',
+  })
+  .otherwise({
+    redirectTo: '/examples'
+  });
 }
 
 configRoutes.$inject = ['$routeProvider'];
 
+import app from 'components/app';
+
 app
-	.config(configRoutes);
+  .config(configRoutes);

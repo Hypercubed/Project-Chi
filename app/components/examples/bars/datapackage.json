@@ -1,0 +1,9 @@
+{
+	"name": "Bars",
+	"description": "A simple SVG bar chart. Part of the tutorial series Let’s Make a Bar Chart.",
+	"resources": [
+		"bars.tsv"
+	],
+	"image": "thumbnail.png",
+	"readme": "README.md"
+}

@@ -1,0 +1,79 @@
+
+body h3, html h3 {
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  font-size: 1.17em;
+  font-weight: 700;
+}
+
+.index > div {
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.index .card {
+  color: #333;
+  overflow: hidden;
+  height: 80px;
+  text-align: center;
+
+  padding: 0;
+  margin: 0;
+
+  background-position: 50% 0%;
+  border: solid 1px #ddd;
+  border-bottom: solid 1px #ccc;
+  box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  text-shadow: 1px 1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, -1px -1px 0 #fff;
+
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  border-radius: 2px;
+  color: rgba(0,0,0,.84);
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(0,0,0,.23),0 3px 10px rgba(0,0,0,.16);
+}
+
+.index .card > div {
+  height:120px;
+  margin-top: 0;
+  -webkit-transition: all 0.5s; /* Chrome, Safari, Opera */
+  transition: all 0.5s;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.index .card:hover {
+  /* 
+  box-shadow: none; */
+  transform: translate3d(5px,5px,0);
+  box-shadow: 0 0 3px rgba(0,0,0,.23),0 0 3px rgba(0,0,0,.16);
+}
+
+.index h3 {
+  margin: 0;
+  font-weight: 400;
+}
+
+.index .card p {
+  font-size: 12px;
+}
+
+.title {
+  text-align: center;
+}
+
+.lead {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4;
+  text-align: center;
+}

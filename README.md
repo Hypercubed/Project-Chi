@@ -1,24 +1,20 @@
-# SystemJS, JSPM, AngularJS, Bootstrap
+# Project χ
+
+Project χ (pronounced project kai or /<abbr title="/ˈ/ primary stress follows">ˈ</abbr><abbr title="'k' in 'kind'">k</abbr><abbr title="/iː/ long 'e' in 'bead'">iː</abbr>/) platform is an modular open source visualization gallery framework built by Jayson Harshbarger at the [RIKEN Institute in Yokohama Japan](http://www.yokohama.riken.jp/english/).  It offers a framework and toolset for building self-hosted data-centric visualization websites. Geared towards sharing of supplemental materials associated with scientific publications; Project χ allows visitors to interact with visualizations, download associated data and images, and even try the visualization with their own uploaded or publicly available datasets.  For developers the framework comes packaged with tools necessary for quickly integrating interactive visualizations using [d3.js](http://d3js.org/), [AngularJS](https://angularjs.org/), and [BioJS](http://biojs.io/).
 
 ## Features
 
-Based on [angular-generator](https://github.com/yeoman/generator-angular) and  [angular-systemjs-seed](https://github.com/Swimlane/angular-systemjs-seed) project.
+* Simple,  modular, and customizable design using [AngularJS](https://angularjs.org/) templates and [bootstrap](http://getbootstrap.com/) CSS framework.
+* Supports CommonJS, AMD, and ES6 modules using the [SystemJS](https://github.com/systemjs/systemjs) Universal dynamic module loader.
+* Integrate additional visualizations, including [BioJS](http://biojs.io/) and [Chiasm](https://github.com/curran/chiasm) modules, directly from any registry such as [NPM](https://www.npmjs.com) or [GitHub](https://github.com/) using [JSPM](http://jspm.io/).
+* Self-hosted fully client-side application doesn't require a server; easily hosted on [WebDAV](https://en.wikipedia.org/wiki/WebDAV) or [GitHub Pages](https://pages.github.com/).
+* Contains AngularJS services and directives for loading, parsing, and downloading data and as well as downloading generated publication quality SVG images.
 
-- ES6 Syntax via Babel with source maps
-- ES6 Modules via SystemJS
-- Simple Gulpfile
-- Component based file structure
-- Test located with components
-- ControllerAs syntax
-- Install using NPM and JSPM
-- Karma / Jasmine unit tests
-- Bundle builds via SystemJS Builder
-- Angular Framework
-- Bootstrap Theme
+# For Developers
 
 ## Background
 
-If you are not familiar it would be worthwhile to read up on [jspm](http://jspm.io/), and [SystemJS](https://github.com/systemjs/systemjs).
+If you are not familiar it would be worthwhile to read up on [jspm](http://jspm.io/), [SystemJS](https://github.com/systemjs/systemjs), and [gulp](http://gulpjs.com/).
 
 If you don't already have jspm or gulp you should install them globally.
 
@@ -30,8 +26,8 @@ npm install gulp -g
 ## Install
 
 ```
-git clone https://github.com/Hypercubed/angular-systemjs-starter.git
-cd angular-systemjs-starter
+git clone https://github.com/Hypercubed/Project-Chi.git
+cd Project-Chi
 npm install # jspm install is run postinstall by npm
 ```
 
@@ -62,5 +58,25 @@ gulp watch
 		+- components/        # includes tests
 		+- system.config.js
 		+- index.html
-	+- dist/                # build goes here
+	+- dist/                  # build goes here
 ```
+
+## Acknowledgments
+
+This work was supported by a research grant from the Japanese Ministry of Education, Culture, Sports, Science and Technology (MEXT) to the RIKEN Center for Life Science Technologies.
+
+## Reference
+
+TBR
+
+## License
+
+[MIT License](http://en.wikipedia.org/wiki/MIT_License)
+
+Copyright (c) 2015 RIKEN, Japan.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

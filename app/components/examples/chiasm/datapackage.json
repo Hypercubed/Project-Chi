@@ -1,0 +1,8 @@
+{
+	"name": "Chiasm Example",
+	"resources": [
+		"bars.tsv",
+		"configBarChart.json"
+	],
+	"image": "thumbnail.png"
+}

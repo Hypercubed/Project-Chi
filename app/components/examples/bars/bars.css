@@ -1,0 +1,14 @@
+#chart.bars .axis path,
+#chart.bars .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+#chart.bars .bar {
+  fill: steelblue;
+}
+
+#chart.bars .x.axis path {
+  display: none;
+}
