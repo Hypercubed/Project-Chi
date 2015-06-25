@@ -13,10 +13,6 @@
     {
       "path": "chiasm/datapackage.json",
       "link": "#/examples/chiasm/"
-    },
-    {
-      "path": "hexbin/datapackage.json",
-      "link": "#/examples/hexbin/"
     }
   ]
 }

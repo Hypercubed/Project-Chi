@@ -49,7 +49,7 @@ angular.module('myApp.dataEditor',['myApp.dataService'])
       }
       
       $timeout(function() {
-        scope.panel.open = hasPackage ? $cookies.get('dataEditor-open') !== 'false' : false;
+        scope.panel.open = !scope.readOnly && hasPackage ? $cookies.get('dataEditor-open') !== 'false' : false;
         scope.ui.refresh();
       });
       

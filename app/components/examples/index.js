@@ -14,7 +14,7 @@ export default class IndexCtrl {
 IndexCtrl.resolve = {
   /*@ngInject*/
   dataPackage: ['$route', 'dataService', function($route, dataService) {
-    return dataService.loadPackage($route.current.templateUrl+'/../dataPackage.json').then(function(dataPackage) {
+    return dataService.loadPackage($route.current.templateUrl+'/../datapackage.json').then(function(dataPackage) {
       dataPackage.resources.forEach(function(resource) {
         dataService.normalizePackage(resource.url, resource.data);
       });

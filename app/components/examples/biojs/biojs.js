@@ -33,6 +33,6 @@ BioJSCtrl.$inject = ['$scope', 'dataPackage'];
 BioJSCtrl.resolve = {
   /*@ngInject*/
   dataPackage: ['$route', 'dataService', function($route, dataService) {
-    return dataService.loadPackage($route.current.templateUrl+'/../dataPackage.json');
+    return dataService.loadPackage($route.current.templateUrl+'/../datapackage.json');
   }],
 };

@@ -4,17 +4,18 @@ Project χ (pronounced project kai or /<abbr title="/ˈ/ primary stress follows"
 
 ## Features
 
+* Contains AngularJS services and directives for loading, parsing, and downloading data and as well as downloading generated publication quality SVG images.
 * Simple,  modular, and customizable design using [AngularJS](https://angularjs.org/) templates and [bootstrap](http://getbootstrap.com/) CSS framework.
-* Supports CommonJS, AMD, and ES6 modules using the [SystemJS](https://github.com/systemjs/systemjs) Universal dynamic module loader.
+* Supports CommonJS, AMD, and ES6 modules using the [SystemJS](https://github.com/systemjs/systemjs) universal dynamic module loader.
 * Integrate additional visualizations, including [BioJS](http://biojs.io/) and [Chiasm](https://github.com/curran/chiasm) modules, directly from any registry such as [NPM](https://www.npmjs.com) or [GitHub](https://github.com/) using [JSPM](http://jspm.io/).
 * Self-hosted fully client-side application doesn't require a server; easily hosted on [WebDAV](https://en.wikipedia.org/wiki/WebDAV) or [GitHub Pages](https://pages.github.com/).
-* Contains AngularJS services and directives for loading, parsing, and downloading data and as well as downloading generated publication quality SVG images.
+* For production builds ES6 into ES5 including minification and bundling using [Gulp](http://gulpjs.com/) and [SystemJS Builder](https://github.com/systemjs/builder).
 
 # For Developers
 
 ## Background
 
-If you are not familiar it would be worthwhile to read up on [jspm](http://jspm.io/), [SystemJS](https://github.com/systemjs/systemjs), and [gulp](http://gulpjs.com/).
+If you are not familiar it would be worthwhile to read up on [JSPM](http://jspm.io/), [SystemJS](https://github.com/systemjs/systemjs), and [Gulp](http://gulpjs.com/).
 
 If you don't already have jspm or gulp you should install them globally.
 

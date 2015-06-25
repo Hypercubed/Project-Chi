@@ -54,7 +54,7 @@ An example of including JS directly in the HTML template.  Computing hexbins fro
 			.range(['white', 'steelblue'])
 			.interpolate(d3.interpolateLab);
 
-		jQuery.getScript('http://d3js.org/d3.hexbin.v0.min.js', function() {
+		System.import('components/examples/hexbin/d3.hexbin.v0.min').then(function() {
 
 			var hexbin = d3.hexbin()
 				.size([width, height])

@@ -6,16 +6,18 @@ var cache = require('gulp-cached');
 var ghPages = require('gulp-gh-pages');
 var karma = require('karma').server;
 var args   = require('yargs').argv;
-var ngAnnotate = require('gulp-ng-annotate');
+//var ngAnnotate = require('gulp-ng-annotate');
 //var babel = require('gulp-babel');
+var runSequence = require('run-sequence');
 
 var path = {
   base: 'app',
-  build: 'components/boot',
+  build: 'components/boot + chiasm/plugins/*',
   systemConfig: 'app/system.config.js',
   dist: 'dist',
   bundle: 'dist/components/bundle.js',
-  dataset: args.dataset ? 'dataset/' + args.dataset : null
+  dataset: args.dataset ? 'dataset/' + args.dataset : null,
+  temp: '.tmp'
 };
 
 gulp.task('test', [], function (done) {
@@ -36,9 +38,10 @@ gulp.task('test:watch', [], function (done) {
   });
 });
 
-gulp.task('copy', ['clean'], function () {
+gulp.task('copy', [], function () {
   var paths = [
-      path.base+'/*.{json,html,ico,txt}',
+      path.base+'/*.{js,json,html,ico,txt}',
+      path.base+'/{jspm_packages,lib}/*.{js,map}',
       path.base+'/{jspm_packages,lib}/**/*.{css,svg,png,eot,ttf,wot,woff,woff2,gif}',
       path.base+'/{components,images}/**/*.{css,json,html,csv,png,svg,tsv,txt,md}'
     ];
@@ -53,7 +56,7 @@ gulp.task('copy', ['clean'], function () {
     .pipe(gulp.dest(path.dist));
 });
 
-gulp.task('copy:js', ['clean'], function () {
+gulp.task('js', [], function () {
   var paths = [
     path.base+'/*.js',
     path.base+'/{jspm_packages,lib}/*.{js,map}',
@@ -66,29 +69,37 @@ gulp.task('copy:js', ['clean'], function () {
   }
 
   return gulp.src(paths)
-    .pipe(cache('copy'))
+    .pipe(cache('js'))
     //.pipe(ngAnnotate({
     //  sourceType: 'module'
     //}))
-    .pipe(gulp.dest(path.dist));
+    .pipe(gulp.dest(path.temp));
 });
 
-gulp.task('builder', ['copy:js'], function() {
+gulp.task('builder', [], function() {
   var builder = new jspm.Builder();
 
   return builder.loadConfig(path.systemConfig)
   .then(function() {
     builder.config({
-      baseURL: path.dist,
-      lib: path.dist,
-      buildCSS: false
+      baseURL: path.temp,
+      lib: path.temp,
+      buildCSS: false,
+      meta: {
+        'github:curran/chiasm@gh-pages/plugins/crossfilter': {
+          build: false
+        }
+      }
     });
 
     return builder.build(path.build, path.bundle,
-      { sourceMaps: true,
+      { 
+        sourceMaps: true,
         minify: false,
         mangle: true,
-        runtime: true });
+        runtime: true
+      });
+
   });
 });
 
@@ -137,5 +148,11 @@ gulp.task('deploy', ['build'], function() {
     .pipe(ghPages());
 });
 
-gulp.task('build', ['clean', 'copy', 'copy:js', 'builder']);
+gulp.task('build', function(callback) {
+  runSequence('clean',
+              ['copy', 'js'],
+              'builder',
+              callback);
+});
+
 gulp.task('run',['test:watch','serve']);
