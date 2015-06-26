@@ -37,11 +37,13 @@
     "configFile": "app/system.config.js",
     "dependencies": {
       "FileSaver": "github:eligrey/FileSaver.js@master",
+      "Hypercubed/angular-downloadsvg-directive": "github:Hypercubed/angular-downloadsvg-directive@0.0.22",
+      "URIjs": "npm:URIjs@^1.15.1",
       "_F": "github:Hypercubed/_F@^0.0.7",
       "angular-animate": "github:angular/bower-angular-animate@^1.4.1",
       "angular-bootstrap": "github:angular-ui/bootstrap-bower@^0.13.0",
       "angular-cookies": "github:angular/bower-angular-cookies@^1.4.1",
-      "angular-marked": "github:Hypercubed/angular-marked@^0.0.15",
+      "angular-downloadsvg-directive": "github:Hypercubed/angular-downloadsvg-directive@^0.0.26",
       "angular-route": "github:angular/bower-angular-route@^1.4.0",
       "bootstrap": "github:twbs/bootstrap@^3.3.4",
       "chiasm": "github:curran/chiasm@gh-pages",
@@ -50,15 +52,12 @@
       "d3": "github:mbostock/d3@^3.5.5",
       "d3-tip": "github:Caged/d3-tip@^0.6.7",
       "dummyVis": "github:curran/dummyVis@0.0.1",
-      "expression-bar": "npm:expression-bar@^0.1.4",
       "inlet": "github:enjalot/Inlet@^0.1.1",
       "jquery": "github:components/jquery@^2.1.4",
       "lodash": "npm:lodash@^3.9.3",
       "marked": "github:chjj/marked@^0.3.3",
       "model": "github:curran/model@^0.2.1",
-      "msa": "npm:msa@^0.4.5",
       "papaparse": "github:mholt/PapaParse@^4.1.1",
-      "svgdownload": "github:Hypercubed/angular-downloadsvg-directive@^0.0.22",
       "ui-codemirror": "github:angular-ui/ui-codemirror@^0.3.0"
     },
     "devDependencies": {
@@ -75,10 +74,19 @@
           "jquery": "^2.1.4"
         }
       },
+      "npm:expression-bar@0.1.24": {
+        "main": "index",
+        "dependencies": {
+          "biojs-events": "0.0.4",
+          "d3": "^3.5.5",
+          "jquery": "^2.1.4"
+        }
+      },
       "github:enjalot/Inlet@0.1.1": {
         "main": "inlet"
       },
       "github:codemirror/codemirror@5.3.0": {
+        "format": "global",
         "directories": {
           "lib": "."
         }

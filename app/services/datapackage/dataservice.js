@@ -1,53 +1,8 @@
 
 'use strict';
 
-var isWindows = typeof process != 'undefined' && !!process.platform.match(/^win/);
-
-// Absolute URL parsing, from https://gist.github.com/Yaffle/1088850
-function parseURI(url) {
-  var m = String(url).replace(/^\s+|\s+$/g, '').match(/^([^:\/?#]+:)?(\/\/(?:[^:@\/?#]*(?::[^:@\/?#]*)?@)?(([^:\/?#]*)(?::(\d*))?))?([^?#]*)(\?[^#]*)?(#[\s\S]*)?/);
-  // authority = '//' + user + ':' + pass '@' + hostname + ':' port
-  return (m ? {
-    href     : m[0] || '',
-    protocol : m[1] || '',
-    authority: m[2] || '',
-    host     : m[3] || '',
-    hostname : m[4] || '',
-    port     : m[5] || '',
-    pathname : m[6] || '',
-    search   : m[7] || '',
-    hash     : m[8] || ''
-  } : null);
-}
-
-// From SystemJS
-function toAbsoluteURL(base, href) {
-  function removeDotSegments(input) {
-    var output = [];
-    input.replace(/^(\.\.?(\/|$))+/, '')
-      .replace(/\/(\.(\/|$))+/g, '/')
-      .replace(/\/\.\.$/, '/../')
-      .replace(/\/?[^\/]*/g, function (p) {
-        if (p === '/..')
-          output.pop();
-        else
-          output.push(p);
-    });
-    return output.join('').replace(/^\//, input.charAt(0) === '/' ? '/' : '');
-  }
-
-  if (isWindows)
-    href = href.replace(/\\/g, '/');
-
-  href = parseURI(href || '');
-  base = parseURI(base || '');
-
-  return !href || !base ? null : (href.protocol || base.protocol) +
-    (href.protocol || href.authority ? href.authority : base.authority) +
-    removeDotSegments(href.protocol || href.authority || href.pathname.charAt(0) === '/' ? href.pathname : (href.pathname ? ((base.authority && !base.pathname ? '/' : '') + base.pathname.slice(0, base.pathname.lastIndexOf('/') + 1) + href.pathname) : base.pathname)) +
-    (href.protocol || href.authority || href.pathname ? href.search : (href.search || base.search)) +
-    href.hash;
-}
+import Papa from 'papaparse';
+import URIjs from 'URIjs';
 
 function papaTranslate(load, spec) {
   var parse = Papa.parse(load.content, spec);
@@ -93,7 +48,7 @@ processors['application/json'] = {
 // try to follow http://dataprotocols.org/data-packages/
 
 function processByType(resource) {
-  var _p = processors[resource.type];
+  var _p = processors[resource.mediatype];
   if (_p && _p.translate) {
     _p.translate(resource);
   }
@@ -108,8 +63,8 @@ function httpReq(resource) {
     transformResponse: function(data, headers) {
       var contentType = headers('Content-Type');
 
-      if (contentType && !resource.type) {
-        resource.type = contentType.split(';')[0];
+      if (contentType) {
+        resource.mediatype = resource.mediatype || contentType.split(';')[0];
       }
 
       resource.content = data;
@@ -140,30 +95,33 @@ function DataService($http, $q, $log, mimeType) {
       resource = { name: resource, path: resource };
     }
 
-    if (!resource.url && resource.path && base) {
-      resource.url = toAbsoluteURL(base, resource.path);
-    }
+    var uri = URIjs(resource.path);
 
-    if (!resource.type && resource.path) {
-      resource.type = mimeType(resource.path);
-    }
+    resource.format = resource.format || uri.suffix();
+    resource.name = resource.name || uri.filename();
+
+    resource.url = resource.url || uri.absoluteTo(base).href();
+    resource.mediatype = resource.mediatype || mimeType(resource.format);
 
     return resource;
   }
 
   this.normalizePackage = function(filePath, _package) {
+
+    _package.base = _package.base || URIjs(filePath).normalizePathname().directory()+'/';
+
     if (_package.resources) {
       _package.resources = _package.resources.map(function(resource) {
-        return dataService.normalize(filePath, resource);
+        return dataService.normalize(_package.base, resource);
       });
     }
 
     if (_package.image) {
-      _package.image = toAbsoluteURL(filePath, _package.image);
+      _package.image = URIjs(_package.image, _package.base).href();
     }
 
     if (_package.readme) {
-      _package.readme = toAbsoluteURL(filePath, _package.readme);
+      _package.readme = URIjs(_package.readme, _package.base).href();
     }
 
     return _package;

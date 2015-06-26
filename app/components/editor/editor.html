@@ -1,10 +1,16 @@
+<div ng-if="readOnly && canOpen">
+  <alert close="closeAlert = true" type="warning" ng-hide="closeAlert">
+    This is your chance to play with the featured visualization.  No changes you make will be saved.
+  </alert>
+</div>
+
 <section class="datapckage-editor-container hidden-print" style="position: relative">
-  
+
   <tabset id="dataPackageEditor" ng-show="panel.open">
     <tab ng-repeat="tab in dataPackage.resources track by $index" select="ui.refresh()" active="tab.active">
       <tab-heading>
-        {{ dataPackage.resources.length < 7 ? tab.path : $index }}
-        <button type="button" class="close"><span aria-hidden="true" ng-click="_delete($index)">&times;</span></button>
+        {{ dataPackage.resources.length < 7 ? tab.name : $index }}
+        <a class="close" ng-click="_delete($index)">&nbsp;&times;</a>
       </tab-heading>
 
       <form class="meta form-inline">
@@ -16,29 +22,33 @@
         </div>
         <div class="form-group">
           <label class="sr-only">Password</label>
-          <select ng-options="value as value for value in types" ng-model="tab.type"  class="form-control input-sm" ng-change="change(tab)"></select>
+          <select ng-options="value as value for value in types" ng-model="tab.mediatype"  class="form-control input-sm" ng-change="change(tab)"></select>
         </div>
         <!-- button ng-click="view = 'data'">Content/Data</button -->
       </form>
-      
+
       <div>
         <!-- div ng-if="view === 'data'">
           {{tab.data}}
         </div -->
-        <textarea class="editor" ng-model="tab.content" ui-codemirror ui-codemirror-opts="{lineNumbers: true}" ng-change="change(tab)" ui-refresh="ui.count"></textarea>
+        <textarea class="editor" ng-model="tab.content" ui-codemirror ui-codemirror-opts="{
+            lineNumbers: true,
+            lineWrapping : false,
+            mode: file.type,
+            onLoad : ui.codemirrorLoaded
+            }" ng-change="change(tab)" ui-refresh="ui.count"></textarea>
       </div>
     </tab>
-    <tab select="newFile(newPath)" active="true === false">
-      <tab-heading xxxng-click="newFile(newPath)" file-dropzone="[text/plain,text/csv,text/tab-separated-values]" data-max-file-size="3" dropped="dropped(file)">
+    <tab ng-click="newFile('new.txt')" active="true === false">
+      <tab-heading file-dropzone="[text/plain,text/csv,text/tab-separated-values]" data-max-file-size="3" dropped="dropped(file)">
         <i class="glyphicon glyphicon-plus-sign"></i>
       </tab-heading>
     </tab>
   </tabset>
 
   <div class="btn-toolbar" role="toolbar" aria-label="toolbar">
-    <div class="btn-group">
-      <button type="button" class="btn btn-primary btn-sm dropdown-toggle" tooltip="Download Data"
-        data-toggle="dropdown" aria-expanded="false" ng-if="canDownload">
+    <div class="btn-group" dropdown>
+      <button type="button" class="btn btn-primary btn-sm dropdown-toggle" tooltip="Download Data" dropdown-toggle aria-expanded="false" ng-if="canDownload">
         <div class="pull-right" tooltip="Download Data">
           <i class="glyphicon glyphicon-download"></i>
           Download Data <span class="caret"></span>
@@ -55,15 +65,21 @@
       <i class="glyphicon glyphicon-picture"></i>
       Download SVGs <span class="caret"></span>
     </div>
-    
-    <div class="btn-group pull-right panel-toggle" ng-if="canOpen">
 
-      <button type="button" class="btn btn-link btn-sm" ng-click="tooglePanel()" tooltip="Show/hide resources panel">
+    <div class="btn-group pull-right panel-toggle">
+
+      <button type="button" class="btn btn-primary btn-sm" ng-click="play()" ng-if="!canOpen">
+        Try your own data
+      </button>
+
+      <button type="button" class="btn btn-link btn-sm" ng-click="tooglePanel()" tooltip="Show/hide resources panel"  ng-if="canOpen">
         <i class="glyphicon glyphicon-cog" aria-hidden="true"></i>
       </button>
-      
+
     </div>
-    
+
   </div>
+
+  <ng-transclude></ng-transclude>
 
 </section>

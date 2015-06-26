@@ -1,5 +1,7 @@
 /* global angular */
 
+import 'codemirror/lib/codemirror';
+
 import 'codemirror/lib/codemirror.css!';
 import 'components/editor/editor.css!';
 
@@ -15,8 +17,9 @@ angular.module('myApp.dataEditor',['myApp.dataService'])
     scope: {
       dataPackage: '=model',
       onChange: '&',
-      readOnly: '@'
+      readOnly: '='  // rename
     },
+    transclude: true,
     templateUrl: 'components/editor/editor.html',
     link: function link(scope) {
 
@@ -24,7 +27,7 @@ angular.module('myApp.dataEditor',['myApp.dataService'])
 
       scope.panel = {};
       scope.panel.open = hasPackage;
-      
+
       scope.change = change;
       scope._delete = _delete;
       scope.rename = rename;
@@ -32,7 +35,8 @@ angular.module('myApp.dataEditor',['myApp.dataService'])
       scope.dropped = dropped;
       scope.download = download;
       scope.tooglePanel = tooglePanel;
-      scope.types = ['text/plain','text/csv','text/tab-separated-values'];
+      scope.play = play;
+      scope.types = ['text/plain','text/csv','text/tab-separated-values','application/json'];
 
       scope.canOpen = hasPackage && !scope.readOnly;
       scope.canDownload = hasPackage && scope.dataPackage.resources.length > 0;
@@ -40,50 +44,67 @@ angular.module('myApp.dataEditor',['myApp.dataService'])
       if (scope.canDownload) {
         scope.dataPackage.resources[0].active = true;
       }
-      
+
       scope.ui = {
         refresh: function() {
           scope.ui.count++;
         },
-        count: 0
+        count: 0,
+        codemirrorLoaded: function(cm) {
+
+          $timeout(function() {
+            cm.refresh();
+            scope.ui.refresh();
+          }, 100);
+
+        }
       }
-      
+
       $timeout(function() {
         scope.panel.open = !scope.readOnly && hasPackage ? $cookies.get('dataEditor-open') !== 'false' : false;
         scope.ui.refresh();
       });
-      
+
       function refresh(file) {
         dataService.processResource(file);
       }
-      
+
+      function play() {
+        scope.dataPackage.readme = null;
+        scope.canOpen = true;
+        tooglePanel();
+      }
+
       function change(file) {
         refresh(file);
         scope.onChange();
       }
-      
+
       function _delete(i) {
-        console.log(i);
+        //console.log(i);
         if (i > -1) {
           scope.dataPackage.resources.splice(i,1);
           scope.onChange();
           console.log('delete',scope.dataPackage.resources);
         }
-        
+
       }
 
       function rename(file) {
         if (!file.path) { return; }
-        file.type = mimeType(file.path);
+        file.name = file.path;
+        file.mediatype = mimeType(file.path);
         change(file);
       }
 
       function newFile(filename) {
+
         filename = filename || 'new.txt';
-        
+
         var resource = {
+          name: filename,
           path: filename,
-          type: mimeType(filename),
+          mediatype: mimeType(filename),
           content: ''
         };
 
@@ -91,16 +112,18 @@ angular.module('myApp.dataEditor',['myApp.dataService'])
 
         var i = scope.dataPackage.resources.push(resource);
         scope.dataPackage.resources[i-1].active = true;
-        
+
         change(resource);
-        
+
+        $timeout(scope.ui.Refresh, 100);
+
         return false;
       }
 
       function dropped(file) {
         var resource = {
           path: file.name,
-          type: mimeType(file.name),
+          mediatype: mimeType(file.name),
           content: file.content || ''
         };
 
@@ -108,6 +131,8 @@ angular.module('myApp.dataEditor',['myApp.dataService'])
 
         scope.dataPackage.resources.push(resource);
         change(resource);
+
+        scope.ui.refresh();
       }
 
       function download(file) {
@@ -121,9 +146,9 @@ angular.module('myApp.dataEditor',['myApp.dataService'])
       function tooglePanel() {
         scope.panel.open = !scope.panel.open;
         scope.ui.refresh();
-        
+
         $timeout(scope.ui.Refresh, 100);
-        
+
         $cookies.put('dataEditor-open', scope.panel.open);
       };
 
@@ -156,9 +181,8 @@ angular.module('myApp.dataEditor',['myApp.dataService'])
 
         var svgs = el.find('svg'), ids = [];
 
-        svgs.each(function(d) {
-
-          var elm = angular.element(this);
+        angular.forEach(svgs, function(svg, d) {
+          var elm = angular.element(svg);
 
           var o = {};
 

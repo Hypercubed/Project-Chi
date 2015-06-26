@@ -18,12 +18,16 @@ export default class Ctrl {
 
     function draw() {
 
-      var data = dataPackage.resources.map(function(d) { return d.data; });
+      var data = dataPackage.resources
+        .filter(function(d) { return !!d.data; })
+        .map(function(d) { return d.data; });
 
       var divs = d3.select('#chart')
         .selectAll('div').data(data);
 
       divs.enter().append('div');
+
+      divs.exit().remove();
 
       divs.call(bars);
     }

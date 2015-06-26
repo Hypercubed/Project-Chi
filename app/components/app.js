@@ -13,7 +13,7 @@ import 'angular-bootstrap';
 //import 'angular-material';
 import 'angular-marked';
 import 'ui-codemirror';
-import 'svgdownload';
+import 'angular-downloadsvg-directive';
 
 
 export default angular
