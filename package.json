@@ -52,6 +52,7 @@
       "d3": "github:mbostock/d3@^3.5.5",
       "d3-tip": "github:Caged/d3-tip@^0.6.7",
       "dummyVis": "github:curran/dummyVis@0.0.1",
+      "expression-bar": "npm:expression-bar@0.1.4",
       "inlet": "github:enjalot/Inlet@^0.1.1",
       "jquery": "github:components/jquery@^2.1.4",
       "lodash": "npm:lodash@^3.9.3",
@@ -68,14 +69,6 @@
     "overrides": {
       "npm:expression-bar@0.1.4": {
         "main": "index.js",
-        "dependencies": {
-          "biojs-events": "0.0.4",
-          "d3": "^3.5.5",
-          "jquery": "^2.1.4"
-        }
-      },
-      "npm:expression-bar@0.1.24": {
-        "main": "index",
         "dependencies": {
           "biojs-events": "0.0.4",
           "d3": "^3.5.5",

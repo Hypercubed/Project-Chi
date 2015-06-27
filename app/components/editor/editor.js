@@ -7,8 +7,6 @@ import 'components/editor/editor.css!';
 
 import saveAs from 'FileSaver';
 
-console.log(saveAs);
-
 // canExpand
 // canEdit
 // maxResources
