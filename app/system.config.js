@@ -16,14 +16,13 @@ System.config({
 System.config({
   "map": {
     "FileSaver": "github:eligrey/FileSaver.js@master",
-    "Hypercubed/angular-downloadsvg-directive": "github:Hypercubed/angular-downloadsvg-directive@0.0.22",
     "URIjs": "npm:URIjs@1.15.1",
     "_F": "github:Hypercubed/_F@0.0.7",
     "angular-animate": "github:angular/bower-angular-animate@1.4.1",
     "angular-bootstrap": "github:angular-ui/bootstrap-bower@0.13.0",
     "angular-cookies": "github:angular/bower-angular-cookies@1.4.1",
     "angular-downloadsvg-directive": "github:Hypercubed/angular-downloadsvg-directive@0.0.26",
-    "angular-marked": "github:Hypercubed/angular-marked@0.0.15",
+    "angular-marked": "github:Hypercubed/angular-marked@0.0.16",
     "angular-route": "github:angular/bower-angular-route@1.4.0",
     "babel": "npm:babel-core@5.1.13",
     "babel-runtime": "npm:babel-runtime@5.1.13",
@@ -36,7 +35,7 @@ System.config({
     "d3": "github:mbostock/d3@3.5.5",
     "d3-tip": "github:Caged/d3-tip@0.6.7",
     "dummyVis": "github:curran/dummyVis@0.0.1",
-    "expression-bar": "npm:expression-bar@0.1.4",
+    "expression-bar": "npm:expression-bar@0.1.24",
     "inlet": "github:enjalot/Inlet@0.1.1",
     "jquery": "github:components/jquery@2.1.4",
     "lodash": "npm:lodash@3.9.3",
@@ -412,12 +411,12 @@ System.config({
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
-    "npm:expression-bar@0.1.4": {
+    "npm:expression-bar@0.1.24": {
       "biojs-events": "npm:biojs-events@0.0.4",
       "d3": "npm:d3@3.5.5",
       "jquery": "npm:jquery@2.1.4",
       "path": "github:jspm/nodelibs-path@0.1.0",
-      "sniper": "npm:sniper@0.2.16",
+      "science": "npm:science@1.9.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
     "npm:forever-agent@0.6.1": {
@@ -681,6 +680,10 @@ System.config({
     "npm:ripemd160@1.0.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
+    },
+    "npm:science@1.9.2": {
+      "process": "github:jspm/nodelibs-process@0.1.1",
+      "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:serve-favicon@2.3.0": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",

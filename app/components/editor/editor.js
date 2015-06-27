@@ -5,6 +5,10 @@ import 'codemirror/lib/codemirror';
 import 'codemirror/lib/codemirror.css!';
 import 'components/editor/editor.css!';
 
+import saveAs from 'FileSaver';
+
+console.log(saveAs);
+
 // canExpand
 // canEdit
 // maxResources
@@ -140,7 +144,7 @@ angular.module('myApp.dataEditor',['myApp.dataService'])
         var filename = file.name || 'download.txt';
 
         var blob = new Blob([file.content], {type: type});
-        $window.saveAs(blob, filename);
+        saveAs(blob, filename);
       };
 
       function tooglePanel() {

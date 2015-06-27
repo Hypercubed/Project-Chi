@@ -6,6 +6,8 @@ import 'jquery';
 //import 'bootstrap/js/bootstrap';
 import 'bootstrap/css/bootstrap.css!';
 
+import 'd3';
+
 import app from 'components/app';
 
 import 'components/routes';
