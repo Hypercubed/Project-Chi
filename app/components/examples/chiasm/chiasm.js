@@ -16,15 +16,22 @@ export default class ChiasmCtrl {
     $scope.dataPackage = dataPackage;
     $scope.draw = draw;
 
-    var chiasm;
+    var chiasm, barChart;
 
     function draw() {
       chiasm = chiasm || Chiasm(document.getElementById('container'));
       chiasm.config = dataPackage.resources[1].data;
+
       chiasm.getComponent('barChart').then(function(res) {
+        barChart = res;
         res.data = dataPackage.resources[0].data;
       });
+
     }
+
+    $scope.$on("$destroy", function() {
+      barChart.destroy();
+    });
 
     $scope.change = draw;
     draw();

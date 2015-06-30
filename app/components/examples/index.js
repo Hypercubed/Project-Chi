@@ -5,8 +5,12 @@ import './index.css!';
 export default class IndexCtrl {
 
   /*@ngInject*/
-  constructor($scope, dataPackage){
+  constructor($scope, dataPackage, dataService){
     $scope.dataPackage = dataPackage;
+
+    dataPackage.resources.forEach(function(resource) {
+      dataService.normalizePackage(resource.url, resource.data);
+    });
   }
 
 }
@@ -14,14 +18,8 @@ export default class IndexCtrl {
 IndexCtrl.resolve = {
   /*@ngInject*/
   dataPackage: ['$route', 'dataService', function($route, dataService) {
-    return dataService.loadPackage($route.current.templateUrl+'/../datapackage.json').then(function(dataPackage) {
-      dataPackage.resources.forEach(function(resource) {
-        dataService.normalizePackage(resource.url, resource.data);
-      });
-
-      return dataPackage;
-    });
+    return dataService.loadPackage($route.current.templateUrl+'/../datapackage.json');
   }]
 };
 
-IndexCtrl.$inject = ['$scope','dataPackage'];
+IndexCtrl.$inject = ['$scope','dataPackage','dataService'];

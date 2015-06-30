@@ -1,6 +1,7 @@
 {
   "name": "Index",
-  "description": "Index of Example Visualizations",
+  "title": "Example Visualizations",
+  "description": "Examples of interactive visualizations using the Project-χ framework",
   "resources": [
     {
       "path": "bars/datapackage.json",

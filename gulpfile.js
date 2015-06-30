@@ -86,14 +86,14 @@ gulp.task('builder', [], function() {
       lib: path.temp,
       buildCSS: false,
       meta: {
-        'github:curran/chiasm@gh-pages/plugins/crossfilter': {
+        'github:curran/chiasm@0.1.8/plugins/crossfilter': {
           build: false
         }
       }
     });
 
     return builder.build(path.build, path.bundle,
-      { 
+      {
         sourceMaps: true,
         minify: false,
         mangle: true,
