@@ -16,22 +16,32 @@ export default class ChiasmCtrl {
     $scope.dataPackage = dataPackage;
     $scope.draw = draw;
 
-    var chiasm, barChart;
+    var chiasm = Chiasm(document.getElementById('container'));
+
+    console.log(chiasm);
+
+    chiasm.getComponent('barChart').then(function(barChartComp) {
+      barChartComp.when(["svg","title"], function(svg, title) {
+        svg.attr('title', title);
+      });
+    });
+
+    chiasm.getComponent('layout').then(function(comp) {
+      $scope.$on("$destroy", function() {
+        comp.destroy();
+      });
+    });
+
+    chiasm.when(['data'], function(data) {
+      chiasm.getComponent('barChart').then(function(barChartComp) {
+        barChartComp.data = data;
+      });
+    });
 
     function draw() {
-      chiasm = chiasm || Chiasm(document.getElementById('container'));
       chiasm.config = dataPackage.resources[1].data;
-
-      chiasm.getComponent('barChart').then(function(res) {
-        barChart = res;
-        res.data = dataPackage.resources[0].data;
-      });
-
+      chiasm.data = dataPackage.resources[0].data;
     }
-
-    $scope.$on("$destroy", function() {
-      barChart.destroy();
-    });
 
     $scope.change = draw;
     draw();
