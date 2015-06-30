@@ -18,8 +18,6 @@ export default class ChiasmCtrl {
 
     var chiasm = Chiasm(document.getElementById('container'));
 
-    console.log(chiasm);
-
     chiasm.getComponent('barChart').then(function(barChartComp) {
       barChartComp.when(["svg","title"], function(svg, title) {
         svg.attr('title', title);
@@ -28,7 +26,7 @@ export default class ChiasmCtrl {
 
     chiasm.getComponent('layout').then(function(comp) {
       $scope.$on("$destroy", function() {
-        comp.destroy();
+        if (typeof comp.destroy === 'function' ) { comp.destroy(); }
       });
     });
 

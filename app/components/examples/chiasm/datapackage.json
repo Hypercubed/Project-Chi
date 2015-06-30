@@ -1,5 +1,7 @@
 {
 	"name": "Chiasm Example",
+	"title": "Chiasm",
+	"description": "Chiasm plugin from AMD module installed from Github",
 	"resources": [
 		"bars.tsv",
 		"configBarChart.json"

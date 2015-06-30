@@ -5,7 +5,7 @@ body h3, html h3 {
   -webkit-margin-after: 1em;
   -webkit-margin-start: 0;
   -webkit-margin-end: 0;
-  font-size: 1.17em;
+  font-size: 1.6em;
   font-weight: 700;
 }
 
@@ -51,7 +51,7 @@ body h3, html h3 {
 }
 
 .index .card:hover {
-  /* 
+  /*
   box-shadow: none; */
   transform: translate3d(5px,5px,0);
   box-shadow: 0 0 3px rgba(0,0,0,.23),0 0 3px rgba(0,0,0,.16);

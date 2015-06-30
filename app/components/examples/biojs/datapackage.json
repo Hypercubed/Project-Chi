@@ -1,5 +1,7 @@
 {
 	"name": "BioJS Example",
+	"title": "BioJS",
+	"description": "BioJS package from CommonJS module installed from NPM",
 	"resources": [
 		"data/test_data.json"
 	],
