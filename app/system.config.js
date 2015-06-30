@@ -27,19 +27,18 @@ System.config({
     "babel": "npm:babel-core@5.1.13",
     "babel-runtime": "npm:babel-runtime@5.1.13",
     "bootstrap": "github:twbs/bootstrap@3.3.4",
-    "chiasm": "github:curran/chiasm@gh-pages",
+    "chiasm": "github:curran/chiasm@0.1.8",
     "codemirror": "github:codemirror/codemirror@5.3.0",
     "core-js": "npm:core-js@0.9.13",
     "css": "github:systemjs/plugin-css@0.1.12",
     "d3": "github:mbostock/d3@3.5.5",
     "d3-tip": "github:Caged/d3-tip@0.6.7",
-    "dummyVis": "github:curran/dummyVis@0.0.1",
     "expression-bar": "npm:expression-bar@0.1.4",
     "inlet": "github:enjalot/Inlet@0.1.1",
     "jquery": "github:components/jquery@2.1.4",
     "lodash": "npm:lodash@3.9.3",
     "marked": "github:chjj/marked@0.3.3",
-    "model": "github:curran/model@0.2.3",
+    "model": "github:curran/model@0.2.4",
     "papaparse": "github:mholt/PapaParse@4.1.1",
     "ui-codemirror": "github:angular-ui/ui-codemirror@0.3.0",
     "github:angular/bower-angular-animate@1.4.1": {
@@ -50,10 +49,6 @@ System.config({
     },
     "github:angular/bower-angular-route@1.4.0": {
       "angular": "github:angular/bower-angular@1.4.1"
-    },
-    "github:curran/dummyVis@0.0.1": {
-      "d3": "github:mbostock/d3@3.5.5",
-      "model": "github:curran/model@0.2.3"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
