@@ -8,12 +8,8 @@ import 'bootstrap/css/bootstrap.css!';
 
 import 'd3';
 
-import app from 'components/app';
 
-import 'components/routes';
-import 'services/datapackage/mimeType-service';
-import 'services/datapackage/dataservice';
-import 'components/editor/editor';
+import app from 'components/app';
 
 function boot() {
   angular.bootstrap(document.body, [ app.name ], { strictDi: true });

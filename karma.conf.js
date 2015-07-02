@@ -18,7 +18,7 @@ module.exports = function(config) {
     jspm: {
       config: 'system.config.js',
       packages: 'jspm_packages/',
-      loadFiles: ['components/boot.js', 'components/**/*-spec.js'],
+      loadFiles: ['components/boot.js', 'components/**/*-spec.js', 'common/**/*-spec.js'],
       serveFiles: ['**/*.js','**/*.css']
     },
 

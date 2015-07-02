@@ -73,7 +73,7 @@ function httpReq(resource) {
   };
 }
 
-function DataService($http, $q, $log, mimeType) {
+export function DataService($http, $q, $log, mimeType) {
   var dataService = this;
 
   this.processResource = function(resource) {
@@ -143,6 +143,3 @@ function DataService($http, $q, $log, mimeType) {
 }
 
 DataService.$inject = ['$http', '$q', '$log', 'mimeType'];
-
-angular.module('myApp.dataService',['myApp.mimeType'])
-  .service('dataService', DataService);

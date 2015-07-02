@@ -1,5 +1,7 @@
 'use strict';
 
+//import app from 'components/app';
+
 // examples
 import ExamplesCtrl from 'components/examples/index';
 import ChiasmCtrl from 'components/examples/chiasm/chiasm';
@@ -8,29 +10,30 @@ import BarsCtrl from 'components/examples/bars/bars';
 import TrainsCtrl from 'components/examples/trains/trains';
 
 /*@ngInject*/
-function configRoutes($routeProvider) {
+function configRoutes($routeProvider, dataService) {
+
   $routeProvider
   
   // examples
   .when('/examples', {
     templateUrl: 'components/examples/index.html',
     controller: 'ExamplesCtrl',
-    resolve: ExamplesCtrl.resolve
+    datapackageUrl: 'components/examples/datapackage.json'
   })
   .when('/examples/chiasm', {
 		templateUrl: 'components/examples/chiasm/chiasm.html',
 		controller: 'ChiasmCtrl',
-		resolve: ChiasmCtrl.resolve
+    datapackageUrl: 'components/examples/chiasm/datapackage.json'
 	})
 	.when('/examples/biojs', {
 		templateUrl: 'components/examples/biojs/biojs.html',
 		controller: 'BioJSCtrl',
-		resolve: BioJSCtrl.resolve
+    datapackageUrl: 'components/examples/biojs/datapackage.json'
 	})
 	.when('/examples/bars', {
 		templateUrl: 'components/examples/bars/bars.html',
 		controller: 'BarsCtrl',
-		resolve: BarsCtrl.resolve
+    datapackageUrl: 'components/examples/bars/datapackage.json'
 	})
 	.when('/examples/hexbin', {
 		templateUrl: 'components/examples/hexbin/hexbin.html',
@@ -38,15 +41,14 @@ function configRoutes($routeProvider) {
 	.when('/examples/trains', {
 		templateUrl: 'components/examples/bars/bars.html',
 		controller: 'TrainsCtrl',
-		resolve: TrainsCtrl.resolve
+    datapackageUrl: 'components/examples/bars/datapackage.json'
 	});
 }
 
-configRoutes.$inject = ['$routeProvider'];
+configRoutes.$inject = ['$routeProvider','dataServiceProvider'];
 
-import app from 'components/app';
-
-app
+export default angular
+  .module('examples', [])
 
   //examples
   .controller('ExamplesCtrl', ExamplesCtrl)
@@ -55,4 +57,5 @@ app
   .controller('BarsCtrl', BarsCtrl)
   .controller('TrainsCtrl', TrainsCtrl)
 
-  .config(configRoutes);
+  .config(configRoutes)
+;

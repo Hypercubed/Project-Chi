@@ -48,10 +48,3 @@ export default class ChiasmCtrl {
 }
 
 ChiasmCtrl.$inject = ['$scope', 'dataPackage'];
-
-ChiasmCtrl.resolve = {
-  /*@ngInject*/
-  dataPackage: ['$route', 'dataService', function($route, dataService) {
-    return dataService.loadPackage($route.current.templateUrl+'/../datapackage.json');
-  }],
-};

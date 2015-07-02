@@ -1,5 +1,7 @@
 'use strict';
 
+import 'angular-mocks';
+
 describe('Service: dataservice', function () {
 
   // load the controller's module

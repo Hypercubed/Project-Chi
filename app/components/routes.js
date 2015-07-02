@@ -1,6 +1,6 @@
 'use strict';
 
-import './examples/routes';
+import examples from './examples/routes';
 
 /*@ngInject*/
 function configRoutes($routeProvider) {
@@ -15,7 +15,6 @@ function configRoutes($routeProvider) {
 
 configRoutes.$inject = ['$routeProvider'];
 
-import app from 'components/app';
-
-app
+export default angular
+  .module('routes', [examples.name])
   .config(configRoutes);

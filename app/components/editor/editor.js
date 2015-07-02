@@ -12,7 +12,11 @@ import saveAs from 'FileSaver';
 // maxResources
 // table view
 
-angular.module('myApp.dataEditor',['myApp.dataService'])
+var moduleName='myApp.dataEditor';
+
+export default moduleName;
+
+angular.module(moduleName,['myApp.dataService'])
 .directive('datapackageEdit', ['$rootScope', '$window', '$cookies', '$timeout', 'mimeType', 'dataService',
                        function($rootScope,   $window,   $cookies,   $timeout, mimeType, dataService) {
   return {

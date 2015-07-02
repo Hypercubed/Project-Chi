@@ -7,14 +7,17 @@ import './app.css!';
 import 'angular-route';
 import 'angular-animate';
 import 'angular-cookies';
-//import 'angular-sanitize';
-//import 'angular-touch';
+
 import 'angular-bootstrap';
-//import 'angular-material';
-import 'angular-marked';
+
+import angularMarked from 'angular-marked';
 import 'ui-codemirror';
 import 'angular-downloadsvg-directive';
 
+import dataServices from 'common/services/datapackage/index';
+import dataPackageEditor from 'components/editor/editor';
+
+import routes from 'components/routes';
 
 export default angular
   .module('myApp', [
@@ -24,12 +27,12 @@ export default angular
     //'ngSanitize',
     //'ngTouch',
     'hc.downloader',
-    'hc.marked',
-    //'ngMaterial',
-    //'myApp.dataService',
     'ui.bootstrap',
-    'myApp.dataService',
     'myApp.dataEditor',
+    routes.name,
+    angularMarked,
+    dataServices,
+    dataPackageEditor,
     'ui.codemirror'
   ])
   .run(['$rootScope', '$location', function isPath($rootScope, $location){

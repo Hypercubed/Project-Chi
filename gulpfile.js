@@ -7,8 +7,10 @@ var ghPages = require('gulp-gh-pages');
 var karma = require('karma').server;
 var args   = require('yargs').argv;
 //var ngAnnotate = require('gulp-ng-annotate');
-//var babel = require('gulp-babel');
 var runSequence = require('run-sequence');
+var htmlMin = require('gulp-minify-html');
+//var babel = require('gulp-babel');
+var symlink = require('gulp-symlink');
 
 var path = {
   base: 'app',
@@ -40,15 +42,15 @@ gulp.task('test:watch', [], function (done) {
 
 gulp.task('copy', [], function () {
   var paths = [
-      path.base+'/*.{js,json,html,ico,txt}',
+      path.base+'/*.{js,json,ico,txt}',
       path.base+'/{jspm_packages,lib}/*.{js,map}',
-      path.base+'/{jspm_packages,lib}/**/*.{css,svg,png,eot,ttf,wot,woff,woff2,gif}',
-      path.base+'/{components,images}/**/*.{css,json,html,csv,png,svg,tsv,txt,md}'
+      path.base+'/{jspm_packages,lib}/**/*.{svg,png,eot,ttf,wot,woff,woff2,gif}',
+      path.base+'/{components,common,assets}/**/*.{json,csv,png,svg,tsv,txt,md}'
     ];
 
   if (path.dataset) {
-    paths.push(path.dataset+'/*.{json,html,ico,txt}');
-    paths.push(path.dataset+'/{components,images}/**/*.{css,json,html,csv,png,svg,tsv,txt,md}');
+    paths.push(path.dataset+'/*.{json,ico,txt}');
+    paths.push(path.dataset+'/{components,common,assets}/**/*.{json,csv,png,svg,tsv,txt,md}');
   }
 
   return gulp.src(paths)
@@ -56,24 +58,70 @@ gulp.task('copy', [], function () {
     .pipe(gulp.dest(path.dist));
 });
 
+gulp.task('html', function () {
+  var paths = [
+      path.base+'/*.html',
+      path.base+'/{components,common}/**/*.html'
+    ];
+
+  if (path.dataset) {
+    paths.push(path.dataset+'/*.html');
+    paths.push(path.dataset+'/{components,common}/**/*.html');
+  }
+
+  return gulp.src(paths)
+    .pipe(cache('html'))
+    .pipe(htmlMin({
+      empty: true,
+      spare: true,
+      quotes: true
+    }))
+    .pipe(gulp.dest(path.dist));
+});
+
 gulp.task('js', [], function () {
   var paths = [
     path.base+'/*.js',
-    path.base+'/{jspm_packages,lib}/*.{js,map}',
-    path.base+'/{jspm_packages,lib}/**/*.js',
-    path.base+'/{components,services}/**/*.js'
+    path.base+'/{components,common}/**/*.js'
   ];
 
   if (path.dataset) {
-    paths.push(path.dataset+'/{components,services}/**/*.js');
+    paths.push(path.dataset+'/{components,common}/**/*.js');
   }
 
   return gulp.src(paths)
     .pipe(cache('js'))
-    //.pipe(ngAnnotate({
-    //  sourceType: 'module'
-    //}))
+    /* .pipe(babel({
+      modules: 'system',
+      externalHelpers: true,
+    	comments: false,
+    	compact: false,
+      moduleIds: false
+    }))
+    .pipe(ngAnnotate({
+      sourceType: 'module'
+    })) */
     .pipe(gulp.dest(path.temp));
+});
+
+gulp.task('css', [], function () {
+  var paths = [
+    path.base+'/*.{css,css.map}',
+    path.base+'/{components,common}/**/*.{css,css.map}'
+  ];
+
+  if (path.dataset) {
+    paths.push(path.dataset+'/{components,common}/**/*.{css,css.map}');
+  }
+
+  return gulp.src(paths)
+    .pipe(cache('css'))
+    .pipe(gulp.dest(path.temp));
+});
+
+gulp.task('symlink', function () {
+  return gulp.src([path.base+'/jspm_packages/'])
+    .pipe(symlink.absolute([path.temp+'/jspm_packages'], {force: true}));
 });
 
 gulp.task('builder', [], function() {
@@ -84,7 +132,7 @@ gulp.task('builder', [], function() {
     builder.config({
       baseURL: path.temp,
       lib: path.temp,
-      buildCSS: false,
+      buildCSS: true,
       meta: {
         'github:curran/chiasm@0.1.8/plugins/crossfilter': {
           build: false
@@ -95,9 +143,9 @@ gulp.task('builder', [], function() {
     return builder.build(path.build, path.bundle,
       {
         sourceMaps: true,
-        minify: false,
+        minify: true,
         mangle: true,
-        runtime: true
+        runtime: false
       });
 
   });
@@ -140,17 +188,21 @@ gulp.task('watch', ['server'], function() {
 });
 
 gulp.task('clean', function (cb) {
-  del(['dist',], cb);
+  del(path.dist, cb);
 });
 
-gulp.task('deploy', ['build'], function() {
+gulp.task('clean:tmp', function (cb) {
+  del(path.temp, cb);
+});
+
+gulp.task('deploy', [], function() {
   return gulp.src(path.dist+'/**/*')
     .pipe(ghPages());
 });
 
 gulp.task('build', function(callback) {
   runSequence('clean',
-              ['copy', 'js'],
+              ['copy', 'js', 'css', 'html','symlink'],
               'builder',
               callback);
 });
