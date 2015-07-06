@@ -1,13 +1,10 @@
 <div datapackage-edit model="dataPackage" on-change="change()"></div>
 
 <div id="charts" class="container">
-  <marked>
-## d3 reusable chart as CommonJS module
-
-An example using a CommonJS module that exports a d3 reusable chart as [described by M. Bostock](http://bost.ocks.org/mike/chart/).
-  </marked>
+  <h2>{{dataPackage.title}}</h2>
+  <div marked="dataPackage.description"></div>
 
   <div id="chart" class="bars"></div>
-  
+
   <marked ng-include="dataPackage.readme"></marked>
 </div>

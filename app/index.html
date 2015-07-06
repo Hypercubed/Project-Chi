@@ -37,7 +37,7 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">Project-χ</a>
+            <a class="navbar-brand" href="#/">Project-<span class="χ">χ</span></a>
           </div>
 
           <!-- div class="collapse navbar-collapse pull-right" id="js-navbar-collapse">
@@ -54,12 +54,7 @@
       <div ng-view=""></div>
     </div>
 
-    <div class="footer">
-      <div class="container">
-        <p>Designed and built at RIKEN, Japan.</p>
-        <p>Project-χ code licensed under MIT</p>
-        <p>Currently v0.0.1 // <a href="https://github.com/Hypercubed/Project-chi">GitHub</a> // <a ng-href="#/examples">Examples</a> // <a ng-href="#/about">About</a> // <a ng-href="mailto:{{'&#106;&#97;&#121;&#115;&#111;&#110;'+'\.'+'&#104;&#97;&#114;&#115;&#104;&#98;&#97;&#114;&#103;&#101;&#114;'+'@'+'&#114;&#105;&#107;&#101;&#110;'+'\.'+'&#106;&#112;'}}">Contact</a> // <a href="https://github.com/Hypercubed/Project-chi/issues">Issues</a></p>
-      </div>
+    <div class="footer" ng-include="'common/partials/footer.html'">
     </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->

@@ -6,3 +6,4 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 - [ ] ng-annotate
 - [ ] ngHtml2Js
 - [ ] tests
+- [ ] Fix printing

@@ -11,11 +11,8 @@
 <div datapackage-edit model="dataPackage" on-change="change()"></div>
 
 <div id="charts" class="container">
-  <marked>
-## Chiasm plugin from AMD module installed from Github
-
-An example using a [Chiasm plugin](https://github.com/curran/chiasm).  Data Source: [Cryptological Mathematics](http://books.google.com/books?id=dx8zM-VeKI8C&lpg=PP1&dq=LEWAND%2C%20Robert.%20Cryptological%20mathematics&pg=PA36#v=onepage&q=letter%20frequency&f=false), Robert Lewand.
-  </marked>
+  <h2>{{dataPackage.title}}</h2>
+  <div marked="dataPackage.description"></div>
 
   <div id="container"></div>
 </div>

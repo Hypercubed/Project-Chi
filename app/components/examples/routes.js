@@ -10,10 +10,10 @@ import BarsCtrl from 'components/examples/bars/bars';
 import TrainsCtrl from 'components/examples/trains/trains';
 
 /*@ngInject*/
-function configRoutes($routeProvider, dataService) {
+function configRoutes($routeProvider) {
 
   $routeProvider
-  
+
   // examples
   .when('/examples', {
     templateUrl: 'components/examples/index.html',
@@ -45,10 +45,10 @@ function configRoutes($routeProvider, dataService) {
 	});
 }
 
-configRoutes.$inject = ['$routeProvider','dataServiceProvider'];
+configRoutes.$inject = ['$routeProvider'];
 
 export default angular
-  .module('examples', [])
+  .module('examples', ['projectX.dataService'])
 
   //examples
   .controller('ExamplesCtrl', ExamplesCtrl)

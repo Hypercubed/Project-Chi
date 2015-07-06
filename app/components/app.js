@@ -20,7 +20,7 @@ import dataPackageEditor from 'components/editor/editor';
 import routes from 'components/routes';
 
 export default angular
-  .module('myApp', [
+  .module('projectX', [
     'ngRoute',
     'ngAnimate',
     'ngCookies',
@@ -28,7 +28,6 @@ export default angular
     //'ngTouch',
     'hc.downloader',
     'ui.bootstrap',
-    'myApp.dataEditor',
     routes.name,
     angularMarked,
     dataServices,
@@ -53,20 +52,20 @@ export default angular
           }, 500);
         }
 
-        //function resize() {
-        //  scope.onResize();
-        //}
+        function resize() {
+          scope.onResize();
+        }
 
         angular.element($window).on('resize', debounceRedraw);
-        //if ('matchMedia' in window) {
-        //  window.matchMedia('print').addListener(resize);
-        //}
+        if ('matchMedia' in window) {
+          window.matchMedia('print').addListener(resize);
+        }
 
         scope.$on('$destroy', function() {
           angular.element($window).off('resize', debounceRedraw);
-          //if ('matchMedia' in window) {
-          //  window.matchMedia('print').removeListener(resize);
-          //}
+          if ('matchMedia' in window) {
+            window.matchMedia('print').removeListener(resize);
+          }
         });
 
       }

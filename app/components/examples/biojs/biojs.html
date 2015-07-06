@@ -1,13 +1,8 @@
 <div datapackage-edit model="dataPackage" on-change="change()"></div>
 
 <div id="charts" class="container">
-  <marked>
-## BioJS package from CommonJS module installed from NPM
-
-An example using a CommonJS NPM module that is part of the [BioJS registry](http://biojs.io/) .  
-
-Simple barchart to show expression levels across experiments.  Using [homonecloco/biojs-vis-expression-bar](https://github.com/homonecloco/biojs-vis-expression-bar) BioJS visualization module and example data.
-  </marked>
+  <h2>{{dataPackage.title}}</h2>
+  <div marked="dataPackage.description"></div>
 
   <div id="bar_expression_viewer" style="display: table; margin: 0 auto;"></div>
 </div>

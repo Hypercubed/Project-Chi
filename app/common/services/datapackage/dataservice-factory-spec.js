@@ -5,7 +5,7 @@ import 'angular-mocks';
 describe('Service: dataservice', function () {
 
   // load the controller's module
-  beforeEach(module('myApp.dataService'));
+  beforeEach(module('projectX.dataService'));
 
   var dataservice;
 

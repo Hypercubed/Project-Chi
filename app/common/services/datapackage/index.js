@@ -1,6 +1,6 @@
 'use strict';
 
-var moduleName='myApp.dataService';
+var moduleName='projectX.dataService';
 
 import { mimeType } from './mimeType-service'
 import { DataService } from './dataservice'
@@ -8,7 +8,7 @@ import { DataService } from './dataservice'
 //export { mimeType };
 //export { DataService };
 
-angular.module('myApp.dataService',[])
+angular.module('projectX.dataService',['ngRoute'])
   .constant('mimeType', mimeType)
   .service('dataService', DataService)
   .config(['$routeProvider',function( $routeProvider ) {

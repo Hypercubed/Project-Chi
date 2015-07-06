@@ -8,7 +8,6 @@ import 'bootstrap/css/bootstrap.css!';
 
 import 'd3';
 
-
 import app from 'components/app';
 
 function boot() {

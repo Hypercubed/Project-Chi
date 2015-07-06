@@ -12,18 +12,19 @@ import saveAs from 'FileSaver';
 // maxResources
 // table view
 
-var moduleName='myApp.dataEditor';
+var moduleName='projectX.dataEditor';
 
 export default moduleName;
 
-angular.module(moduleName,['myApp.dataService'])
+angular.module(moduleName,['projectX.dataService'])
 .directive('datapackageEdit', ['$rootScope', '$window', '$cookies', '$timeout', 'mimeType', 'dataService',
                        function($rootScope,   $window,   $cookies,   $timeout, mimeType, dataService) {
   return {
     scope: {
       dataPackage: '=model',
       onChange: '&',
-      readOnly: '='  // rename
+      protect: '=',
+      readOnly: '='
     },
     transclude: true,
     templateUrl: 'components/editor/editor.html',
@@ -44,7 +45,7 @@ angular.module(moduleName,['myApp.dataService'])
       scope.play = play;
       scope.types = ['text/plain','text/csv','text/tab-separated-values','application/json'];
 
-      scope.canOpen = hasPackage && !scope.readOnly;
+      scope.canOpen = hasPackage && !scope.protect && !scope.readOnly;
       scope.canDownload = hasPackage && scope.dataPackage.resources.length > 0;
 
       if (scope.canDownload) {
@@ -67,7 +68,7 @@ angular.module(moduleName,['myApp.dataService'])
       }
 
       $timeout(function() {
-        scope.panel.open = !scope.readOnly && hasPackage ? $cookies.get('dataEditor-open') !== 'false' : false;
+        scope.panel.open = !scope.readOnly && !scope.protect && hasPackage ? $cookies.get('dataEditor-open') !== 'false' : false;
         scope.ui.refresh();
       });
 
@@ -76,7 +77,7 @@ angular.module(moduleName,['myApp.dataService'])
       }
 
       function play() {
-        scope.dataPackage.readme = null;
+        if (scope.dataPackage && scope.dataPackage.readme) {scope.dataPackage.readme = null;}
         scope.canOpen = true;
         tooglePanel();
       }

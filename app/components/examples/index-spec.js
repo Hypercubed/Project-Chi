@@ -5,7 +5,7 @@ import 'angular-mocks';
 describe('Controller: ExamplesCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('myApp'));
+  beforeEach(module('projectX'));
 
   var IndexCtrl,
     scope;

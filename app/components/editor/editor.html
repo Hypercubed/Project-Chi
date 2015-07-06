@@ -1,4 +1,4 @@
-<div ng-if="readOnly && canOpen">
+<div ng-if="protect && canOpen">
   <alert close="closeAlert = true" type="warning" ng-hide="closeAlert">
     This is your chance to play with the featured visualization.  No changes you make will be saved.
   </alert>
@@ -49,7 +49,7 @@
   <div class="btn-toolbar" role="toolbar" aria-label="toolbar">
     <div class="btn-group" dropdown>
       <button type="button" class="btn btn-primary btn-sm dropdown-toggle" tooltip="Download Data" dropdown-toggle aria-expanded="false" ng-if="canDownload">
-        <div class="pull-right" tooltip="Download Data">
+        <div class="pull-right">
           <i class="glyphicon glyphicon-download"></i>
           Download Data <span class="caret"></span>
         </div>
@@ -61,18 +61,18 @@
       </ul>
     </div>
 
-    <div class="btn-group" svg-download-dropdown="#charts" tooltip="Download SVGs">
+    <div class="btn-group" svg-download-dropdown="#charts">
       <i class="glyphicon glyphicon-picture"></i>
       Download SVGs <span class="caret"></span>
     </div>
 
     <div class="btn-group pull-right panel-toggle">
 
-      <button type="button" class="btn btn-primary btn-sm" ng-click="play()" ng-if="!canOpen">
+      <button type="button" class="btn btn-primary btn-sm" ng-click="play()" ng-if="!canOpen && protect">
         Try your own data
       </button>
 
-      <button type="button" class="btn btn-link btn-sm" ng-click="tooglePanel()" tooltip="Show/hide resources panel"  ng-if="canOpen">
+      <button type="button" class="btn btn-link btn-sm" ng-click="tooglePanel()" tooltip="Show/hide resources panel" ng-if="canOpen">
         <i class="glyphicon glyphicon-cog" aria-hidden="true"></i>
       </button>
 

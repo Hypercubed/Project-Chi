@@ -1,7 +1,7 @@
 {
 	"name": "Bars",
-	"title": "Bars",
-	"description": "A simple SVG bar chart. Part of the tutorial series Let’s Make a Bar Chart.",
+	"title": "d3 reusable chart as CommonJS module",
+	"description": "An example using a CommonJS module that exports a d3 reusable chart as [described by M. Bostock](http://bost.ocks.org/mike/chart/)",
 	"resources": [
 		"bars.tsv"
 	],

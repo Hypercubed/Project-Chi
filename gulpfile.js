@@ -2,15 +2,10 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var jspm = require('jspm');
 var del = require('del');
-var cache = require('gulp-cached');
-var ghPages = require('gulp-gh-pages');
 var karma = require('karma').server;
 var args   = require('yargs').argv;
-//var ngAnnotate = require('gulp-ng-annotate');
 var runSequence = require('run-sequence');
-var htmlMin = require('gulp-minify-html');
-//var babel = require('gulp-babel');
-var symlink = require('gulp-symlink');
+var $ = require('gulp-load-plugins')();
 
 var path = {
   base: 'app',
@@ -21,6 +16,8 @@ var path = {
   dataset: args.dataset ? 'dataset/' + args.dataset : null,
   temp: '.tmp'
 };
+
+gulp.task('help', $.taskListing);
 
 gulp.task('test', [], function (done) {
   karma.start({
@@ -54,7 +51,8 @@ gulp.task('copy', [], function () {
   }
 
   return gulp.src(paths)
-    .pipe(cache('copy'))
+    .pipe($.cached('copy'))
+    .pipe($.plumber())
     .pipe(gulp.dest(path.dist));
 });
 
@@ -70,8 +68,9 @@ gulp.task('html', function () {
   }
 
   return gulp.src(paths)
-    .pipe(cache('html'))
-    .pipe(htmlMin({
+    .pipe($.cached('html'))
+    .pipe($.plumber())
+    .pipe($.minifyHtml({
       empty: true,
       spare: true,
       quotes: true
@@ -90,7 +89,8 @@ gulp.task('js', [], function () {
   }
 
   return gulp.src(paths)
-    .pipe(cache('js'))
+    .pipe($.cached('js'))
+    .pipe($.plumber())
     /* .pipe(babel({
       modules: 'system',
       externalHelpers: true,
@@ -115,13 +115,14 @@ gulp.task('css', [], function () {
   }
 
   return gulp.src(paths)
-    .pipe(cache('css'))
+    .pipe($.cached('css'))
+    .pipe($.plumber())
     .pipe(gulp.dest(path.temp));
 });
 
 gulp.task('symlink', function () {
   return gulp.src([path.base+'/jspm_packages/'])
-    .pipe(symlink.absolute([path.temp+'/jspm_packages'], {force: true}));
+    .pipe($.symlink.absolute([path.temp+'/jspm_packages'], {force: true}));
 });
 
 gulp.task('builder', [], function() {
@@ -165,7 +166,7 @@ gulp.task('server', [], function (done) {
   }, done);
 });
 
-gulp.task('serve:dist', [], function (done) {
+gulp.task('server:dist', [], function (done) {
   browserSync({
     open: false,
     port: 9000,
@@ -197,7 +198,7 @@ gulp.task('clean:tmp', function (cb) {
 
 gulp.task('deploy', [], function() {
   return gulp.src(path.dist+'/**/*')
-    .pipe(ghPages());
+    .pipe($.ghPages());
 });
 
 gulp.task('build', function(callback) {

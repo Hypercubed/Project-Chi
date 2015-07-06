@@ -17,7 +17,7 @@ body h3, html h3 {
 .index .card {
   color: #333;
   overflow: hidden;
-  height: 80px;
+  height: 160px;
   text-align: center;
 
   padding: 0;
@@ -43,7 +43,7 @@ body h3, html h3 {
 }
 
 .index .card > div {
-  height:120px;
+  height:160px;
   margin-top: 0;
   -webkit-transition: all 0.5s; /* Chrome, Safari, Opera */
   transition: all 0.5s;
@@ -59,6 +59,7 @@ body h3, html h3 {
 
 .index h3 {
   margin: 0;
+	padding: 10px 0;
   font-weight: 400;
 }
 
