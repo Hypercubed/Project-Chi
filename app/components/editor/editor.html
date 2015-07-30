@@ -6,7 +6,7 @@
 
 <section class="datapckage-editor-container hidden-print" style="position: relative">
 
-  <tabset id="dataPackageEditor" ng-show="panel.open">
+  <tabset id="dataPackageEditor" ng-show="panel.open" ng-if="!readOnly">
     <tab ng-repeat="tab in dataPackage.resources track by $index" select="ui.refresh()" active="tab.active">
       <tab-heading>
         {{ dataPackage.resources.length < 7 ? tab.name : $index }}
@@ -48,7 +48,7 @@
 
   <div class="btn-toolbar" role="toolbar" aria-label="toolbar">
     <div class="btn-group" dropdown>
-      <button type="button" class="btn btn-primary btn-sm dropdown-toggle" tooltip="Download Data" dropdown-toggle aria-expanded="false" ng-if="canDownload">
+      <button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle aria-expanded="false" ng-if="canDownload">
         <div class="pull-right">
           <i class="glyphicon glyphicon-download"></i>
           Download Data <span class="caret"></span>

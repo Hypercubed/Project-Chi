@@ -67,7 +67,11 @@
       "marked": "github:chjj/marked@^0.3.3",
       "model": "github:curran/model@^0.2.1",
       "papaparse": "github:mholt/PapaParse@^4.1.1",
-      "ui-codemirror": "github:angular-ui/ui-codemirror@^0.3.0"
+      "polymer": "github:Polymer/polymer@^1.0.8",
+      "text": "github:systemjs/plugin-text@^0.0.2",
+      "ui-codemirror": "github:angular-ui/ui-codemirror@^0.3.0",
+      "uiGrid": "github:angular-ui/ui-grid@^3.0.1",
+      "webcomponentsjs": "github:webcomponents/webcomponentsjs@^0.7.7"
     },
     "devDependencies": {
       "babel": "npm:babel-core@5.1.13",

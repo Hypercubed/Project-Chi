@@ -71,10 +71,10 @@ body h3, html h3 {
   text-align: center;
 }
 
-.lead {
+.jumbotron p {
   margin-bottom: 20px;
   font-size: 16px;
   font-weight: 300;
-  line-height: 1.4;
+  line-height: 1.2;
   text-align: center;
 }

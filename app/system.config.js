@@ -10,7 +10,8 @@ System.config({
     "github:*": "jspm_packages/github/*.js",
     "npm:*": "jspm_packages/npm/*.js"
   },
-  "buildCSS": true
+  "buildCSS": true,
+  "buildHTML": true
 });
 
 System.config({
@@ -36,13 +37,18 @@ System.config({
     "d3": "github:mbostock/d3@3.5.5",
     "d3-tip": "github:Caged/d3-tip@0.6.7",
     "expression-bar": "npm:expression-bar@0.1.4",
+    "html": "github:Hypercubed/systemjs-plugin-html@0.0.6",
     "inlet": "github:enjalot/Inlet@0.1.1",
     "jquery": "github:components/jquery@2.1.4",
     "lodash": "npm:lodash@3.9.3",
     "marked": "github:chjj/marked@0.3.3",
     "model": "github:curran/model@0.2.4",
     "papaparse": "github:mholt/PapaParse@4.1.1",
+    "polymer": "github:Polymer/polymer@1.0.8",
+    "text": "github:systemjs/plugin-text@0.0.2",
     "ui-codemirror": "github:angular-ui/ui-codemirror@0.3.0",
+    "uiGrid": "github:angular-ui/ui-grid@3.0.1",
+    "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.7",
     "github:angular/bower-angular-animate@1.4.1": {
       "angular": "github:angular/bower-angular@1.4.1"
     },
@@ -93,11 +99,6 @@ System.config({
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
     },
-    "github:systemjs/plugin-css@0.1.12": {
-      "clean-css": "npm:clean-css@3.1.9",
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "path": "github:jspm/nodelibs-path@0.1.0"
-    },
     "github:twbs/bootstrap@3.3.4": {
       "jquery": "github:components/jquery@2.1.4"
     },
@@ -116,28 +117,10 @@ System.config({
     "npm:biojs-events@0.0.4": {
       "backbone-events-standalone": "npm:backbone-events-standalone@0.2.7"
     },
-    "npm:buffer@3.2.2": {
-      "base64-js": "npm:base64-js@0.0.8",
-      "ieee754": "npm:ieee754@1.1.6",
-      "is-array": "npm:is-array@1.0.1"
-    },
     "npm:buffer@3.3.0": {
       "base64-js": "npm:base64-js@0.0.8",
       "ieee754": "npm:ieee754@1.1.6",
       "is-array": "npm:is-array@1.0.1"
-    },
-    "npm:clean-css@3.1.9": {
-      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
-      "commander": "npm:commander@2.6.0",
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "http": "github:jspm/nodelibs-http@1.7.1",
-      "https": "github:jspm/nodelibs-https@0.1.0",
-      "os": "github:jspm/nodelibs-os@0.1.0",
-      "path": "github:jspm/nodelibs-path@0.1.0",
-      "process": "github:jspm/nodelibs-process@0.1.1",
-      "source-map": "npm:source-map@0.1.43",
-      "url": "github:jspm/nodelibs-url@0.1.0",
-      "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:clean-css@3.3.4": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -151,12 +134,6 @@ System.config({
       "source-map": "npm:source-map@0.4.2",
       "url": "github:jspm/nodelibs-url@0.1.0",
       "util": "github:jspm/nodelibs-util@0.1.0"
-    },
-    "npm:commander@2.6.0": {
-      "child_process": "github:jspm/nodelibs-child_process@0.1.0",
-      "events": "github:jspm/nodelibs-events@0.1.1",
-      "path": "github:jspm/nodelibs-path@0.1.0",
-      "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:commander@2.8.1": {
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
@@ -206,17 +183,6 @@ System.config({
     "npm:punycode@1.3.2": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:readable-stream@1.0.33": {
-      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
-      "core-util-is": "npm:core-util-is@1.0.1",
-      "events": "github:jspm/nodelibs-events@0.1.1",
-      "inherits": "npm:inherits@2.0.1",
-      "isarray": "npm:isarray@0.0.1",
-      "process": "github:jspm/nodelibs-process@0.1.1",
-      "stream": "github:jspm/nodelibs-stream@0.1.0",
-      "stream-browserify": "npm:stream-browserify@1.0.0",
-      "string_decoder": "npm:string_decoder@0.10.31"
-    },
     "npm:readable-stream@1.1.13": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "core-util-is": "npm:core-util-is@1.0.1",
@@ -228,12 +194,6 @@ System.config({
       "stream-browserify": "npm:stream-browserify@1.0.0",
       "string_decoder": "npm:string_decoder@0.10.31",
       "util": "github:jspm/nodelibs-util@0.1.0"
-    },
-    "npm:source-map@0.1.43": {
-      "amdefine": "npm:amdefine@0.1.1",
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "path": "github:jspm/nodelibs-path@0.1.0",
-      "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:source-map@0.4.2": {
       "amdefine": "npm:amdefine@0.1.1",
@@ -261,4 +221,3 @@ System.config({
     }
   }
 });
-

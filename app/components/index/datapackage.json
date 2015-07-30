@@ -1,0 +1,10 @@
+{
+  "name": "Index",
+  "title": "Index",
+  "description": "Index of Visualizations",
+  "resources": [
+    {
+      "path": "../examples/datapackage.json"
+    }
+  ]
+}

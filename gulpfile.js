@@ -41,7 +41,7 @@ gulp.task('copy', [], function () {
   var paths = [
       path.base+'/*.{js,json,ico,txt}',
       path.base+'/{jspm_packages,lib}/*.{js,map}',
-      path.base+'/{jspm_packages,lib}/**/*.{svg,png,eot,ttf,wot,woff,woff2,gif}',
+      path.base+'/{jspm_packages,lib}/**/*.{svg,png,eot,ttf,wot,woff,woff2,gif,html}',
       path.base+'/{components,common,assets}/**/*.{json,csv,png,svg,tsv,txt,md}'
     ];
 
@@ -75,6 +75,7 @@ gulp.task('html', function () {
       spare: true,
       quotes: true
     }))
+    .pipe(gulp.dest(path.temp))
     .pipe(gulp.dest(path.dist));
 });
 
@@ -134,6 +135,7 @@ gulp.task('builder', [], function() {
       baseURL: path.temp,
       lib: path.temp,
       buildCSS: true,
+      buildHTML: true,
       meta: {
         'github:curran/chiasm@0.1.8/plugins/crossfilter': {
           build: false

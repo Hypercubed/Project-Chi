@@ -19,6 +19,9 @@ import dataPackageEditor from 'components/editor/editor';
 
 import routes from 'components/routes';
 
+import footerHTML from 'common/partials/footer.html!text';
+import introHTML from 'common/partials/intro.html!text';
+
 export default angular
   .module('projectX', [
     'ngRoute',
@@ -36,6 +39,10 @@ export default angular
   ])
   .run(['$rootScope', '$location', function isPath($rootScope, $location){
     $rootScope.isPath = (path) => path === $location.path();
+  }])
+  .run(['$templateCache', function($templateCache) {
+    $templateCache.put('common/partials/footer.html', footerHTML);
+    $templateCache.put('common/partials/intro.html', introHTML);
   }])
   .directive('onResize', ['$window', function($window) {
     return {

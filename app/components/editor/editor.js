@@ -7,6 +7,9 @@ import 'components/editor/editor.css!';
 
 import saveAs from 'FileSaver';
 
+import editorTemplate from './editor.html!text';
+import downloadListTemplate from './svg-download-list-template.html!text';
+
 // canExpand
 // canEdit
 // maxResources
@@ -27,7 +30,7 @@ angular.module(moduleName,['projectX.dataService'])
       readOnly: '='
     },
     transclude: true,
-    templateUrl: 'components/editor/editor.html',
+    template: editorTemplate,
     link: function link(scope) {
 
       var hasPackage = !!scope.dataPackage;
@@ -165,7 +168,7 @@ angular.module(moduleName,['projectX.dataService'])
 .directive('svgDownloadDropdown', function() {
   return {
     transclude: true,
-    templateUrl: 'components/editor/svg-download-list-template.html',
+    template: downloadListTemplate,
     scope: {},
     link: function (scope, element, attr) {
 
