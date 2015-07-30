@@ -1,9 +1,7 @@
 {
   "name": "project-chi",
   "version": "0.0.1",
-  "dependencies": {
-    "systemjs-builder": "^0.10.6"
-  },
+  "dependencies": {},
   "repository": {},
   "devDependencies": {
     "browser-sync": "^2.7.1",
@@ -26,7 +24,9 @@
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-phantomjs-shim": "^1.0.0",
     "run-sequence": "^1.1.1",
-    "yargs": "^3.11.0"
+    "vulcanize": "^1.10.2",
+    "yargs": "^3.11.0",
+    "systemjs-builder": "^0.10.6"
   },
   "engines": {
     "node": ">=0.10.0"
