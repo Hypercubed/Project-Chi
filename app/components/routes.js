@@ -4,7 +4,7 @@ import examples from './examples/routes';
 import IndexCtrl from './index/index';
 
 import aboutHTML from 'components/about/about.html!text';
-import indexHTML from 'components/about/about.html!text';
+import indexHTML from 'components/index/index.html!text';
 
 /*@ngInject*/
 function configRoutes($routeProvider) {
