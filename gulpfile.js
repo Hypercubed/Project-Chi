@@ -9,7 +9,7 @@ var $ = require('gulp-load-plugins')();
 
 var path = {
   base: 'app',
-  build: 'components/boot + chiasm/plugins/*',
+  build: 'components/boot + chiasm/plugins/layout + chiasm/plugins/barChart',
   systemConfig: 'app/system.config.js',
   dist: 'dist',
   bundle: 'dist/components/bundle.js',
@@ -127,31 +127,20 @@ gulp.task('symlink', function () {
 });
 
 gulp.task('builder', [], function() {
-  var builder = new jspm.Builder();
+  var builder = new jspm.Builder({baseURL: path.temp});
 
-  return builder.loadConfig(path.systemConfig)
-  .then(function() {
-    builder.config({
-      baseURL: path.temp,
-      lib: path.temp,
-      buildCSS: true,
-      buildHTML: true,
-      meta: {
-        'github:curran/chiasm@0.1.8/plugins/crossfilter': {
-          build: false
-        }
-      }
-    });
-
-    return builder.build(path.build, path.bundle,
-      {
-        sourceMaps: true,
-        minify: true,
-        mangle: true,
-        runtime: false
-      });
-
+  builder.config({
+    buildCSS: true,
+    buildHTML: true
   });
+
+  return builder.build(path.build, path.bundle, {
+    sourceMaps: true,
+    minify: true,
+    mangle: true,
+    runtime: false
+  });
+
 });
 
 gulp.task('server', [], function (done) {
