@@ -55,6 +55,7 @@
         </div>
       </button>
       <ul class="dropdown-menu" role="menu">
+        <li class="dropdown-header">Data Resources</li>
         <li ng-repeat="file in dataPackage.resources">
           <a href ng-click="download(file)">{{file.name}}</a>
         </li>

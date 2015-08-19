@@ -66,15 +66,15 @@ gulp watch
 
 ## Separation of template and dataset (optional)
 
-By default all content in the `app` directory will be served by the test server when running `gulp server` and built into the `dist` folder when running `gulp build`.  However, to encourage contribution back to the `project-x` repository and enable using the same `project-x` source across multiple projects the developer may optionally put project specific data in the a sub directory in the `dataset` folder.  This folder can then be served and built along with the `project-x` core.  For example, if you create a `myProject` folder inside the dataset directory the following commands will work as indicated:
+By default all content in the `app` directory will be served by the test server when running `gulp server` and built into the `dist` folder when running `gulp build`.  However, to encourage contribution back to the `project-x` repository and enable using the same `project-x` source across multiple projects the developer may optionally put project specific data into a separate directory.  This folder can then be served and built along with the `project-x` core.  For example, if you create a `myProject` folder inside the `dataset` directory the following commands will work as indicated:
 
-* `gulp server --dataset=myProject`
+* `gulp server --dataset=./dataset/myProject`
 
-	runs the development server serving the combination of the `app` directory and `dataset\myProject` directories as the web root.  Files in `dataset\myProject` override `app`.
+	runs the development server serving the combination of the `app` directory and `dataset/myProject` directories as the web root.  Files in `dataset/myProject` override `app`.
 
-* `gulp build --dataset=myProject`
+* `gulp build --dataset=./dataset/myProject`
 
-  build distribution directory combining and bundling resources from the the `app` directory and `dataset\myProject` into the `dist` directory.  Files in `dataset\myProject` override `app`.
+  build distribution directory combining and bundling resources from the the `app` directory and `dataset/myProject` into the `dist` directory.  Files in `dataset/myProject` override `app`.
 
 ## Provided services and directives
 

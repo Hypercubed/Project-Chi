@@ -13,7 +13,7 @@ var path = {
   systemConfig: 'app/system.config.js',
   dist: 'dist',
   bundle: 'dist/components/bundle.js',
-  dataset: args.dataset ? 'dataset/' + args.dataset : null,
+  dataset: args.dataset || null,
   temp: '.tmp'
 };
 
