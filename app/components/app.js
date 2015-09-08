@@ -22,6 +22,8 @@ import routes from 'components/routes';
 import footerHTML from 'common/partials/footer.html!text';
 import introHTML from 'common/partials/intro.html!text';
 
+import 'angular-loading-bar';  // ,'cfp.loadingBarInterceptor'
+
 export default angular
   .module('projectX', [
     'ngRoute',
@@ -35,7 +37,8 @@ export default angular
     angularMarked,
     dataServices,
     dataPackageEditor,
-    'ui.codemirror'
+    'ui.codemirror',
+    'cfp.loadingBarInterceptor'
   ])
   .run(['$rootScope', '$location', function isPath($rootScope, $location){
     $rootScope.isPath = (path) => path === $location.path();
@@ -43,6 +46,16 @@ export default angular
   .run(['$templateCache', function($templateCache) {
     $templateCache.put('common/partials/footer.html', footerHTML);
     $templateCache.put('common/partials/intro.html', introHTML);
+  }])
+  .run(['$rootScope','$location',function ($rootScope, $location) {
+    $rootScope.$on("$routeChangeError", function (a,b,c,d) {
+      var err = $rootScope.error = 'failed to change routes '+d.status+' '+d.statusText;
+      if (d.status = 404) {
+        $location.path('/404');
+      } else {
+        $location.path('/error');
+      }
+    });
   }])
   .directive('onResize', ['$window', function($window) {
     return {

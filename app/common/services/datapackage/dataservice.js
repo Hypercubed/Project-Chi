@@ -4,6 +4,13 @@
 import Papa from 'papaparse';
 import URIjs from 'URIjs';
 
+import process from 'process';
+
+import MimeLookup from 'mime-lookup';
+import MimeDb from 'mime-db';
+
+window.process = process;  // annoying
+
 function papaTranslate(load, spec) {
   var parse = Papa.parse(load.content, spec);
   angular.extend(load, parse);
@@ -60,7 +67,9 @@ function httpReq(resource) {
   return {
     method: 'GET',
     url: resource.url,
-    transformResponse: function(data, headers) {
+    transformResponse: function(data, headers, status) {
+      if (status === 404) { return resource; }
+      
       var contentType = headers('Content-Type');
 
       if (contentType) {
@@ -73,8 +82,9 @@ function httpReq(resource) {
   };
 }
 
-export function DataService($http, $q, $log, mimeType) {
+export function DataService($http, $q, $log) {
   var dataService = this;
+  var mime = new MimeLookup(MimeDb);
 
   this.processResource = function(resource) {
     return processByType(resource);
@@ -101,7 +111,7 @@ export function DataService($http, $q, $log, mimeType) {
     resource.name = resource.name || uri.filename();
 
     resource.url = resource.url || uri.absoluteTo(base).href();
-    resource.mediatype = resource.mediatype || mimeType(resource.format);
+    resource.mediatype = resource.mediatype || mime.lookup(resource.format);
 
     return resource;
   }
@@ -127,19 +137,24 @@ export function DataService($http, $q, $log, mimeType) {
     return _package;
   }
 
+  this._loadPackage = function(filePath, _package) {  // todo: rename
+
+    _package = dataService.normalizePackage(filePath, _package);
+    var q = _package.resources ? _package.resources.map(dataService.loadResource) : [];
+
+    return $q.all(q).then(function() {
+      return _package;
+    });
+
+  }
+
   this.loadPackage = function(filePath) {
-
     return $http.get(filePath).then(function(res) {
-      var _package = dataService.normalizePackage(filePath, res.data);
-
-      var q = _package.resources.map(dataService.loadResource);
-
-      return $q.all(q).then(function() {
-        return _package;
-      });
-
+      return dataService._loadPackage(filePath, res.data);
+    }, function(res) {
+      console.log('error loading', filePath);
     });
   }
 }
 
-DataService.$inject = ['$http', '$q', '$log', 'mimeType'];
+DataService.$inject = ['$http', '$q', '$log'];

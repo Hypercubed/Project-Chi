@@ -9,7 +9,7 @@ var $ = require('gulp-load-plugins')();
 
 var path = {
   base: 'app',
-  build: 'components/boot + chiasm/plugins/layout + chiasm/plugins/barChart',
+  build: 'components/boot + chiasm/plugins/layout + chiasm/plugins/barChart',  // chiasm plugins are dynamically loaded so we must be explicit
   systemConfig: 'app/system.config.js',
   dist: 'dist',
   bundle: 'dist/components/bundle.js',
@@ -42,17 +42,30 @@ gulp.task('copy', [], function () {
       path.base+'/*.{js,json,ico,txt}',
       path.base+'/{jspm_packages,lib}/*.{js,map}',
       path.base+'/{jspm_packages,lib}/**/*.{svg,png,eot,ttf,wot,woff,woff2,gif,html}',
-      path.base+'/{components,common,assets}/**/*.{json,csv,png,svg,tsv,txt,md}'
+      path.base+'/{components,common,assets}/**/*.{png,svg,txt,md}'
     ];
 
   if (path.dataset) {
     paths.push(path.dataset+'/*.{json,ico,txt}');
-    paths.push(path.dataset+'/{components,common,assets}/**/*.{json,csv,png,svg,tsv,txt,md}');
+    paths.push(path.dataset+'/{components,common,assets,data}/**/*.{png,svg,md}');
   }
 
   return gulp.src(paths)
     .pipe($.cached('copy'))
     .pipe($.plumber())
+    .pipe(gulp.dest(path.dist));
+});
+
+gulp.task('data', [], function () {
+  var paths = [
+      path.base+'/{components,common,assets}/**/*.{json,csv,tsv,txt}'
+    ];
+
+  if (path.dataset) {
+    paths.push(path.dataset+'/{components,common,assets,data}/**/*.{json,csv,tsv,txt}');
+  }
+
+  return gulp.src(paths)
     .pipe(gulp.dest(path.dist));
 });
 
@@ -194,7 +207,7 @@ gulp.task('deploy', [], function() {
 
 gulp.task('build', function(callback) {
   runSequence('clean',
-              ['copy', 'js', 'css', 'html','symlink'],
+              ['copy', 'js', 'css', 'data', 'html','symlink'],
               'builder',
               callback);
 });

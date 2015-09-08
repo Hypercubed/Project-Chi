@@ -10,6 +10,8 @@ import saveAs from 'FileSaver';
 import editorTemplate from './editor.html!text';
 import downloadListTemplate from './svg-download-list-template.html!text';
 
+import mime from 'mime';
+
 // canExpand
 // canEdit
 // maxResources
@@ -20,8 +22,8 @@ var moduleName='projectX.dataEditor';
 export default moduleName;
 
 angular.module(moduleName,['projectX.dataService'])
-.directive('datapackageEdit', ['$rootScope', '$window', '$cookies', '$timeout', 'mimeType', 'dataService',
-                       function($rootScope,   $window,   $cookies,   $timeout, mimeType, dataService) {
+.directive('datapackageEdit', ['$rootScope', '$window', '$cookies', '$timeout', 'dataService',
+                       function($rootScope,   $window,   $cookies,   $timeout,   dataService) {
   return {
     scope: {
       dataPackage: '=model',
@@ -95,7 +97,7 @@ angular.module(moduleName,['projectX.dataService'])
         if (i > -1) {
           scope.dataPackage.resources.splice(i,1);
           scope.onChange();
-          console.log('delete',scope.dataPackage.resources);
+          //console.log('delete',scope.dataPackage.resources);
         }
 
       }
@@ -103,7 +105,7 @@ angular.module(moduleName,['projectX.dataService'])
       function rename(file) {
         if (!file.path) { return; }
         file.name = file.path;
-        file.mediatype = mimeType(file.path);
+        file.mediatype = mime.lookup(file.path);
         change(file);
       }
 
@@ -114,7 +116,7 @@ angular.module(moduleName,['projectX.dataService'])
         var resource = {
           name: filename,
           path: filename,
-          mediatype: mimeType(filename),
+          mediatype: mime.lookup(filename),
           content: ''
         };
 
@@ -133,7 +135,7 @@ angular.module(moduleName,['projectX.dataService'])
       function dropped(file) {
         var resource = {
           path: file.name,
-          mediatype: mimeType(file.name),
+          mediatype: mime.lookup(file.name),
           content: file.content || ''
         };
 
@@ -212,7 +214,7 @@ angular.module(moduleName,['projectX.dataService'])
   };
 
 })
-.directive('fileDropzone', ['$window', 'mimeType', function($window, mimeType) {
+.directive('fileDropzone', ['$window', function($window) {
   return {
     restrict: 'A',
     scope: {
@@ -269,7 +271,7 @@ angular.module(moduleName,['projectX.dataService'])
         var reader = new FileReader();
         reader.onload = function(evt) {
           file.content = evt.target.result;
-          var type = mimeType(file.name);
+          var type = mime.lookup(file.name);
           if (checkSize(file.size) && isTypeValid(type)) {
             return scope.$apply(function() {
               scope.dropped({file: file});

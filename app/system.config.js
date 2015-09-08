@@ -21,6 +21,7 @@ System.config({
     "angular-bootstrap": "github:angular-ui/bootstrap-bower@0.13.0",
     "angular-cookies": "github:angular/bower-angular-cookies@1.4.1",
     "angular-downloadsvg-directive": "github:Hypercubed/angular-downloadsvg-directive@0.0.26",
+    "angular-loading-bar": "github:chieffancypants/angular-loading-bar@0.8.0",
     "angular-marked": "github:Hypercubed/angular-marked@0.0.16",
     "angular-mocks": "github:angular/bower-angular-mocks@1.4.1",
     "angular-route": "github:angular/bower-angular-route@1.4.0",
@@ -31,33 +32,46 @@ System.config({
     "clean-css": "npm:clean-css@3.3.4",
     "codemirror": "github:codemirror/codemirror@5.3.0",
     "core-js": "npm:core-js@1.1.0",
-    "css": "github:systemjs/plugin-css@0.1.13",
+    "css": "github:systemjs/plugin-css@0.1.15",
     "d3": "github:mbostock/d3@3.5.5",
     "d3-tip": "github:Caged/d3-tip@0.6.7",
     "expression-bar": "npm:expression-bar@0.1.4",
+    "fs": "github:jspm/nodelibs-fs@0.1.2",
     "html": "github:Hypercubed/systemjs-plugin-html@0.0.6",
     "inlet": "github:enjalot/Inlet@0.1.1",
     "jquery": "github:components/jquery@2.1.4",
+    "json": "github:systemjs/plugin-json@0.1.0",
     "lodash": "npm:lodash@3.9.3",
     "marked": "github:chjj/marked@0.3.3",
+    "mime": "github:Hypercubed/node-mime@master",
+    "mime-db": "npm:mime-db@1.18.0",
+    "mime-lookup": "github:Hypercubed/mime-lookup@master",
     "model": "github:curran/model@0.2.4",
     "papaparse": "github:mholt/PapaParse@4.1.1",
     "polymer": "github:Polymer/polymer@1.0.8",
+    "process": "github:jspm/nodelibs-process@0.1.1",
     "text": "github:systemjs/plugin-text@0.0.2",
     "ui-codemirror": "github:angular-ui/ui-codemirror@0.3.0",
-    "uiGrid": "github:angular-ui/ui-grid@3.0.1",
-    "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.7",
+    "ui-grid": "github:angular-ui/bower-ui-grid@3.0.5",
+    "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.12",
+    "github:Hypercubed/systemjs-plugin-html@0.0.6": {
+      "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.12"
+    },
     "github:angular/bower-angular-animate@1.4.1": {
-      "angular": "github:angular/bower-angular@1.4.1"
+      "angular": "github:angular/bower-angular@1.4.5"
     },
     "github:angular/bower-angular-cookies@1.4.1": {
-      "angular": "github:angular/bower-angular@1.4.1"
+      "angular": "github:angular/bower-angular@1.4.5"
     },
     "github:angular/bower-angular-mocks@1.4.1": {
-      "angular": "github:angular/bower-angular@1.4.1"
+      "angular": "github:angular/bower-angular@1.4.5"
     },
     "github:angular/bower-angular-route@1.4.0": {
-      "angular": "github:angular/bower-angular@1.4.1"
+      "angular": "github:angular/bower-angular@1.4.5"
+    },
+    "github:chieffancypants/angular-loading-bar@0.8.0": {
+      "angular": "github:angular/bower-angular@1.4.5",
+      "css": "github:systemjs/plugin-css@0.1.15"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
@@ -174,6 +188,9 @@ System.config({
     },
     "npm:lodash@3.9.3": {
       "process": "github:jspm/nodelibs-process@0.1.1"
+    },
+    "npm:mime-db@1.18.0": {
+      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
     "npm:os-browserify@0.1.2": {
       "os": "github:jspm/nodelibs-os@0.1.0"
