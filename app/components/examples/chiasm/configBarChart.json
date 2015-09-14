@@ -1,7 +1,8 @@
 {
   "layout": {
-    "plugin": "chiasm/plugins/layout",
+    "plugin": "layout",
     "state": {
+      "containerSelector": "#chiasm-container",
       "layout": {
         "orientation": "vertical",
         "children": [
@@ -11,18 +12,22 @@
     }
   },
   "barChart": {
-    "plugin": "chiasm/plugins/barChart",
+    "plugin": "barChart",
     "state": {
-      "xColumn": "letter",
-      "xAxisLabel": "Letter",
-      "yColumn": "frequency",
-      "yAxisLabel": "Frequency",
-      "xAxisLabelOffset": 1.9,
-      "yAxisLabelOffset": 1.4,
-      "colorDefault": "#059e00",
-      "title": "Bar Chart",
-      "titleOffset": -0.269568,
-      "yDomainMin": 0
+      "orientation": "vertical",
+      "barSizeColumn": "frequency",
+      "fill": "steelblue",
+      "stroke": "none",
+      "strokeWidth": "2px",
+      "barPadding": 0.2
+    }
+  },
+  "links": {
+    "plugin": "links",
+    "state": {
+      "bindings": [
+        "self.data -> barChart.data"
+      ]
     }
   }
 }

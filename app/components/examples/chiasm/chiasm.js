@@ -1,14 +1,20 @@
 'use strict';
 
 import Chiasm from 'chiasm';
-import layout from 'chiasm/plugins/layout';
-import barChart from 'chiasm/plugins/barChart';
+import ChiasmLayout from 'chiasm-layout';
+import ChiasmLinks from 'chiasm-links';
+
+import barChart from './barChart';
+
 
 import 'codemirror/lib/codemirror.css!';
 import 'inlet/inlet.css!';
 import './axes.css!';
 
-var path = 'components/chiasm/config/';
+import _ from 'lodash';
+
+// because chiasm-layout is missing underscore/lodash import.
+window._ = _;
 
 export default class ChiasmCtrl {
   /*@ngInject*/
@@ -18,27 +24,19 @@ export default class ChiasmCtrl {
     $scope.dataPackage = dataPackage;
     $scope.draw = draw;
 
-    var chiasm = new Chiasm(document.getElementById('container'));
+    var chiasm = new Chiasm(document.getElementById('chiasm-container'));
 
-    //chiasm/plugins/layout + chiasm/plugins/barChart
-    chiasm.plugins.layout = layout;
+    chiasm.plugins.layout = ChiasmLayout;
+    chiasm.plugins.links = ChiasmLinks;
     chiasm.plugins.barChart = barChart;
 
-    chiasm.getComponent('barChart').then(function(barChartComp) {
-      barChartComp.when(["svg","title"], function(svg, title) {
-        svg.attr('title', title);
-      });
-    });
-
     chiasm.getComponent('layout').then(function(comp) {
-      $scope.$on("$destroy", function() {
-        if (typeof comp.destroy === 'function' ) { comp.destroy(); }
+      comp.when(['containerSVG'], function(svg) {
+        svg.attr('title', 'Bar Chart');
       });
-    });
 
-    chiasm.when(['data'], function(data) {
-      chiasm.getComponent('barChart').then(function(barChartComp) {
-        barChartComp.data = data;
+      $scope.$on('$destroy', function() {
+        if (typeof comp.destroy === 'function' ) { comp.destroy(); }
       });
     });
 

@@ -28,7 +28,10 @@ System.config({
     "babel": "npm:babel-core@5.8.22",
     "babel-runtime": "npm:babel-runtime@5.8.20",
     "bootstrap": "github:twbs/bootstrap@3.3.4",
-    "chiasm": "github:curran/chiasm@0.1.8",
+    "chiasm": "npm:chiasm@0.2.0",
+    "chiasm-component": "npm:chiasm-component@0.2.1",
+    "chiasm-layout": "npm:chiasm-layout@0.2.2",
+    "chiasm-links": "npm:chiasm-links@0.2.1",
     "clean-css": "npm:clean-css@3.3.4",
     "codemirror": "github:codemirror/codemirror@5.3.0",
     "core-js": "npm:core-js@1.1.0",
@@ -41,7 +44,7 @@ System.config({
     "inlet": "github:enjalot/Inlet@0.1.1",
     "jquery": "github:components/jquery@2.1.4",
     "json": "github:systemjs/plugin-json@0.1.0",
-    "lodash": "npm:lodash@3.9.3",
+    "lodash": "npm:lodash@3.10.1",
     "marked": "github:chjj/marked@0.3.3",
     "mime": "github:Hypercubed/node-mime@master",
     "mime-db": "npm:mime-db@1.18.0",
@@ -74,7 +77,7 @@ System.config({
       "assert": "npm:assert@1.3.0"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
-      "buffer": "npm:buffer@3.3.0"
+      "buffer": "npm:buffer@3.4.3"
     },
     "github:jspm/nodelibs-events@0.1.1": {
       "events": "npm:events@1.0.2"
@@ -129,10 +132,31 @@ System.config({
     "npm:biojs-events@0.0.4": {
       "backbone-events-standalone": "npm:backbone-events-standalone@0.2.7"
     },
-    "npm:buffer@3.3.0": {
+    "npm:buffer@3.4.3": {
       "base64-js": "npm:base64-js@0.0.8",
       "ieee754": "npm:ieee754@1.1.6",
       "is-array": "npm:is-array@1.0.1"
+    },
+    "npm:chai@3.2.0": {
+      "assertion-error": "npm:assertion-error@1.0.1",
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "deep-eql": "npm:deep-eql@0.1.3",
+      "process": "github:jspm/nodelibs-process@0.1.1",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.0",
+      "type-detect": "npm:type-detect@1.0.0"
+    },
+    "npm:chiasm-component@0.2.1": {
+      "model-js": "npm:model-js@0.2.4"
+    },
+    "npm:chiasm-layout@0.2.2": {
+      "chiasm-component": "npm:chiasm-component@0.2.1",
+      "model-js": "npm:model-js@0.2.4"
+    },
+    "npm:chiasm@0.2.0": {
+      "chai": "npm:chai@3.2.0",
+      "lodash": "npm:lodash@3.10.1",
+      "model-js": "npm:model-js@0.2.4",
+      "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:clean-css@3.3.4": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -163,6 +187,10 @@ System.config({
     "npm:core-util-is@1.0.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
     },
+    "npm:deep-eql@0.1.3": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "type-detect": "npm:type-detect@0.1.1"
+    },
     "npm:expression-bar@0.1.4": {
       "biojs-events": "npm:biojs-events@0.0.4",
       "d3": "npm:d3@3.5.5",
@@ -183,7 +211,7 @@ System.config({
     "npm:jquery@2.1.4": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:lodash@3.9.3": {
+    "npm:lodash@3.10.1": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:mime-db@1.18.0": {
