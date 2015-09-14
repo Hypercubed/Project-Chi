@@ -37,7 +37,7 @@ System.config({
     "d3-tip": "github:Caged/d3-tip@0.6.7",
     "expression-bar": "npm:expression-bar@0.1.4",
     "fs": "github:jspm/nodelibs-fs@0.1.2",
-    "html": "github:Hypercubed/systemjs-plugin-html@0.0.6",
+    "html": "github:Hypercubed/systemjs-plugin-html@0.0.7",
     "inlet": "github:enjalot/Inlet@0.1.1",
     "jquery": "github:components/jquery@2.1.4",
     "json": "github:systemjs/plugin-json@0.1.0",
@@ -54,9 +54,6 @@ System.config({
     "ui-codemirror": "github:angular-ui/ui-codemirror@0.3.0",
     "ui-grid": "github:angular-ui/bower-ui-grid@3.0.5",
     "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.12",
-    "github:Hypercubed/systemjs-plugin-html@0.0.6": {
-      "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.12"
-    },
     "github:angular/bower-angular-animate@1.4.1": {
       "angular": "github:angular/bower-angular@1.4.5"
     },

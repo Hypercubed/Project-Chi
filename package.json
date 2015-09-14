@@ -62,7 +62,7 @@
       "d3-tip": "github:Caged/d3-tip@^0.6.7",
       "expression-bar": "npm:expression-bar@0.1.4",
       "fs": "github:jspm/nodelibs-fs@^0.1.2",
-      "html": "github:Hypercubed/systemjs-plugin-html@^0.0.6",
+      "html": "github:Hypercubed/systemjs-plugin-html@^0.0.7",
       "inlet": "github:enjalot/Inlet@^0.1.1",
       "jquery": "github:components/jquery@^2.1.4",
       "json": "github:systemjs/plugin-json@^0.1.0",

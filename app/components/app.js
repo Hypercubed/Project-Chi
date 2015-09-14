@@ -40,6 +40,9 @@ export default angular
     'ui.codemirror',
     'cfp.loadingBarInterceptor'
   ])
+  .config(['$logProvider', function($logProvider) {
+    $logProvider.debugEnabled(true);
+  }])
   .run(['$rootScope', '$location', function isPath($rootScope, $location){
     $rootScope.isPath = (path) => path === $location.path();
   }])
@@ -51,9 +54,9 @@ export default angular
     $rootScope.$on("$routeChangeError", function (a,b,c,d) {
       var err = $rootScope.error = 'failed to change routes '+d.status+' '+d.statusText;
       if (d.status = 404) {
-        $location.path('/404');
+        $location.path('/404').replace();
       } else {
-        $location.path('/error');
+        $location.path('/error').replace();
       }
     });
   }])

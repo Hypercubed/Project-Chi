@@ -1,6 +1,8 @@
 'use strict';
 
 import Chiasm from 'chiasm';
+import layout from 'chiasm/plugins/layout';
+import barChart from 'chiasm/plugins/barChart';
 
 import 'codemirror/lib/codemirror.css!';
 import 'inlet/inlet.css!';
@@ -16,7 +18,11 @@ export default class ChiasmCtrl {
     $scope.dataPackage = dataPackage;
     $scope.draw = draw;
 
-    var chiasm = Chiasm(document.getElementById('container'));
+    var chiasm = new Chiasm(document.getElementById('container'));
+
+    //chiasm/plugins/layout + chiasm/plugins/barChart
+    chiasm.plugins.layout = layout;
+    chiasm.plugins.barChart = barChart;
 
     chiasm.getComponent('barChart').then(function(barChartComp) {
       barChartComp.when(["svg","title"], function(svg, title) {

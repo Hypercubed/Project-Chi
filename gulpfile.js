@@ -9,7 +9,7 @@ var $ = require('gulp-load-plugins')();
 
 var path = {
   base: 'app',
-  build: 'components/boot + chiasm/plugins/layout + chiasm/plugins/barChart',  // chiasm plugins are dynamically loaded so we must be explicit
+  build: 'components/boot',  // chiasm plugins are dynamically loaded so we must be explicit
   systemConfig: 'app/system.config.js',
   dist: 'dist',
   bundle: 'dist/components/bundle.js',

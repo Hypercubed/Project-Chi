@@ -67,9 +67,10 @@ function httpReq(resource) {
   return {
     method: 'GET',
     url: resource.url,
+    cache: true,
     transformResponse: function(data, headers, status) {
       if (status === 404) { return resource; }
-      
+
       var contentType = headers('Content-Type');
 
       if (contentType) {
@@ -101,8 +102,9 @@ export function DataService($http, $q, $log) {
   };
 
   this.normalize = function(base, resource) {
+
     if (!angular.isObject(resource)) {
-      resource = { name: resource, path: resource };
+      resource = { path: resource };
     }
 
     var uri = URIjs(resource.path);
