@@ -1,14 +1,14 @@
-#chart.bars .axis path,
-#chart.bars .axis line {
+._examples_bars__bars .axis path,
+._examples_bars__bars .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
 }
 
-#chart.bars .bar {
+._examples_bars__bars .bar {
   fill: steelblue;
 }
 
-#chart.bars .x.axis path {
+._examples_bars__bars .x.axis path {
   display: none;
 }

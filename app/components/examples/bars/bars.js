@@ -22,7 +22,7 @@ export default class Ctrl {
         .filter(function(d) { return !!d.data; })
         .map(function(d) { return d.data; });
 
-      var divs = d3.select('#chart')
+      var divs = d3.select('#_examples_bars__chart')
         .selectAll('div').data(data);
 
       divs.enter().append('div');

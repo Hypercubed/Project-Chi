@@ -38,7 +38,7 @@ angular.module(moduleName,['projectX.dataService'])
       var hasPackage = !!scope.dataPackage;
 
       scope.panel = {};
-      scope.panel.open = hasPackage;
+      scope.panel.open = false;
 
       scope.change = change;
       scope._delete = _delete;
@@ -72,10 +72,10 @@ angular.module(moduleName,['projectX.dataService'])
         }
       }
 
-      $timeout(function() {
-        scope.panel.open = !scope.readOnly && !scope.protect && hasPackage ? $cookies.get('dataEditor-open') !== 'false' : false;
-        scope.ui.refresh();
-      });
+      //$timeout(function() {
+      //  scope.panel.open = !scope.readOnly && !scope.protect && hasPackage; // ? $cookies.get('dataEditor-open') !== 'false' : false;
+      //  scope.ui.refresh();
+      //});
 
       function refresh(file) {
         dataService.processResource(file);

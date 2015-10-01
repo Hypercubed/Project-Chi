@@ -5,15 +5,14 @@ import ChiasmLayout from 'chiasm-layout';
 import ChiasmLinks from 'chiasm-links';
 
 import barChart from './barChart';
-
+import './barChart.css!';
 
 import 'codemirror/lib/codemirror.css!';
 import 'inlet/inlet.css!';
-import './axes.css!';
 
 import _ from 'lodash';
 
-// because chiasm-layout is missing underscore/lodash import.
+// because chiasm-layout is missing underscore/lodash import.  https://github.com/chiasm-project/chiasm-layout/issues/1
 window._ = _;
 
 export default class ChiasmCtrl {
@@ -24,7 +23,7 @@ export default class ChiasmCtrl {
     $scope.dataPackage = dataPackage;
     $scope.draw = draw;
 
-    var chiasm = new Chiasm(document.getElementById('chiasm-container'));
+    var chiasm = new Chiasm();
 
     chiasm.plugins.layout = ChiasmLayout;
     chiasm.plugins.links = ChiasmLinks;

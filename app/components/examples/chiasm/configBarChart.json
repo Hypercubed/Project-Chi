@@ -2,7 +2,7 @@
   "layout": {
     "plugin": "layout",
     "state": {
-      "containerSelector": "#chiasm-container",
+      "containerSelector": "#_example_chiasm__container",
       "layout": {
         "orientation": "vertical",
         "children": [

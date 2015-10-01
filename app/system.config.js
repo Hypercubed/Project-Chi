@@ -35,7 +35,7 @@ System.config({
     "clean-css": "npm:clean-css@3.3.4",
     "codemirror": "github:codemirror/codemirror@5.3.0",
     "core-js": "npm:core-js@1.1.0",
-    "css": "github:systemjs/plugin-css@0.1.15",
+    "css": "github:systemjs/plugin-css@0.1.16",
     "d3": "github:mbostock/d3@3.5.5",
     "d3-tip": "github:Caged/d3-tip@0.6.7",
     "expression-bar": "npm:expression-bar@0.1.4",
@@ -71,7 +71,7 @@ System.config({
     },
     "github:chieffancypants/angular-loading-bar@0.8.0": {
       "angular": "github:angular/bower-angular@1.4.5",
-      "css": "github:systemjs/plugin-css@0.1.15"
+      "css": "github:systemjs/plugin-css@0.1.16"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"

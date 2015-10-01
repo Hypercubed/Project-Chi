@@ -1,6 +1,6 @@
 'use strict';
 
-import 'common/styles/index.css!';
+import styles from 'common/styles/index.css!';
 
 export default class IndexCtrl {
 

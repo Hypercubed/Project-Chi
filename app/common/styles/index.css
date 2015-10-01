@@ -9,12 +9,12 @@ body h3, html h3 {
   font-weight: 700;
 }
 
-.index > div {
+._common_styles_index__index > div {
   margin-bottom: 10px;
   background: rgba(255, 255, 255, 0.65);
 }
 
-.index .card {
+._common_styles_index__index .card {
   color: #333;
   overflow: hidden;
   height: 160px;
@@ -42,7 +42,7 @@ body h3, html h3 {
   box-shadow: 0 3px 10px rgba(0,0,0,.23),0 3px 10px rgba(0,0,0,.16);
 }
 
-.index .card > div {
+._common_styles_index__index .card > div {
   height:160px;
   margin-top: 0;
   -webkit-transition: all 0.5s; /* Chrome, Safari, Opera */
@@ -53,20 +53,20 @@ body h3, html h3 {
   cursor: default;
 }
 
-.index .card:hover {
+._common_styles_index__index .card:hover {
   /*
   box-shadow: none; */
   transform: translate3d(5px,5px,0);
   box-shadow: 0 0 3px rgba(0,0,0,.23),0 0 3px rgba(0,0,0,.16);
 }
 
-.index h3 {
+._common_styles_index__index h3 {
   margin: 0;
 	padding: 10px 0;
   font-weight: 400;
 }
 
-.index .card p {
+._common_styles_index__index .card p {
   font-size: 12px;
 }
 

@@ -13,7 +13,7 @@ export default class BioJSCtrl {
 
     function draw() {
       bar = bar || new biovisexpressionbar.ExpressionBar({
-      	target: 'bar_expression_viewer',
+      	target: '_examples_biojs__viewer',
         height: 300
       });
 
