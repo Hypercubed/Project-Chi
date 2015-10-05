@@ -1,13 +1,12 @@
 
 'use strict';
 
-import Papa from 'papaparse';
+import Papa from 'babyparse';
 import URIjs from 'URIjs';
 
 import process from 'process';
 
-import MimeLookup from 'mime-lookup';
-import MimeDb from 'mime-db';
+import mime from './mime';
 
 window.process = process;  // annoying
 
@@ -85,7 +84,6 @@ function httpReq(resource) {
 
 export function DataService($http, $q, $log) {
   var dataService = this;
-  var mime = new MimeLookup(MimeDb);
 
   this.processResource = function(resource) {
     return processByType(resource);

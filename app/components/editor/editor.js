@@ -10,7 +10,7 @@ import saveAs from 'FileSaver';
 import editorTemplate from './editor.html!text';
 import downloadListTemplate from './svg-download-list-template.html!text';
 
-import mime from 'mime';
+import mime from 'common/services/datapackage/mime';
 
 // canExpand
 // canEdit

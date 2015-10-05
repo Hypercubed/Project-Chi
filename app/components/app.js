@@ -41,7 +41,7 @@ export default angular
     'cfp.loadingBarInterceptor'
   ])
   .config(['$logProvider', function($logProvider) {
-    $logProvider.debugEnabled(true);
+    $logProvider.debugEnabled(false);
   }])
   .run(['$rootScope', '$location', function isPath($rootScope, $location){
     $rootScope.isPath = (path) => path === $location.path();

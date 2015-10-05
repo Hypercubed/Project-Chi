@@ -25,14 +25,16 @@ System.config({
     "angular-marked": "github:Hypercubed/angular-marked@0.0.16",
     "angular-mocks": "github:angular/bower-angular-mocks@1.4.1",
     "angular-route": "github:angular/bower-angular-route@1.4.0",
+    "assert": "npm:assert@1.3.0",
     "babel": "npm:babel-core@5.8.22",
     "babel-runtime": "npm:babel-runtime@5.8.20",
+    "babyparse": "npm:babyparse@0.4.3",
     "bootstrap": "github:twbs/bootstrap@3.3.4",
     "chiasm": "npm:chiasm@0.2.0",
     "chiasm-component": "npm:chiasm-component@0.2.1",
     "chiasm-layout": "npm:chiasm-layout@0.2.2",
     "chiasm-links": "npm:chiasm-links@0.2.1",
-    "clean-css": "npm:clean-css@3.3.4",
+    "clean-css": "npm:clean-css@3.4.5",
     "codemirror": "github:codemirror/codemirror@5.3.0",
     "core-js": "npm:core-js@1.1.0",
     "css": "github:systemjs/plugin-css@0.1.16",
@@ -46,11 +48,9 @@ System.config({
     "json": "github:systemjs/plugin-json@0.1.0",
     "lodash": "npm:lodash@3.10.1",
     "marked": "github:chjj/marked@0.3.3",
-    "mime": "github:Hypercubed/node-mime@master",
     "mime-db": "npm:mime-db@1.18.0",
-    "mime-lookup": "github:Hypercubed/mime-lookup@master",
+    "mime-lookup": "npm:mime-lookup@0.0.2",
     "model": "github:curran/model@0.2.4",
-    "papaparse": "github:mholt/PapaParse@4.1.1",
     "polymer": "github:Polymer/polymer@1.0.8",
     "process": "github:jspm/nodelibs-process@0.1.1",
     "text": "github:systemjs/plugin-text@0.0.2",
@@ -77,7 +77,7 @@ System.config({
       "assert": "npm:assert@1.3.0"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
-      "buffer": "npm:buffer@3.4.3"
+      "buffer": "npm:buffer@3.5.0"
     },
     "github:jspm/nodelibs-events@0.1.1": {
       "events": "npm:events@1.0.2"
@@ -117,7 +117,7 @@ System.config({
     "npm:URIjs@1.15.1": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:amdefine@0.1.1": {
+    "npm:amdefine@1.0.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "module": "github:jspm/nodelibs-module@0.1.0",
       "path": "github:jspm/nodelibs-path@0.1.0",
@@ -129,10 +129,13 @@ System.config({
     "npm:babel-runtime@5.8.20": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
+    "npm:babyparse@0.4.3": {
+      "process": "github:jspm/nodelibs-process@0.1.1"
+    },
     "npm:biojs-events@0.0.4": {
       "backbone-events-standalone": "npm:backbone-events-standalone@0.2.7"
     },
-    "npm:buffer@3.4.3": {
+    "npm:buffer@3.5.0": {
       "base64-js": "npm:base64-js@0.0.8",
       "ieee754": "npm:ieee754@1.1.6",
       "is-array": "npm:is-array@1.0.1"
@@ -158,7 +161,7 @@ System.config({
       "model-js": "npm:model-js@0.2.4",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:clean-css@3.3.4": {
+    "npm:clean-css@3.4.5": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "commander": "npm:commander@2.8.1",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -167,7 +170,7 @@ System.config({
       "os": "github:jspm/nodelibs-os@0.1.0",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1",
-      "source-map": "npm:source-map@0.4.2",
+      "source-map": "npm:source-map@0.4.4",
       "url": "github:jspm/nodelibs-url@0.1.0",
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
@@ -217,6 +220,9 @@ System.config({
     "npm:mime-db@1.18.0": {
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
+    "npm:mime-lookup@0.0.2": {
+      "process": "github:jspm/nodelibs-process@0.1.1"
+    },
     "npm:os-browserify@0.1.2": {
       "os": "github:jspm/nodelibs-os@0.1.0"
     },
@@ -233,15 +239,11 @@ System.config({
       "inherits": "npm:inherits@2.0.1",
       "isarray": "npm:isarray@0.0.1",
       "process": "github:jspm/nodelibs-process@0.1.1",
-      "stream": "github:jspm/nodelibs-stream@0.1.0",
       "stream-browserify": "npm:stream-browserify@1.0.0",
-      "string_decoder": "npm:string_decoder@0.10.31",
-      "util": "github:jspm/nodelibs-util@0.1.0"
+      "string_decoder": "npm:string_decoder@0.10.31"
     },
-    "npm:source-map@0.4.2": {
-      "amdefine": "npm:amdefine@0.1.1",
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "path": "github:jspm/nodelibs-path@0.1.0",
+    "npm:source-map@0.4.4": {
+      "amdefine": "npm:amdefine@1.0.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:stream-browserify@1.0.0": {

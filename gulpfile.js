@@ -9,7 +9,7 @@ var $ = require('gulp-load-plugins')();
 
 var path = {
   base: 'app',
-  build: 'components/boot',  // chiasm plugins are dynamically loaded so we must be explicit
+  build: 'components/boot',
   systemConfig: 'app/system.config.js',
   dist: 'dist',
   bundle: 'dist/components/bundle.js',
@@ -140,18 +140,19 @@ gulp.task('symlink', function () {
 });
 
 gulp.task('builder', [], function() {
-  var builder = new jspm.Builder({baseURL: path.temp});
+  var builder = new jspm.Builder(path.temp);
 
   builder.config({
     buildCSS: true,
     buildHTML: true
   });
 
-  return builder.build(path.build, path.bundle, {
+  return builder.bundle(path.build, path.bundle, {
     sourceMaps: true,
     minify: true,
     mangle: true,
-    runtime: false
+    runtime: false,
+    //inject: true
   });
 
 });
@@ -206,7 +207,7 @@ gulp.task('deploy', [], function() {
 });
 
 gulp.task('build', function(callback) {
-  runSequence('clean',
+  runSequence(['clean','clean:tmp'],
               ['copy', 'js', 'css', 'data', 'html','symlink'],
               'builder',
               callback);
