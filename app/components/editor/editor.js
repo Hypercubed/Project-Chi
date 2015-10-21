@@ -32,7 +32,8 @@ angular.module(moduleName,['projectX.dataService', svgDropdownDownload])
       onChange: '&',
       protect: '=',
       readOnly: '=',
-      canDownloadSvg: '='
+      canDownloadSvg: '=',
+      canAdd: '='
     },
     transclude: true,
     template: editorTemplate,
@@ -56,6 +57,7 @@ angular.module(moduleName,['projectX.dataService', svgDropdownDownload])
       scope.canOpen = hasPackage && !scope.protect && !scope.readOnly;
       scope.canDownload = hasPackage && scope.dataPackage.resources.length > 0;
       scope.canDownloadSvg = typeof scope.canDownloadSvg === 'boolean' ? scope.canDownloadSvg : true;
+      scope.canAdd = typeof scope.canAdd === 'boolean' ? scope.canAdd : false;
 
       if (scope.canDownload) {
         scope.dataPackage.resources[0].active = true;

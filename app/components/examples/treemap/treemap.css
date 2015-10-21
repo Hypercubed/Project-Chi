@@ -1,9 +1,8 @@
 
 #_examples_treemap__chart {
   position: relative;
-  height: auto;
+  height: 500px;
   width: 100%;
-  padding-bottom: 50%;
 }
 
 #_examples_treemap__chart .webtreemap-node {

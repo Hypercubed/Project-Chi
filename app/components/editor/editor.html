@@ -39,7 +39,7 @@
           }" ng-change="change(tab)" ui-refresh="ui.count"></textarea>
       </div>
     </tab>
-    <tab ng-click="newFile('new.txt')" active="true === false">
+    <tab ng-click="newFile('new.txt')" active="true === false" ng-if="canAdd">
       <tab-heading file-dropzone="[text/plain,text/csv,text/tab-separated-values]" data-max-file-size="3" dropped="dropped(file)">
         <i class="glyphicon glyphicon-plus-sign"></i>
       </tab-heading>
