@@ -8,9 +8,11 @@ import 'components/editor/editor.css!';
 import saveAs from 'FileSaver';
 
 import editorTemplate from './editor.html!text';
-import downloadListTemplate from './svg-download-list-template.html!text';
+//import downloadListTemplate from './svg-download-list-template.html!text';
 
 import mime from 'common/services/datapackage/mime';
+
+import svgDropdownDownload from './svg-download-dropdown';
 
 // canExpand
 // canEdit
@@ -21,7 +23,7 @@ var moduleName='projectX.dataEditor';
 
 export default moduleName;
 
-angular.module(moduleName,['projectX.dataService'])
+angular.module(moduleName,['projectX.dataService', svgDropdownDownload])
 .directive('datapackageEdit', ['$rootScope', '$window', '$cookies', '$timeout', 'dataService',
                        function($rootScope,   $window,   $cookies,   $timeout,   dataService) {
   return {
@@ -29,7 +31,8 @@ angular.module(moduleName,['projectX.dataService'])
       dataPackage: '=model',
       onChange: '&',
       protect: '=',
-      readOnly: '='
+      readOnly: '=',
+      canDownloadSvg: '='
     },
     transclude: true,
     template: editorTemplate,
@@ -45,13 +48,14 @@ angular.module(moduleName,['projectX.dataService'])
       scope.rename = rename;
       scope.newFile = newFile;
       scope.dropped = dropped;
-      scope.download = download;
+      //scope.download = download;
       scope.tooglePanel = tooglePanel;
       scope.play = play;
       scope.types = ['text/plain','text/csv','text/tab-separated-values','application/json'];
 
       scope.canOpen = hasPackage && !scope.protect && !scope.readOnly;
       scope.canDownload = hasPackage && scope.dataPackage.resources.length > 0;
+      scope.canDownloadSvg = typeof scope.canDownloadSvg === 'boolean' ? scope.canDownloadSvg : true;
 
       if (scope.canDownload) {
         scope.dataPackage.resources[0].active = true;
@@ -147,13 +151,13 @@ angular.module(moduleName,['projectX.dataService'])
         scope.ui.refresh();
       }
 
-      function download(file) {
+      /* function download(file) {
         var type = (file.type || 'text/plain') + ';charset=utf-8';
         var filename = file.name || 'download.txt';
 
         var blob = new Blob([file.content], {type: type});
         saveAs(blob, filename);
-      };
+      }; */
 
       function tooglePanel() {
         scope.panel.open = !scope.panel.open;
@@ -167,11 +171,33 @@ angular.module(moduleName,['projectX.dataService'])
     }
   };
 }])
-.directive('svgDownloadDropdown', function() {
+.directive('fileDownload', function() {
+  return {
+    scope: {
+      'file': '=fileDownload'
+    },
+    link: function(scope, element, attrs) {
+      function download(file) {
+        var type = (file.type || 'text/plain') + ';charset=utf-8';
+        var filename = file.name || 'download.txt';
+
+        var blob = new Blob([file.content], {type: type});
+        saveAs(blob, filename);  // shim this
+      }
+
+      element.bind('click', function (e) {
+        download(scope.file);
+      });
+    }
+  }
+})
+/* .directive('svgDownloadDropdown', function() {
   return {
     transclude: true,
     template: downloadListTemplate,
-    scope: {},
+    scope: {
+      resources: '=resources',
+    },
     link: function (scope, element, attr) {
 
       scope.svgList = [];
@@ -213,7 +239,7 @@ angular.module(moduleName,['projectX.dataService'])
     }
   };
 
-})
+}) */
 .directive('fileDropzone', ['$window', function($window) {
   return {
     restrict: 'A',

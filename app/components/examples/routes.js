@@ -7,6 +7,7 @@ import BioJSCtrl from 'components/examples/biojs/biojs';
 import BarsCtrl from 'components/examples/bars/bars';
 import TrainsCtrl from 'components/examples/trains/trains';
 import PolymerCtrl from 'components/examples/polymer/barChart-controller';
+import TreeMapCtrl from 'components/examples/treemap/treemap';
 
 /*@ngInject*/
 function configRoutes($routeProvider) {
@@ -34,6 +35,11 @@ function configRoutes($routeProvider) {
 		controller: 'BarsCtrl',
     datapackageUrl: 'components/examples/bars/datapackage.json'
 	})
+  .when('/examples/treemap', {
+    templateUrl: 'components/examples/treemap/treemap.html',
+    controller: 'TreeMapCtrl',
+    datapackageUrl: 'components/examples/treemap/datapackage.json'
+  })
 	.when('/examples/hexbin', {
 		templateUrl: 'components/examples/hexbin/hexbin.html',
 	})
@@ -60,6 +66,7 @@ export default angular
   .controller('ChiasmCtrl', ChiasmCtrl)
   .controller('BioJSCtrl', BioJSCtrl)
   .controller('BarsCtrl', BarsCtrl)
+  .controller('TreeMapCtrl', TreeMapCtrl)
   .controller('TrainsCtrl', TrainsCtrl)
   .controller('PolymerCtrl', PolymerCtrl)
 

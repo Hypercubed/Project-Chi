@@ -56,7 +56,7 @@ body h3, html h3 {
 ._common_styles_index__index .card:hover {
   /*
   box-shadow: none; */
-  transform: translate3d(5px,5px,0);
+  transform: translate(5px,5p,0);
   box-shadow: 0 0 3px rgba(0,0,0,.23),0 0 3px rgba(0,0,0,.16);
 }
 

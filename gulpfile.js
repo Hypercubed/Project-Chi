@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var jspm = require('jspm');
+var SystemJSBuilder = require('systemjs-builder');
 var del = require('del');
 var karma = require('karma').server;
 var args   = require('yargs').argv;
@@ -37,6 +38,7 @@ gulp.task('test:watch', [], function (done) {
   });
 });
 
+// copy resource to distribution folder
 gulp.task('copy', [], function () {
   var paths = [
       path.base+'/*.{js,json,ico,txt}',
@@ -56,6 +58,7 @@ gulp.task('copy', [], function () {
     .pipe(gulp.dest(path.dist));
 });
 
+// copy data to distribution folder
 gulp.task('data', [], function () {
   var paths = [
       path.base+'/{components,common,assets}/**/*.{json,csv,tsv,txt}'
@@ -69,6 +72,7 @@ gulp.task('data', [], function () {
     .pipe(gulp.dest(path.dist));
 });
 
+// copy html to temp and distribution folder
 gulp.task('html', function () {
   var paths = [
       path.base+'/*.html',
@@ -92,6 +96,7 @@ gulp.task('html', function () {
     .pipe(gulp.dest(path.dist));
 });
 
+// copy js to temp folder
 gulp.task('js', [], function () {
   var paths = [
     path.base+'/*.js',
@@ -118,6 +123,15 @@ gulp.task('js', [], function () {
     .pipe(gulp.dest(path.temp));
 });
 
+// copy bundles to dist folder
+gulp.task('bundles', [], function () {
+  return gulp.src(path.temp+'/components/bundle.*', { base: path.temp })
+    //.pipe($.cached('bundle'))
+    //.pipe($.plumber())
+    .pipe(gulp.dest(path.dist));
+});
+
+// copy css to dist folder
 gulp.task('css', [], function () {
   var paths = [
     path.base+'/*.{css,css.map}',
@@ -140,19 +154,22 @@ gulp.task('symlink', function () {
 });
 
 gulp.task('builder', [], function() {
-  var builder = new jspm.Builder(path.temp);
+
+  var builder = new SystemJSBuilder(path.temp, path.temp+'/system.config.js');
+
+  //var builder = new jspm.Builder({baseURL: path.temp});
 
   builder.config({
     buildCSS: true,
     buildHTML: true
   });
 
-  return builder.bundle(path.build, path.bundle, {
+  return builder.bundle(path.build, path.temp+'/components/bundle.js', {
     sourceMaps: true,
     minify: true,
     mangle: true,
     runtime: false,
-    //inject: true
+    inject: true
   });
 
 });
@@ -210,6 +227,7 @@ gulp.task('build', function(callback) {
   runSequence(['clean','clean:tmp'],
               ['copy', 'js', 'css', 'data', 'html','symlink'],
               'builder',
+              'bundles',
               callback);
 });
 

@@ -8,6 +8,10 @@
       "link": "#/examples/bars/"
     },
     {
+      "path": "treemap/datapackage.json",
+      "link": "#/examples/treemap/"
+    },
+    {
       "path": "biojs/datapackage.json",
       "link": "#/examples/biojs/"
     },

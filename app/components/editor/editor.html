@@ -36,7 +36,7 @@
             lineWrapping : false,
             mode: file.type,
             onLoad : ui.codemirrorLoaded
-            }" ng-change="change(tab)" ui-refresh="ui.count"></textarea>
+          }" ng-change="change(tab)" ui-refresh="ui.count"></textarea>
       </div>
     </tab>
     <tab ng-click="newFile('new.txt')" active="true === false">
@@ -47,6 +47,7 @@
   </tabset>
 
   <div class="btn-toolbar" role="toolbar" aria-label="toolbar">
+
     <div class="btn-group" dropdown>
       <button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle aria-expanded="false" ng-if="canDownload">
         <div class="pull-right">
@@ -57,14 +58,26 @@
       <ul class="dropdown-menu" role="menu">
         <li class="dropdown-header">Data Resources</li>
         <li ng-repeat="file in dataPackage.resources">
-          <a href ng-click="download(file)">{{file.name}}</a>
+          <a href file-download="file">{{file.name}}</a>
         </li>
       </ul>
     </div>
 
-    <div class="btn-group" svg-download-dropdown="#charts">
-      <i class="glyphicon glyphicon-picture"></i>
-      Download SVGs <span class="caret"></span>
+    <div class="btn-group hidden-print" dropdown svg-download-dropdown="svgList in #charts" ng-if="canDownloadSvg">
+      <button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle aria-expanded="false">
+        <div class="pull-right">
+          <i class="glyphicon glyphicon-download"></i>
+          Download SVG <span class="caret"></span>
+        </div>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li ng-repeat-start="svg in svgList">
+          <a href svg-download="#{{svg.id}}" title="{{svg.title}}">{{svg.title}} as SVG</a>
+        </li>
+        <li ng-repeat-end>
+          <a href svg-download="#{{svg.id}}" title="{{svg.title}}" type="png">{{svg.title}} as PNG</a>
+        </li>
+      </ul>
     </div>
 
     <div class="btn-group pull-right panel-toggle">

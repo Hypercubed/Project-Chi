@@ -1,0 +1,11 @@
+
+#_examples_treemap__chart {
+  position: relative;
+  height: auto;
+  width: 100%;
+  padding-bottom: 50%;
+}
+
+#_examples_treemap__chart .webtreemap-node {
+  cursor: pointer;
+}
