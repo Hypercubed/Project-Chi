@@ -6,9 +6,8 @@
 import BarChart from './bars-chart';
 
 export default class Ctrl {
-  /*@ngInject*/
-  constructor($scope, dataPackage){
-
+  /* @ngInject */
+  constructor ($scope, dataPackage) {
     var bars = new BarChart();
 
     $scope.dataPackage = dataPackage;
@@ -16,11 +15,10 @@ export default class Ctrl {
 
     draw();
 
-    function draw() {
-
+    function draw () {
       var data = dataPackage.resources
-        .filter(function(d) { return !!d.data; })
-        .map(function(d) { return d.data; });
+        .filter(function (d) { return !!d.data; })
+        .map(function (d) { return d.data; });
 
       var divs = d3.select('#_examples_bars__chart')
         .selectAll('div').data(data);
@@ -31,7 +29,6 @@ export default class Ctrl {
 
       divs.call(bars);
     }
-
   }
 }
 

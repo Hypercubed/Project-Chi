@@ -1,4 +1,5 @@
 /* global angular */
+/* global FileReader, Blob */
 
 import 'codemirror/lib/codemirror';
 
@@ -8,7 +9,7 @@ import 'components/editor/editor.css!';
 import saveAs from 'FileSaver';
 
 import editorTemplate from './editor.html!text';
-//import downloadListTemplate from './svg-download-list-template.html!text';
+// import downloadListTemplate from './svg-download-list-template.html!text';
 
 import mime from 'common/services/datapackage/mime';
 
@@ -19,13 +20,12 @@ import svgDropdownDownload from './svg-download-dropdown';
 // maxResources
 // table view
 
-var moduleName='projectX.dataEditor';
+var moduleName = 'projectX.dataEditor';
 
 export default moduleName;
 
-angular.module(moduleName,['projectX.dataService', svgDropdownDownload])
-.directive('datapackageEdit', ['$rootScope', '$window', '$cookies', '$timeout', 'dataService',
-                       function($rootScope,   $window,   $cookies,   $timeout,   dataService) {
+angular.module(moduleName, ['projectX.dataService', svgDropdownDownload])
+.directive('datapackageEdit', ['$rootScope', '$window', '$cookies', '$timeout', 'dataService', function ($rootScope, $window, $cookies, $timeout, dataService) {
   return {
     scope: {
       dataPackage: '=model',
@@ -37,8 +37,7 @@ angular.module(moduleName,['projectX.dataService', svgDropdownDownload])
     },
     transclude: true,
     template: editorTemplate,
-    link: function link(scope) {
-
+    link: function link (scope) {
       var hasPackage = !!scope.dataPackage;
 
       scope.panel = {};
@@ -49,10 +48,10 @@ angular.module(moduleName,['projectX.dataService', svgDropdownDownload])
       scope.rename = rename;
       scope.newFile = newFile;
       scope.dropped = dropped;
-      //scope.download = download;
+      // scope.download = download;
       scope.tooglePanel = tooglePanel;
       scope.play = play;
-      scope.types = ['text/plain','text/csv','text/tab-separated-values','application/json'];
+      scope.types = ['text/plain', 'text/csv', 'text/tab-separated-values', 'application/json'];
 
       scope.canOpen = hasPackage && !scope.protect && !scope.readOnly;
       scope.canDownload = hasPackage && scope.dataPackage.resources.length > 0;
@@ -64,59 +63,55 @@ angular.module(moduleName,['projectX.dataService', svgDropdownDownload])
       }
 
       scope.ui = {
-        refresh: function() {
+        refresh: function () {
           scope.ui.count++;
         },
         count: 0,
-        codemirrorLoaded: function(cm) {
-
-          $timeout(function() {
+        codemirrorLoaded: function (cm) {
+          $timeout(function () {
             cm.refresh();
             scope.ui.refresh();
           }, 100);
-
         }
-      }
+      };
 
-      //$timeout(function() {
+      // $timeout(function() {
       //  scope.panel.open = !scope.readOnly && !scope.protect && hasPackage; // ? $cookies.get('dataEditor-open') !== 'false' : false;
       //  scope.ui.refresh();
-      //});
+      // });
 
-      function refresh(file) {
+      function refresh (file) {
         dataService.processResource(file);
       }
 
-      function play() {
-        if (scope.dataPackage && scope.dataPackage.readme) {scope.dataPackage.readme = null;}
+      function play () {
+        if (scope.dataPackage && scope.dataPackage.readme) { scope.dataPackage.readme = null; }
         scope.canOpen = true;
         tooglePanel();
       }
 
-      function change(file) {
+      function change (file) {
         refresh(file);
         scope.onChange();
       }
 
-      function _delete(i) {
-        //console.log(i);
+      function _delete (i) {
+        // console.log(i);
         if (i > -1) {
-          scope.dataPackage.resources.splice(i,1);
+          scope.dataPackage.resources.splice(i, 1);
           scope.onChange();
-          //console.log('delete',scope.dataPackage.resources);
+          // console.log('delete',scope.dataPackage.resources);
         }
-
       }
 
-      function rename(file) {
+      function rename (file) {
         if (!file.path) { return; }
         file.name = file.path;
         file.mediatype = mime.lookup(file.path);
         change(file);
       }
 
-      function newFile(filename) {
-
+      function newFile (filename) {
         filename = filename || 'new.txt';
 
         var resource = {
@@ -129,7 +124,7 @@ angular.module(moduleName,['projectX.dataService', svgDropdownDownload])
         resource.active = true;
 
         var i = scope.dataPackage.resources.push(resource);
-        scope.dataPackage.resources[i-1].active = true;
+        scope.dataPackage.resources[i - 1].active = true;
 
         change(resource);
 
@@ -138,7 +133,7 @@ angular.module(moduleName,['projectX.dataService', svgDropdownDownload])
         return false;
       }
 
-      function dropped(file) {
+      function dropped (file) {
         var resource = {
           path: file.name,
           mediatype: mime.lookup(file.name),
@@ -161,25 +156,24 @@ angular.module(moduleName,['projectX.dataService', svgDropdownDownload])
         saveAs(blob, filename);
       }; */
 
-      function tooglePanel() {
+      function tooglePanel () {
         scope.panel.open = !scope.panel.open;
         scope.ui.refresh();
 
         $timeout(scope.ui.Refresh, 100);
 
         $cookies.put('dataEditor-open', scope.panel.open);
-      };
-
+      }
     }
   };
 }])
-.directive('fileDownload', function() {
+.directive('fileDownload', function () {
   return {
     scope: {
       'file': '=fileDownload'
     },
-    link: function(scope, element, attrs) {
-      function download(file) {
+    link: function (scope, element, attrs) {
+      function download (file) {
         var type = (file.type || 'text/plain') + ';charset=utf-8';
         var filename = file.name || 'download.txt';
 
@@ -191,7 +185,7 @@ angular.module(moduleName,['projectX.dataService', svgDropdownDownload])
         download(scope.file);
       });
     }
-  }
+  };
 })
 /* .directive('svgDownloadDropdown', function() {
   return {
@@ -242,7 +236,7 @@ angular.module(moduleName,['projectX.dataService', svgDropdownDownload])
   };
 
 }) */
-.directive('fileDropzone', ['$window', function($window) {
+.directive('fileDropzone', ['$window', function ($window) {
   return {
     restrict: 'A',
     scope: {
@@ -250,11 +244,11 @@ angular.module(moduleName,['projectX.dataService', svgDropdownDownload])
       fileName: '=',
       dropped: '&'
     },
-    link: function(scope, element, attrs) {
+    link: function (scope, element, attrs) {
       var validMimeTypes = attrs.fileDropzone;
 
-      function processDragOverOrEnter(event) {
-        //console.log('processDragOverOrEnter');
+      function processDragOverOrEnter (event) {
+        // console.log('processDragOverOrEnter');
         if (event !== null) {
           event.preventDefault();
         }
@@ -263,8 +257,8 @@ angular.module(moduleName,['projectX.dataService', svgDropdownDownload])
         return false;
       }
 
-      function processDragLeave(event) {
-        //console.log('processDragExit');
+      function processDragLeave (event) {
+        // console.log('processDragExit');
         if (event !== null) {
           event.preventDefault();
         }
@@ -272,7 +266,7 @@ angular.module(moduleName,['projectX.dataService', svgDropdownDownload])
         return false;
       }
 
-      function checkSize(size) {
+      function checkSize (size) {
         var _ref;
         if (((_ref = attrs.maxFileSize) === (void 0) || _ref === '') || (size / 1024) / 1024 < attrs.maxFileSize) {
           return true;
@@ -282,11 +276,11 @@ angular.module(moduleName,['projectX.dataService', svgDropdownDownload])
         }
       }
 
-      function isTypeValid(type) {
+      function isTypeValid (type) {
         if ((validMimeTypes === (void 0) || validMimeTypes === '') || validMimeTypes.indexOf(type) > -1) {
           return true;
         } else {
-          $window.alert('Invalid file type '+type+'.  File must be one of following types ' + validMimeTypes);
+          $window.alert('Invalid file type ' + type + '.  File must be one of following types ' + validMimeTypes);
           return false;
         }
       }
@@ -295,13 +289,13 @@ angular.module(moduleName,['projectX.dataService', svgDropdownDownload])
       element.bind('dragenter', processDragOverOrEnter);
       element.bind('dragleave', processDragLeave);
 
-      function processDropFile(file) {
+      function processDropFile (file) {
         var reader = new FileReader();
-        reader.onload = function(evt) {
+        reader.onload = function (evt) {
           file.content = evt.target.result;
           var type = mime.lookup(file.name);
           if (checkSize(file.size) && isTypeValid(type)) {
-            return scope.$apply(function() {
+            return scope.$apply(function () {
               scope.dropped({file: file});
             });
           }
@@ -309,7 +303,7 @@ angular.module(moduleName,['projectX.dataService', svgDropdownDownload])
         reader.readAsText(file);
       }
 
-      return element.bind('drop', function(event) {
+      return element.bind('drop', function (event) {
         if (event !== null) {
           event.preventDefault();
         }
@@ -317,7 +311,6 @@ angular.module(moduleName,['projectX.dataService', svgDropdownDownload])
         element.removeClass('hover');
 
         var files = (event.dataTransfer || event.originalEvent.dataTransfer).files;
-
 
         for (var i = 0; i < files.length; i++) {
           var file = files[i];

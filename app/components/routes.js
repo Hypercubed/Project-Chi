@@ -1,3 +1,5 @@
+/* global angular */
+
 'use strict';
 
 import examples from './examples/routes';
@@ -7,19 +9,19 @@ import aboutHTML from 'components/about/about.html!text';
 import errorHTML from 'components/error/error.html!text';
 import indexHTML from 'components/index/index.html!text';
 
-/*@ngInject*/
-function configRoutes($routeProvider) {
+/* @ngInject */
+function configRoutes ($routeProvider) {
   $routeProvider
   .when('/about', {
-    template: aboutHTML,
+    template: aboutHTML
   })
 
   .when('/error', {
-    template: errorHTML,
+    template: errorHTML
   })
 
   .when('/404', {
-    template: errorHTML,
+    template: errorHTML
   })
 
   .when('/', {
@@ -31,7 +33,6 @@ function configRoutes($routeProvider) {
   .otherwise({
     redirectTo: '/'
   });
-
 }
 
 configRoutes.$inject = ['$routeProvider'];

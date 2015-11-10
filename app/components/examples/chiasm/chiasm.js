@@ -16,9 +16,9 @@ import _ from 'lodash';
 window._ = _;
 
 export default class ChiasmCtrl {
-  /*@ngInject*/
-  constructor($scope, dataPackage){
-    var main = this;
+  /* @ngInject */
+  constructor ($scope, dataPackage) {
+    // var main = this;
 
     $scope.dataPackage = dataPackage;
     $scope.draw = draw;
@@ -29,24 +29,23 @@ export default class ChiasmCtrl {
     chiasm.plugins.links = ChiasmLinks;
     chiasm.plugins.barChart = barChart;
 
-    chiasm.getComponent('layout').then(function(comp) {
-      comp.when(['containerSVG'], function(svg) {
+    chiasm.getComponent('layout').then(function (comp) {
+      comp.when(['containerSVG'], function (svg) {
         svg.attr('title', 'Bar Chart');
       });
 
-      $scope.$on('$destroy', function() {
-        if (typeof comp.destroy === 'function' ) { comp.destroy(); }
+      $scope.$on('$destroy', function () {
+        if (typeof comp.destroy === 'function') { comp.destroy(); }
       });
     });
 
-    function draw() {
+    function draw () {
       chiasm.config = dataPackage.resources[1].data;
       chiasm.data = dataPackage.resources[0].data;
     }
 
     $scope.change = draw;
     draw();
-
   }
 }
 

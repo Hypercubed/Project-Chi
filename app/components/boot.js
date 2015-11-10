@@ -3,14 +3,14 @@
 'use strict';
 
 import 'jquery';
-//import 'bootstrap/js/bootstrap';
+// import 'bootstrap/js/bootstrap';
 import 'bootstrap/css/bootstrap.css!';
 
 import 'd3';
 
 import app from 'components/app';
 
-function boot() {
+function boot () {
   angular.bootstrap(document.body, [ app.name ], { strictDi: true });
 }
 

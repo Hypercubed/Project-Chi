@@ -29,8 +29,8 @@ export default angular
     'ngRoute',
     'ngAnimate',
     'ngCookies',
-    //'ngSanitize',
-    //'ngTouch',
+    // 'ngSanitize',
+    // 'ngTouch',
     'hc.downloader',
     'ui.bootstrap',
     routes.name,
@@ -40,42 +40,41 @@ export default angular
     'ui.codemirror',
     'cfp.loadingBarInterceptor'
   ])
-  .config(['$logProvider', function($logProvider) {
+  .config(['$logProvider', function ($logProvider) {
     $logProvider.debugEnabled(false);
   }])
-  .run(['$rootScope', '$location', function isPath($rootScope, $location){
+  .run(['$rootScope', '$location', function isPath ($rootScope, $location) {
     $rootScope.isPath = (path) => path === $location.path();
   }])
-  .run(['$templateCache', function($templateCache) {
+  .run(['$templateCache', function ($templateCache) {
     $templateCache.put('common/partials/footer.html', footerHTML);
     $templateCache.put('common/partials/intro.html', introHTML);
   }])
-  .run(['$rootScope','$location',function ($rootScope, $location) {
-    $rootScope.$on("$routeChangeError", function (a,b,c,d) {
-      var err = $rootScope.error = 'failed to change routes '+d.status+' '+d.statusText;
-      if (d.status = 404) {
+  .run(['$rootScope', '$location', function ($rootScope, $location) {
+    $rootScope.$on('$routeChangeError', function (a, b, c, d) {
+      // var err = $rootScope.error = 'failed to change routes ' + d.status + ' ' + d.statusText;
+      if (d.status === 404) {
         $location.path('/404').replace();
       } else {
         $location.path('/error').replace();
       }
     });
   }])
-  .directive('onResize', ['$window', function($window) {
+  .directive('onResize', ['$window', function ($window) {
     return {
       scope: {
         onResize: '&'
       },
-      link: function(scope) {
-
+      link: function (scope) {
         var timeout = null;
-        function debounceRedraw() {
-          if(timeout) {clearTimeout(timeout);}
-          timeout = setTimeout(function() {
+        function debounceRedraw () {
+          if (timeout) { clearTimeout(timeout); }
+          timeout = setTimeout(function () {
             scope.onResize();
           }, 500);
         }
 
-        function resize() {
+        function resize () {
           scope.onResize();
         }
 
@@ -84,13 +83,12 @@ export default angular
           window.matchMedia('print').addListener(resize);
         }
 
-        scope.$on('$destroy', function() {
+        scope.$on('$destroy', function () {
           angular.element($window).off('resize', debounceRedraw);
           if ('matchMedia' in window) {
             window.matchMedia('print').removeListener(resize);
           }
         });
-
       }
     };
   }]);

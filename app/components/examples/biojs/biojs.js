@@ -4,16 +4,16 @@ import biovisexpressionbar from 'expression-bar';
 
 export default class BioJSCtrl {
 
-  /*@ngInject*/
-  constructor($scope, dataPackage){
+  /* @ngInject */
+  constructor ($scope, dataPackage) {
     $scope.dataPackage = dataPackage;
     $scope.draw = draw;
 
     var bar;
 
-    function draw() {
+    function draw () {
       bar = bar || new biovisexpressionbar.ExpressionBar({
-      	target: '_examples_biojs__viewer',
+        target: '_examples_biojs__viewer',
         height: 300
       });
 
@@ -23,7 +23,6 @@ export default class BioJSCtrl {
 
     $scope.change = draw;
     draw();
-
   }
 
 }

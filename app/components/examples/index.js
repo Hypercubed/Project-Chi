@@ -4,11 +4,11 @@ import 'common/styles/index.css!';
 
 export default class IndexCtrl {
 
-  /*@ngInject*/
-  constructor($scope, dataPackage, dataService){
+  /* @ngInject */
+  constructor ($scope, dataPackage, dataService) {
     $scope.dataPackage = dataPackage;
 
-    dataPackage.resources.forEach(function(resource) {
+    dataPackage.resources.forEach(function (resource) {
       dataService.normalizePackage(resource.url, resource.data);
     });
   }
@@ -16,10 +16,10 @@ export default class IndexCtrl {
 }
 
 IndexCtrl.resolve = {
-  /*@ngInject*/
-  dataPackage: ['$route', 'dataService', function($route, dataService) {
-    return dataService.loadPackage($route.current.templateUrl+'/../datapackage.json');
+  /* @ngInject */
+  dataPackage: ['$route', 'dataService', function ($route, dataService) {
+    return dataService.loadPackage($route.current.templateUrl + '/../datapackage.json');
   }]
 };
 
-IndexCtrl.$inject = ['$scope','dataPackage','dataService'];
+IndexCtrl.$inject = ['$scope', 'dataPackage', 'dataService'];

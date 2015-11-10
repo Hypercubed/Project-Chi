@@ -1,3 +1,4 @@
+/* global angular */
 
 'use strict';
 
@@ -10,50 +11,50 @@ import mime from './mime';
 
 window.process = process;  // annoying
 
-function papaTranslate(load, spec) {
+function papaTranslate (load, spec) {
   var parse = Papa.parse(load.content, spec);
   angular.extend(load, parse);
   load.table = true;
 }
 
-function DOS2UNIX(content) {
+function DOS2UNIX (content) {
   return content
-    .replace(/\r/g,'\n');
+    .replace(/\r/g, '\n');
 }
 
 var processors = {};
 
 processors['text/tab-separated-values'] = {
-  translate: function(load) {
+  translate: function (load) {
     papaTranslate(load, {header: true, delimiter: '\t', skipEmptyLines: true});
   }
 };
 
 processors['text/csv'] = {
-  translate: function(load) {
+  translate: function (load) {
     papaTranslate(load, {header: true, delimiter: ',', skipEmptyLines: true});
   }
 };
 
 processors['text/plain'] = {
-  translate: function(load) {
+  translate: function (load) {
     load.content = DOS2UNIX(load.content);
   }
 };
 
 processors['application/json'] = {
-  translate: function(load) {
+  translate: function (load) {
     load.data = angular.fromJson(load.content);
     if (load.data.url && load.data.url.indexOf('api.github.com') > -1) {  // move
-      load.data.name = load.data.owner.login +'/'+load.data.id;
-      load.path = 'gists/'+load.data.id;
+      load.data.name = load.data.owner.login + '/' + load.data.id;
+      load.path = 'gists/' + load.data.id;
     }
   }
 };
 
 // try to follow http://dataprotocols.org/data-packages/
 
-function processByType(resource) {
+function processByType (resource) {
   var _p = processors[resource.mediatype];
   if (_p && _p.translate) {
     _p.translate(resource);
@@ -62,12 +63,12 @@ function processByType(resource) {
   return resource;
 }
 
-function httpReq(resource) {
+function httpReq (resource) {
   return {
     method: 'GET',
     url: resource.url,
     cache: true,
-    transformResponse: function(data, headers, status) {
+    transformResponse: function (data, headers, status) {
       if (status === 404) { return resource; }
 
       var contentType = headers('Content-Type');
@@ -82,25 +83,24 @@ function httpReq(resource) {
   };
 }
 
-export function DataService($http, $q, $log) {
+export function DataService ($http, $q, $log) {
   var dataService = this;
 
-  this.processResource = function(resource) {
+  this.processResource = function (resource) {
     return processByType(resource);
-  }
+  };
 
-  this.loadResource = function(resource) {
+  this.loadResource = function (resource) {
     if (resource.url && !(resource.content || resource.data)) {
       return $http(httpReq(resource));
     } else {
-      return $q(function(resolve) {
+      return $q(function (resolve) {
         resolve({data: processByType(resource)});
       });
     }
   };
 
-  this.normalize = function(base, resource) {
-
+  this.normalize = function (base, resource) {
     if (!angular.isObject(resource)) {
       resource = { path: resource };
     }
@@ -114,14 +114,13 @@ export function DataService($http, $q, $log) {
     resource.mediatype = resource.mediatype || mime.lookup(resource.format);
 
     return resource;
-  }
+  };
 
-  this.normalizePackage = function(filePath, _package) {
-
-    _package.base = _package.base || URIjs(filePath).normalizePathname().directory()+'/';
+  this.normalizePackage = function (filePath, _package) {
+    _package.base = _package.base || URIjs(filePath).normalizePathname().directory() + '/';
 
     if (_package.resources) {
-      _package.resources = _package.resources.map(function(resource) {
+      _package.resources = _package.resources.map(function (resource) {
         return dataService.normalize(_package.base, resource);
       });
     }
@@ -135,26 +134,24 @@ export function DataService($http, $q, $log) {
     }
 
     return _package;
-  }
+  };
 
-  this._loadPackage = function(filePath, _package) {  // todo: rename
-
+  this._loadPackage = function (filePath, _package) {  // todo: rename
     _package = dataService.normalizePackage(filePath, _package);
     var q = _package.resources ? _package.resources.map(dataService.loadResource) : [];
 
-    return $q.all(q).then(function() {
+    return $q.all(q).then(function () {
       return _package;
     });
+  };
 
-  }
-
-  this.loadPackage = function(filePath) {
-    return $http.get(filePath).then(function(res) {
+  this.loadPackage = function (filePath) {
+    return $http.get(filePath).then(function (res) {
       return dataService._loadPackage(filePath, res.data);
-    }, function(res) {
+    }, function (res) {
       console.log('error loading', filePath);
     });
-  }
+  };
 }
 
 DataService.$inject = ['$http', '$q', '$log'];
