@@ -21,8 +21,8 @@ System.config({
     "angular-animate": "github:angular/bower-angular-animate@1.4.1",
     "angular-bootstrap": "github:angular-ui/bootstrap-bower@0.13.0",
     "angular-cookies": "github:angular/bower-angular-cookies@1.4.1",
-    "angular-downloadsvg-directive": "npm:angular-downloadsvg-directive@0.1.2",
-    "angular-loading-bar": "github:chieffancypants/angular-loading-bar@0.8.0",
+    "angular-downloadsvg-directive": "npm:angular-downloadsvg-directive@0.1.5",
+    "angular-loading-bar": "npm:angular-loading-bar@0.8.0",
     "angular-marked": "npm:angular-marked@1.0.0",
     "angular-mocks": "github:angular/bower-angular-mocks@1.4.1",
     "angular-route": "github:angular/bower-angular-route@1.4.0",
@@ -30,7 +30,7 @@ System.config({
     "babel": "npm:babel-core@5.8.25",
     "babel-runtime": "npm:babel-runtime@5.8.25",
     "babyparse": "npm:babyparse@0.4.3",
-    "bootstrap": "github:twbs/bootstrap@3.3.4",
+    "bootstrap": "github:twbs/bootstrap@3.3.5",
     "chiasm": "npm:chiasm@0.2.0",
     "chiasm-component": "npm:chiasm-component@0.2.1",
     "chiasm-layout": "npm:chiasm-layout@0.2.2",
@@ -52,6 +52,7 @@ System.config({
     "lodash": "npm:lodash@3.10.1",
     "mime-lookup": "npm:mime-lookup@0.0.2",
     "model": "npm:model-js@0.2.4",
+    "model-js": "npm:model-js@0.2.4",
     "polymer": "github:Polymer/polymer@1.0.8",
     "process": "github:jspm/nodelibs-process@0.1.2",
     "screenfull": "npm:screenfull@2.0.0",
@@ -73,15 +74,11 @@ System.config({
     "github:angular/bower-angular-route@1.4.0": {
       "angular": "github:angular/bower-angular@1.4.5"
     },
-    "github:chieffancypants/angular-loading-bar@0.8.0": {
-      "angular": "github:angular/bower-angular@1.4.5",
-      "css": "github:systemjs/plugin-css@0.1.16"
-    },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
-      "buffer": "npm:buffer@3.5.1"
+      "buffer": "npm:buffer@3.5.2"
     },
     "github:jspm/nodelibs-events@0.1.1": {
       "events": "npm:events@1.0.2"
@@ -115,7 +112,7 @@ System.config({
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
     },
-    "github:twbs/bootstrap@3.3.4": {
+    "github:twbs/bootstrap@3.3.5": {
       "jquery": "github:components/jquery@2.1.4"
     },
     "npm:URIjs@1.15.1": {
@@ -127,8 +124,8 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:angular-downloadsvg-directive@0.1.2": {
-      "svgsaver": "npm:svgsaver@0.3.3"
+    "npm:angular-downloadsvg-directive@0.1.5": {
+      "svgsaver": "npm:svgsaver@0.6.1"
     },
     "npm:angular-marked@1.0.0": {
       "marked": "npm:marked@0.3.5"
@@ -145,7 +142,7 @@ System.config({
     "npm:biojs-events@0.0.4": {
       "backbone-events-standalone": "npm:backbone-events-standalone@0.2.7"
     },
-    "npm:buffer@3.5.1": {
+    "npm:buffer@3.5.2": {
       "base64-js": "npm:base64-js@0.0.8",
       "ieee754": "npm:ieee754@1.1.6",
       "is-array": "npm:is-array@1.0.1"
@@ -234,6 +231,13 @@ System.config({
     "npm:mime-lookup@0.0.2": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:model-js@0.2.4": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.0",
+      "util": "github:jspm/nodelibs-util@0.1.0"
+    },
     "npm:os-browserify@0.1.2": {
       "os": "github:jspm/nodelibs-os@0.1.0"
     },
@@ -268,7 +272,7 @@ System.config({
     "npm:string_decoder@0.10.31": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
     },
-    "npm:svgsaver@0.3.3": {
+    "npm:svgsaver@0.6.1": {
       "computed-styles": "npm:computed-styles@1.1.2"
     },
     "npm:url@0.10.3": {

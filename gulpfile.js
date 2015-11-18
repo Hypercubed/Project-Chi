@@ -87,11 +87,11 @@ gulp.task('html', function () {
   return gulp.src(paths)
     .pipe($.cached('html'))
     .pipe($.plumber())
-    .pipe($.minifyHtml({
+    /* .pipe($.minifyHtml({
       empty: true,
       spare: true,
       quotes: true
-    }))
+    })) */
     .pipe(gulp.dest(path.temp))
     .pipe(gulp.dest(path.dist));
 });
