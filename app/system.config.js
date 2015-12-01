@@ -35,7 +35,7 @@ System.config({
     "chiasm-component": "npm:chiasm-component@0.2.1",
     "chiasm-layout": "npm:chiasm-layout@0.2.2",
     "chiasm-links": "npm:chiasm-links@0.2.1",
-    "clean-css": "npm:clean-css@3.4.6",
+    "clean-css": "npm:clean-css@3.4.8",
     "codemirror": "github:codemirror/codemirror@5.3.0",
     "core-js": "npm:core-js@1.2.3",
     "crossfilter": "github:square/crossfilter@1.3.12",
@@ -78,7 +78,7 @@ System.config({
       "assert": "npm:assert@1.3.0"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
-      "buffer": "npm:buffer@3.5.2"
+      "buffer": "npm:buffer@3.5.3"
     },
     "github:jspm/nodelibs-events@0.1.1": {
       "events": "npm:events@1.0.2"
@@ -142,10 +142,13 @@ System.config({
     "npm:biojs-events@0.0.4": {
       "backbone-events-standalone": "npm:backbone-events-standalone@0.2.7"
     },
-    "npm:buffer@3.5.2": {
+    "npm:buffer@3.5.3": {
       "base64-js": "npm:base64-js@0.0.8",
+      "child_process": "github:jspm/nodelibs-child_process@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
       "ieee754": "npm:ieee754@1.1.6",
-      "is-array": "npm:is-array@1.0.1"
+      "is-array": "npm:is-array@1.0.1",
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:chai@3.2.0": {
       "assertion-error": "npm:assertion-error@1.0.1",
@@ -168,7 +171,7 @@ System.config({
       "model-js": "npm:model-js@0.2.4",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:clean-css@3.4.6": {
+    "npm:clean-css@3.4.8": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "commander": "npm:commander@2.8.1",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -195,7 +198,7 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
-    "npm:core-util-is@1.0.1": {
+    "npm:core-util-is@1.0.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
     },
     "npm:d3-svg-legend@1.5.0": {
@@ -252,7 +255,7 @@ System.config({
     },
     "npm:readable-stream@1.1.13": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
-      "core-util-is": "npm:core-util-is@1.0.1",
+      "core-util-is": "npm:core-util-is@1.0.2",
       "events": "github:jspm/nodelibs-events@0.1.1",
       "inherits": "npm:inherits@2.0.1",
       "isarray": "npm:isarray@0.0.1",
