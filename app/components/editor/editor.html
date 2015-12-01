@@ -74,7 +74,7 @@
         <li ng-repeat-start="svg in svgList">
           <a href svg-download="#{{svg.id}}" title="{{svg.title}}">{{svg.title}} as SVG</a>
         </li>
-        <li ng-repeat-end>
+        <li ng-repeat-end ng-if="canDownloadPng">
           <a href svg-download="#{{svg.id}}" title="{{svg.title}}" type="png">{{svg.title}} as PNG</a>
         </li>
       </ul>

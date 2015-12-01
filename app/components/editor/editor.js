@@ -62,6 +62,10 @@ angular.module(moduleName, ['projectX.dataService', svgDropdownDownload])
         scope.dataPackage.resources[0].active = true;
       }
 
+      let is_safari = /Version\/[\d\.]+.*Safari/.test(navigator.userAgent);
+      let is_IE = typeof window.navigator.msSaveBlob !== 'undefined';
+      scope.canDownloadPng = !is_safari && !is_IE;
+
       scope.ui = {
         refresh: function () {
           scope.ui.count++;
