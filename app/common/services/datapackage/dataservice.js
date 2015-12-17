@@ -141,6 +141,12 @@ export function DataService ($http, $q, $log) {
     var q = _package.resources ? _package.resources.map(dataService.loadResource) : [];
 
     return $q.all(q).then(function () {
+      _package.resourcesByName = {};
+      _package.resources.forEach(function (r) {
+        if (r.name && !_package.resourcesByName[r.name]) {
+          _package.resourcesByName[r.name] = r;
+        }
+      });
       return _package;
     });
   };

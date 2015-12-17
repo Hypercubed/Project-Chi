@@ -22,7 +22,8 @@ import routes from 'components/routes';
 import footerHTML from 'common/partials/footer.html!text';
 import introHTML from 'common/partials/intro.html!text';
 
-import 'angular-loading-bar';  // ,'cfp.loadingBarInterceptor'
+import 'angular-loading-bar';
+import 'angular-loading-bar/build/loading-bar.css!';
 
 export default angular
   .module('projectX', [
@@ -38,7 +39,7 @@ export default angular
     dataServices,
     dataPackageEditor,
     'ui.codemirror',
-    'cfp.loadingBarInterceptor'
+    'angular-loading-bar'
   ])
   .config(['$logProvider', function ($logProvider) {
     $logProvider.debugEnabled(false);
