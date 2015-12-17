@@ -1,4 +1,4 @@
-/* global d3 */
+import d3 from 'd3';
 
 import ChiasmComponent from 'chiasm-component';
 import Model from 'model';

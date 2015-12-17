@@ -1,9 +1,8 @@
-/* global d3 */
-
 // from http://bl.ocks.org/mbostock/5544621
 // https://gist.github.com/mbostock/5544621
+import d3 from 'd3';
 
-module.exports = function Chart (opts) {
+export default function Chart (opts) {
   opts = opts || {};
 
   return function chart (selection) {
@@ -21,8 +20,8 @@ module.exports = function Chart (opts) {
       var height = 500 - margin.top - margin.bottom;
 
       var x = d3.time.scale()
-      .domain([parseTime('5:30AM'), parseTime('11:30AM')])
-      .range([0, width]);
+        .domain([parseTime('5:30AM'), parseTime('11:30AM')])
+        .range([0, width]);
 
       var y = d3.scale.linear()
       .range([0, height]);
@@ -37,7 +36,7 @@ module.exports = function Chart (opts) {
         .ticks(8)
         .tickFormat(formatTime);
 
-      var svg = d3.select('#chart').append('svg')
+      var svg = el.append('svg')
         .attr('width', width + margin.left + margin.right)
         .attr('height', height + margin.top + margin.bottom)
         .append('g')
@@ -138,4 +137,4 @@ module.exports = function Chart (opts) {
       }
     });
   };
-};
+}

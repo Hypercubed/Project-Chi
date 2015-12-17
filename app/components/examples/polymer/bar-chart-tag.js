@@ -3,7 +3,7 @@
 import 'polymer/polymer.html!';
 
 // has to be relative to root absolute, ugh
-import Bars from 'components/examples/polymer/d3-bar-chart';
+import Bars from 'components/examples/bars/bars-chart';
 
 Polymer({
   is: 'bar-chart3',

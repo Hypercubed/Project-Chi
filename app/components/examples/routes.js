@@ -1,6 +1,4 @@
-/* global angular */
-
-'use strict';
+import angular from 'angular';
 
 // examples
 import ExamplesCtrl from 'components/examples/index';
@@ -11,7 +9,6 @@ import TrainsCtrl from 'components/examples/trains/trains';
 import PolymerCtrl from 'components/examples/polymer/barChart-controller';
 import TreeMapCtrl from 'components/examples/treemap/treemap';
 
-/* @ngInject */
 function configRoutes ($routeProvider) {
   $routeProvider
 
@@ -47,7 +44,7 @@ function configRoutes ($routeProvider) {
   .when('/examples/trains', {
     templateUrl: 'components/examples/bars/bars.html',
     controller: 'TrainsCtrl',
-    datapackageUrl: 'components/examples/bars/datapackage.json'
+    datapackageUrl: 'components/examples/trains/datapackage.json'
   })
   .when('/examples/polymer', {
     templateUrl: 'components/examples/polymer/barChart-template.html',
@@ -56,8 +53,6 @@ function configRoutes ($routeProvider) {
   })
   ;
 }
-
-configRoutes.$inject = ['$routeProvider'];
 
 export default angular
   .module('examples', ['projectX.dataService'])
@@ -71,5 +66,5 @@ export default angular
   .controller('TrainsCtrl', TrainsCtrl)
   .controller('PolymerCtrl', PolymerCtrl)
 
-  .config(configRoutes)
+  .config(['$routeProvider', configRoutes])
 ;

@@ -1,10 +1,9 @@
-'use strict';
+import Inject from 'common/decorators/inject';
 
 import biovisexpressionbar from 'expression-bar';
 
+@Inject('$scope', 'dataPackage')
 export default class BioJSCtrl {
-
-  /* @ngInject */
   constructor ($scope, dataPackage) {
     $scope.dataPackage = dataPackage;
     $scope.draw = draw;
@@ -24,7 +23,4 @@ export default class BioJSCtrl {
     $scope.change = draw;
     draw();
   }
-
 }
-
-BioJSCtrl.$inject = ['$scope', 'dataPackage'];

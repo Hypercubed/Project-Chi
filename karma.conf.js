@@ -1,7 +1,7 @@
 // Karma configuration
 // http://karma-runner.github.io/0.12/config/configuration-file.html
 
-module.exports = function(config) {
+module.exports = function (config) {
   'use strict';
 
   config.set({
@@ -13,18 +13,18 @@ module.exports = function(config) {
 
     // testing framework to use (jasmine/mocha/qunit/...)
     // as well as any additional frameworks (requirejs/chai/sinon/...)
-    frameworks: ['jspm','jasmine','phantomjs-shim'],
+    frameworks: ['jspm', 'jasmine', 'phantomjs-shim'],
 
     jspm: {
       config: 'system.config.js',
       packages: 'jspm_packages/',
       loadFiles: ['components/boot.js', 'components/**/*-spec.js', 'common/**/*-spec.js'],
-      serveFiles: ['**/*.js','**/*.css']
+      serveFiles: ['**/*.js', '**/*.css']
     },
 
-    //proxies: {
-      //'/base/': '/base/app/'
-    //},
+    // proxies: {
+      // '/base/': '/base/app/'
+    // },
 
     // list of files / patterns to load in the browser
     files: [],
@@ -49,11 +49,11 @@ module.exports = function(config) {
     ],
 
     // Which plugins to enable
-    //plugins: [
+    // plugins: [
     //  'karma-phantomjs-launcher',
     //  'karma-jasmine',
     //  'karma-jspm'
-    //],
+    // ],
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
@@ -63,7 +63,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_INFO
 
     // Uncomment the following lines if you are using grunt's server to run the tests
     // proxies: {

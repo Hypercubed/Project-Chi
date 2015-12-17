@@ -1,7 +1,8 @@
 /* jshint -W003 */
-/* global angular, _ */
+import angular from 'angular';
+import _ from 'lodash';
 
-'use strict';
+import Inject from 'common/decorators/inject';
 
 import screenfull from 'screenfull';
 
@@ -9,8 +10,8 @@ import webtreemap from 'webtreemap';
 import 'webtreemap/webtreemap.css!';
 import './treemap.css!';
 
+@Inject('$scope', '$animate', 'dataPackage')
 export default class Ctrl {
-  /* @ngInject */
   constructor ($scope, $animate, dataPackage) {
     var map = document.getElementById('_examples_treemap__chart');
     // var isFullscreen = false;
@@ -73,8 +74,6 @@ export default class Ctrl {
     }
   }
 }
-
-Ctrl.$inject = ['$scope', '$animate', 'dataPackage'];
 
 function newNode (name, tag) {
   // var $symbol = (name.slice(-1) === '*') ? 'tag' : '';

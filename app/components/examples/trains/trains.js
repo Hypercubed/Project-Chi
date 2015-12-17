@@ -1,12 +1,10 @@
-/* global d3 */
-'use strict';
-
-// import './template.css!'
+import Inject from 'common/decorators/inject';
+import d3 from 'd3';
 
 import Chart from './trains-chart';
 
+@Inject('$scope', 'dataPackage')
 export default class TrainsCtrl {
-  /* @ngInject */
   constructor ($scope, dataPackage) {
     var chart = new Chart();
 
@@ -18,14 +16,14 @@ export default class TrainsCtrl {
     function draw () {
       var data = dataPackage.resources.map(function (d) { return d.data; });
 
-      var divs = d3.select('#charts')
+      var divs = d3.select('#_examples_bars__chart')
         .selectAll('div').data(data);
 
       divs.enter().append('div');
+
+      divs.exit().remove();
 
       divs.call(chart);
     }
   }
 }
-
-TrainsCtrl.$inject = ['$scope', 'dataPackage'];

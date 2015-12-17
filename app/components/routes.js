@@ -1,6 +1,4 @@
-/* global angular */
-
-'use strict';
+import angular from 'angular';
 
 import examples from './examples/routes';
 import IndexCtrl from './index/index';
@@ -9,7 +7,6 @@ import aboutHTML from 'components/about/about.html!text';
 import errorHTML from 'components/error/error.html!text';
 import indexHTML from 'components/index/index.html!text';
 
-/* @ngInject */
 function configRoutes ($routeProvider) {
   $routeProvider
   .when('/about', {

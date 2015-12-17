@@ -1,12 +1,12 @@
 /* jshint -W003 */
-/* global d3 */
 
-'use strict';
+import Inject from 'common/decorators/inject';
 
+import d3 from 'd3';
 import BarChart from './bars-chart';
 
+@Inject('$scope', 'dataPackage')
 export default class Ctrl {
-  /* @ngInject */
   constructor ($scope, dataPackage) {
     var bars = new BarChart();
 
@@ -31,5 +31,3 @@ export default class Ctrl {
     }
   }
 }
-
-Ctrl.$inject = ['$scope', 'dataPackage'];

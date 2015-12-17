@@ -1,9 +1,6 @@
-/* global angular */
-
-'use strict';
-
 import './app.css!';
 
+import angular from 'angular';
 import 'angular-route';
 import 'angular-animate';
 import 'angular-cookies';

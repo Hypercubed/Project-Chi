@@ -1,9 +1,13 @@
+/* eslint quotes: [0, "single"] */
+
 System.config({
   defaultJSExtensions: true,
   transpiler: "babel",
   babelOptions: {
     "optional": [
-      "runtime"
+      "runtime",
+      "optimisation.modules.system",
+      "es7.decorators"
     ]
   },
   paths: {
@@ -18,6 +22,7 @@ System.config({
     "FileSaver": "github:eligrey/FileSaver.js@master",
     "URIjs": "npm:URIjs@1.15.1",
     "_F": "github:Hypercubed/_F@0.0.11",
+    "angular": "github:angular/bower-angular@1.4.5",
     "angular-animate": "github:angular/bower-angular-animate@1.4.1",
     "angular-bootstrap": "github:angular-ui/bootstrap-bower@0.13.0",
     "angular-cookies": "github:angular/bower-angular-cookies@1.4.1",
@@ -30,6 +35,7 @@ System.config({
     "babel": "npm:babel-core@5.8.25",
     "babel-runtime": "npm:babel-runtime@5.8.25",
     "babyparse": "npm:babyparse@0.4.3",
+    "blobjs": "github:eligrey/Blob.js@master",
     "bootstrap": "github:twbs/bootstrap@3.3.5",
     "chiasm": "npm:chiasm@0.2.0",
     "chiasm-component": "npm:chiasm-component@0.2.1",
@@ -78,7 +84,7 @@ System.config({
       "assert": "npm:assert@1.3.0"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
-      "buffer": "npm:buffer@3.5.3"
+      "buffer": "npm:buffer@3.5.5"
     },
     "github:jspm/nodelibs-events@0.1.1": {
       "events": "npm:events@1.0.2"
@@ -142,12 +148,12 @@ System.config({
     "npm:biojs-events@0.0.4": {
       "backbone-events-standalone": "npm:backbone-events-standalone@0.2.7"
     },
-    "npm:buffer@3.5.3": {
+    "npm:buffer@3.5.5": {
       "base64-js": "npm:base64-js@0.0.8",
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "ieee754": "npm:ieee754@1.1.6",
-      "is-array": "npm:is-array@1.0.1",
+      "isarray": "npm:isarray@1.0.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:chai@3.2.0": {

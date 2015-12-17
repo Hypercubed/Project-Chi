@@ -1,13 +1,13 @@
-/* global d3 */
+import d3 from 'd3';
 
-require('./bars.css!');
+import './bars.css!';
 
 /* function type (d) {
   d.frequency = +d.frequency;
   return d;
 } */
 
-function Bars (opts) {
+export default function Bars (opts) {
   opts = opts || {};
 
   var margin = opts.margin || {top: 20, right: 20, bottom: 30, left: 40};
@@ -71,5 +71,3 @@ function Bars (opts) {
 
   return bars;
 }
-
-module.exports = Bars;

@@ -1,17 +1,10 @@
 /* global angular */
 
-'use strict';
+import { DataService } from './dataservice';
 
 var moduleName = 'projectX.dataService';
 
-// import { mimeType } from './mimeType-service'
-import { DataService } from './dataservice';
-
-// export { mimeType };
-// export { DataService };
-
 angular.module('projectX.dataService', ['ngRoute'])
-  // .constant('mimeType', mimeType)
   .service('dataService', DataService)
   .config(['$routeProvider', function ($routeProvider) {
     var originalWhen = $routeProvider.when;

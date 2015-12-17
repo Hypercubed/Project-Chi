@@ -1,10 +1,9 @@
-'use strict';
+import Inject from 'common/decorators/inject';
 
 import 'common/styles/index.css!';
 
+@Inject('$scope', 'dataPackage', 'dataService')
 export default class IndexCtrl {
-
-  /* @ngInject */
   constructor ($scope, dataPackage, dataService) {
     $scope.dataPackage = dataPackage;
 
@@ -19,5 +18,3 @@ export default class IndexCtrl {
     });
   }
 }
-
-IndexCtrl.$inject = ['$scope', 'dataPackage', 'dataService'];
