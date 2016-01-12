@@ -2,7 +2,7 @@
 import angular from 'angular';
 import _ from 'lodash';
 
-import Inject from 'common/decorators/inject';
+import { annotate } from 'angular-annotation-decorator/src/index';
 
 import screenfull from 'screenfull';
 
@@ -10,8 +10,8 @@ import webtreemap from 'webtreemap';
 import 'webtreemap/webtreemap.css!';
 import './treemap.css!';
 
-@Inject('$scope', '$animate', 'dataPackage')
-export default class Ctrl {
+@annotate('$scope', '$animate', 'dataPackage')
+class Ctrl {
   constructor ($scope, $animate, dataPackage) {
     var map = document.getElementById('_examples_treemap__chart');
     // var isFullscreen = false;
@@ -94,3 +94,9 @@ function addSizeToTitle (node, total) {
   node.name += ' • ' + size.toLocaleString() + ' • ' + pct.toFixed(2) + '%';
   node.children.forEach(function (x) { addSizeToTitle(x, total); });
 }
+
+export default {
+  controller: Ctrl,
+  templateUrl: 'components/examples/treemap/treemap.html',
+  datapackageUrl: 'components/examples/treemap/datapackage.json'
+};

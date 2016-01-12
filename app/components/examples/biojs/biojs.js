@@ -1,9 +1,9 @@
-import Inject from 'common/decorators/inject';
+import { annotate } from 'angular-annotation-decorator/src/index';
 
 import biovisexpressionbar from 'expression-bar';
 
-@Inject('$scope', 'dataPackage')
-export default class BioJSCtrl {
+@annotate('$scope', 'dataPackage')
+class BioJSCtrl {
   constructor ($scope, dataPackage) {
     $scope.dataPackage = dataPackage;
     $scope.draw = draw;
@@ -24,3 +24,9 @@ export default class BioJSCtrl {
     draw();
   }
 }
+
+export default {
+  controller: BioJSCtrl,
+  templateUrl: 'components/examples/biojs/biojs.html',
+  datapackageUrl: 'components/examples/biojs/datapackage.json'
+};

@@ -22,6 +22,9 @@ import introHTML from 'common/partials/intro.html!text';
 import 'angular-loading-bar';
 import 'angular-loading-bar/build/loading-bar.css!';
 
+import 'angular-growl/build/angular-growl.js';
+import 'angular-growl/build/angular-growl.css!';
+
 export default angular
   .module('projectX', [
     'ngRoute',
@@ -36,7 +39,8 @@ export default angular
     dataServices,
     dataPackageEditor,
     'ui.codemirror',
-    'angular-loading-bar'
+    'angular-loading-bar',
+    'angular-growl'
   ])
   .config(['$logProvider', function ($logProvider) {
     $logProvider.debugEnabled(false);
@@ -48,14 +52,9 @@ export default angular
     $templateCache.put('common/partials/footer.html', footerHTML);
     $templateCache.put('common/partials/intro.html', introHTML);
   }])
-  .run(['$rootScope', '$location', function ($rootScope, $location) {
-    $rootScope.$on('$routeChangeError', function (a, b, c, d) {
-      // var err = $rootScope.error = 'failed to change routes ' + d.status + ' ' + d.statusText;
-      if (d.status === 404) {
-        $location.path('/404').replace();
-      } else {
-        $location.path('/error').replace();
-      }
+  .run(['$rootScope', '$location', 'growl', function ($rootScope, $location, growl) {
+    $rootScope.$on('$routeChangeError', function (event, curr, prev, rej) {
+      growl.error(`failed to change routes ${rej.status} ${rej.statusText}`);
     });
   }])
   .directive('onResize', ['$window', function ($window) {

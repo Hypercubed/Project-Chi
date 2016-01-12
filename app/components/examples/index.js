@@ -1,9 +1,9 @@
-import Inject from 'common/decorators/inject';
+import { annotate } from 'angular-annotation-decorator/src/index';
 
 import 'common/styles/index.css!';
 
-@Inject('$scope', 'dataPackage', 'dataService')
-export default class IndexCtrl {
+@annotate('$scope', 'dataPackage', 'dataService')
+class IndexCtrl {
   constructor ($scope, dataPackage, dataService) {
     $scope.dataPackage = dataPackage;
 
@@ -11,5 +11,10 @@ export default class IndexCtrl {
       dataService.normalizePackage(resource.url, resource.data);
     });
   }
-
 }
+
+export default {
+  controller: IndexCtrl,
+  datapackageUrl: 'components/examples/datapackage.json',
+  templateUrl: 'components/examples/index.html'
+};

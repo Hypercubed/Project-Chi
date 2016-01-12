@@ -5,6 +5,9 @@ dist
 .grunt
 .publish
 .settings
+.DS_Store
+.vscode
+jsconfig.json
 bower_components
 app/jspm_packages
 dataset

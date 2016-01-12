@@ -1,5 +1,3 @@
-/* eslint quotes: [0, "single"] */
-
 System.config({
   defaultJSExtensions: true,
   transpiler: "babel",
@@ -7,7 +5,8 @@ System.config({
     "optional": [
       "runtime",
       "optimisation.modules.system",
-      "es7.decorators"
+      "es7.decorators",
+      "es7.classProperties"
     ]
   },
   paths: {
@@ -24,15 +23,17 @@ System.config({
     "_F": "github:Hypercubed/_F@0.0.11",
     "angular": "github:angular/bower-angular@1.4.5",
     "angular-animate": "github:angular/bower-angular-animate@1.4.1",
+    "angular-annotation-decorator": "github:bendrucker/angular-annotation-decorator@1.0.0",
     "angular-bootstrap": "github:angular-ui/bootstrap-bower@0.13.0",
     "angular-cookies": "github:angular/bower-angular-cookies@1.4.1",
     "angular-downloadsvg-directive": "npm:angular-downloadsvg-directive@0.1.5",
+    "angular-growl": "npm:angular-growl-v2@0.7.5",
     "angular-loading-bar": "npm:angular-loading-bar@0.8.0",
     "angular-marked": "npm:angular-marked@1.0.0",
     "angular-mocks": "github:angular/bower-angular-mocks@1.4.1",
     "angular-route": "github:angular/bower-angular-route@1.4.0",
     "assert": "npm:assert@1.3.0",
-    "babel": "npm:babel-core@5.8.25",
+    "babel": "npm:babel-core@5.8.34",
     "babel-runtime": "npm:babel-runtime@5.8.25",
     "babyparse": "npm:babyparse@0.4.3",
     "blobjs": "github:eligrey/Blob.js@master",
@@ -43,10 +44,12 @@ System.config({
     "chiasm-links": "npm:chiasm-links@0.2.1",
     "clean-css": "npm:clean-css@3.4.8",
     "codemirror": "github:codemirror/codemirror@5.3.0",
+    "coffee": "github:forresto/system-coffee@0.1.2",
+    "core-decorators": "npm:core-decorators@0.9.2",
     "core-js": "npm:core-js@1.2.3",
     "crossfilter": "github:square/crossfilter@1.3.12",
     "css": "github:systemjs/plugin-css@0.1.16",
-    "d3": "npm:d3@3.5.6",
+    "d3": "npm:d3@3.5.12",
     "d3-svg-legend": "npm:d3-svg-legend@1.5.0",
     "d3-tip": "github:Caged/d3-tip@0.6.7",
     "expression-bar": "npm:expression-bar@0.1.4",
@@ -56,6 +59,7 @@ System.config({
     "jquery": "npm:jquery@2.1.4",
     "json": "github:systemjs/plugin-json@0.1.0",
     "lodash": "npm:lodash@3.10.1",
+    "md": "github:guybedford/system-md@0.0.3",
     "mime-lookup": "npm:mime-lookup@0.0.2",
     "model": "npm:model-js@0.2.4",
     "model-js": "npm:model-js@0.2.4",
@@ -80,11 +84,14 @@ System.config({
     "github:angular/bower-angular-route@1.4.0": {
       "angular": "github:angular/bower-angular@1.4.5"
     },
+    "github:guybedford/system-md@0.0.3": {
+      "showdown": "github:showdownjs/showdown@1.3.0"
+    },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
-      "buffer": "npm:buffer@3.5.5"
+      "buffer": "npm:buffer@3.6.0"
     },
     "github:jspm/nodelibs-events@0.1.1": {
       "events": "npm:events@1.0.2"
@@ -148,7 +155,7 @@ System.config({
     "npm:biojs-events@0.0.4": {
       "backbone-events-standalone": "npm:backbone-events-standalone@0.2.7"
     },
-    "npm:buffer@3.5.5": {
+    "npm:buffer@3.6.0": {
       "base64-js": "npm:base64-js@0.0.8",
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -208,7 +215,7 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
     },
     "npm:d3-svg-legend@1.5.0": {
-      "d3": "npm:d3@3.5.6"
+      "d3": "npm:d3@3.5.12"
     },
     "npm:deep-eql@0.1.3": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -216,7 +223,7 @@ System.config({
     },
     "npm:expression-bar@0.1.4": {
       "biojs-events": "npm:biojs-events@0.0.4",
-      "d3": "npm:d3@3.5.6",
+      "d3": "npm:d3@3.5.12",
       "jquery": "npm:jquery@2.1.4",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",

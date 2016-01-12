@@ -1,5 +1,5 @@
-/* global angular */
-import Inject from 'common/decorators/inject';
+import angular from 'angular';
+import { annotate } from 'angular-annotation-decorator/src/index';
 
 import Papa from 'babyparse';
 import URIjs from 'URIjs';
@@ -78,7 +78,7 @@ function httpReq (resource) {
   };
 }
 
-@Inject('$http', '$q', '$log')
+@annotate('$http', '$q', '$log')
 export class DataService {
   constructor ($http, $q, $log) {
     this.loadResource = function (resource) {

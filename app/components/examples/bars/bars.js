@@ -1,12 +1,12 @@
 /* jshint -W003 */
 
-import Inject from 'common/decorators/inject';
+import { annotate } from 'angular-annotation-decorator/src/index';
 
 import d3 from 'd3';
 import BarChart from './bars-chart';
 
-@Inject('$scope', 'dataPackage')
-export default class Ctrl {
+@annotate('$scope', 'dataPackage')
+class Ctrl {
   constructor ($scope, dataPackage) {
     var bars = new BarChart();
 
@@ -31,3 +31,9 @@ export default class Ctrl {
     }
   }
 }
+
+export default {
+  controller: Ctrl,
+  datapackageUrl: 'components/examples/bars/datapackage.json',
+  templateUrl: 'components/examples/bars/bars.html'
+};

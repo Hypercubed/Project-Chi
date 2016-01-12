@@ -1,6 +1,6 @@
 /* global angular */
 
-var moduleName = 'svgDownloadDropdown';
+const moduleName = 'svgDownloadDropdown';
 
 export default moduleName;
 

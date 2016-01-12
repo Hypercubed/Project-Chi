@@ -1,10 +1,10 @@
-import Inject from 'common/decorators/inject';
-import d3 from 'd3';
+import { annotate } from 'angular-annotation-decorator/src/index';
 
+import d3 from 'd3';
 import Chart from './trains-chart';
 
-@Inject('$scope', 'dataPackage')
-export default class TrainsCtrl {
+@annotate('$scope', 'dataPackage')
+class Ctrl {
   constructor ($scope, dataPackage) {
     var chart = new Chart();
 
@@ -27,3 +27,9 @@ export default class TrainsCtrl {
     }
   }
 }
+
+export default {
+  controller: Ctrl,
+  templateUrl: 'components/examples/bars/bars.html',
+  datapackageUrl: 'components/examples/trains/datapackage.json'
+};

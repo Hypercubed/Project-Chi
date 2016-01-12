@@ -22,7 +22,7 @@ import svgDropdownDownload from './svg-download-dropdown';
 // maxResources
 // table view
 
-var moduleName = 'projectX.dataEditor';
+const moduleName = 'projectX.dataEditor';
 
 export default moduleName;
 

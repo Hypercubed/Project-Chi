@@ -75,8 +75,8 @@ gulp.task('data', [], function () {
 // copy html to temp and distribution folder
 gulp.task('html', function () {
   var paths = [
-    path.base + '/*.html',
-    path.base + '/{components,common}/**/*.html'
+    path.base + '/*.{html,md}',
+    path.base + '/{components,common}/**/*.{html,md}'
   ];
 
   if (path.dataset) {

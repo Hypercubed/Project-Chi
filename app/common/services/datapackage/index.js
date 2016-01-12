@@ -1,35 +1,14 @@
-/* global angular */
-
+import angular from 'angular';
 import { DataService } from './dataservice';
+import addDataPackageResolver from './resolver';
 
-var moduleName = 'projectX.dataService';
+export const moduleName = 'projectX.dataService';
 
-angular.module('projectX.dataService', ['ngRoute'])
+angular.module(moduleName, ['ngRoute'])
   .service('dataService', DataService)
-  .config(['$routeProvider', function ($routeProvider) {
-    var originalWhen = $routeProvider.when;
-
-    $routeProvider.when = function (path, route) {
-      if (angular.isDefined(route.datapackage)) {
-        route.resolve || (route.resolve = {});
-        angular.extend(route.resolve, {
-          dataPackage: ['$route', 'dataService', function ($route, dataService) {
-            let datapackage = (typeof route.datapackage === 'function') ? route.datapackage($route.current.params) : route.datapackage;
-            return dataService._loadPackage(datapackage.base, datapackage);
-          }]
-        });
-      } else if (angular.isDefined(route.datapackageUrl)) {
-        route.resolve || (route.resolve = {});
-        angular.extend(route.resolve, {
-          dataPackage: ['$route', 'dataService', function ($route, dataService) {
-            let datapackageUrl = (typeof route.datapackageUrl === 'function') ? route.datapackageUrl($route.current.params) : route.datapackageUrl;
-            return dataService.loadPackage(datapackageUrl);
-          }]
-        });
-      }
-
-      return originalWhen.call($routeProvider, path, route);
-    };
+  .decorator('$route', ['$delegate', $delegate => {
+    angular.forEach($delegate.routes, addDataPackageResolver);
+    return $delegate;
   }]);
 
 export default moduleName;

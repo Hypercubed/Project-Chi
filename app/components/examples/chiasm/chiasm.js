@@ -1,4 +1,4 @@
-import Inject from 'common/decorators/inject';
+import { annotate } from 'angular-annotation-decorator/src/index';
 
 import Chiasm from 'chiasm';
 import ChiasmLayout from 'chiasm-layout';
@@ -15,8 +15,8 @@ import _ from 'lodash';
 // because chiasm-layout is missing underscore/lodash import.  https://github.com/chiasm-project/chiasm-layout/issues/1
 window._ = _;
 
-@Inject('$scope', 'dataPackage')
-export default class ChiasmCtrl {
+@annotate('$scope', 'dataPackage')
+class Ctrl {
   constructor ($scope, dataPackage) {
     // var main = this;
 
@@ -48,3 +48,9 @@ export default class ChiasmCtrl {
     draw();
   }
 }
+
+export default {
+  controller: Ctrl,
+  templateUrl: 'components/examples/chiasm/chiasm.html',
+  datapackageUrl: 'components/examples/chiasm/datapackage.json'
+};

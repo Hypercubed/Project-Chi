@@ -1,40 +1,28 @@
 import angular from 'angular';
 
 import examples from './examples/routes';
-import IndexCtrl from './index/index';
+import indexComponent from './index/index';
 
-import aboutHTML from 'components/about/about.html!text';
+import aboutHTML from 'components/about/about.md!md';
 import errorHTML from 'components/error/error.html!text';
-import indexHTML from 'components/index/index.html!text';
 
 function configRoutes ($routeProvider) {
   $routeProvider
   .when('/about', {
     template: aboutHTML
   })
-
   .when('/error', {
     template: errorHTML
   })
-
   .when('/404', {
     template: errorHTML
   })
-
-  .when('/', {
-    template: indexHTML,
-    controller: 'IndexCtrl',
-    datapackageUrl: 'components/index/datapackage.json'
-  })
-
+  .when('/', indexComponent)
   .otherwise({
     redirectTo: '/'
   });
 }
 
-configRoutes.$inject = ['$routeProvider'];
-
 export default angular
   .module('routes', [examples.name])
-  .controller('IndexCtrl', IndexCtrl)
-  .config(configRoutes);
+  .config(['$routeProvider', configRoutes]);
