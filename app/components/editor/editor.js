@@ -1,4 +1,4 @@
-/* global FileReader */
+/* global FileReader, Blob */
 
 import angular from 'angular';
 
@@ -8,7 +8,7 @@ import 'codemirror/lib/codemirror.css!';
 import 'components/editor/editor.css!';
 
 import saveAs from 'FileSaver';
-import Blob from 'blobjs';
+import 'blobjs';
 
 import editorTemplate from './editor.html!text';
 // import downloadListTemplate from './svg-download-list-template.html!text';

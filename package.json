@@ -16,7 +16,7 @@
     "gulp-plumber": "^1.0.1",
     "gulp-symlink": "^2.1.1",
     "gulp-task-listing": "^1.0.1",
-    "jspm": "^0.16.11",
+    "jspm": "^0.16.21",
     "karma": "^0.12.33",
     "karma-jasmine": "*",
     "karma-jspm": "^1.1.5",
@@ -24,7 +24,7 @@
     "karma-phantomjs-shim": "^1.0.0",
     "run-sequence": "^1.1.1",
     "semistandard": "^7.0.2",
-    "systemjs-builder": "^0.14.9",
+    "systemjs-builder": "^0.15.2",
     "vulcanize": "^1.10.2",
     "yargs": "^3.11.0"
   },

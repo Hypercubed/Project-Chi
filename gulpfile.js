@@ -167,7 +167,8 @@ gulp.task('builder', [], function () {
     sourceMaps: true,
     minify: true,
     mangle: true,
-    runtime: false
+    runtime: false,
+    esOptimize: true
     /* inject: true */
   });
 });

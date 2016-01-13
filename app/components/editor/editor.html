@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="sr-only">Password</label>
+          <label class="sr-only">Media Type</label>
           <select ng-options="value as value for value in types" ng-model="tab.mediatype"  class="form-control input-sm" ng-change="change(tab)"></select>
         </div>
         <!-- button ng-click="view = 'data'">Content/Data</button -->
@@ -58,7 +58,7 @@
       <ul class="dropdown-menu" role="menu">
         <li class="dropdown-header">Data Resources</li>
         <li ng-repeat="file in dataPackage.resources">
-          <a href file-download="file">{{file.name}}</a>
+          <a class="btn btn-link" file-download="file">{{file.name}}</a>
         </li>
       </ul>
     </div>
