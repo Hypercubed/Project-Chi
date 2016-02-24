@@ -60,6 +60,21 @@ angular.module(moduleName, ['projectX.dataService', svgDropdownDownload])
       scope.canDownloadSvg = typeof scope.canDownloadSvg === 'boolean' ? scope.canDownloadSvg : true;
       scope.canAdd = typeof scope.canAdd === 'boolean' ? scope.canAdd : false;
 
+      scope.droppedOver = function ($index, file) {
+        var resource = {
+          path: file.name || 'file',
+          name: file.name || 'file',
+          mediatype: mime.lookup(file.name),
+          content: file.content || '',
+          active: true
+        };
+
+        scope.dataPackage.resources.splice($index, 1, resource);
+
+        change(resource);
+        scope.ui.refresh();
+      };
+
       if (scope.canDownload) {
         scope.dataPackage.resources[0].active = true;
       }

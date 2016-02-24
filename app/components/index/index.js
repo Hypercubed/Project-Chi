@@ -1,6 +1,5 @@
 import { annotate } from 'angular-annotation-decorator/src/index';
 
-import datapackage from './datapackage.json!';
 import template from './index.html!text';
 import 'common/styles/index.css!';
 
@@ -25,6 +24,5 @@ class IndexCtrl {
 export default {
   controller: IndexCtrl,
   datapackageUrl: 'components/index/datapackage.json',
-  datapackage,
   template
 };

@@ -32,6 +32,7 @@ System.config({
     "angular-marked": "npm:angular-marked@1.0.0",
     "angular-mocks": "github:angular/bower-angular-mocks@1.4.1",
     "angular-route": "github:angular/bower-angular-route@1.4.0",
+    "angular-slider": "github:angular-slider/angularjs-slider@2.4.1",
     "assert": "npm:assert@1.3.0",
     "babel": "npm:babel-core@5.8.34",
     "babel-runtime": "npm:babel-runtime@5.8.25",
@@ -48,16 +49,18 @@ System.config({
     "core-js": "npm:core-js@1.2.3",
     "crossfilter": "github:square/crossfilter@1.3.12",
     "css": "github:systemjs/plugin-css@0.1.16",
-    "d3": "npm:d3@3.5.12",
+    "d3": "npm:d3@3.5.13",
+    "d3-plugins": "github:d3/d3-plugins@master",
     "d3-svg-legend": "npm:d3-svg-legend@1.5.0",
     "d3-tip": "github:Caged/d3-tip@0.6.7",
-    "d3plus": "github:jazzido/d3plus@1.8.0",
+    "d3plus-text": "npm:d3plus-text@0.3.0",
     "expression-bar": "npm:expression-bar@0.1.4",
     "fs": "github:jspm/nodelibs-fs@0.1.2",
     "html": "github:Hypercubed/systemjs-plugin-html@0.0.7",
     "inlet": "github:enjalot/Inlet@0.1.1",
     "jquery": "npm:jquery@2.1.4",
     "json": "github:systemjs/plugin-json@0.1.0",
+    "lasso": "github:skokenes/D3-Lasso-Plugin@master",
     "lodash": "npm:lodash@3.10.1",
     "md": "github:guybedford/system-md@0.0.3",
     "mime-lookup": "npm:mime-lookup@0.0.2",
@@ -69,6 +72,7 @@ System.config({
     "text": "github:systemjs/plugin-text@0.0.2",
     "ui-codemirror": "github:angular-ui/ui-codemirror@0.3.0",
     "ui-grid": "github:angular-ui/bower-ui-grid@3.0.5",
+    "ui-select": "npm:ui-select@0.14.2",
     "venn": "npm:venn.js@0.2.4",
     "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.12",
     "webtreemap": "github:martine/webtreemap@gh-pages",
@@ -215,7 +219,10 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
     },
     "npm:d3-svg-legend@1.5.0": {
-      "d3": "npm:d3@3.5.12"
+      "d3": "npm:d3@3.5.13"
+    },
+    "npm:d3plus-text@0.3.0": {
+      "d3": "npm:d3@3.5.13"
     },
     "npm:deep-eql@0.1.3": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -223,7 +230,7 @@ System.config({
     },
     "npm:expression-bar@0.1.4": {
       "biojs-events": "npm:biojs-events@0.0.4",
-      "d3": "npm:d3@3.5.12",
+      "d3": "npm:d3@3.5.13",
       "jquery": "npm:jquery@2.1.4",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
@@ -290,6 +297,10 @@ System.config({
     },
     "npm:svgsaver@0.6.1": {
       "computed-styles": "npm:computed-styles@1.1.2"
+    },
+    "npm:ui-select@0.14.2": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:url@0.10.3": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",

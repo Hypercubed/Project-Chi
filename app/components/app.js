@@ -57,6 +57,9 @@ export default angular
       growl.error(`failed to change routes ${rej.status} ${rej.statusText}`);
     });
   }])
+  .config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.latencyThreshold = 32;
+  }])
   .directive('onResize', ['$window', function ($window) {
     return {
       scope: {

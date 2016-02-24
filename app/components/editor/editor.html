@@ -8,35 +8,37 @@
 
   <tabset id="dataPackageEditor" ng-show="panel.open" ng-if="!readOnly">
     <tab ng-repeat="tab in dataPackage.resources track by $index" select="ui.refresh()" active="tab.active">
-      <tab-heading>
+      <tab-heading file-dropzone="[text/plain,text/csv,text/tab-separated-values]" data-max-file-size="30" dropped="droppedOver($index, file)">
         {{ dataPackage.resources.length < 7 ? tab.name : $index }}
         <a class="close" ng-click="_delete($index)">&nbsp;&times;</a>
       </tab-heading>
-
-      <form class="meta form-inline">
-        <div class="form-group">
-          <label class="sr-only">Filename</label>
-          <div class="input-group">
-            <input type="text" id="label" ng-model="tab.path" placeholder="filename" class="form-control input-sm" ng-change="rename(tab)">
+      <div file-dropzone="[text/plain,text/csv,text/tab-separated-values]" data-max-file-size="30" dropped="droppedOver($index, file)">
+        <form class="meta form-inline">
+          <div class="form-group">
+            <label class="sr-only">Filename</label>
+            <div class="input-group">
+              <input type="text" id="label" ng-model="tab.path" placeholder="filename" class="form-control input-sm" ng-change="rename(tab)">
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label class="sr-only">Media Type</label>
-          <select ng-options="value as value for value in types" ng-model="tab.mediatype"  class="form-control input-sm" ng-change="change(tab)"></select>
-        </div>
-        <!-- button ng-click="view = 'data'">Content/Data</button -->
-      </form>
+          <div class="form-group">
+            <label class="sr-only">Media Type</label>
+            <select ng-options="value as value for value in types" ng-model="tab.mediatype"  class="form-control input-sm" ng-change="change(tab)"></select>
+          </div>
+          <!-- button ng-click="view = 'data'">Content/Data</button -->
+        </form>
 
-      <div>
-        <!-- div ng-if="view === 'data'">
-          {{tab.data}}
-        </div -->
-        <textarea class="editor" ng-model="tab.content" ui-codemirror ui-codemirror-opts="{
-            lineNumbers: true,
-            lineWrapping : false,
-            mode: file.type,
-            onLoad : ui.codemirrorLoaded
-          }" ng-change="change(tab)" ui-refresh="ui.count"></textarea>
+        <div>
+          <!-- div ng-if="view === 'data'">
+            {{tab.data}}
+          </div -->
+          <textarea class="editor" ng-model="tab.content" ui-codemirror ui-codemirror-opts="{
+              lineNumbers: true,
+              lineWrapping : false,
+              mode: file.type,
+              allowDropFileTypes: false,
+              onLoad : ui.codemirrorLoaded
+            }" ng-change="change(tab)" ui-refresh="ui.count"></textarea>
+        </div>
       </div>
     </tab>
     <tab ng-click="newFile('new.txt')" active="true === false" ng-if="canAdd">
@@ -80,10 +82,15 @@
       </ul>
     </div>
 
-    <div class="btn-group pull-right panel-toggle">
+    <div class="btn-group pull-right panel-toggle"
+      file-dropzone="[text/plain,text/csv,text/tab-separated-values]" data-max-file-size="30" dropped="droppedOver(dataPackage.resources.length - 1, file)">
 
       <button type="button" class="btn btn-primary btn-sm" ng-click="play()" ng-if="!canOpen && protect">
         Try your own data
+      </button>
+
+      <button type="button" class="btn btn-primary btn-sm" ng-if="!readOnly && !canOpen && protect">
+        Drop your own data here
       </button>
 
       <button type="button" class="btn btn-link btn-sm" ng-click="tooglePanel()" tooltip="Show/hide resources panel" ng-if="canOpen">

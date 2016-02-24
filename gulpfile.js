@@ -49,12 +49,13 @@ gulp.task('copy', [], function () {
 
   if (path.dataset) {
     paths.push(path.dataset + '/*.{json,ico,txt}');
-    paths.push(path.dataset + '/{components,common,assets,data}/**/*.{png,svg,md}');
+    paths.push(path.dataset + '/{components,common,assets}/**/*.{png,svg,md}');
   }
 
   return gulp.src(paths)
     .pipe($.cached('copy'))
     .pipe($.plumber())
+    .pipe(gulp.dest(path.temp))
     .pipe(gulp.dest(path.dist));
 });
 
@@ -65,7 +66,7 @@ gulp.task('data', [], function () {
   ];
 
   if (path.dataset) {
-    paths.push(path.dataset + '/{components,common,assets,data}/**/*.{json,csv,tsv,txt}');
+    paths.push(path.dataset + '/{components,common,assets}/**/*.{json,csv,tsv,txt}');
   }
 
   return gulp.src(paths)
@@ -153,6 +154,11 @@ gulp.task('symlink', function () {
     .pipe($.symlink.absolute([path.temp + '/jspm_packages'], {force: true}));
 });
 
+gulp.task('symlink:data', function () {
+  return gulp.src([path.dataset + '/data/'])
+    .pipe($.symlink.absolute([path.dist + '/data'], {force: true}));
+});
+
 gulp.task('builder', [], function () {
   var builder = new SystemJSBuilder(path.temp, path.temp + '/system.config.js');
 
@@ -177,6 +183,7 @@ gulp.task('server', [], function (done) {
   browserSync({
     open: false,
     port: 9000,
+    online: false,
     server: {
       baseDir: path.dataset ? [path.dataset, path.base] : path.base,        // dataset overrides base
       middleware: function (req, res, next) {
@@ -224,7 +231,7 @@ gulp.task('deploy', [], function () {
 
 gulp.task('build', function (callback) {
   runSequence(['clean', 'clean:tmp'],
-              ['copy', 'js', 'css', 'data', 'html', 'symlink'],
+              ['copy', 'js', 'css', 'data', 'html', 'symlink', 'symlink:data'],
               'builder',
               'bundles',
               callback);

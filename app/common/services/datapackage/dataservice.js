@@ -81,9 +81,15 @@ function httpReq (resource) {
 @annotate('$http', '$q', '$log')
 export class DataService {
   constructor ($http, $q, $log) {
+    const self = this;
+
+    this.reloadResource = function (resource) {
+      return $http(httpReq(resource));
+    };
+
     this.loadResource = function (resource) {
       if (resource.url && !(resource.content || resource.data)) {
-        return $http(httpReq(resource));
+        return self.reloadResource(resource);
       } else {
         return $q(resolve => resolve({data: processByType(resource)}));
       }
