@@ -17,36 +17,19 @@
     "gulp-symlink": "^2.1.1",
     "gulp-task-listing": "^1.0.1",
     "jspm": "^0.16.21",
-    "karma": "^0.12.33",
-    "karma-jasmine": "*",
-    "karma-jspm": "^1.1.5",
-    "karma-phantomjs-launcher": "^0.1.4",
-    "karma-phantomjs-shim": "^1.0.0",
     "run-sequence": "^1.1.1",
-    "semistandard": "^7.0.2",
     "systemjs-builder": "^0.15.2",
     "vulcanize": "^1.10.2",
+    "xo": "^0.13.0",
     "yargs": "^3.11.0"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "node ./node_modules/karma/bin/karma start",
     "build": "gulp build",
     "postinstall": "jspm install",
-    "start": "gulp server",
-    "check": "semistandard app/**/*.js"
-  },
-  "semistandard": {
-    "parser": "babel-eslint",
-    "extends": [
-      "semistandard"
-    ],
-    "ignore": [
-      "dist/",
-      "app/system.config.js"
-    ]
+    "start": "gulp server"
   },
   "jspm": {
     "registry": "jspm",
@@ -56,6 +39,7 @@
     "configFile": "app/system.config.js",
     "dependencies": {
       "FileSaver": "github:eligrey/FileSaver.js@master",
+      "ManifestWebDesign/angular-gridster": "github:ManifestWebDesign/angular-gridster@^0.13.5",
       "URIjs": "npm:URIjs@^1.15.1",
       "_F": "github:Hypercubed/_F@^0.0.11",
       "angular": "github:angular/bower-angular@1.4.5",
@@ -64,12 +48,15 @@
       "angular-bootstrap": "github:angular-ui/bootstrap-bower@^0.13.0",
       "angular-cookies": "github:angular/bower-angular-cookies@^1.4.1",
       "angular-downloadsvg-directive": "npm:angular-downloadsvg-directive@^0.1.5",
+      "angular-gridster": "github:ManifestWebDesign/angular-gridster@^0.13.5",
       "angular-growl": "npm:angular-growl-v2@^0.7.5",
+      "angular-intro.js": "npm:angular-intro.js@^1.3.0",
       "angular-loading-bar": "npm:angular-loading-bar@^0.8.0",
       "angular-marked": "npm:angular-marked@^1.0.0",
       "angular-mocks": "github:angular/bower-angular-mocks@^1.4.1",
       "angular-route": "github:angular/bower-angular-route@^1.4.0",
       "angular-slider": "github:angular-slider/angularjs-slider@^2.4.1",
+      "angular-ui/bootstrap-bower": "github:angular-ui/bootstrap-bower@^0.13.4",
       "assert": "npm:assert@^1.3.0",
       "babyparse": "npm:babyparse@^0.4.3",
       "blobjs": "github:eligrey/Blob.js@master",
@@ -92,6 +79,8 @@
       "fs": "github:jspm/nodelibs-fs@^0.1.2",
       "html": "github:Hypercubed/systemjs-plugin-html@^0.0.7",
       "inlet": "github:enjalot/Inlet@^0.1.1",
+      "intro": "npm:intro.js@^2.0.0",
+      "intro.js": "npm:intro.js@^2.0.0",
       "jquery": "npm:jquery@^2.1.4",
       "json": "github:systemjs/plugin-json@^0.1.0",
       "lasso": "github:skokenes/D3-Lasso-Plugin@master",
@@ -124,6 +113,11 @@
           "jquery": "^2.1.4"
         }
       },
+      "npm:angular-intro.js@1.3.0": {
+        "dependencies": {
+          "intro.js": "2.0.0"
+        }
+      },
       "github:enjalot/Inlet@0.1.1": {
         "main": "inlet"
       },
@@ -144,6 +138,29 @@
         "main": "src/index"
       },
       "github:angular-slider/angularjs-slider@2.4.1": {}
+    }
+  },
+  "xo": {
+    "esnext": true,
+    "space": 2,
+    "envs": [
+      "node",
+      "browser"
+    ],
+    "ignores": [
+      "app/jspm_packages/**",
+      "app/system.config.js",
+      "*.js"
+    ],
+    "rules": {
+      "space-before-function-paren": [
+        2,
+        {
+          "anonymous": "always",
+          "named": "always"
+        }
+      ],
+      "no-warning-comments": 0
     }
   }
 }

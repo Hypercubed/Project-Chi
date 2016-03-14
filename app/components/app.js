@@ -46,14 +46,14 @@ export default angular
     $logProvider.debugEnabled(false);
   }])
   .run(['$rootScope', '$location', function isPath ($rootScope, $location) {
-    $rootScope.isPath = (path) => path === $location.path();
+    $rootScope.isPath = path => path === $location.path();
   }])
   .run(['$templateCache', function ($templateCache) {
     $templateCache.put('common/partials/footer.html', footerHTML);
     $templateCache.put('common/partials/intro.html', introHTML);
   }])
-  .run(['$rootScope', '$location', 'growl', function ($rootScope, $location, growl) {
-    $rootScope.$on('$routeChangeError', function (event, curr, prev, rej) {
+  .run(['$rootScope', '$location', 'growl', ($rootScope, $location, growl) => {
+    $rootScope.$on('$routeChangeError', (event, curr, prev, rej) => {
       growl.error(`failed to change routes ${rej.status} ${rej.statusText}`);
     });
   }])
@@ -65,11 +65,13 @@ export default angular
       scope: {
         onResize: '&'
       },
-      link: function (scope) {
-        var timeout = null;
+      link: scope => {
+        let timeout = null;
         function debounceRedraw () {
-          if (timeout) { clearTimeout(timeout); }
-          timeout = setTimeout(function () {
+          if (timeout) {
+            clearTimeout(timeout);
+          }
+          timeout = setTimeout(() => {
             scope.onResize();
           }, 500);
         }
@@ -83,7 +85,7 @@ export default angular
           window.matchMedia('print').addListener(resize);
         }
 
-        scope.$on('$destroy', function () {
+        scope.$on('$destroy', () => {
           angular.element($window).off('resize', debounceRedraw);
           if ('matchMedia' in window) {
             window.matchMedia('print').removeListener(resize);

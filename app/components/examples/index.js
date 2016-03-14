@@ -1,4 +1,4 @@
-import { annotate } from 'angular-annotation-decorator/src/index';
+import {annotate} from 'angular-annotation-decorator/src/index';
 
 import 'common/styles/index.css!';
 
@@ -7,7 +7,7 @@ class IndexCtrl {
   constructor ($scope, dataPackage, dataService) {
     $scope.dataPackage = dataPackage;
 
-    dataPackage.resources.forEach(function (resource) {
+    dataPackage.resources.forEach(resource => {
       dataService.normalizePackage(resource.url, resource.data);
     });
   }

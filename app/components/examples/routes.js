@@ -11,7 +11,7 @@ import treeMapComponent from 'components/examples/treemap/treemap';
 
 export default angular
   .module('examples', ['projectX.dataService'])
-  .config(['$routeProvider', ($routeProvider) => {
+  .config(['$routeProvider', $routeProvider => {
     $routeProvider
       .when('/examples', examplesComponent)
       .when('/examples/chiasm', chiasmComponent)

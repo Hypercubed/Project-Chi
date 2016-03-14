@@ -1,5 +1,5 @@
 import angular from 'angular';
-import { DataService } from './dataservice';
+import {DataService} from './dataservice';
 import addDataPackageResolver from './resolver';
 
 export const moduleName = 'projectX.dataService';

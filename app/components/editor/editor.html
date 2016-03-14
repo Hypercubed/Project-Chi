@@ -50,7 +50,7 @@
 
   <div class="btn-toolbar" role="toolbar" aria-label="toolbar">
 
-    <div class="btn-group" dropdown>
+    <div id="data-download" class="btn-group" dropdown>
       <button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle aria-expanded="false" ng-if="canDownload">
         <div class="pull-right">
           <i class="glyphicon glyphicon-download"></i>
@@ -65,7 +65,7 @@
       </ul>
     </div>
 
-    <div class="btn-group hidden-print" dropdown svg-download-dropdown="svgList in #charts" ng-if="canDownloadSvg">
+    <div id="svg-download" class="btn-group hidden-print" dropdown svg-download-dropdown="svgList in #charts" ng-if="canDownloadSvg">
       <button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle aria-expanded="false">
         <div class="pull-right">
           <i class="glyphicon glyphicon-download"></i>
@@ -85,11 +85,11 @@
     <div class="btn-group pull-right panel-toggle"
       file-dropzone="[text/plain,text/csv,text/tab-separated-values]" data-max-file-size="30" dropped="droppedOver(dataPackage.resources.length - 1, file)">
 
-      <button type="button" class="btn btn-primary btn-sm" ng-click="play()" ng-if="!canOpen && protect">
+      <button type="button" class="btn btn-primary btn-sm" ng-click="play()" ng-if="readOnly && !canOpen && protect">
         Try your own data
       </button>
 
-      <button type="button" class="btn btn-primary btn-sm" ng-if="!readOnly && !canOpen && protect">
+      <button id="data-drop" type="button" class="btn btn-primary btn-sm" ng-if="!readOnly && !canOpen && protect">
         Drop your own data here
       </button>
 

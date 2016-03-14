@@ -1,6 +1,6 @@
 /* jshint -W003 */
 
-import { annotate } from 'angular-annotation-decorator/src/index';
+import {annotate} from 'angular-annotation-decorator/src/index';
 
 import d3 from 'd3';
 import BarChart from './bars-chart';
@@ -8,7 +8,7 @@ import BarChart from './bars-chart';
 @annotate('$scope', 'dataPackage')
 class Ctrl {
   constructor ($scope, dataPackage) {
-    var bars = new BarChart();
+    const bars = new BarChart();
 
     $scope.dataPackage = dataPackage;
     $scope.change = draw;
@@ -16,11 +16,11 @@ class Ctrl {
     draw();
 
     function draw () {
-      var data = dataPackage.resources
-        .filter(function (d) { return !!d.data; })
-        .map(function (d) { return d.data; });
+      const data = dataPackage.resources
+        .filter(d => Boolean(d.data))
+        .map(d => d.data);
 
-      var divs = d3.select('#_examples_bars__chart')
+      const divs = d3.select('#_examples_bars__chart')
         .selectAll('div').data(data);
 
       divs.enter().append('div');

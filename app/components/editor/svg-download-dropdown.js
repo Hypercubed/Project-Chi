@@ -5,36 +5,37 @@ const moduleName = 'svgDownloadDropdown';
 export default moduleName;
 
 angular.module(moduleName, [])
-.directive('svgDownloadDropdown', function () {
+.directive('svgDownloadDropdown', () => {
   return {
-    link: function (scope, element, attr) {
-      var sAttr = attr.svgDownloadDropdown.split(/\sin\s/);
+    link: (scope, element, attr) => {
+      const sAttr = attr.svgDownloadDropdown.split(/\sin\s/);
 
       // var key = !attr.svgDownloadDropdown
       //  ? 'svgList'
       //  : sAttr[0];
 
-      var el = !attr.svgDownloadDropdown
-        ? element.parent
-        : angular.element(document.querySelector(sAttr[1]));
-
       getSVGs();
 
-      element.find('button').on('click', function () {
-        scope.$apply(function () {
+      element.find('.dropdown-toggle').on('click', () => {
+        scope.$apply(() => {
           getSVGs();
         });
       });
 
       function getSVGs () {
-        var svgs = el.find('svg');
-        var ids = [];
+        const el = attr.svgDownloadDropdown ?
+          angular.element(document.querySelector(sAttr[1])) :
+          element.parent;
 
-        angular.forEach(svgs, function (svg, d) {
-          var elm = angular.element(svg);
-          var o = {};
-          o.id = elm.attr('id') || 'svg-' + d;
-          o.title = elm.attr('title') || o.id;
+        const svgs = el.find('svg');
+        const ids = [];
+
+        angular.forEach(svgs, (svg, d) => {
+          const elm = angular.element(svg);
+          const id = elm.attr('id') || `svg-${d}`;
+          const title = elm.attr('title') || id;
+
+          const o = {id, title};
           elm.attr(o);
           ids.push(o);
         });

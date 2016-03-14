@@ -1,8 +1,8 @@
 import angular from 'angular';
-import { annotate } from 'angular-annotation-decorator/src/index';
+import {annotate} from 'angular-annotation-decorator/src/index';
 
 import Papa from 'babyparse';
-import URIjs from 'URIjs';
+import uRIjs from 'URIjs';
 
 import process from 'process';
 
@@ -11,38 +11,38 @@ import mime from './mime';
 window.process = process;  // annoying
 
 function papaTranslate (load, spec) {
-  var parse = Papa.parse(load.content, spec);
+  const parse = Papa.parse(load.content, spec);
   angular.extend(load, parse);
   load.table = true;
 }
 
-const DOS2UNIX = (content) => content.replace(/\r/g, '\n');
+const dos2unix = content => content.replace(/\r/g, '\n');
 
 const processors = {
   'text/tab-separated-values': {
-    translate: function (load) {
+    translate: load => {
       papaTranslate(load, {header: true, delimiter: '\t', skipEmptyLines: true});
     }
   },
 
   'text/csv': {
-    translate: function (load) {
+    translate: load => {
       papaTranslate(load, {header: true, delimiter: ',', skipEmptyLines: true});
     }
   },
 
   'text/plain': {
-    translate: function (load) {
-      load.content = DOS2UNIX(load.content);
+    translate: load => {
+      load.content = dos2unix(load.content);
     }
   },
 
   'application/json': {
-    translate: function (load) {
+    translate: load => {
       load.data = angular.fromJson(load.content);
       if (load.data.url && load.data.url.indexOf('api.github.com') > -1) {  // move
-        load.data.name = load.data.owner.login + '/' + load.data.id;
-        load.path = 'gists/' + load.data.id;
+        load.data.name = `${load.data.owner.login}/${load.data.id}`;
+        load.path = `gists/${load.data.id}`;
       }
     }
   }
@@ -50,7 +50,7 @@ const processors = {
 
 // try to follow http://dataprotocols.org/data-packages/
 function processByType (resource) {
-  var _p = processors[resource.mediatype];
+  const _p = processors[resource.mediatype];
   if (_p && _p.translate) {
     _p.translate(resource);
   }
@@ -63,10 +63,12 @@ function httpReq (resource) {
     method: 'GET',
     url: resource.url,
     cache: true,
-    transformResponse: function (data, headers, status) {
-      if (status === 404) { return resource; }
+    transformResponse: (data, headers, status) => {
+      if (status === 404) {
+        return resource;
+      }
 
-      var contentType = headers('Content-Type');
+      const contentType = headers('Content-Type');
 
       if (contentType) {
         resource.mediatype = resource.mediatype || contentType.split(';')[0];
@@ -78,9 +80,9 @@ function httpReq (resource) {
   };
 }
 
-@annotate('$http', '$q', '$log')
+@annotate('$http', '$q')
 export class DataService {
-  constructor ($http, $q, $log) {
+  constructor ($http, $q) {
     const self = this;
 
     this.reloadResource = function (resource) {
@@ -90,16 +92,15 @@ export class DataService {
     this.loadResource = function (resource) {
       if (resource.url && !(resource.content || resource.data)) {
         return self.reloadResource(resource);
-      } else {
-        return $q(resolve => resolve({data: processByType(resource)}));
       }
+      return $q(resolve => resolve({data: processByType(resource)}));
     };
 
     this._loadPackage = function (filePath, _package) {  // todo: rename
       _package = this.normalizePackage(filePath, _package);
-      var q = _package.resources ? _package.resources.map(this.loadResource) : [];
+      const q = _package.resources ? _package.resources.map(this.loadResource) : [];
 
-      return $q.all(q).then(function () {
+      return $q.all(q).then(() => {
         _package.resourcesByName = {};
         _package.resources.forEach(r => {
           if (r.name && !_package.resourcesByName[r.name]) {
@@ -113,9 +114,11 @@ export class DataService {
     this.loadPackage = function (filePath) {
       return $http.get(filePath).then(
         res => this._loadPackage(filePath, res.data),
-        res => console.log('error loading', filePath)
+        () => console.log('error loading', filePath)
       );
     };
+
+    this.processResource = processByType;
   }
 
   processResource (resource) {
@@ -123,18 +126,19 @@ export class DataService {
   }
 
   normalizePackage (filePath, _package) {
-    _package.base = _package.base || URIjs(filePath).normalizePathname().directory() + '/';
+    _package.base = _package.base || uRIjs(filePath).normalizePathname().directory();
+    _package.base = `${_package.base}/`;
 
     if (_package.resources) {
-      _package.resources = _package.resources.map((resource) => this.normalize(_package.base, resource));
+      _package.resources = _package.resources.map(resource => this.normalize(_package.base, resource));
     }
 
     if (_package.image) {
-      _package.image = URIjs(_package.image, _package.base).href();
+      _package.image = uRIjs(_package.image, _package.base).href();
     }
 
     if (_package.readme) {
-      _package.readme = URIjs(_package.readme, _package.base).href();
+      _package.readme = uRIjs(_package.readme, _package.base).href();
     }
 
     return _package;
@@ -142,10 +146,10 @@ export class DataService {
 
   normalize (base, resource) {
     if (!angular.isObject(resource)) {
-      resource = { path: resource };
+      resource = {path: resource};
     }
 
-    var uri = URIjs(resource.path);
+    const uri = uRIjs(resource.path);
 
     resource.format = resource.format || uri.suffix();
     resource.name = resource.name || uri.filename();

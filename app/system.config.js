@@ -19,20 +19,24 @@ System.config({
 
   map: {
     "FileSaver": "github:eligrey/FileSaver.js@master",
+    "ManifestWebDesign/angular-gridster": "github:ManifestWebDesign/angular-gridster@0.13.5",
     "URIjs": "npm:URIjs@1.15.1",
     "_F": "github:Hypercubed/_F@0.0.11",
     "angular": "github:angular/bower-angular@1.4.5",
     "angular-animate": "github:angular/bower-angular-animate@1.4.1",
     "angular-annotation-decorator": "github:bendrucker/angular-annotation-decorator@1.0.0",
-    "angular-bootstrap": "github:angular-ui/bootstrap-bower@0.13.0",
+    "angular-bootstrap": "github:angular-ui/bootstrap-bower@0.13.4",
     "angular-cookies": "github:angular/bower-angular-cookies@1.4.1",
     "angular-downloadsvg-directive": "npm:angular-downloadsvg-directive@0.1.5",
+    "angular-gridster": "github:ManifestWebDesign/angular-gridster@0.13.5",
     "angular-growl": "npm:angular-growl-v2@0.7.5",
+    "angular-intro.js": "npm:angular-intro.js@1.3.0",
     "angular-loading-bar": "npm:angular-loading-bar@0.8.0",
     "angular-marked": "npm:angular-marked@1.0.0",
     "angular-mocks": "github:angular/bower-angular-mocks@1.4.1",
     "angular-route": "github:angular/bower-angular-route@1.4.0",
     "angular-slider": "github:angular-slider/angularjs-slider@2.4.1",
+    "angular-ui/bootstrap-bower": "github:angular-ui/bootstrap-bower@0.13.4",
     "assert": "npm:assert@1.3.0",
     "babel": "npm:babel-core@5.8.34",
     "babel-runtime": "npm:babel-runtime@5.8.25",
@@ -58,6 +62,8 @@ System.config({
     "fs": "github:jspm/nodelibs-fs@0.1.2",
     "html": "github:Hypercubed/systemjs-plugin-html@0.0.7",
     "inlet": "github:enjalot/Inlet@0.1.1",
+    "intro": "npm:intro.js@2.0.0",
+    "intro.js": "npm:intro.js@2.0.0",
     "jquery": "npm:jquery@2.1.4",
     "json": "github:systemjs/plugin-json@0.1.0",
     "lasso": "github:skokenes/D3-Lasso-Plugin@master",
@@ -143,6 +149,9 @@ System.config({
     },
     "npm:angular-downloadsvg-directive@0.1.5": {
       "svgsaver": "npm:svgsaver@0.6.1"
+    },
+    "npm:angular-intro.js@1.3.0": {
+      "intro.js": "npm:intro.js@2.0.0"
     },
     "npm:angular-marked@1.0.0": {
       "marked": "npm:marked@0.3.5"
@@ -244,6 +253,9 @@ System.config({
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:intro.js@2.0.0": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
     "npm:jquery@2.1.4": {
       "process": "github:jspm/nodelibs-process@0.1.2"

@@ -1,14 +1,14 @@
-var gulp = require('gulp');
-var browserSync = require('browser-sync');
+const gulp = require('gulp');
+const browserSync = require('browser-sync');
 // var jspm = require('jspm');
-var SystemJSBuilder = require('systemjs-builder');
-var del = require('del');
-var karma = require('karma').server;
-var args = require('yargs').argv;
-var runSequence = require('run-sequence');
-var $ = require('gulp-load-plugins')();
+const SystemJSBuilder = require('systemjs-builder');
+const del = require('del');
+// var karma = require('karma').server;
+const args = require('yargs').argv;
+const runSequence = require('run-sequence');
+const $ = require('gulp-load-plugins')();
 
-var path = {
+const path = {
   base: 'app',
   build: 'components/boot',
   systemConfig: 'app/system.config.js',
@@ -20,23 +20,23 @@ var path = {
 
 gulp.task('help', $.taskListing);
 
-gulp.task('test', [], function (done) {
+/* gulp.task('test', [], function (done) {
   karma.start({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
   }, function () {
     done();
   });
-});
+}); */
 
-gulp.task('test:watch', [], function (done) {
+/* gulp.task('test:watch', [], function (done) {
   karma.start({
     configFile: __dirname + '/karma.conf.js',
     singleRun: false
   }, function () {
     done();
   });
-});
+}); */
 
 // copy resource to distribution folder
 gulp.task('copy', [], function () {
@@ -198,6 +198,7 @@ gulp.task('server:dist', [], function (done) {
   browserSync({
     open: false,
     port: 9000,
+    online: false,
     server: {
       baseDir: [path.dist],
       middleware: function (req, res, next) {

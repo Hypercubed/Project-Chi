@@ -40,7 +40,7 @@ angular.module(moduleName, ['projectX.dataService', svgDropdownDownload])
     transclude: true,
     template: editorTemplate,
     link: function link (scope) {
-      var hasPackage = !!scope.dataPackage;
+      const hasPackage = Boolean(scope.dataPackage);
 
       scope.panel = {};
       scope.panel.open = false;
@@ -61,7 +61,7 @@ angular.module(moduleName, ['projectX.dataService', svgDropdownDownload])
       scope.canAdd = typeof scope.canAdd === 'boolean' ? scope.canAdd : false;
 
       scope.droppedOver = function ($index, file) {
-        var resource = {
+        const resource = {
           path: file.name || 'file',
           name: file.name || 'file',
           mediatype: mime.lookup(file.name),
@@ -79,17 +79,17 @@ angular.module(moduleName, ['projectX.dataService', svgDropdownDownload])
         scope.dataPackage.resources[0].active = true;
       }
 
-      let is_safari = /Version\/[\d\.]+.*Safari/.test(navigator.userAgent);
-      let is_IE = typeof window.navigator.msSaveBlob !== 'undefined';
-      scope.canDownloadPng = !is_safari && !is_IE;
+      const isSafari = /Version\/[\d\.]+.*Safari/.test(navigator.userAgent);
+      const isIE = typeof window.navigator.msSaveBlob !== 'undefined';
+      scope.canDownloadPng = !isSafari && !isIE;
 
       scope.ui = {
-        refresh: function () {
+        refresh: () => {
           scope.ui.count++;
         },
         count: 0,
-        codemirrorLoaded: function (cm) {
-          $timeout(function () {
+        codemirrorLoaded: cm => {
+          $timeout(() => {
             cm.refresh();
             scope.ui.refresh();
           }, 100);
@@ -106,7 +106,9 @@ angular.module(moduleName, ['projectX.dataService', svgDropdownDownload])
       }
 
       function play () {
-        if (scope.dataPackage && scope.dataPackage.readme) { scope.dataPackage.readme = null; }
+        if (scope.dataPackage && scope.dataPackage.readme) {
+          scope.dataPackage.readme = null;
+        }
         scope.canOpen = true;
         tooglePanel();
       }
@@ -126,7 +128,9 @@ angular.module(moduleName, ['projectX.dataService', svgDropdownDownload])
       }
 
       function rename (file) {
-        if (!file.path) { return; }
+        if (!file.path) {
+          return;
+        }
         file.name = file.path;
         file.mediatype = mime.lookup(file.path);
         change(file);
@@ -135,7 +139,7 @@ angular.module(moduleName, ['projectX.dataService', svgDropdownDownload])
       function newFile (filename) {
         filename = filename || 'new.txt';
 
-        var resource = {
+        const resource = {
           name: filename,
           path: filename,
           mediatype: mime.lookup(filename),
@@ -144,7 +148,7 @@ angular.module(moduleName, ['projectX.dataService', svgDropdownDownload])
 
         resource.active = true;
 
-        var i = scope.dataPackage.resources.push(resource);
+        const i = scope.dataPackage.resources.push(resource);
         scope.dataPackage.resources[i - 1].active = true;
 
         change(resource);
@@ -155,7 +159,7 @@ angular.module(moduleName, ['projectX.dataService', svgDropdownDownload])
       }
 
       function dropped (file) {
-        var resource = {
+        const resource = {
           path: file.name,
           mediatype: mime.lookup(file.name),
           content: file.content || ''
@@ -188,21 +192,22 @@ angular.module(moduleName, ['projectX.dataService', svgDropdownDownload])
     }
   };
 }])
-.directive('fileDownload', function () {
+.directive('fileDownload', () => {
   return {
     scope: {
-      'file': '=fileDownload'
+      file: '=fileDownload'
     },
-    link: function (scope, element, attrs) {
+    link: (scope, element /* , attrs */) => {
       function download (file) {
-        var type = (file.type || 'text/plain') + ';charset=utf-8';
-        var filename = file.name || 'download.txt';
+        const mime = file.type || 'text/plain';
+        const type = `${mime};charset=utf-8`;
+        const filename = file.name || 'download.txt';
 
-        var blob = new Blob([file.content], {type: type});
+        const blob = new Blob([file.content], {type});
         saveAs(blob, filename);  // shim this
       }
 
-      element.bind('click', function (e) {
+      element.bind('click', () => {
         download(scope.file);
       });
     }
@@ -265,8 +270,8 @@ angular.module(moduleName, ['projectX.dataService', svgDropdownDownload])
       fileName: '=',
       dropped: '&'
     },
-    link: function (scope, element, attrs) {
-      var validMimeTypes = attrs.fileDropzone;
+    link: (scope, element, attrs) => {
+      const validMimeTypes = attrs.fileDropzone;
 
       function processDragOverOrEnter (event) {
         // console.log('processDragOverOrEnter');
@@ -288,22 +293,20 @@ angular.module(moduleName, ['projectX.dataService', svgDropdownDownload])
       }
 
       function checkSize (size) {
-        var _ref;
-        if (((_ref = attrs.maxFileSize) === (void 0) || _ref === '') || (size / 1024) / 1024 < attrs.maxFileSize) {
+        const _ref = attrs.maxFileSize;
+        if (((_ref) === undefined || _ref === '') || (size / 1024) / 1024 < attrs.maxFileSize) {
           return true;
-        } else {
-          $window.alert('File must be smaller than ' + attrs.maxFileSize + ' MB');
-          return false;
         }
+        $window.alert(`File must be smaller than ${attrs.maxFileSize} MB`);
+        return false;
       }
 
       function isTypeValid (type) {
-        if ((validMimeTypes === (void 0) || validMimeTypes === '') || validMimeTypes.indexOf(type) > -1) {
+        if ((validMimeTypes === undefined || validMimeTypes === '') || validMimeTypes.indexOf(type) > -1) {
           return true;
-        } else {
-          $window.alert('Invalid file type ' + type + '.  File must be one of following types ' + validMimeTypes);
-          return false;
         }
+        $window.alert(`Invalid file type ${type}.  File must be one of following types ${validMimeTypes}`);
+        return false;
       }
 
       element.bind('dragover', processDragOverOrEnter);
@@ -311,30 +314,30 @@ angular.module(moduleName, ['projectX.dataService', svgDropdownDownload])
       element.bind('dragleave', processDragLeave);
 
       function processDropFile (file) {
-        var reader = new FileReader();
+        const reader = new FileReader();
         reader.onload = function (evt) {
           file.content = evt.target.result;
-          var type = mime.lookup(file.name);
+          const type = mime.lookup(file.name);
           if (checkSize(file.size) && isTypeValid(type)) {
-            return scope.$apply(function () {
-              scope.dropped({file: file});
+            return scope.$apply(() => {
+              scope.dropped({file});
             });
           }
         };
         reader.readAsText(file);
       }
 
-      return element.bind('drop', function (event) {
+      return element.bind('drop', event => {
         if (event !== null) {
           event.preventDefault();
         }
 
         element.removeClass('hover');
 
-        var files = (event.dataTransfer || event.originalEvent.dataTransfer).files;
+        const files = (event.dataTransfer || event.originalEvent.dataTransfer).files;
 
-        for (var i = 0; i < files.length; i++) {
-          var file = files[i];
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
           processDropFile(file);
         }
 
