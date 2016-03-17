@@ -41,15 +41,15 @@ gulp.task('help', $.taskListing);
 // copy resource to distribution folder
 gulp.task('copy', [], function () {
   var paths = [
-    path.base + '/*.{js,json,ico,txt}',
+    path.base + '/*.{js,json,ico,txt,md}',
     path.base + '/{jspm_packages,lib}/*.{js,map}',
     path.base + '/{jspm_packages,lib}/**/*.{svg,png,eot,ttf,wot,woff,woff2,gif,html}',
     path.base + '/{components,common,assets}/**/*.{png,svg,txt,md}'
   ];
 
   if (path.dataset) {
-    paths.push(path.dataset + '/*.{json,ico,txt}');
-    paths.push(path.dataset + '/{components,common,assets}/**/*.{png,svg,md}');
+    paths.push(path.dataset + '/*.{json,ico,txt,md}');
+    paths.push(path.dataset + '/{components,common,assets}/**/*.{png,svg,md,json}');
   }
 
   return gulp.src(paths)

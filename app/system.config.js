@@ -48,6 +48,7 @@ System.config({
     "chiasm-layout": "npm:chiasm-layout@0.2.2",
     "chiasm-links": "npm:chiasm-links@0.2.1",
     "clean-css": "npm:clean-css@3.4.8",
+    "clipboard": "npm:clipboard@1.5.9",
     "codemirror": "github:codemirror/codemirror@5.3.0",
     "core-decorators": "npm:core-decorators@0.9.2",
     "core-js": "npm:core-js@1.2.3",
@@ -210,6 +211,14 @@ System.config({
       "url": "github:jspm/nodelibs-url@0.1.0",
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
+    "npm:clipboard@1.5.9": {
+      "good-listener": "npm:good-listener@1.1.7",
+      "select": "npm:select@1.0.6",
+      "tiny-emitter": "npm:tiny-emitter@1.0.2"
+    },
+    "npm:closest@0.0.1": {
+      "matches-selector": "npm:matches-selector@0.0.1"
+    },
     "npm:commander@2.8.1": {
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
       "events": "github:jspm/nodelibs-events@0.1.1",
@@ -237,6 +246,9 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "type-detect": "npm:type-detect@0.1.1"
     },
+    "npm:delegate@3.0.1": {
+      "closest": "npm:closest@0.0.1"
+    },
     "npm:expression-bar@0.1.4": {
       "biojs-events": "npm:biojs-events@0.0.4",
       "d3": "npm:d3@3.5.13",
@@ -244,6 +256,9 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
+    },
+    "npm:good-listener@1.1.7": {
+      "delegate": "npm:delegate@3.0.1"
     },
     "npm:graceful-readlink@1.0.1": {
       "fs": "github:jspm/nodelibs-fs@0.1.2"
