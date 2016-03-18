@@ -86,7 +86,6 @@
       "json": "github:systemjs/plugin-json@^0.1.0",
       "lasso": "github:skokenes/D3-Lasso-Plugin@master",
       "lodash": "npm:lodash@^3.9.3",
-      "md": "github:guybedford/system-md@^0.0.3",
       "mime-lookup": "npm:mime-lookup@^0.0.2",
       "model": "npm:model-js@^0.2.4",
       "polymer": "github:Polymer/polymer@^1.0.8",

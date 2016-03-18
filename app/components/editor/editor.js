@@ -7,15 +7,14 @@ import 'codemirror/lib/codemirror';
 import 'codemirror/lib/codemirror.css!';
 import 'components/editor/editor.css!';
 
-import saveAs from 'FileSaver';
-import 'blobjs';
-
 import editorTemplate from './editor.html!text';
 // import downloadListTemplate from './svg-download-list-template.html!text';
 
 import mime from 'common/services/datapackage/mime';
 
-import svgDropdownDownload from './svg-download-dropdown';
+import svgDropdownDownload from 'common/directives/svg-download-dropdown';
+import fileDrop from 'common/directives/file-drop';
+import fileDownload from 'common/directives/fileDownload';
 
 // canExpand
 // canEdit
@@ -26,7 +25,7 @@ const moduleName = 'projectX.dataEditor';
 
 export default moduleName;
 
-angular.module(moduleName, ['projectX.dataService', svgDropdownDownload])
+angular.module(moduleName, ['projectX.dataService', svgDropdownDownload, fileDrop, fileDownload])
 .directive('datapackageEdit', ['$rootScope', '$window', '$cookies', '$timeout', 'dataService', function ($rootScope, $window, $cookies, $timeout, dataService) {
   return {
     scope: {
@@ -191,13 +190,13 @@ angular.module(moduleName, ['projectX.dataService', svgDropdownDownload])
       }
     }
   };
-}])
-.directive('fileDownload', () => {
+}]);
+/* .directive('fileDownload', () => {
   return {
     scope: {
       file: '=fileDownload'
     },
-    link: (scope, element /* , attrs */) => {
+    link: (scope, element) => {
       function download (file) {
         const mime = file.type || 'text/plain';
         const type = `${mime};charset=utf-8`;
@@ -212,7 +211,7 @@ angular.module(moduleName, ['projectX.dataService', svgDropdownDownload])
       });
     }
   };
-})
+}) */
 /* .directive('svgDownloadDropdown', function() {
   return {
     transclude: true,
@@ -262,7 +261,7 @@ angular.module(moduleName, ['projectX.dataService', svgDropdownDownload])
   };
 
 }) */
-.directive('fileDropzone', ['$window', function ($window) {
+/* .directive('fileDropzone', ['$window', function ($window) {
   return {
     restrict: 'A',
     scope: {
@@ -345,4 +344,4 @@ angular.module(moduleName, ['projectX.dataService', svgDropdownDownload])
       });
     }
   };
-}]);
+}]); */

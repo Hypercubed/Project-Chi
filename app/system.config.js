@@ -17,6 +17,20 @@ System.config({
   separateCSS: true,
   buildHTML: true,
 
+  packages: {
+    '': {
+      defaultJSExtensions: true,
+      meta: {
+        "*.md": {
+          loader: "md",
+          mdOptions: {
+            tables: true
+          }
+        }
+      }
+    }
+  },
+
   map: {
     "FileSaver": "github:eligrey/FileSaver.js@master",
     "ManifestWebDesign/angular-gridster": "github:ManifestWebDesign/angular-gridster@0.13.5",
