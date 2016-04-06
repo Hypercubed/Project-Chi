@@ -6,7 +6,6 @@ import chiasmComponent from 'components/examples/chiasm/chiasm';
 import bioJSComponent from 'components/examples/biojs/biojs';
 import barsComponent from 'components/examples/bars/bars';
 import trainsComponent from 'components/examples/trains/trains';
-import polymerComponent from 'components/examples/polymer/barChart-controller';
 import treeMapComponent from 'components/examples/treemap/treemap';
 
 export default angular
@@ -21,6 +20,5 @@ export default angular
       .when('/examples/hexbin', {
         templateUrl: 'components/examples/hexbin/hexbin.html'
       })
-      .when('/examples/trains', trainsComponent)
-      .when('/examples/polymer', polymerComponent);
+      .when('/examples/trains', trainsComponent);
   }]);
