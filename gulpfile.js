@@ -4,9 +4,10 @@ const browserSync = require('browser-sync');
 const SystemJSBuilder = require('systemjs-builder');
 const del = require('del');
 // var karma = require('karma').server;
-const args = require('yargs').argv;
 const runSequence = require('run-sequence');
 const $ = require('gulp-load-plugins')();
+
+const args = require('yargs').argv;
 
 const path = {
   base: 'app',
@@ -14,7 +15,7 @@ const path = {
   systemConfig: 'app/system.config.js',
   dist: 'dist',
   bundle: 'dist/components/bundle.js',
-  dataset: args.dataset || null,
+  dataset: args.dataset || './dataset/example',
   temp: '.tmp'
 };
 

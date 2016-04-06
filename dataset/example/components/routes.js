@@ -1,5 +1,8 @@
 import angular from 'angular';
 
+import examples from './examples/routes';
+import indexComponent from './index/index';
+
 import aboutHTML from 'components/about/about.md!md';
 import errorHTML from 'components/error/error.html!text';
 
@@ -14,11 +17,12 @@ function configRoutes ($routeProvider) {
   .when('/404', {
     template: errorHTML
   })
+  .when('/', indexComponent)
   .otherwise({
-    redirectTo: '/about'
+    redirectTo: '/'
   });
 }
 
 export default angular
-  .module('routes', [])
+  .module('routes', [examples.name])
   .config(['$routeProvider', configRoutes]);

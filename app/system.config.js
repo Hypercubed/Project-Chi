@@ -84,7 +84,7 @@ System.config({
     "json": "github:systemjs/plugin-json@0.1.0",
     "lasso": "github:skokenes/D3-Lasso-Plugin@master",
     "lodash": "npm:lodash@3.10.1",
-    "md": "github:guybedford/system-md@0.0.3",
+    "md": "github:guybedford/system-md@0.1.0",
     "mime-lookup": "npm:mime-lookup@0.0.2",
     "model": "npm:model-js@0.2.4",
     "model-js": "npm:model-js@0.2.4",
@@ -113,7 +113,7 @@ System.config({
     "github:angular/bower-angular-sanitize@1.5.3": {
       "angular": "github:angular/bower-angular@1.4.5"
     },
-    "github:guybedford/system-md@0.0.3": {
+    "github:guybedford/system-md@0.1.0": {
       "showdown": "github:showdownjs/showdown@1.3.0"
     },
     "github:jspm/nodelibs-assert@0.1.0": {

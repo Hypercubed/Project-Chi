@@ -10,4 +10,5 @@ dist
 jsconfig.json
 bower_components
 app/jspm_packages
-dataset
+dataset/*
+!dataset/example/
