@@ -18,13 +18,13 @@ System.config({
   buildHTML: true,
 
   packages: {
-    '': {
-      defaultJSExtensions: true,
-      meta: {
+    "": {
+      "defaultJSExtensions": true,
+      "meta": {
         "*.md": {
-          loader: "md",
-          mdOptions: {
-            tables: true
+          "loader": "md",
+          "mdOptions": {
+            "tables": true
           }
         }
       }
@@ -49,6 +49,7 @@ System.config({
     "angular-marked": "npm:angular-marked@1.0.0",
     "angular-mocks": "github:angular/bower-angular-mocks@1.4.1",
     "angular-route": "github:angular/bower-angular-route@1.4.0",
+    "angular-sanitize": "github:angular/bower-angular-sanitize@1.5.3",
     "angular-slider": "github:angular-slider/angularjs-slider@2.4.1",
     "angular-ui/bootstrap-bower": "github:angular-ui/bootstrap-bower@0.13.4",
     "assert": "npm:assert@1.3.0",
@@ -93,7 +94,7 @@ System.config({
     "text": "github:systemjs/plugin-text@0.0.2",
     "ui-codemirror": "github:angular-ui/ui-codemirror@0.3.0",
     "ui-grid": "github:angular-ui/bower-ui-grid@3.0.5",
-    "ui-select": "npm:ui-select@0.14.2",
+    "ui-select": "npm:ui-select@0.16.1",
     "venn": "npm:venn.js@0.2.4",
     "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.12",
     "webtreemap": "github:martine/webtreemap@gh-pages",
@@ -107,6 +108,9 @@ System.config({
       "angular": "github:angular/bower-angular@1.4.5"
     },
     "github:angular/bower-angular-route@1.4.0": {
+      "angular": "github:angular/bower-angular@1.4.5"
+    },
+    "github:angular/bower-angular-sanitize@1.5.3": {
       "angular": "github:angular/bower-angular@1.4.5"
     },
     "github:guybedford/system-md@0.0.3": {
@@ -339,7 +343,7 @@ System.config({
     "npm:svgsaver@0.6.1": {
       "computed-styles": "npm:computed-styles@1.1.2"
     },
-    "npm:ui-select@0.14.2": {
+    "npm:ui-select@0.16.1": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },

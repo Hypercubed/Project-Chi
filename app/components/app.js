@@ -4,6 +4,7 @@ import angular from 'angular';
 import 'angular-route';
 import 'angular-animate';
 import 'angular-cookies';
+import 'angular-sanitize';
 
 import 'angular-bootstrap';
 
@@ -30,9 +31,9 @@ import onResize from 'common/directives/resize';
 export default angular
   .module('projectX', [
     'ngRoute',
-    'ngAnimate',
+    // 'ngAnimate',
     'ngCookies',
-    // 'ngSanitize',
+    'ngSanitize',
     // 'ngTouch',
     'hc.downloader',
     'ui.bootstrap',

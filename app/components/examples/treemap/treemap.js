@@ -2,7 +2,7 @@
 import angular from 'angular';
 import _ from 'lodash';
 
-import { annotate } from 'angular-annotation-decorator/src/index';
+import {annotate} from 'angular-annotation-decorator/src/index';
 
 import screenfull from 'screenfull';
 
@@ -13,7 +13,7 @@ import './treemap.css!';
 @annotate('$scope', '$animate', 'dataPackage')
 class Ctrl {
   constructor ($scope, $animate, dataPackage) {
-    var map = document.getElementById('_examples_treemap__chart');
+    const map = document.getElementById('_examples_treemap__chart');
     // var isFullscreen = false;
 
     $scope.dataPackage = dataPackage;
@@ -24,7 +24,7 @@ class Ctrl {
         screenfull.request(map);
       };
 
-      document.addEventListener(screenfull.raw.fullscreenchange, function (event) {
+      document.addEventListener(screenfull.raw.fullscreenchange, () => {
         console.log('screenfull.raw.fullscreenerror');
         angular.element(map)[screenfull.isFullscreen ? 'addClass' : 'removeClass']('fullscreen');
         draw();
@@ -38,35 +38,35 @@ class Ctrl {
         map.removeChild(map.firstChild);
       }
 
-      var tree = dataPackage.resources[0].data;
+      const tree = dataPackage.resources[0].data;
+      const treeData = newNode('/');
 
-      var treeData = newNode('/');
       if (dataPackage.resources[0].table) {
-        tree.forEach(function (d) {
-          addNode(d.Source, +d.Size, d.Tag);
+        tree.forEach(d => {
+          addNode(d.Source, Number(d.Size), d.Tag);
         });
       } else {
-        for (var source in tree) {
+        for (const source in tree) {
           addNode(source, tree[source]);
         }
       }
 
-      addSizeToTitle(treeData, treeData.data['$area']);
+      addSizeToTitle(treeData, treeData.data.$area);
 
       function addNode (path, size, tag) {
-        var parts = path.split('/');
-        var node = treeData;
-        node.data['$area'] += size;
+        const parts = path.split('/');
+        let node = treeData;
+        node.data.$area += size;
 
-        parts.forEach(function (part) {
-          var child = _.find(node.children, function (child) { return child.name === part; });
+        parts.forEach(part => {
+          let child = _.find(node.children, child => child.name === part);
           if (!child) {
             child = newNode(part, tag);
             node.children.push(child);
           }
 
           node = child;
-          node.data['$area'] += size;
+          node.data.$area += size;
         });
       }
 
@@ -78,21 +78,23 @@ class Ctrl {
 function newNode (name, tag) {
   // var $symbol = (name.slice(-1) === '*') ? 'tag' : '';
   return {
-    name: name,
+    name,
     data: {
-      '$area': 0,
-      '$symbol': tag
+      $area: 0,
+      $symbol: tag
     },
     children: []
   };
 }
 
 function addSizeToTitle (node, total) {
-  var size = node.data['$area'];
-  var pct = 100.0 * size / total;
+  const size = node.data.$area;
+  const pct = 100.0 * size / total;
 
-  node.name += ' • ' + size.toLocaleString() + ' • ' + pct.toFixed(2) + '%';
-  node.children.forEach(function (x) { addSizeToTitle(x, total); });
+  node.name += ` • ${size.toLocaleString()} • ${pct.toFixed(2)}%`;
+  node.children.forEach(x => {
+    addSizeToTitle(x, total);
+  });
 }
 
 export default {
