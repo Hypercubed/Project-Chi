@@ -53,7 +53,7 @@ System.config({
     "angular-slider": "github:angular-slider/angularjs-slider@2.4.1",
     "angular-ui/bootstrap-bower": "github:angular-ui/bootstrap-bower@0.13.4",
     "assert": "npm:assert@1.3.0",
-    "babel": "npm:babel-core@5.8.34",
+    "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "babyparse": "npm:babyparse@0.4.3",
     "blobjs": "github:eligrey/Blob.js@master",
@@ -66,7 +66,7 @@ System.config({
     "clipboard": "npm:clipboard@1.5.9",
     "codemirror": "github:codemirror/codemirror@5.3.0",
     "core-decorators": "npm:core-decorators@0.9.2",
-    "core-js": "npm:core-js@1.2.3",
+    "core-js": "npm:core-js@1.2.6",
     "crossfilter": "github:square/crossfilter@1.3.12",
     "css": "github:systemjs/plugin-css@0.1.16",
     "d3": "npm:d3@3.5.13",
@@ -245,7 +245,7 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:core-js@1.2.3": {
+    "npm:core-js@1.2.6": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",

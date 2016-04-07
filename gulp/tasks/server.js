@@ -7,7 +7,7 @@ gulp.task('server', [], done => {
   browserSync({
     open: false,
     port: 9000,
-    online: false,
+    online: true,
     server: {
       baseDir: [paths.dataset, paths.base],  // dataset overrides base
       middleware: (req, res, next) => {

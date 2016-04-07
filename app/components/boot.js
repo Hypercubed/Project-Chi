@@ -1,3 +1,5 @@
+import 'core-js/shim';
+
 import 'jquery';
 import 'bootstrap/js/bootstrap';
 import 'bootstrap/css/bootstrap.css!';
