@@ -36,11 +36,11 @@ System.config({
     "ManifestWebDesign/angular-gridster": "github:ManifestWebDesign/angular-gridster@0.13.5",
     "URIjs": "npm:URIjs@1.15.1",
     "_F": "github:Hypercubed/_F@0.0.11",
-    "angular": "github:angular/bower-angular@1.4.5",
-    "angular-animate": "github:angular/bower-angular-animate@1.4.1",
+    "angular": "npm:angular@1.5.3",
+    "angular-animate": "npm:angular-animate@1.5.3",
     "angular-annotation-decorator": "github:bendrucker/angular-annotation-decorator@1.0.0",
     "angular-bootstrap": "github:angular-ui/bootstrap-bower@0.13.4",
-    "angular-cookies": "github:angular/bower-angular-cookies@1.4.1",
+    "angular-cookies": "npm:angular-cookies@1.5.3",
     "angular-downloadsvg-directive": "npm:angular-downloadsvg-directive@0.1.5",
     "angular-gridster": "github:ManifestWebDesign/angular-gridster@0.13.5",
     "angular-growl": "npm:angular-growl-v2@0.7.5",
@@ -48,9 +48,9 @@ System.config({
     "angular-loading-bar": "npm:angular-loading-bar@0.8.0",
     "angular-marked": "npm:angular-marked@1.0.0",
     "angular-mocks": "github:angular/bower-angular-mocks@1.4.1",
-    "angular-route": "github:angular/bower-angular-route@1.4.0",
-    "angular-sanitize": "github:angular/bower-angular-sanitize@1.5.3",
-    "angular-slider": "github:angular-slider/angularjs-slider@2.4.1",
+    "angular-route": "npm:angular-route@1.5.3",
+    "angular-sanitize": "npm:angular-sanitize@1.5.3",
+    "angular-slider": "github:angular-slider/angularjs-slider@2.11.0",
     "angular-ui/bootstrap-bower": "github:angular-ui/bootstrap-bower@0.13.4",
     "assert": "npm:assert@1.3.0",
     "babel": "npm:babel-core@5.8.38",
@@ -76,7 +76,7 @@ System.config({
     "d3plus-text": "npm:d3plus-text@0.3.0",
     "expression-bar": "npm:expression-bar@0.1.4",
     "fs": "github:jspm/nodelibs-fs@0.1.2",
-    "html": "github:Hypercubed/systemjs-plugin-html@0.0.7",
+    "html": "github:Hypercubed/systemjs-plugin-html@0.0.8",
     "inlet": "github:enjalot/Inlet@0.1.1",
     "intro": "npm:intro.js@2.0.0",
     "intro.js": "npm:intro.js@2.0.0",
@@ -96,21 +96,12 @@ System.config({
     "ui-grid": "github:angular-ui/bower-ui-grid@3.0.5",
     "ui-select": "npm:ui-select@0.16.1",
     "venn": "npm:venn.js@0.2.4",
-    "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.12",
+    "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.22",
     "webtreemap": "github:martine/webtreemap@gh-pages",
-    "github:angular/bower-angular-animate@1.4.1": {
-      "angular": "github:angular/bower-angular@1.4.5"
-    },
-    "github:angular/bower-angular-cookies@1.4.1": {
-      "angular": "github:angular/bower-angular@1.4.5"
+    "github:Hypercubed/systemjs-plugin-html@0.0.8": {
+      "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.22"
     },
     "github:angular/bower-angular-mocks@1.4.1": {
-      "angular": "github:angular/bower-angular@1.4.5"
-    },
-    "github:angular/bower-angular-route@1.4.0": {
-      "angular": "github:angular/bower-angular@1.4.5"
-    },
-    "github:angular/bower-angular-sanitize@1.5.3": {
       "angular": "github:angular/bower-angular@1.4.5"
     },
     "github:guybedford/system-md@0.1.0": {
@@ -166,6 +157,9 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:angular-animate@1.5.3": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
     "npm:angular-downloadsvg-directive@0.1.5": {
       "svgsaver": "npm:svgsaver@0.6.1"
     },
@@ -174,6 +168,9 @@ System.config({
     },
     "npm:angular-marked@1.0.0": {
       "marked": "npm:marked@0.3.5"
+    },
+    "npm:angular-sanitize@1.5.3": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
@@ -318,7 +315,7 @@ System.config({
     "npm:punycode@1.3.2": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:readable-stream@1.1.13": {
+    "npm:readable-stream@1.0.34": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "core-util-is": "npm:core-util-is@1.0.2",
       "events": "github:jspm/nodelibs-events@0.1.1",
@@ -335,7 +332,7 @@ System.config({
     "npm:stream-browserify@1.0.0": {
       "events": "github:jspm/nodelibs-events@0.1.1",
       "inherits": "npm:inherits@2.0.1",
-      "readable-stream": "npm:readable-stream@1.1.13"
+      "readable-stream": "npm:readable-stream@1.0.34"
     },
     "npm:string_decoder@0.10.31": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"

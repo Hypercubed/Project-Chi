@@ -1,11 +1,11 @@
 
-<div datapackage-edit model="dataPackage" on-change="change()"></div>
+<div datapackage-edit model="dataPackage"></div>
 
 <div id="charts" class="container">
-  <h2>{{dataPackage.title}}</h2>
-  <div marked="dataPackage.description"></div>
+  <h2>{{$ctrl.dataPackage.title}}</h2>
+  <div marked="$ctrl.dataPackage.description"></div>
 
-	<bar-chart3 ng-attr-bar-data="{{dataPackage.resources[0].data}}" width="800"></bar-chart3>
+	<bar-chart3 ng-attr-bar-data="{{$ctrl.dataPackage.resources[0].data}}" width="800"></bar-chart3>
 
-  <marked ng-include="dataPackage.readme"></marked>
+  <marked ng-include="$ctrl.dataPackage.readme"></marked>
 </div>

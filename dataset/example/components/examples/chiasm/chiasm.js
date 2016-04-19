@@ -1,5 +1,3 @@
-import { annotate } from 'angular-annotation-decorator/src/index';
-
 import Chiasm from 'chiasm';
 import ChiasmLayout from 'chiasm-layout';
 import ChiasmLinks from 'chiasm-links';
@@ -15,42 +13,44 @@ import _ from 'lodash';
 // because chiasm-layout is missing underscore/lodash import.  https://github.com/chiasm-project/chiasm-layout/issues/1
 window._ = _;
 
-@annotate('$scope', 'dataPackage')
-class Ctrl {
-  constructor ($scope, dataPackage) {
-    // var main = this;
-
-    $scope.dataPackage = dataPackage;
-    $scope.draw = draw;
-
-    var chiasm = new Chiasm();
+class controller {
+  constructor () {
+    const chiasm = this.chiasm = new Chiasm();
 
     chiasm.plugins.layout = ChiasmLayout;
     chiasm.plugins.links = ChiasmLinks;
     chiasm.plugins.barChart = barChart;
 
-    chiasm.getComponent('layout').then(function (comp) {
-      comp.when(['containerSVG'], function (svg) {
+    chiasm.getComponent('layout').then(comp => {
+      comp.when(['containerSVG'], svg => {
         svg.attr('title', 'Bar Chart');
       });
 
-      $scope.$on('$destroy', function () {
-        if (typeof comp.destroy === 'function') { comp.destroy(); }
-      });
+      this.layoutComponent = comp;
     });
+  }
 
-    function draw () {
-      chiasm.config = dataPackage.resources[1].data;
-      chiasm.data = dataPackage.resources[0].data;
+  draw () {
+    console.log('draw');
+    this.chiasm.config = this.dataPackage.resources[1].data;
+    this.chiasm.data = this.dataPackage.resources[0].data;
+  }
+
+  $onInit () {
+    this.draw();
+  }
+
+  $onDestroy () {
+    if (this.layoutComponent && typeof this.layoutComponent.destroy === 'function') {
+      this.layoutComponent.destroy();
     }
-
-    $scope.change = draw;
-    draw();
   }
 }
 
 export default {
-  controller: Ctrl,
+  controller,
   templateUrl: 'components/examples/chiasm/chiasm.html',
-  datapackageUrl: 'components/examples/chiasm/datapackage.json'
+  bindings: {
+    dataPackage: '<package'
+  }
 };

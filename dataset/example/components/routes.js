@@ -17,7 +17,10 @@ function configRoutes ($routeProvider) {
   .when('/404', {
     template: errorHTML
   })
-  .when('/', indexComponent)
+  .when('/', {
+    template: '<index data-package="$resolve.dataPackage"></index>',
+    datapackageUrl: 'components/index/datapackage.json'
+  })
   .otherwise({
     redirectTo: '/'
   });
@@ -25,4 +28,5 @@ function configRoutes ($routeProvider) {
 
 export default angular
   .module('routes', [examples.name])
+  .component('index', indexComponent)
   .config(['$routeProvider', configRoutes]);

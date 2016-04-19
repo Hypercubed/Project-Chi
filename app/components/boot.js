@@ -1,4 +1,4 @@
-import 'core-js/shim';
+// import 'core-js/shim';
 
 import 'jquery';
 import 'bootstrap/js/bootstrap';

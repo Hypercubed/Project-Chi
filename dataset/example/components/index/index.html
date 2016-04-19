@@ -2,7 +2,7 @@
 
 <div class="row _common_styles_index__index">
 
-  <div class="row" ng-repeat="(filename,file) in dataPackage.resources">
+  <div class="row" ng-repeat="(filename,file) in $ctrl.dataPackage.resources">
     <h2 class="title">{{file.data.title}}</h2>
     <p class="lead">{{file.data.description}}</p>
 

@@ -1,10 +1,10 @@
-<div datapackage-edit model="dataPackage" on-change="change()"></div>
+<div datapackage-edit model="$ctrl.dataPackage" on-change="$ctrl.draw()"></div>
 
 <div id="charts" class="container">
-  <h2>{{dataPackage.title}}</h2>
-  <div marked="dataPackage.description"></div>
+  <h2>{{$ctrl.dataPackage.title}}</h2>
+  <div marked="$ctrl.dataPackage.description"></div>
 
   <div id="_examples_bars__chart" class="_examples_bars__bars"></div>
 
-  <marked ng-include="dataPackage.readme"></marked>
+  <marked ng-include="$ctrl.dataPackage.readme"></marked>
 </div>

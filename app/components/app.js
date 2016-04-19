@@ -2,7 +2,7 @@ import './app.css!';
 
 import angular from 'angular';
 import 'angular-route';
-import 'angular-animate';
+// import 'angular-animate';
 import 'angular-cookies';
 import 'angular-sanitize';
 

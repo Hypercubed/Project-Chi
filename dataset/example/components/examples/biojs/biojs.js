@@ -1,32 +1,28 @@
-import { annotate } from 'angular-annotation-decorator/src/index';
-
 import biovisexpressionbar from 'expression-bar';
 
-@annotate('$scope', 'dataPackage')
-class BioJSCtrl {
-  constructor ($scope, dataPackage) {
-    $scope.dataPackage = dataPackage;
-    $scope.draw = draw;
+class controller {
+  constructor () {
+    this.bar = new biovisexpressionbar.ExpressionBar({
+      target: '_examples_biojs__viewer',
+      height: 300
+    });
+  }
 
-    var bar;
+  update () {
+    this.bar.data = this.dataPackage.resources[0].data;
+    this.bar.data_loaded();
+  }
 
-    function draw () {
-      bar = bar || new biovisexpressionbar.ExpressionBar({
-        target: '_examples_biojs__viewer',
-        height: 300
-      });
-
-      bar.data = dataPackage.resources[0].data;
-      bar.data_loaded();
-    }
-
-    $scope.change = draw;
-    draw();
+  $onInit () {
+    this.update();
   }
 }
 
 export default {
-  controller: BioJSCtrl,
+  controller,
   templateUrl: 'components/examples/biojs/biojs.html',
-  datapackageUrl: 'components/examples/biojs/datapackage.json'
+  datapackageUrl: 'components/examples/biojs/datapackage.json',
+  bindings: {
+    dataPackage: '<package'
+  }
 };

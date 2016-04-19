@@ -33,8 +33,9 @@ angular.module(moduleName, ['projectX.dataService', svgDropdownDownload, fileDro
       onChange: '&',
       protect: '=',
       readOnly: '=',
-      canDownloadSvg: '=',
-      canAdd: '='
+      canDownloadSvg: '=?',
+      canAdd: '=?',
+      canOpen: '=?'
     },
     transclude: true,
     template: editorTemplate,
@@ -54,7 +55,7 @@ angular.module(moduleName, ['projectX.dataService', svgDropdownDownload, fileDro
       scope.play = play;
       scope.types = ['text/plain', 'text/csv', 'text/tab-separated-values', 'application/json'];
 
-      scope.canOpen = hasPackage && !scope.protect && !scope.readOnly;
+      scope.canOpen = typeof scope.canOpen === 'boolean' ? scope.canOpen : hasPackage && !scope.protect && !scope.readOnly;
       scope.canDownload = hasPackage && scope.dataPackage.resources.length > 0;
       scope.canDownloadSvg = typeof scope.canDownloadSvg === 'boolean' ? scope.canDownloadSvg : true;
       scope.canAdd = typeof scope.canAdd === 'boolean' ? scope.canAdd : false;

@@ -1,39 +1,37 @@
 /* jshint -W003 */
 
-import {annotate} from 'angular-annotation-decorator/src/index';
-
 import d3 from 'd3';
 import BarChart from './bars-chart';
 
-@annotate('$scope', 'dataPackage')
 class Ctrl {
-  constructor ($scope, dataPackage) {
-    const bars = new BarChart();
+  constructor () {
+    this.chart = new BarChart();
+  }
 
-    $scope.dataPackage = dataPackage;
-    $scope.change = draw;
+  draw () {
+    const data = this.dataPackage.resources
+      .filter(d => Boolean(d.data))
+      .map(d => d.data);
 
-    draw();
+    const divs = d3.select('#_examples_bars__chart')
+      .selectAll('div').data(data);
 
-    function draw () {
-      const data = dataPackage.resources
-        .filter(d => Boolean(d.data))
-        .map(d => d.data);
+    divs.enter().append('div');
 
-      const divs = d3.select('#_examples_bars__chart')
-        .selectAll('div').data(data);
+    divs.exit().remove();
 
-      divs.enter().append('div');
+    divs.call(this.chart);
+  }
 
-      divs.exit().remove();
-
-      divs.call(bars);
-    }
+  $onInit () {
+    this.draw();
   }
 }
 
 export default {
   controller: Ctrl,
-  datapackageUrl: 'components/examples/bars/datapackage.json',
-  templateUrl: 'components/examples/bars/bars.html'
+  templateUrl: 'components/examples/bars/bars.html',
+  bindings: {
+    dataPackage: '<package'
+  }
 };

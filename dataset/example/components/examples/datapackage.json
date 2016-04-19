@@ -18,6 +18,14 @@
     {
       "path": "chiasm/datapackage.json",
       "link": "#/examples/chiasm/"
+    },
+    {
+      "path": "polymer/datapackage.json",
+      "link": "#/examples/polymer/"
+    },
+    {
+      "path": "trains/datapackage.json",
+      "link": "#/examples/trains/"
     }
   ]
 }
