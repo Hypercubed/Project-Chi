@@ -1,11 +1,15 @@
 'use strict';
 
-// import path from 'path';
+import fs from 'fs';
+import path from 'path';
+import gutil from 'gulp-util';
+
 import {argv} from 'yargs';
 
-// const root = path.dirname(__dirname);//needed so that imports could co-exist with requires (on some edge cases)
+const root = path.dirname(__dirname);  // needed so that imports could co-exist with requires (on some edge cases)
 
 const dataSetPath = argv.dataset || 'dataset/example';
+const overidesFile = path.join(root, `${argv.dataset}.js`);
 
 const paths = {
   base: 'app',
@@ -15,8 +19,10 @@ const paths = {
   bundle: 'dist/components/bundle.js',
   dataset: dataSetPath,
   temp: '.tmp',
+  devServerDir: [dataSetPath, 'app'],
   resources: [
     'app/*.{js,json,ico,txt,md}',
+    'app/.nojekyll',
     'app/{jspm_packages,lib}/*.{js,map}',
     'app/{jspm_packages,lib}/**/*.{svg,png,eot,ttf,wot,woff,woff2,gif,html}',
     'app/{components,common,assets}/**/*.{png,svg,txt,md}',
@@ -42,7 +48,16 @@ const paths = {
     `app/*.{css,css.map}`,
     `app/{components,common}/**/*.{css,css.map}`,
     `${dataSetPath}/{components,common}/**/*.{css,css.map}`
-  ]
+  ],
+  ghPages: {
+    branch: 'gh-pages'
+  }
 };
+
+if (fs.existsSync(overidesFile)) {
+  gutil.log('Found additional gulp config at', gutil.colors.magenta(overidesFile));
+  const overides = require(overidesFile);
+  Object.assign(paths, overides);
+}
 
 export default paths;

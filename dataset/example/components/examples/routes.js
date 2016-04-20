@@ -9,6 +9,8 @@ import trainsComponent from 'components/examples/trains/trains';
 import treeMapComponent from 'components/examples/treemap/treemap';
 import polymerComponent from 'components/examples/polymer/barChart-controller';
 
+import 'd3-plugins/hexbin/hexbin';  // needed for /examples/hexbin
+
 export default angular
   .module('examples', ['projectX.dataService'])
   .component('bars', barsComponent)

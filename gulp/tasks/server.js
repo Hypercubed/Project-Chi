@@ -1,7 +1,7 @@
 import gulp from 'gulp';
 import browserSync from 'browser-sync';
 
-import paths from '../paths';
+import paths from '../config';
 
 gulp.task('server', [], done => {
   browserSync({
@@ -9,7 +9,7 @@ gulp.task('server', [], done => {
     port: 9000,
     online: true,
     server: {
-      baseDir: [paths.dataset, paths.base],  // dataset overrides base
+      baseDir: paths.devServerDir,
       middleware: (req, res, next) => {
         res.setHeader('Access-Control-Allow-Origin', '*');
         next();
@@ -18,7 +18,7 @@ gulp.task('server', [], done => {
   }, done);
 });
 
-gulp.task('server:dist', [], done => {
+gulp.task('server:dist', ['build'], done => {
   browserSync({
     open: false,
     port: 9000,

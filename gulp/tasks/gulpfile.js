@@ -2,12 +2,13 @@ import gulp from 'gulp';
 
 import SystemJSBuilder from 'systemjs-builder';
 import del from 'del';
+// import vfs from 'vinyl-fs';
 // var karma = require('karma').server;
 import runSequence from 'run-sequence';
 import gulpLoad from 'gulp-load-plugins';
 // import {argv as args} from 'yargs';
 
-import paths from '../paths';
+import paths from '../config';
 
 const $ = gulpLoad();
 
@@ -15,7 +16,7 @@ gulp.task('help', $.taskListing);
 
 // copy resources to distribution and temp folder
 gulp.task('copy', [], () => {
-  return gulp.src(paths.resources)
+  return gulp.src(paths.resources, {followSymlinks: true})
     .pipe($.cached('copy'))
     .pipe($.plumber())
     .pipe(gulp.dest(paths.temp))

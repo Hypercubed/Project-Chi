@@ -11,7 +11,6 @@
       }
     </style>
 	  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.12/webcomponents-lite.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="components/bundle.css">
     <link rel="import" href="components/bundle.html">
@@ -56,13 +55,14 @@
     <script src="system.config.js"></script>
     <script src="components/bundle.js"></script>
     <script>
-      if (typeof WebComponents === 'undefined') {
-        System.import('components/boot');
-      } else {
-        window.addEventListener('WebComponentsReady', function(e) {
+      // first try to get webcomponentsjs, if not boot anyway
+      System.import('webcomponentsjs/webcomponents-lite.js').then(function () {
+        window.addEventListener('WebComponentsReady', function (e) {
           System.import('components/boot');
         });
-      }
+      }).catch(function () {
+        System.import('components/boot');
+      });
     </script>
 
 </body>
