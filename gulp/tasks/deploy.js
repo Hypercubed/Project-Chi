@@ -3,16 +3,10 @@ import gutil from 'gulp-util';
 import ghPages from 'gulp-gh-pages';
 import vfs from 'vinyl-fs';
 
-import paths from '../config';
-
-// copy data before deploy
-gulp.task('copy:data', [], () => {
-  return gulp.src(`${paths.dataset}/data/**/*`, {base: paths.dataset})
-    .pipe(gulp.dest(paths.dist));
-});
+import config from '../config';
 
 gulp.task('deploy', ['build'], () => {
-  gutil.log('deploying to', gutil.colors.magenta(paths.ghPages.branch || 'gh-pages'), 'in', gutil.colors.magenta(paths.ghPages.remoteUrl || 'default'));
-  return vfs.src([`${paths.dist}/**/*`], {followSymlinks: true, dot: true})
-    .pipe(ghPages(paths.ghPages));
+  gutil.log('deploying to', gutil.colors.magenta(config.deploy.ghPages.branch || 'gh-pages'), 'in', gutil.colors.magenta(config.deploy.ghPages.remoteUrl || 'default'));
+  return vfs.src([`${config.paths.dist}/**/*`], {followSymlinks: true, dot: true})
+    .pipe(ghPages(config.deploy.ghPages));
 });

@@ -8,7 +8,9 @@ import runSequence from 'run-sequence';
 import gulpLoad from 'gulp-load-plugins';
 // import {argv as args} from 'yargs';
 
-import paths from '../config';
+import config from '../config';
+
+const paths = config.paths;
 
 const $ = gulpLoad();
 
@@ -79,13 +81,13 @@ gulp.task('css', [], () => {
 
 // symlink jspm_packages into temp folder to avoid copy
 gulp.task('symlink', () => {
-  return gulp.src([`${paths.base}/jspm_packages/`])
+  return gulp.src(paths.jspmLink)
     .pipe($.symlink.absolute([`${paths.temp}/jspm_packages`], {force: true}));
 });
 
 // symlink data into temp folder to avoid copy
 gulp.task('symlink:data', () => {
-  return gulp.src([`${paths.dataset}/data/`])
+  return gulp.src(paths.dataLink)
     .pipe($.symlink.absolute([`${paths.dist}/data`], {force: true}));
 });
 

@@ -7,14 +7,13 @@ import 'codemirror/lib/codemirror';
 import 'codemirror/lib/codemirror.css!';
 import 'components/editor/editor.css!';
 
-import editorTemplate from './editor.html!text';
-// import downloadListTemplate from './svg-download-list-template.html!text';
-
-import mime from 'common/services/datapackage/mime';
-
 import svgDropdownDownload from 'common/directives/svg-download-dropdown';
 import fileDrop from 'common/directives/file-drop';
 import fileDownload from 'common/directives/fileDownload';
+import mime from 'common/services/datapackage/mime';
+
+import editorTemplate from './editor.html!text';
+// import downloadListTemplate from './svg-download-list-template.html!text';
 
 // canExpand
 // canEdit

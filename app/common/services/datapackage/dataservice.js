@@ -1,10 +1,11 @@
+import process from 'process';
+
 import angular from 'angular';
 import {annotate} from 'angular-annotation-decorator/src/index';
 
 import Papa from 'babyparse';
 import uRIjs from 'URIjs';
-
-import process from 'process';
+import {setLineEnding} from 'crlf-helper';
 
 import mime from './mime';
 
@@ -16,7 +17,7 @@ function papaTranslate (load, spec) {
   load.table = true;
 }
 
-const dos2unix = content => content.replace(/\r/g, '\n');
+const dos2unix = content => setLineEnding(content, 'LF');
 
 const processors = {
   'text/tab-separated-values': {

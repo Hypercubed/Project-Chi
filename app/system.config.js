@@ -67,6 +67,7 @@ System.config({
     "codemirror": "github:codemirror/codemirror@5.3.0",
     "core-decorators": "npm:core-decorators@0.9.2",
     "core-js": "npm:core-js@1.2.6",
+    "crlf-helper": "npm:crlf-helper@0.1.0",
     "crossfilter": "github:square/crossfilter@1.3.12",
     "css": "github:systemjs/plugin-css@0.1.16",
     "d3": "npm:d3@3.5.13",

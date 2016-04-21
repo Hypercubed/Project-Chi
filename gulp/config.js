@@ -2,62 +2,92 @@
 
 import fs from 'fs';
 import path from 'path';
-import gutil from 'gulp-util';
 
+import extend from 'deep-extend';
+import gutil from 'gulp-util';
 import {argv} from 'yargs';
 
 const root = path.dirname(__dirname);  // needed so that imports could co-exist with requires (on some edge cases)
 
 const dataSetPath = argv.dataset || 'dataset/example';
-const overidesFile = path.join(root, `${argv.dataset}.js`);
+const overidesFile = path.join(root, `${dataSetPath}/gulp/config.js`);
 
-const paths = {
-  base: 'app',
-  build: 'components/boot',
-  systemConfig: 'app/system.config.js',
-  dist: 'dist',
-  bundle: 'dist/components/bundle.js',
-  dataset: dataSetPath,
-  temp: '.tmp',
-  devServerDir: [dataSetPath, 'app'],
-  resources: [
-    'app/*.{js,json,ico,txt,md}',
-    'app/.nojekyll',
-    'app/{jspm_packages,lib}/*.{js,map}',
-    'app/{jspm_packages,lib}/**/*.{svg,png,eot,ttf,wot,woff,woff2,gif,html}',
-    'app/{components,common,assets}/**/*.{png,svg,txt,md}',
-    `${dataSetPath}/*.{json,ico,txt,md}`,
-    `${dataSetPath}/{components,common,assets}/**/*.{png,svg,md,json}`
-  ],
-  data: [
-    `app/{components,common,assets}/**/*.{json,csv,tsv,txt}`,
-    `${dataSetPath}/{components,common,assets}/**/*.{json,csv,tsv,txt}`
-  ],
-  templates: [
-    `app/*.{html,md}`,
-    `app/{components,common}/**/*.{html,md}`,
-    `${dataSetPath}/*.html`,
-    `${dataSetPath}/{components,common}/**/*.html`
-  ],
-  scripts: [
-    `app/*.js`,
-    `app/{components,common}/**/*.js`,
-    `${dataSetPath}/{components,common}/**/*.js`
-  ],
-  styles: [
-    `app/*.{css,css.map}`,
-    `app/{components,common}/**/*.{css,css.map}`,
-    `${dataSetPath}/{components,common}/**/*.{css,css.map}`
-  ],
-  ghPages: {
-    branch: 'gh-pages'
+const config = {
+  paths: {
+    base: 'app',
+    dist: 'dist',
+    temp: '.tmp',
+    build: 'components/boot',
+    systemConfig: 'app/system.config.js',
+    bundle: 'dist/components/bundle.js',
+    dataset: dataSetPath,
+    dataLink: `${dataSetPath}/app/data`,
+    jspmLink: 'app/jspm_packages/',
+    resources: [
+      'app/*.{js,json,ico,txt,md}',
+      'app/.nojekyll',
+      'app/{jspm_packages,lib}/*.{js,map}',
+      'app/{jspm_packages,lib}/**/*.{svg,png,eot,ttf,wot,woff,woff2,gif,html}',
+      'app/{components,common,assets}/**/*.{png,svg,txt,md}',
+      `${dataSetPath}/app/*.{json,ico,txt,md}`,
+      `${dataSetPath}/app/{components,common,assets}/**/*.{png,svg,md,json}`
+    ],
+    data: [
+      `app/{components,common,assets}/**/*.{json,csv,tsv,txt}`,
+      `${dataSetPath}/app/{components,common,assets}/**/*.{json,csv,tsv,txt}`
+    ],
+    templates: [
+      `app/*.{html,md}`,
+      `app/{components,common}/**/*.{html,md}`,
+      `${dataSetPath}/app/*.html`,
+      `${dataSetPath}/app/{components,common}/**/*.html`
+    ],
+    scripts: [
+      `app/*.js`,
+      `app/{components,common}/**/*.js`,
+      `${dataSetPath}/app/{components,common}/**/*.js`
+    ],
+    styles: [
+      `app/*.{css,css.map}`,
+      `app/{components,common}/**/*.{css,css.map}`,
+      `${dataSetPath}/app/{components,common}/**/*.{css,css.map}`
+    ]
+  },
+  devServer: {
+    open: false,
+    port: 9000,
+    online: true,
+    server: {
+      baseDir: [`${dataSetPath}/app`, 'app'],
+      middleware: (req, res, next) => {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        next();
+      }
+    }
+  },
+  distServer: {
+    open: false,
+    port: 9000,
+    online: false,
+    server: {
+      baseDir: 'dist',
+      middleware: (req, res, next) => {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        next();
+      }
+    }
+  },
+  deploy: {
+    ghPages: {
+      branch: 'gh-pages'
+    }
   }
 };
 
 if (fs.existsSync(overidesFile)) {
   gutil.log('Found additional gulp config at', gutil.colors.magenta(overidesFile));
   const overides = require(overidesFile);
-  Object.assign(paths, overides);
+  extend(config, overides);
 }
 
-export default paths;
+export default config;

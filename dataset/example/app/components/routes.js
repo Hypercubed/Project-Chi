@@ -1,10 +1,10 @@
 import angular from 'angular';
 
-import examples from './examples/routes';
-import indexComponent from './index/index';
-
 import aboutHTML from 'components/about/about.md!md';
 import errorHTML from 'components/error/error.html!text';
+
+import examples from './examples/routes';
+import indexComponent from './index/index';
 
 function configRoutes ($routeProvider) {
   $routeProvider
