@@ -3,6 +3,7 @@ import angular from 'angular';
 import aboutHTML from 'components/about/about.md!md';
 import errorHTML from 'components/error/error.html!text';
 
+configRoutes.$inject = ['$routeProvider'];
 function configRoutes ($routeProvider) {
   $routeProvider
   .when('/about', {
@@ -21,4 +22,4 @@ function configRoutes ($routeProvider) {
 
 export default angular
   .module('routes', [])
-  .config(['$routeProvider', configRoutes]);
+  .config(configRoutes);

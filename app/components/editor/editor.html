@@ -1,4 +1,4 @@
-<div ng-if="protect && canOpen">
+<div ng-if="$ctrl.enableProtected && $ctrl.panel.open">
   <alert close="closeAlert = true" type="warning" ng-hide="closeAlert">
     This is your chance to play with the featured visualization.  No changes you make will be saved.
   </alert>
@@ -6,43 +6,39 @@
 
 <section class="datapckage-editor-container hidden-print" style="position: relative">
 
-  <tabset id="dataPackageEditor" ng-show="panel.open" ng-if="!readOnly">
-    <tab ng-repeat="tab in dataPackage.resources track by $index" select="ui.refresh()" active="tab.active">
-      <tab-heading file-dropzone="[text/plain,text/csv,text/tab-separated-values]" data-max-file-size="30" dropped="droppedOver($index, file)">
-        {{ dataPackage.resources.length < 7 ? tab.name : $index }}
-        <a class="close" ng-click="_delete($index)">&nbsp;&times;</a>
+  <tabset id="dataPackageEditor" ng-show="$ctrl.panel.open" xxng-if="$ctrl.enableOpen || $ctrl.enableProtected">
+    <tab ng-repeat="tab in $ctrl.data.resources track by $index" select="$ctrl.ui.refresh()" active="tab.active">
+      <tab-heading file-dropzone="{{$ctrl.types}}" data-max-file-size="30" dropped="$ctrl.droppedOver($index, file)">
+        {{ $ctrl.data.resources.length < 7 ? tab.name : $index }}
+        <a class="close" ng-click="$ctrl.remove($index)">&nbsp;&times;</a>
       </tab-heading>
-      <div file-dropzone="[text/plain,text/csv,text/tab-separated-values]" data-max-file-size="30" dropped="droppedOver($index, file)">
+      <div file-dropzone="{{$ctrl.types}}" data-max-file-size="30" dropped="$ctrl.droppedOver($index, file)">
         <form class="meta form-inline">
           <div class="form-group">
             <label class="sr-only">Filename</label>
             <div class="input-group">
-              <input type="text" id="label" ng-model="tab.path" placeholder="filename" class="form-control input-sm" ng-change="rename(tab)">
+              <input type="text" id="label" ng-model="tab.path" placeholder="filename" class="form-control input-sm" ng-change="$ctrl.rename(tab)">
             </div>
           </div>
           <div class="form-group">
             <label class="sr-only">Media Type</label>
-            <select ng-options="value as value for value in types" ng-model="tab.mediatype"  class="form-control input-sm" ng-change="change(tab)"></select>
+            <select ng-options="value as value for value in $ctrl.types" ng-model="tab.mediatype"  class="form-control input-sm" ng-change="$ctrl.change(tab)"></select>
           </div>
-          <!-- button ng-click="view = 'data'">Content/Data</button -->
         </form>
 
         <div>
-          <!-- div ng-if="view === 'data'">
-            {{tab.data}}
-          </div -->
           <textarea class="editor" ng-model="tab.content" ui-codemirror ui-codemirror-opts="{
               lineNumbers: true,
-              lineWrapping : false,
+              lineWrapping: false,
               mode: file.type,
               allowDropFileTypes: false,
-              onLoad : ui.codemirrorLoaded
-            }" ng-change="change(tab)" ui-refresh="ui.count"></textarea>
+              onLoad: $ctrl.ui.codemirrorLoaded
+            }" ng-change="$ctrl.change(tab)" ui-refresh="$ctrl.ui.count"></textarea>
         </div>
       </div>
     </tab>
-    <tab ng-click="newFile('new.txt')" active="true === false" ng-if="canAdd">
-      <tab-heading file-dropzone="[text/plain,text/csv,text/tab-separated-values]" data-max-file-size="3" dropped="dropped(file)">
+    <tab ng-click="$ctrl.newFile('new.txt')" active="true === false" ng-if="$ctrl.enableAdd">
+      <tab-heading file-dropzone="{{$ctrl.types}}" data-max-file-size="3" dropped="$ctrl.dropped(file)">
         <i class="glyphicon glyphicon-plus-sign"></i>
       </tab-heading>
     </tab>
@@ -51,7 +47,7 @@
   <div class="btn-toolbar" role="toolbar" aria-label="toolbar">
 
     <div id="data-download" class="btn-group" dropdown>
-      <button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle aria-expanded="false" ng-if="canDownload">
+      <button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle aria-expanded="false" ng-if="$ctrl.enableFileDownload">
         <div class="pull-right">
           <i class="glyphicon glyphicon-download"></i>
           Download Data <span class="caret"></span>
@@ -59,13 +55,13 @@
       </button>
       <ul class="dropdown-menu" role="menu">
         <li class="dropdown-header">Data Resources</li>
-        <li ng-repeat="file in dataPackage.resources">
+        <li ng-repeat="file in $ctrl.data.resources">
           <a class="btn btn-link" file-download="file">{{file.name}}</a>
         </li>
       </ul>
     </div>
 
-    <div id="svg-download" class="btn-group hidden-print" dropdown svg-download-dropdown="svgList in #charts" ng-if="canDownloadSvg">
+    <div id="svg-download" class="btn-group hidden-print" dropdown svg-download-dropdown="svgList in #charts" ng-if="$ctrl.enableSvgDownload || $ctrl.enablePngDownload">
       <button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle aria-expanded="false">
         <div class="pull-right">
           <i class="glyphicon glyphicon-download"></i>
@@ -73,27 +69,26 @@
         </div>
       </button>
       <ul class="dropdown-menu" role="menu">
-        <li ng-repeat-start="svg in svgList">
+        <li ng-repeat-start="svg in svgList" ng-show="$ctrl.enableSvgDownload">
           <a href svg-download="#{{svg.id}}" title="{{svg.title}}">{{svg.title}} as SVG</a>
         </li>
-        <li ng-repeat-end ng-if="canDownloadPng">
+        <li ng-repeat-end ng-show="$ctrl.canDownloadPng">
           <a href svg-download="#{{svg.id}}" title="{{svg.title}}" type="png">{{svg.title}} as PNG</a>
         </li>
       </ul>
     </div>
 
-    <div class="btn-group pull-right panel-toggle"
-      file-dropzone="[text/plain,text/csv,text/tab-separated-values]" data-max-file-size="30" dropped="droppedOver(dataPackage.resources.length - 1, file)">
+    <div class="btn-group pull-right panel-toggle">
 
-      <button type="button" class="btn btn-primary btn-sm" ng-click="play()" ng-if="readOnly && !canOpen && protect">
+      <button type="button" class="btn btn-primary btn-sm" ng-click="$ctrl.play()" ng-if="$ctrl.enableProtected" >
         Try your own data
       </button>
 
-      <button id="data-drop" type="button" class="btn btn-primary btn-sm" ng-if="!readOnly && !canOpen && protect">
+      <button id="data-drop" type="button" class="btn btn-primary btn-sm" ng-if="$ctrl.enableDrop" file-dropzone="{{$ctrl.types}}" data-max-file-size="30" dropped="$ctrl.droppedOver($ctrl.data.resources.length - 1, file)">
         Drop your own data here
       </button>
 
-      <button type="button" class="btn btn-link btn-sm" ng-click="tooglePanel()" tooltip="Show/hide resources panel" ng-if="canOpen">
+      <button type="button" class="btn btn-link btn-sm" tooltip="Show/hide resources panel" ng-if="$ctrl.enableOpen" ng-click="$ctrl.tooglePanel()">
         <i class="glyphicon glyphicon-cog" aria-hidden="true"></i>
       </button>
 

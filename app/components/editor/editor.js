@@ -12,336 +12,177 @@ import fileDrop from 'common/directives/file-drop';
 import fileDownload from 'common/directives/fileDownload';
 import mime from 'common/services/datapackage/mime';
 
-import editorTemplate from './editor.html!text';
-// import downloadListTemplate from './svg-download-list-template.html!text';
-
-// canExpand
-// canEdit
-// maxResources
-// table view
+import template from './editor.html!text';
 
 const moduleName = 'projectX.dataEditor';
 
 export default moduleName;
 
-angular.module(moduleName, ['projectX.dataService', svgDropdownDownload, fileDrop, fileDownload])
-.directive('datapackageEdit', ['$rootScope', '$window', '$cookies', '$timeout', 'dataService', function ($rootScope, $window, $cookies, $timeout, dataService) {
-  return {
-    scope: {
-      dataPackage: '=model',
-      onChange: '&',
-      protect: '=',
-      readOnly: '=',
-      canDownloadSvg: '=?',
-      canAdd: '=?',
-      canOpen: '=?'
+angular
+.module(moduleName, ['projectX.dataService', svgDropdownDownload, fileDrop, fileDownload])
+.directive('datapackageEdit', () => ({  // old Attribute syntax
+  restrict: 'A',
+  scope: {},
+  bindToController: {
+    options: '=datapackageEdit'
+  },
+  controller,
+  controllerAs: '$ctrl',
+  transclude: true,
+  template
+}))
+.component('packageEditor', {  // new Element syntax
+  template,
+  controller,
+  transclude: true,
+  bindings: {
+    options: '='
+  }
+});
+
+controller.$inject = ['$cookies', '$timeout', 'dataService'];
+function controller ($cookies, $timeout, dataService) {
+  const hasPackage = Boolean(this.options) && Boolean(this.options.data);
+
+  const isSafari = /Version\/[\d\.]+.*Safari/.test(navigator.userAgent);
+  const isIE = typeof window.navigator.msSaveBlob !== 'undefined';
+
+  const $ctrl = Object.assign(this, {
+    // "internal"
+    panel: {
+      open: false
     },
-    transclude: true,
-    template: editorTemplate,
-    link: function link (scope) {
-      const hasPackage = Boolean(scope.dataPackage);
-
-      scope.panel = {};
-      scope.panel.open = false;
-
-      scope.change = change;
-      scope._delete = _delete;
-      scope.rename = rename;
-      scope.newFile = newFile;
-      scope.dropped = dropped;
-      // scope.download = download;
-      scope.tooglePanel = tooglePanel;
-      scope.play = play;
-      scope.types = ['text/plain', 'text/csv', 'text/tab-separated-values', 'application/json'];
-
-      scope.canOpen = typeof scope.canOpen === 'boolean' ? scope.canOpen : hasPackage && !scope.protect && !scope.readOnly;
-      scope.canDownload = hasPackage && scope.dataPackage.resources.length > 0;
-      scope.canDownloadSvg = typeof scope.canDownloadSvg === 'boolean' ? scope.canDownloadSvg : true;
-      scope.canAdd = typeof scope.canAdd === 'boolean' ? scope.canAdd : false;
-
-      scope.droppedOver = function ($index, file) {
-        const resource = {
-          path: file.name || 'file',
-          name: file.name || 'file',
-          mediatype: mime.lookup(file.name),
-          content: file.content || '',
-          active: true
-        };
-
-        scope.dataPackage.resources.splice($index, 1, resource);
-
-        change(resource);
-        scope.ui.refresh();
-      };
-
-      if (scope.canDownload) {
-        scope.dataPackage.resources[0].active = true;
+    change,
+    remove,
+    rename,
+    newFile,
+    dropped,
+    tooglePanel,
+    play,
+    droppedOver,
+    ui: {
+      refresh: () => {
+        $ctrl.ui.count++;
+      },
+      count: 0,
+      codemirrorLoaded: cm => {
+        $timeout(() => {
+          cm.refresh();
+          $ctrl.ui.refresh();
+        }, 100);
       }
-
-      const isSafari = /Version\/[\d\.]+.*Safari/.test(navigator.userAgent);
-      const isIE = typeof window.navigator.msSaveBlob !== 'undefined';
-      scope.canDownloadPng = !isSafari && !isIE;
-
-      scope.ui = {
-        refresh: () => {
-          scope.ui.count++;
-        },
-        count: 0,
-        codemirrorLoaded: cm => {
-          $timeout(() => {
-            cm.refresh();
-            scope.ui.refresh();
-          }, 100);
-        }
-      };
-
-      // $timeout(function() {
-      //  scope.panel.open = !scope.readOnly && !scope.protect && hasPackage; // ? $cookies.get('dataEditor-open') !== 'false' : false;
-      //  scope.ui.refresh();
-      // });
-
-      function refresh (file) {
-        dataService.processResource(file);
-      }
-
-      function play () {
-        if (scope.dataPackage && scope.dataPackage.readme) {
-          scope.dataPackage.readme = null;
-        }
-        scope.canOpen = true;
-        tooglePanel();
-      }
-
-      function change (file) {
-        refresh(file);
-        scope.onChange();
-      }
-
-      function _delete (i) {
-        // console.log(i);
-        if (i > -1) {
-          scope.dataPackage.resources.splice(i, 1);
-          scope.onChange();
-          // console.log('delete',scope.dataPackage.resources);
-        }
-      }
-
-      function rename (file) {
-        if (!file.path) {
-          return;
-        }
-        file.name = file.path;
-        file.mediatype = mime.lookup(file.path);
-        change(file);
-      }
-
-      function newFile (filename) {
-        filename = filename || 'new.txt';
-
-        const resource = {
-          name: filename,
-          path: filename,
-          mediatype: mime.lookup(filename),
-          content: ''
-        };
-
-        resource.active = true;
-
-        const i = scope.dataPackage.resources.push(resource);
-        scope.dataPackage.resources[i - 1].active = true;
-
-        change(resource);
-
-        $timeout(scope.ui.Refresh, 100);
-
-        return false;
-      }
-
-      function dropped (file) {
-        const resource = {
-          path: file.name,
-          mediatype: mime.lookup(file.name),
-          content: file.content || ''
-        };
-
-        resource.active = true;
-
-        scope.dataPackage.resources.push(resource);
-        change(resource);
-
-        scope.ui.refresh();
-      }
-
-      /* function download(file) {
-        var type = (file.type || 'text/plain') + ';charset=utf-8';
-        var filename = file.name || 'download.txt';
-
-        var blob = new Blob([file.content], {type: type});
-        saveAs(blob, filename);
-      }; */
-
-      function tooglePanel () {
-        scope.panel.open = !scope.panel.open;
-        scope.ui.refresh();
-
-        $timeout(scope.ui.Refresh, 100);
-
-        $cookies.put('dataEditor-open', scope.panel.open);
-      }
-    }
-  };
-}]);
-/* .directive('fileDownload', () => {
-  return {
-    scope: {
-      file: '=fileDownload'
     },
-    link: (scope, element) => {
-      function download (file) {
-        const mime = file.type || 'text/plain';
-        const type = `${mime};charset=utf-8`;
-        const filename = file.name || 'download.txt';
 
-        const blob = new Blob([file.content], {type});
-        saveAs(blob, filename);  // shim this
-      }
+    // user config events
+    onChange: () => {},
 
-      element.bind('click', () => {
-        download(scope.file);
-      });
+    // user config defaults
+    enableOpen: hasPackage,
+    enableFileDownload: hasPackage && this.options.data.resources.length > 0,
+    enableSvgDownload: true,
+    enablePngDownload: !isSafari && !isIE,
+    enableAdd: true,
+    enableDrop: false,
+    enableProtected: false,
+    types: ['text/plain', 'text/csv', 'text/tab-separated-values', 'application/json']
+
+    // svgsFrom: '#chart' // TODO
+  }, this.options);
+
+  if ($ctrl.enableFileDownload) {
+    $ctrl.data.resources[0].active = true;
+  }
+
+  function droppedOver ($index, file) {
+    const resource = {
+      path: file.name || 'file',
+      name: file.name || 'file',
+      mediatype: mime.lookup(file.name),
+      content: file.content || '',
+      active: true
+    };
+
+    $ctrl.data.resources.splice($index, 1, resource);
+
+    change(resource);
+    $ctrl.ui.refresh();
+  }
+
+  function refresh (file) {
+    dataService.processResource(file);
+  }
+
+  function play () {
+    if ($ctrl.data && $ctrl.data.readme) {
+      $ctrl.data.readme = null;
     }
-  };
-}) */
-/* .directive('svgDownloadDropdown', function() {
-  return {
-    transclude: true,
-    template: downloadListTemplate,
-    scope: {
-      resources: '=resources',
-    },
-    link: function (scope, element, attr) {
+    tooglePanel();
+  }
 
-      scope.svgList = [];
-      scope.getSvgs = getSVGs;
+  function change (file) {
+    refresh(file);
+    $ctrl.onChange();
+  }
 
-      var el = !!attr.svgDownloadDropdown ?
-        angular.element(document.querySelector(attr.svgDownloadDropdown)) :
-        element.parent;
-
-      element.find('button').on('click', function() {
-
-        scope.$apply(function() {
-          getSVGs();
-        });
-
-      });
-
-      function getSVGs() {
-
-        var svgs = el.find('svg'), ids = [];
-
-        angular.forEach(svgs, function(svg, d) {
-          var elm = angular.element(svg);
-
-          var o = {};
-
-          o.id = elm.attr('id') || 'svg-'+d;
-          o.title = elm.attr('title') || o.id;
-
-          elm.attr(o);
-
-          ids.push(o);
-        });
-
-        scope.svgList = ids;
-
-      }
-
+  function remove (i) {
+    if (i > -1) {
+      $ctrl.data.resources.splice(i, 1);
+      $ctrl.onChange();
     }
-  };
+  }
 
-}) */
-/* .directive('fileDropzone', ['$window', function ($window) {
-  return {
-    restrict: 'A',
-    scope: {
-      file: '=',
-      fileName: '=',
-      dropped: '&'
-    },
-    link: (scope, element, attrs) => {
-      const validMimeTypes = attrs.fileDropzone;
-
-      function processDragOverOrEnter (event) {
-        // console.log('processDragOverOrEnter');
-        if (event !== null) {
-          event.preventDefault();
-        }
-        element.addClass('hover');
-        (event.dataTransfer || event.originalEvent.dataTransfer).effectAllowed = 'copy';
-        return false;
-      }
-
-      function processDragLeave (event) {
-        // console.log('processDragExit');
-        if (event !== null) {
-          event.preventDefault();
-        }
-        element.removeClass('hover');
-        return false;
-      }
-
-      function checkSize (size) {
-        const _ref = attrs.maxFileSize;
-        if (((_ref) === undefined || _ref === '') || (size / 1024) / 1024 < attrs.maxFileSize) {
-          return true;
-        }
-        $window.alert(`File must be smaller than ${attrs.maxFileSize} MB`);
-        return false;
-      }
-
-      function isTypeValid (type) {
-        if ((validMimeTypes === undefined || validMimeTypes === '') || validMimeTypes.indexOf(type) > -1) {
-          return true;
-        }
-        $window.alert(`Invalid file type ${type}.  File must be one of following types ${validMimeTypes}`);
-        return false;
-      }
-
-      element.bind('dragover', processDragOverOrEnter);
-      element.bind('dragenter', processDragOverOrEnter);
-      element.bind('dragleave', processDragLeave);
-
-      function processDropFile (file) {
-        const reader = new FileReader();
-        reader.onload = function (evt) {
-          file.content = evt.target.result;
-          const type = mime.lookup(file.name);
-          if (checkSize(file.size) && isTypeValid(type)) {
-            return scope.$apply(() => {
-              scope.dropped({file});
-            });
-          }
-        };
-        reader.readAsText(file);
-      }
-
-      return element.bind('drop', event => {
-        if (event !== null) {
-          event.preventDefault();
-        }
-
-        element.removeClass('hover');
-
-        const files = (event.dataTransfer || event.originalEvent.dataTransfer).files;
-
-        for (let i = 0; i < files.length; i++) {
-          const file = files[i];
-          processDropFile(file);
-        }
-
-        return false;
-      });
+  function rename (file) {
+    if (!file.path) {
+      return;
     }
-  };
-}]); */
+    file.name = file.path;
+    file.mediatype = mime.lookup(file.path);
+    change(file);
+  }
+
+  function newFile (filename) {
+    filename = filename || 'new.txt';
+
+    const resource = {
+      name: filename,
+      path: filename,
+      mediatype: mime.lookup(filename),
+      content: ''
+    };
+
+    resource.active = true;
+
+    const i = $ctrl.data.resources.push(resource);
+    $ctrl.data.resources[i - 1].active = true;
+
+    change(resource);
+
+    $timeout($ctrl.ui.refresh, 100);
+
+    return false;
+  }
+
+  function dropped (file) {
+    const resource = {
+      path: file.name,
+      mediatype: mime.lookup(file.name),
+      content: file.content || ''
+    };
+
+    resource.active = true;
+
+    $ctrl.data.resources.push(resource);
+    change(resource);
+
+    $ctrl.ui.refresh();
+  }
+
+  function tooglePanel () {
+    $ctrl.panel.open = !$ctrl.panel.open;
+    $ctrl.ui.refresh();
+
+    $timeout($ctrl.ui.refresh, 100);
+
+    // $cookies.put('dataEditor-open', $ctrl.panel.open);
+  }
+}

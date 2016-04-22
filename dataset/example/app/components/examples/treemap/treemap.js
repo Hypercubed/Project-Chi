@@ -24,6 +24,13 @@ class controller {
         this.change();
       });
     }
+
+    this.editorOptions = {
+      data: this.dataPackage,
+      enableSvgDownload: false,
+      enablePngDownload: false,
+      onChange: () => this.draw()
+    };
   }
 
   change () {

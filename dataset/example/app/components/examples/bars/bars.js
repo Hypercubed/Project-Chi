@@ -3,9 +3,15 @@
 import d3 from 'd3';
 import BarChart from './bars-chart';
 
-class Ctrl {
+class controller {
   constructor () {
-    this.chart = new BarChart();
+    Object.assign(this, {
+      chart: new BarChart(),
+      editorOptions: {
+        data: this.dataPackage,
+        onChange: () => this.draw()
+      }
+    });
   }
 
   draw () {
@@ -29,7 +35,7 @@ class Ctrl {
 }
 
 export default {
-  controller: Ctrl,
+  controller,
   templateUrl: 'components/examples/bars/bars.html',
   bindings: {
     dataPackage: '<package'

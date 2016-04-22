@@ -3,11 +3,11 @@ import browserSync from 'browser-sync';
 
 import config from '../config';
 
-gulp.task('server', [], done => {
+gulp.task('dev', [], done => {
   browserSync(config.devServer, done);
 });
 
-gulp.task('server:dist', ['build'], done => {
+gulp.task('dist', ['build'], done => {
   browserSync(config.distServer, done);
 });
 
@@ -19,4 +19,6 @@ gulp.task('watch', ['server'], () => {
   });
 });
 
-gulp.task('run', ['test:watch', 'serve']);
+// old commands
+gulp.task('server', ['dev']);
+gulp.task('server:dist', ['dist']);

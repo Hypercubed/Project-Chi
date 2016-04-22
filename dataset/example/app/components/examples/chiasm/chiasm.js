@@ -2,13 +2,13 @@ import Chiasm from 'chiasm';
 import ChiasmLayout from 'chiasm-layout';
 import ChiasmLinks from 'chiasm-links';
 
+import _ from 'lodash';
+
 import barChart from './barChart';
 import './barChart.css!';
 
 import 'codemirror/lib/codemirror.css!';
 import 'inlet/inlet.css!';
-
-import _ from 'lodash';
 
 // because chiasm-layout is missing underscore/lodash import.  https://github.com/chiasm-project/chiasm-layout/issues/1
 window._ = _;
@@ -28,6 +28,11 @@ class controller {
 
       this.layoutComponent = comp;
     });
+
+    this.editorOptions = {
+      data: this.dataPackage,
+      onChange: () => this.draw()
+    };
   }
 
   draw () {

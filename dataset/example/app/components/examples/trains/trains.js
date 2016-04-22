@@ -4,6 +4,10 @@ import Chart from './trains-chart';
 class controller {
   constructor () {
     this.chart = new Chart();
+    this.editorOptions = {
+      data: this.dataPackage,
+      onChange: () => this.draw()
+    };
   }
 
   draw () {

@@ -47,6 +47,7 @@ gulp.task('html', () => {
 
 // copy scripts to temp folder
 gulp.task('js', [], () => {
+  console.log(paths.scripts);
   return gulp.src(paths.scripts)
     .pipe($.cached('scripts'))
     .pipe($.plumber())
@@ -111,13 +112,8 @@ gulp.task('builder', [], () => {
   });
 });
 
-gulp.task('clean', cb => {
-  del(paths.dist, cb);
-});
-
-gulp.task('clean:tmp', cb => {
-  del(paths.temp, cb);
-});
+gulp.task('clean', () => del(paths.dist));
+gulp.task('clean:tmp', () => del(paths.temp));
 
 gulp.task('build', cb => {
   runSequence(['clean', 'clean:tmp'],

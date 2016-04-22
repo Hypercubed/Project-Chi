@@ -56,7 +56,7 @@ const config = {
   devServer: {
     open: false,
     port: 9000,
-    online: true,
+    online: false,
     server: {
       baseDir: [`${dataSetPath}/app`, 'app'],
       middleware: (req, res, next) => {
@@ -86,7 +86,7 @@ const config = {
 
 if (fs.existsSync(overidesFile)) {
   gutil.log('Found additional gulp config at', gutil.colors.magenta(overidesFile));
-  const overides = require(overidesFile);
+  const overides = require(overidesFile).default;
   extend(config, overides);
 }
 

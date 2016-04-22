@@ -6,6 +6,10 @@ class controller {
       target: '_examples_biojs__viewer',
       height: 300
     });
+    this.editorOptions = {
+      data: this.dataPackage,
+      onChange: () => this.draw()
+    };
   }
 
   update () {
