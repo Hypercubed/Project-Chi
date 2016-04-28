@@ -47,7 +47,6 @@ gulp.task('html', () => {
 
 // copy scripts to temp folder
 gulp.task('js', [], () => {
-  console.log(paths.scripts);
   return gulp.src(paths.scripts)
     .pipe($.cached('scripts'))
     .pipe($.plumber())

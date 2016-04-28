@@ -25,6 +25,7 @@ coverage
 # Compiled
 build/Release
 dist
+docs
 
 # Dependency directories
 node_modules
@@ -48,5 +49,4 @@ Desktop.ini
 
 # Datasets
 dataset/*
-!dataset/example.js
 !dataset/example/

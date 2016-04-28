@@ -27,7 +27,7 @@ const config = {
       'app/*.{js,json,ico,txt,md}',
       'app/.nojekyll',
       'app/{jspm_packages,lib}/*.{js,map}',
-      'app/{jspm_packages,lib}/**/*.{svg,png,eot,ttf,wot,woff,woff2,gif,html}',
+      'app/{jspm_packages,lib}/**/*.{svg,png,eot,ttf,gif,wot,woff,woff2}',
       'app/{components,common,assets}/**/*.{png,svg,txt,md}',
       `${dataSetPath}/app/*.{json,ico,txt,md}`,
       `${dataSetPath}/app/{components,common,assets}/**/*.{png,svg,md,json}`
@@ -69,6 +69,7 @@ const config = {
     open: false,
     port: 9000,
     online: false,
+    ghostMode: false,
     server: {
       baseDir: 'dist',
       middleware: (req, res, next) => {
