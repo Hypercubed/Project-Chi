@@ -65,7 +65,7 @@ System.config({
     "crlf-helper": "npm:crlf-helper@0.1.0",
     "crossfilter": "github:square/crossfilter@1.3.12",
     "css": "github:systemjs/plugin-css@0.1.21",
-    "d3": "npm:d3@3.5.13",
+    "d3": "npm:d3@3.5.16",
     "d3-plugins": "github:d3/d3-plugins@master",
     "d3-svg-legend": "npm:d3-svg-legend@1.5.0",
     "d3-tip": "github:Caged/d3-tip@0.6.7",
@@ -167,7 +167,7 @@ System.config({
     },
     "npm:chiasm-layout@0.2.4": {
       "chiasm-component": "npm:chiasm-component@0.2.3",
-      "d3": "npm:d3@3.5.13",
+      "d3": "npm:d3@3.5.16",
       "lodash": "npm:lodash@3.10.1",
       "model-js": "npm:model-js@0.2.4"
     },
@@ -192,10 +192,10 @@ System.config({
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
     "npm:d3-svg-legend@1.5.0": {
-      "d3": "npm:d3@3.5.13"
+      "d3": "npm:d3@3.5.16"
     },
     "npm:d3plus-text@0.3.0": {
-      "d3": "npm:d3@3.5.13"
+      "d3": "npm:d3@3.5.16"
     },
     "npm:delegate@3.0.1": {
       "closest": "npm:closest@0.0.1"

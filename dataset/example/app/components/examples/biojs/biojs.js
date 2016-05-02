@@ -2,8 +2,6 @@
 import biovisexample from 'biojs-vis-example';
 import Fasta from 'biojs-io-fasta';
 
-import angular from 'angular';
-
 import './biojs.css!';
 
 function controller () {
