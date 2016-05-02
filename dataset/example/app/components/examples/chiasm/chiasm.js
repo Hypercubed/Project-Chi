@@ -13,42 +13,39 @@ import 'inlet/inlet.css!';
 // because chiasm-layout is missing underscore/lodash import.  https://github.com/chiasm-project/chiasm-layout/issues/1
 window._ = _;
 
-class controller {
-  constructor () {
-    const chiasm = this.chiasm = new Chiasm();
+function controller () {
+  const $ctrl = this;
 
-    chiasm.plugins.layout = ChiasmLayout;
-    chiasm.plugins.links = ChiasmLinks;
-    chiasm.plugins.barChart = barChart;
+  const chiasm = $ctrl.chiasm = new Chiasm();
 
-    chiasm.getComponent('layout').then(comp => {
-      comp.when(['containerSVG'], svg => {
-        svg.attr('title', 'Bar Chart');
-      });
+  chiasm.plugins.layout = ChiasmLayout;
+  chiasm.plugins.links = ChiasmLinks;
+  chiasm.plugins.barChart = barChart;
 
-      this.layoutComponent = comp;
+  chiasm.getComponent('layout').then(comp => {
+    comp.when(['containerSVG'], svg => {
+      svg.attr('title', 'Bar Chart');
     });
 
-    this.editorOptions = {
-      data: this.dataPackage,
-      onChange: () => this.draw()
-    };
-  }
+    $ctrl.layoutComponent = comp;
+  });
 
-  draw () {
-    console.log('draw');
-    this.chiasm.config = this.dataPackage.resources[1].data;
-    this.chiasm.data = this.dataPackage.resources[0].data;
-  }
-
-  $onInit () {
-    this.draw();
-  }
-
-  $onDestroy () {
-    if (this.layoutComponent && typeof this.layoutComponent.destroy === 'function') {
-      this.layoutComponent.destroy();
+  Object.assign($ctrl, {
+    editorOptions: {
+      data: $ctrl.dataPackage,
+      onChange: draw
+    },
+    $onInit: draw,
+    $onDestroy: () => {
+      if ($ctrl.layoutComponent && typeof $ctrl.layoutComponent.destroy === 'function') {
+        $ctrl.layoutComponent.destroy();
+      }
     }
+  });
+
+  function draw () {
+    chiasm.config = $ctrl.dataPackage.resources[1].data;
+    chiasm.data = $ctrl.dataPackage.resources[0].data;
   }
 }
 

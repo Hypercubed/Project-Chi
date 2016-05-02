@@ -9,7 +9,7 @@ export default function (route) {
         dataPackage: ['$route', 'dataService', function ($route, dataService) {
           const datapackage = (typeof route.datapackage === 'function') ? route.datapackage($route.current.params) : route.datapackage;
           const base = datapackage.base || route.datapackageUrl;
-          return dataService._loadPackage(base, datapackage);
+          return dataService.processPackage(base, datapackage);
         }]
       });
     } else if (angular.isDefined(route.datapackageUrl)) {

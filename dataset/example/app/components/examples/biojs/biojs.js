@@ -1,31 +1,32 @@
 import biovisexpressionbar from 'expression-bar';
 
-class controller {
-  constructor () {
-    this.bar = new biovisexpressionbar.ExpressionBar({
-      target: '_examples_biojs__viewer',
-      height: 300
-    });
-    this.editorOptions = {
-      data: this.dataPackage,
-      onChange: () => this.draw()
-    };
-  }
+function controller () {
+  const $ctrl = this;
 
-  update () {
-    this.bar.data = this.dataPackage.resources[0].data;
-    this.bar.data_loaded();
-  }
+  const bar = new biovisexpressionbar.ExpressionBar({
+    target: '_examples_biojs__viewer',
+    height: 300
+  });
 
-  $onInit () {
-    this.update();
+  Object.assign($ctrl, {
+    editorOptions: {
+      data: $ctrl.dataPackage,
+      onChange: update
+    },
+    $onInit () {
+      update();
+    }
+  });
+
+  function update () {
+    bar.data = $ctrl.dataPackage.resources[0].data;
+    bar.data_loaded();
   }
 }
 
 export default {
   controller,
   templateUrl: 'components/examples/biojs/biojs.html',
-  datapackageUrl: 'components/examples/biojs/datapackage.json',
   bindings: {
     dataPackage: '<package'
   }

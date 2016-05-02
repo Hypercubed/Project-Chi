@@ -1,17 +1,21 @@
 import d3 from 'd3';
 import Chart from './trains-chart';
 
-class controller {
-  constructor () {
-    this.chart = new Chart();
-    this.editorOptions = {
-      data: this.dataPackage,
-      onChange: () => this.draw()
-    };
-  }
+function controller () {
+  const $ctrl = this;
+  const chart = new Chart();
 
-  draw () {
-    const data = this.dataPackage.resources.map(d => d.data);
+  $ctrl.editorOptions = {
+    data: $ctrl.dataPackage,
+    onChange: draw
+  };
+
+  $ctrl.$onInit = () => {
+    draw();
+  };
+
+  function draw () {
+    const data = $ctrl.dataPackage.resources.map(d => d.data);
 
     const divs = d3.select('#_examples_bars__chart')
       .selectAll('div').data(data);
@@ -20,11 +24,7 @@ class controller {
 
     divs.exit().remove();
 
-    divs.call(this.chart);
-  }
-
-  $onInit () {
-    this.draw();
+    divs.call(chart);
   }
 }
 

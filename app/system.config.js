@@ -4,9 +4,7 @@ System.config({
   babelOptions: {
     "optional": [
       "runtime",
-      "optimisation.modules.system",
-      "es7.decorators",
-      "es7.classProperties"
+      "optimisation.modules.system"
     ]
   },
   paths: {
@@ -38,16 +36,13 @@ System.config({
     "_F": "github:Hypercubed/_F@0.0.11",
     "angular": "npm:angular@1.5.3",
     "angular-animate": "npm:angular-animate@1.5.3",
-    "angular-annotation-decorator": "github:bendrucker/angular-annotation-decorator@1.0.0",
     "angular-bootstrap": "github:angular-ui/bootstrap-bower@0.13.4",
     "angular-cookies": "npm:angular-cookies@1.5.3",
     "angular-downloadsvg-directive": "npm:angular-downloadsvg-directive@0.1.5",
-    "angular-gridster": "github:ManifestWebDesign/angular-gridster@0.13.5",
     "angular-growl": "npm:angular-growl-v2@0.7.5",
     "angular-intro.js": "npm:angular-intro.js@1.3.0",
     "angular-loading-bar": "npm:angular-loading-bar@0.8.0",
     "angular-marked": "npm:angular-marked@1.0.0",
-    "angular-mocks": "github:angular/bower-angular-mocks@1.4.1",
     "angular-route": "npm:angular-route@1.5.3",
     "angular-sanitize": "npm:angular-sanitize@1.5.3",
     "angular-slider": "github:angular-slider/angularjs-slider@2.11.0",
@@ -82,7 +77,7 @@ System.config({
     "intro": "npm:intro.js@2.0.0",
     "intro.js": "npm:intro.js@2.0.0",
     "jquery": "npm:jquery@2.1.4",
-    "json": "github:systemjs/plugin-json@0.1.0",
+    "json": "github:systemjs/plugin-json@0.1.2",
     "lasso": "github:skokenes/D3-Lasso-Plugin@master",
     "lodash": "npm:lodash@3.10.1",
     "md": "github:guybedford/system-md@0.1.0",
@@ -101,9 +96,6 @@ System.config({
     "webtreemap": "github:martine/webtreemap@gh-pages",
     "github:Hypercubed/systemjs-plugin-html@0.0.8": {
       "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.22"
-    },
-    "github:angular/bower-angular-mocks@1.4.1": {
-      "angular": "github:angular/bower-angular@1.4.5"
     },
     "github:guybedford/system-md@0.1.0": {
       "showdown": "github:showdownjs/showdown@1.3.0"
@@ -198,7 +190,7 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "deep-eql": "npm:deep-eql@0.1.3",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "systemjs-json": "github:systemjs/plugin-json@0.1.0",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.2",
       "type-detect": "npm:type-detect@1.0.0"
     },
     "npm:chiasm-component@0.2.1": {
@@ -247,7 +239,7 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
+      "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
     "npm:core-util-is@1.0.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
@@ -271,7 +263,7 @@ System.config({
       "jquery": "npm:jquery@2.1.4",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
+      "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
     "npm:good-listener@1.1.7": {
       "delegate": "npm:delegate@3.0.1"
@@ -301,7 +293,7 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "systemjs-json": "github:systemjs/plugin-json@0.1.0",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.2",
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:os-browserify@0.1.2": {
@@ -316,7 +308,7 @@ System.config({
     "npm:punycode@1.3.2": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:readable-stream@1.0.34": {
+    "npm:readable-stream@1.1.14": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "core-util-is": "npm:core-util-is@1.0.2",
       "events": "github:jspm/nodelibs-events@0.1.1",
@@ -333,7 +325,7 @@ System.config({
     "npm:stream-browserify@1.0.0": {
       "events": "github:jspm/nodelibs-events@0.1.1",
       "inherits": "npm:inherits@2.0.1",
-      "readable-stream": "npm:readable-stream@1.0.34"
+      "readable-stream": "npm:readable-stream@1.1.14"
     },
     "npm:string_decoder@0.10.31": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"

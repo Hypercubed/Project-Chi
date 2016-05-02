@@ -1,12 +1,10 @@
 import './bar-chart-tag.html!';
 import './bar-chart-tag';
 
-class controller {
-  constructor () {
-    this.editorOptions = {
-      data: this.dataPackage
-    };
-  }
+function controller () {
+  this.editorOptions = {
+    data: this.dataPackage
+  };
 }
 
 export default {

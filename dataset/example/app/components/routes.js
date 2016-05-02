@@ -6,6 +6,7 @@ import errorHTML from 'components/error/error.html!text';
 import examples from './examples/routes';
 import indexComponent from './index/index';
 
+configRoutes.$inject = ['$routeProvider'];
 function configRoutes ($routeProvider) {
   $routeProvider
   .when('/about', {
@@ -29,4 +30,4 @@ function configRoutes ($routeProvider) {
 export default angular
   .module('routes', [examples.name])
   .component('index', indexComponent)
-  .config(['$routeProvider', configRoutes]);
+  .config(configRoutes);

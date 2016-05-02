@@ -58,7 +58,16 @@ export default angular
   }])
   .run(['$rootScope', '$location', 'growl', ($rootScope, $location, growl) => {
     $rootScope.$on('$routeChangeError', (event, curr, prev, rej) => {
-      growl.error(`failed to change routes ${rej.status} ${rej.statusText}`);
+      if (typeof rej !== 'string') {
+        if (rej.status && rej.statusText) {
+          rej = `${rej.status} ${rej.statusText}`;
+        } else if (rej.message) {
+          rej = rej.message;
+        } else {
+          rej = String(rej);
+        }
+      }
+      return growl.error(`failed to change routes; ${rej}`);
     });
   }])
   .config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {

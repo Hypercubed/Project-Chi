@@ -3,19 +3,21 @@
 import d3 from 'd3';
 import BarChart from './bars-chart';
 
-class controller {
-  constructor () {
-    Object.assign(this, {
-      chart: new BarChart(),
-      editorOptions: {
-        data: this.dataPackage,
-        onChange: () => this.draw()
-      }
-    });
-  }
+function controller () {
+  const $ctrl = this;
+  const chart = new BarChart();
 
-  draw () {
-    const data = this.dataPackage.resources
+  Object.assign($ctrl, {
+    editorOptions: {
+      data: $ctrl.dataPackage,
+      onChange: draw
+    },
+    draw,
+    $onInit: draw
+  });
+
+  function draw () {
+    const data = $ctrl.dataPackage.resources
       .filter(d => Boolean(d.data))
       .map(d => d.data);
 
@@ -26,11 +28,7 @@ class controller {
 
     divs.exit().remove();
 
-    divs.call(this.chart);
-  }
-
-  $onInit () {
-    this.draw();
+    divs.call(chart);
   }
 }
 

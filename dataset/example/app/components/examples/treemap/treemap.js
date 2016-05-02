@@ -8,41 +8,41 @@ import webtreemap from 'webtreemap';
 import 'webtreemap/webtreemap.css!';
 import './treemap.css!';
 
-class controller {
-  constructor () {
-    this.$map = document.getElementById('_examples_treemap__chart');
-    // var isFullscreen = false;
+function controller () {
+  const $ctrl = this;
 
-    if (screenfull.enabled) {
-      this.fullscreen = function () {
-        screenfull.request(this.$map);
-      };
+  const $map = document.getElementById('_examples_treemap__chart');
 
-      document.addEventListener(screenfull.raw.fullscreenchange, () => {
-        console.log('screenfull.raw.fullscreenerror');
-        angular.element(this.$map)[screenfull.isFullscreen ? 'addClass' : 'removeClass']('fullscreen');
-        this.change();
-      });
-    }
+  $ctrl.$onInit = change;
+  $ctrl.editorOptions = {
+    data: $ctrl.dataPackage,
+    enableSvgDownload: false,
+    enablePngDownload: false,
+    onChange: change
+  };
 
-    this.editorOptions = {
-      data: this.dataPackage,
-      enableSvgDownload: false,
-      enablePngDownload: false,
-      onChange: () => this.draw()
+  if (screenfull.enabled) {
+    $ctrl.fullscreen = function () {
+      screenfull.request($map);
     };
+
+    document.addEventListener(screenfull.raw.fullscreenchange, () => {
+      console.log('screenfull.raw.fullscreenerror');
+      angular.element($map)[screenfull.isFullscreen ? 'addClass' : 'removeClass']('fullscreen');
+      change();
+    });
   }
 
-  change () {
-    const map = this.$map;
-    while (this.$map.firstChild) {
+  function change () {
+    const map = $map;
+    while ($map.firstChild) {
       map.removeChild(map.firstChild);
     }
 
-    const tree = this.dataPackage.resources[0].data;
+    const tree = $ctrl.dataPackage.resources[0].data;
     const treeData = newNode('/');
 
-    if (this.dataPackage.resources[0].table) {
+    if ($ctrl.dataPackage.resources[0].table) {
       tree.forEach(d => {
         addNode(d.Source, Number(d.Size), d.Tag);
       });
@@ -76,31 +76,27 @@ class controller {
     webtreemap(map, treeData);
   }
 
-  $onInit () {
-    this.change();
+  function newNode (name, tag) {
+    // var $symbol = (name.slice(-1) === '*') ? 'tag' : '';
+    return {
+      name,
+      data: {
+        $area: 0,
+        symbol: tag
+      },
+      children: []
+    };
   }
-}
 
-function newNode (name, tag) {
-  // var $symbol = (name.slice(-1) === '*') ? 'tag' : '';
-  return {
-    name,
-    data: {
-      $area: 0,
-      $symbol: tag
-    },
-    children: []
-  };
-}
+  function addSizeToTitle (node, total) {
+    const size = node.data.$area;
+    const pct = 100.0 * size / total;
 
-function addSizeToTitle (node, total) {
-  const size = node.data.$area;
-  const pct = 100.0 * size / total;
-
-  node.name += ` • ${size.toLocaleString()} • ${pct.toFixed(2)}%`;
-  node.children.forEach(x => {
-    addSizeToTitle(x, total);
-  });
+    node.name += ` • ${size.toLocaleString()} • ${pct.toFixed(2)}%`;
+    node.children.forEach(x => {
+      addSizeToTitle(x, total);
+    });
+  }
 }
 
 export default {

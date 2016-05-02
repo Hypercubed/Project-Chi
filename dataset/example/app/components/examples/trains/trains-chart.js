@@ -63,6 +63,7 @@ export default function Chart (opts) {
       station.append('text')
         .attr('x', -6)
         .attr('dy', '.35em')
+        .attr('text-anchor', 'end')
         .text(function (d) { return d.name; });
 
       station.append('line')
