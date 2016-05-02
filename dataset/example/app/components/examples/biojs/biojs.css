@@ -1,0 +1,12 @@
+#_examples_biojs__viewer div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+#_examples_biojs__viewer div:hover {
+  background-color: cadetblue;
+}

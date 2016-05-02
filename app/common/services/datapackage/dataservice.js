@@ -1,9 +1,9 @@
-import process from 'process';
+// import process from 'process';
 
 import {processByType} from './processors';
 import {normalizePackage, normalizeResource} from './datapackage';
 
-window.process = process;  // annoying
+// window.process = process;  // annoying
 
 DataService.$inject = ['$http', '$q'];
 export function DataService ($http, $q) {

@@ -1,16 +1,22 @@
-import biovisexpressionbar from 'expression-bar';
+// import biovisexpressionbar from 'expression-bar';
+import biovisexample from 'biojs-vis-example';
+import Fasta from 'biojs-io-fasta';
+
+import angular from 'angular';
+
+import './biojs.css!';
 
 function controller () {
   const $ctrl = this;
+  const $el = document.getElementById('_examples_biojs__viewer');
 
-  const bar = new biovisexpressionbar.ExpressionBar({
-    target: '_examples_biojs__viewer',
-    height: 300
-  });
+  console.log(Fasta.parse($ctrl.dataPackage.resources[0].content));
 
   Object.assign($ctrl, {
     editorOptions: {
       data: $ctrl.dataPackage,
+      enableSvgDownload: false,
+      enablePngDownload: false,
       onChange: update
     },
     $onInit () {
@@ -19,8 +25,16 @@ function controller () {
   });
 
   function update () {
-    bar.data = $ctrl.dataPackage.resources[0].data;
-    bar.data_loaded();
+    while ($el.firstChild) {
+      $el.removeChild($el.firstChild);
+    }
+
+    $ctrl.fasta = Fasta.parse($ctrl.dataPackage.resources[0].content)[0];
+
+    biovisexample({
+      el: $el,
+      sequence: $ctrl.fasta.seq
+    });
   }
 }
 

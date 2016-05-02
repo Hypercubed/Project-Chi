@@ -1,9 +1,9 @@
 {
 	"name": "BioJS Example",
 	"title": "BioJS package from CommonJS module installed from NPM",
-	"description": "An example using a CommonJS NPM module that is part of the [BioJS registry](http://biojs.io/).  Simple barchart to show expression levels across experiments.  Using [homonecloco/biojs-vis-expression-bar](https://github.com/homonecloco/biojs-vis-expression-bar) BioJS visualization module and example data.",
+	"description": "An example using a CommonJS NPM module that is part of the [BioJS registry](http://biojs.io/).  Using [4ndr01d3/biojs-vis-example](https://github.com/4ndr01d3/biojs-vis-example) BioJS visualization module and [wilzbach/biojs-io-fasta](https://github.com/wilzbach/biojs-io-fasta) io module.",
 	"resources": [
-		"data/test_data.json"
+		"data/sequence.fasta"
 	],
 	"image": "bar.png"
 }
