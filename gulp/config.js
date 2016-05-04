@@ -21,7 +21,7 @@ const config = {
     systemConfig: 'app/system.config.js',
     bundle: 'dist/components/bundle.js',
     dataset: dataSetPath,
-    dataLink: `${dataSetPath}/app/data`,
+    dataLink: `${dataSetPath}/app/data/`,
     jspmLink: 'app/jspm_packages/',
     resources: [
       'app/*.{js,json,ico,txt,md}',

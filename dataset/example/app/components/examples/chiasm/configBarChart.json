@@ -14,19 +14,19 @@
   "barChart": {
     "plugin": "barChart",
     "state": {
-      "orientation": "vertical",
-      "barSizeColumn": "frequency",
-      "fill": "steelblue",
-      "stroke": "none",
-      "strokeWidth": "2px",
-      "barPadding": 0.2
+      "xAxisLabelText": "Letter",
+      "xColumn": "letter",
+      "yAxisLabelText": "Frequency",
+      "yColumn": "frequency",
+      "fill": "#1EABE8",
+      "stroke": "#008CC8"
     }
   },
   "links": {
     "plugin": "links",
     "state": {
       "bindings": [
-        "self.data -> barChart.data"
+        "self.dataset -> barChart.dataset"
       ]
     }
   }

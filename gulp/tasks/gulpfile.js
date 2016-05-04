@@ -1,26 +1,27 @@
 import gulp from 'gulp';
 
-import SystemJSBuilder from 'systemjs-builder';
+// import jspm from 'jspm';
 import del from 'del';
-// import vfs from 'vinyl-fs';
-// var karma = require('karma').server;
+import vfs from 'vinyl-fs';
+import SystemJSBuilder from 'systemjs-builder';
 import runSequence from 'run-sequence';
-import gulpLoad from 'gulp-load-plugins';
+// import gulpLoad from 'gulp-load-plugins';
+import taskListing from 'gulp-task-listing';
+import cached from 'gulp-cached';
+import plumber from 'gulp-plumber';
 // import {argv as args} from 'yargs';
 
 import config from '../config';
 
 const paths = config.paths;
 
-const $ = gulpLoad();
-
-gulp.task('help', $.taskListing);
+gulp.task('help', taskListing);
 
 // copy resources to distribution and temp folder
 gulp.task('copy', [], () => {
   return gulp.src(paths.resources, {followSymlinks: true})
-    .pipe($.cached('copy'))
-    .pipe($.plumber())
+    .pipe(cached('copy'))
+    .pipe(plumber())
     .pipe(gulp.dest(paths.temp))
     .pipe(gulp.dest(paths.dist));
 });
@@ -34,8 +35,8 @@ gulp.task('data', [], () => {
 // copy templates to temp and distribution folder
 gulp.task('html', () => {
   return gulp.src(paths.templates)
-    .pipe($.cached('templates'))
-    .pipe($.plumber())
+    .pipe(cached('templates'))
+    .pipe(plumber())
     /* .pipe($.minifyHtml({
       empty: true,
       spare: true,
@@ -48,8 +49,8 @@ gulp.task('html', () => {
 // copy scripts to temp folder
 gulp.task('js', [], () => {
   return gulp.src(paths.scripts)
-    .pipe($.cached('scripts'))
-    .pipe($.plumber())
+    .pipe(cached('scripts'))
+    .pipe(plumber())
     /* .pipe(babel({
       modules: 'system',
       externalHelpers: true,
@@ -74,21 +75,21 @@ gulp.task('bundles', [], () => {
 // copy css to temp folder
 gulp.task('css', [], () => {
   return gulp.src(paths.styles)
-    .pipe($.cached('styles'))
-    .pipe($.plumber())
+    .pipe(cached('styles'))
+    .pipe(plumber())
     .pipe(gulp.dest(paths.temp));
 });
 
 // symlink jspm_packages into temp folder to avoid copy
 gulp.task('symlink', () => {
-  return gulp.src(paths.jspmLink)
-    .pipe($.symlink.absolute([`${paths.temp}/jspm_packages`], {force: true}));
+  return vfs.src(paths.jspmLink, {followSymlinks: false, buffer: false})
+    .pipe(vfs.symlink(`${paths.temp}/jspm_packages`));
 });
 
 // symlink data into temp folder to avoid copy
 gulp.task('symlink:data', () => {
-  return gulp.src(paths.dataLink)
-    .pipe($.symlink.absolute([`${paths.dist}/data`], {force: true}));
+  return vfs.src(paths.dataLink, {followSymlinks: false, buffer: false, allowEmpty: true})
+    .pipe(vfs.symlink(`${paths.dist}/data`));
 });
 
 gulp.task('builder', [], () => {

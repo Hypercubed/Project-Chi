@@ -50,11 +50,12 @@ System.config({
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "babyparse": "npm:babyparse@0.4.3",
-    "biojs-io-fasta": "npm:biojs-io-fasta@0.1.14",
+    "biojs-io-fasta": "npm:biojs-io-fasta@0.1.15",
     "biojs-vis-example": "npm:biojs-vis-example@0.1.4",
     "blobjs": "github:eligrey/Blob.js@master",
     "bootstrap": "github:twbs/bootstrap@3.3.5",
     "chiasm": "npm:chiasm@0.3.0",
+    "chiasm-charts": "npm:chiasm-charts@0.1.5",
     "chiasm-component": "npm:chiasm-component@0.2.3",
     "chiasm-layout": "npm:chiasm-layout@0.2.4",
     "chiasm-links": "npm:chiasm-links@0.2.3",
@@ -150,7 +151,7 @@ System.config({
     "npm:babyparse@0.4.3": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:biojs-io-fasta@0.1.14": {
+    "npm:biojs-io-fasta@0.1.15": {
       "biojs-io-parser": "npm:biojs-io-parser@1.0.0",
       "msa-seqtools": "npm:msa-seqtools@0.1.8",
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -161,6 +162,12 @@ System.config({
     },
     "npm:biojs-vis-example@0.1.4": {
       "d3": "npm:d3@3.5.16"
+    },
+    "npm:chiasm-charts@0.1.5": {
+      "chiasm-component": "npm:chiasm-component@0.2.3",
+      "chiasm-dataset": "npm:chiasm-dataset@0.1.1",
+      "d3": "npm:d3@3.5.16",
+      "model-js": "npm:model-js@0.2.4"
     },
     "npm:chiasm-component@0.2.3": {
       "model-js": "npm:model-js@0.2.4"
@@ -207,7 +214,7 @@ System.config({
       "is-function": "npm:is-function@1.0.1"
     },
     "npm:global@4.3.0": {
-      "process": "npm:process@0.5.2"
+      "process": "npm:process@0.11.2"
     },
     "npm:good-listener@1.1.7": {
       "delegate": "npm:delegate@3.0.1"

@@ -1,10 +1,11 @@
 import Chiasm from 'chiasm';
+import Charts from 'chiasm-charts';
 import ChiasmLayout from 'chiasm-layout';
 import ChiasmLinks from 'chiasm-links';
 
 import _ from 'lodash';
 
-import barChart from './barChart';
+// import barChart from './barChart';
 import './barChart.css!';
 
 import 'codemirror/lib/codemirror.css!';
@@ -20,7 +21,7 @@ function controller () {
 
   chiasm.plugins.layout = ChiasmLayout;
   chiasm.plugins.links = ChiasmLinks;
-  chiasm.plugins.barChart = barChart;
+  chiasm.plugins.barChart = Charts.components.barChart;
 
   chiasm.getComponent('layout').then(comp => {
     comp.when(['containerSVG'], svg => {
@@ -45,7 +46,15 @@ function controller () {
 
   function draw () {
     chiasm.config = $ctrl.dataPackage.resources[1].data;
-    chiasm.data = $ctrl.dataPackage.resources[0].data;
+    chiasm.dataset = {
+      metadata: {
+        columns: [
+          {name: "letter", type: "string"},
+          {name: "frequency", type: "number"}
+        ]
+      },
+      data: $ctrl.dataPackage.resources[0].data
+    };
   }
 }
 
