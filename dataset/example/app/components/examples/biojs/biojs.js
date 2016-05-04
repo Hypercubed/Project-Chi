@@ -1,6 +1,5 @@
-// import biovisexpressionbar from 'expression-bar';
 import biovisexample from 'biojs-vis-example';
-import Fasta from 'biojs-io-fasta/lib/fasta';
+import fasta from 'biojs-io-fasta/lib/fasta';
 
 import './biojs.css!';
 
@@ -25,7 +24,7 @@ function controller () {
       $el.removeChild($el.firstChild);
     }
 
-    $ctrl.fasta = Fasta.parse($ctrl.dataPackage.resources[0].content)[0];
+    $ctrl.fasta = fasta.parse($ctrl.dataPackage.resources[0].content)[0];
 
     biovisexample({
       el: $el,

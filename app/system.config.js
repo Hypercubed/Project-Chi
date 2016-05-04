@@ -31,7 +31,6 @@ System.config({
 
   map: {
     "FileSaver": "github:eligrey/FileSaver.js@master",
-    "Polymer/polymer": "github:Polymer/polymer@1.4.0",
     "URIjs": "npm:URIjs@1.16.1",
     "_F": "github:Hypercubed/_F@0.0.11",
     "angular": "github:angular/bower-angular@1.5.5",

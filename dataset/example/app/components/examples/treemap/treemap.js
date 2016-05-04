@@ -1,4 +1,3 @@
-/* jshint -W003 */
 import angular from 'angular';
 import _ from 'lodash';
 

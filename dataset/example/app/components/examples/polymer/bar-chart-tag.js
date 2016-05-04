@@ -1,12 +1,13 @@
-/* global Polymer, d3 */
+/* global Polymer */
 
 import 'polymer/polymer.html!';
+import d3 from 'd3';
 
 // has to be relative to root absolute, ugh
 import Bars from 'components/examples/bars/bars-chart';
 
 Polymer({
-  is: 'bar-chart3',
+  is: 'bar-chart',
 
   properties: {
     barData: {
@@ -19,7 +20,7 @@ Polymer({
       value: 400
     },
     data: {
-      computed: '_parse(barData)'
+      computed: 'parse(barData)'
     }
   },
 
@@ -27,26 +28,27 @@ Polymer({
     'dataChanged(data)'
   ],
 
-  created: function () {
+  created () {
     this.bars = new Bars(this);
   },
 
-  _parse: JSON.parse,
+  parse: x => JSON.parse(x),
 
-  dataChanged: function () {
-    this._draw();
+  dataChanged () {
+    this.draw();
   },
 
-  _draw: function () {
-    if (!this.data) { return; }
-    if (!this.elem) { return; }
+  draw () {
+    if (!this.data || !this.elem) {
+      return;
+    }
 
     d3.select(this.elem)
       .datum(this.data).call(this.bars);
   },
 
-  ready: function () {
+  ready () {
     this.elem = this.$.chart;
-    this._draw();
+    this.draw();
   }
 });

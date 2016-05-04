@@ -1,5 +1,3 @@
-/* jshint -W003 */
-
 import d3 from 'd3';
 import BarChart from './bars-chart';
 

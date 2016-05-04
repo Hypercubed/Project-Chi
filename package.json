@@ -52,7 +52,6 @@
     "configFile": "app/system.config.js",
     "dependencies": {
       "FileSaver": "github:eligrey/FileSaver.js@master",
-      "Polymer/polymer": "github:Polymer/polymer@^1.4.0",
       "URIjs": "npm:URIjs@^1.16.1",
       "_F": "github:Hypercubed/_F@^0.0.11",
       "angular": "github:angular/bower-angular@^1.5.5",
@@ -105,7 +104,7 @@
       "md": "github:guybedford/system-md@^0.1.0",
       "mime-lookup": "npm:mime-lookup@^0.0.2",
       "model": "npm:model-js@^0.2.4",
-      "polymer": "github:Polymer/polymer@^1.0.8",
+      "polymer": "github:Polymer/polymer@^1.4.0",
       "process": "github:jspm/nodelibs-process@^0.1.1",
       "screenfull": "npm:screenfull@^2.0.0",
       "text": "github:systemjs/plugin-text@^0.0.2",
@@ -162,7 +161,15 @@
           "named": "always"
         }
       ],
-      "no-warning-comments": 0
+      "no-warning-comments": 0,
+      "babel/new-cap": [
+        2,
+        {
+          "capIsNewExceptions": [
+            "Polymer"
+          ]
+        }
+      ]
     }
   }
 }
