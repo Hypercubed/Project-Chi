@@ -2,7 +2,9 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* using font-awesome
+* removed some unused dependecies
+* Moved Marey's trains and Hexbin examples to example sub project
 
 --------------------
 

@@ -22,14 +22,6 @@
     {
       "path": "polymer/datapackage.json",
       "link": "#/examples/polymer/"
-    },
-    {
-      "path": "trains/datapackage.json",
-      "link": "#/examples/trains/"
-    },
-    {
-      "path": "hexbin/datapackage.json",
-      "link": "#/examples/hexbin/"
     }
   ]
 }

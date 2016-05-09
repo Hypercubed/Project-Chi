@@ -39,7 +39,7 @@
     </tab>
     <tab ng-click="$ctrl.newFile('new.txt')" active="true === false" ng-if="$ctrl.enableAdd">
       <tab-heading file-dropzone="{{$ctrl.types}}" data-max-file-size="3" dropped="$ctrl.dropped(file)">
-        <i class="glyphicon glyphicon-plus-sign"></i>
+        <i class="fa fa-plus-square" aria-hidden="true"></i>
       </tab-heading>
     </tab>
   </tabset>
@@ -49,7 +49,7 @@
     <div id="data-download" class="btn-group" dropdown>
       <button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle aria-expanded="false" ng-if="$ctrl.enableFileDownload">
         <div class="pull-right">
-          <i class="glyphicon glyphicon-download"></i>
+          <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>
           Download Data <span class="caret"></span>
         </div>
       </button>
@@ -64,7 +64,7 @@
     <div id="svg-download" class="btn-group hidden-print" dropdown svg-download-dropdown="svgList in #charts" ng-if="$ctrl.enableSvgDownload || $ctrl.enablePngDownload">
       <button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle aria-expanded="false">
         <div class="pull-right">
-          <i class="glyphicon glyphicon-download"></i>
+          <i class="fa fa-picture-o" aria-hidden="true"></i>
           Download SVG <span class="caret"></span>
         </div>
       </button>
@@ -89,7 +89,7 @@
       </button>
 
       <button type="button" class="btn btn-link btn-sm" tooltip="Show/hide resources panel" ng-if="$ctrl.enableOpen" ng-click="$ctrl.tooglePanel()">
-        <i class="glyphicon glyphicon-cog" aria-hidden="true"></i>
+        <i class="fa fa-cog" aria-hidden="true"></i>
       </button>
 
     </div>

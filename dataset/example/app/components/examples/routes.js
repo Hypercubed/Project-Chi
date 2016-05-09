@@ -5,7 +5,6 @@ import examplesComponent from 'components/examples/index';
 import chiasmComponent from 'components/examples/chiasm/chiasm';
 import bioJSComponent from 'components/examples/biojs/biojs';
 import barsComponent from 'components/examples/bars/bars';
-import trainsComponent from 'components/examples/trains/trains';
 import treeMapComponent from 'components/examples/treemap/treemap';
 import polymerComponent from 'components/examples/polymer/barChart-controller';
 
@@ -17,7 +16,7 @@ export default angular
   .component('examples', examplesComponent)
   .component('biojs', bioJSComponent)
   .component('chiasm', chiasmComponent)
-  .component('trains', trainsComponent)
+  // .component('trains', trainsComponent)
   .component('polymer', polymerComponent)
   .component('treemap', treeMapComponent)
   .config(['$routeProvider', $routeProvider => {
@@ -42,15 +41,8 @@ export default angular
         template: '<treemap data-package="$resolve.dataPackage"></treemap>',
         datapackageUrl: 'components/examples/treemap/datapackage.json'
       })
-      .when('/examples/hexbin', {
-        templateUrl: 'components/examples/hexbin/hexbin.html'
-      })
       .when('/examples/polymer', {
         template: '<polymer data-package="$resolve.dataPackage"></polymer>',
         datapackageUrl: 'components/examples/polymer/datapackage.json'
-      })
-      .when('/examples/trains', {
-        template: '<trains data-package="$resolve.dataPackage"></trains>',
-        datapackageUrl: 'components/examples/trains/datapackage.json'
       });
   }]);

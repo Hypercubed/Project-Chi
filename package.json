@@ -40,7 +40,7 @@
   "scripts": {
     "build": "gulp build",
     "postinstall": "jspm install",
-    "start": "gulp server",
+    "start": "gulp dev",
     "version": "chg release -y && git add -A CHANGELOG.md",
     "check": "xo app/**/*.js dataset/example/**/*.js"
   },
@@ -60,7 +60,7 @@
       "angular-cookies": "github:angular/bower-angular-cookies@^1.5.5",
       "angular-downloadsvg-directive": "npm:angular-downloadsvg-directive@^0.1.5",
       "angular-growl": "npm:angular-growl-v2@^0.7.5",
-      "angular-intro.js": "npm:angular-intro.js@^1.3.0",
+      "angular-intro.js": "npm:angular-intro.js@^2.0.1",
       "angular-loading-bar": "npm:angular-loading-bar@^0.8.0",
       "angular-marked": "npm:angular-marked@^1.2.0",
       "angular-route": "github:angular/bower-angular-route@^1.5.5",
@@ -82,7 +82,6 @@
       "chiasm-links": "npm:chiasm-links@^0.2.3",
       "clipboard": "npm:clipboard@^1.5.10",
       "codemirror": "github:codemirror/codemirror@^5.3.0",
-      "codemirror/codemirror": "github:codemirror/codemirror@^5.14.2",
       "core-decorators": "npm:core-decorators@^0.9.2",
       "crlf-helper": "npm:crlf-helper@^0.1.0",
       "crossfilter": "github:square/crossfilter@^1.3.12",
@@ -92,28 +91,27 @@
       "d3-svg-legend": "npm:d3-svg-legend@^1.10.0",
       "d3-tip": "github:Caged/d3-tip@0.6.7",
       "d3plus-text": "npm:d3plus-text@^0.4.4",
+      "font-awesome": "npm:font-awesome@^4.6.1",
       "fs": "github:jspm/nodelibs-fs@^0.1.2",
       "html": "github:Hypercubed/systemjs-plugin-html@^0.0.8",
       "inlet": "github:enjalot/Inlet@^0.1.1",
-      "intro": "npm:intro.js@^2.1.0",
+      "intro.js": "npm:intro.js@^2.1.0",
       "jquery": "npm:jquery@^2.1.4",
       "json": "github:systemjs/plugin-json@^0.1.0",
       "jspm/nodelibs-assert": "github:jspm/nodelibs-assert@^0.1.0",
-      "lasso": "github:skokenes/D3-Lasso-Plugin@master",
       "lodash": "npm:lodash@^3.9.3",
       "md": "github:guybedford/system-md@^0.1.0",
       "mime-lookup": "npm:mime-lookup@^0.0.2",
       "model": "npm:model-js@^0.2.4",
+      "model-js": "github:curran/model@^0.2.5",
       "polymer": "github:Polymer/polymer@^1.4.0",
       "process": "github:jspm/nodelibs-process@^0.1.1",
       "screenfull": "npm:screenfull@^2.0.0",
-      "systemjs/plugin-text": "github:systemjs/plugin-text@0.0.2",
       "text": "github:systemjs/plugin-text@0.0.2",
       "ui-codemirror": "github:angular-ui/ui-codemirror@^0.3.0",
       "ui-grid": "github:angular-ui/bower-ui-grid@^3.0.5",
       "ui-select": "npm:ui-select@^0.16.1",
       "venn": "npm:venn.js@^0.2.4",
-      "venn.js": "npm:venn.js@^0.2.9",
       "webcomponentsjs": "github:webcomponents/webcomponentsjs@^0.7.7",
       "webtreemap": "github:martine/webtreemap@gh-pages"
     },
@@ -123,11 +121,6 @@
       "core-js": "npm:core-js@^1.1.4"
     },
     "overrides": {
-      "npm:angular-intro.js@1.3.0": {
-        "dependencies": {
-          "intro.js": "2.0.0"
-        }
-      },
       "github:enjalot/Inlet@0.1.1": {
         "main": "inlet"
       },

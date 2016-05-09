@@ -2,8 +2,8 @@
 
 import angular from 'angular';
 
-import saveAs from 'FileSaver';
-import 'blobjs';
+import saveAs from 'FileSaver/FileSaver.js';
+import 'blobjs/Blob.js';
 
 const moduleName = 'projectX.fileDownload';
 
