@@ -13,3 +13,4 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 - [ ] Angular 2 when released
 - [ ] Bootstrap 4 when released (flexbox)
 - [x] Replace bootstrap glyphs with font-awesome
+- [ ] Don't copy resource into .tmp/symlink

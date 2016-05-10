@@ -2,6 +2,11 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+--------------------
+
+## 1.0.0-alpha.3 (2016-05-10)
 * using font-awesome
 * removed some unused dependecies
 * Moved Marey's trains and Hexbin examples to [example sub project](https://github.com/Hypercubed/Project-Chi-Test)
@@ -9,8 +14,6 @@ CHANGELOG
 * Now using npm versions of all angular modules
 * Now set `debugEnabled` and `debugInfoEnabled` based on System.production
 * Added git watch task, gulp dist starts watch
-
---------------------
 
 ## 1.0.0-alpha.2 (2016-05-06)
 _(none)_

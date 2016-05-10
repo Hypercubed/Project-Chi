@@ -22,7 +22,7 @@ gulp.task('copy', () => {
   return gulp.src(paths.resources, {followSymlinks: true})
     .pipe(cached('copy'))
     .pipe(plumber())
-    // .pipe(gulp.dest(paths.temp))
+    .pipe(gulp.dest(paths.temp))
     .pipe(gulp.dest(paths.dist));
 });
 
@@ -83,7 +83,7 @@ gulp.task('css', () => {
 // symlink jspm_packages into temp folder to avoid copy
 gulp.task('symlink-jspm', () => {
   return vfs.src(paths.jspmLink, {followSymlinks: false, buffer: false})
-    .pipe(vfs.symlink(`${paths.temp}/jspm_packages`));
+    .pipe(vfs.symlink(`${paths.temp}/jspm_packages`, {overwrite: true}));
 });
 
 // symlink data into temp folder to avoid copy
@@ -123,8 +123,8 @@ gulp.task('jspm-build', cb => {
 
 gulp.task('build', cb => {
   runSequence(['clean-tmp', 'clean-dist'],
-              ['copy', 'js', 'css', 'data', 'html'],
               ['symlink-jspm', 'symlink-data'],
+              ['copy', 'js', 'css', 'data', 'html'],
               'jspm-build',
               cb);
 });
