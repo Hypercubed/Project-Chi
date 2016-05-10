@@ -8,6 +8,7 @@ CHANGELOG
 * Updated angular-ui-bootstrap
 * Now using npm versions of all angular modules
 * Now set `debugEnabled` and `debugInfoEnabled` based on System.production
+* Added git watch task, gulp dist starts watch
 
 --------------------
 

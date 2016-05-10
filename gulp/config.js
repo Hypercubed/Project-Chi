@@ -5,7 +5,11 @@ import path from 'path';
 
 import extend from 'deep-extend';
 import gutil from 'gulp-util';
-import {argv} from 'yargs';
+// import {argv} from 'yargs';
+
+import minimist from 'minimist';
+
+const argv = minimist(process.argv.slice(2));
 
 const root = path.dirname(__dirname);  // needed so that imports could co-exist with requires (on some edge cases)
 

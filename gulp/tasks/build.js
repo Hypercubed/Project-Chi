@@ -65,7 +65,7 @@ gulp.task('js', () => {
 });
 
 // copy bundles to dist folder
-gulp.task('jspm-bundles', () => {
+gulp.task('bundles', () => {
   return gulp.src(`${paths.temp}/components/bundle.*`, {base: paths.temp})
     // .pipe($.cached('bundle'))
     // .pipe($.plumber())
@@ -92,7 +92,7 @@ gulp.task('symlink-data', () => {
     .pipe(vfs.symlink(`${paths.dist}/data`));
 });
 
-gulp.task('jspm-builder', () => {
+gulp.task('bundle', () => {
   const builder = new SystemJSBuilder(paths.temp, `${paths.temp}/system.config.js`);
 
   // var builder = new jspm.Builder({baseURL: path.temp});
@@ -115,11 +115,16 @@ gulp.task('jspm-builder', () => {
 gulp.task('clean-dist', () => del(paths.dist));
 gulp.task('clean-tmp', () => del(paths.temp));
 
+gulp.task('jspm-build', cb => {
+  runSequence('bundle',
+              'bundles',
+              cb);
+});
+
 gulp.task('build', cb => {
   runSequence(['clean-tmp', 'clean-dist'],
               ['copy', 'js', 'css', 'data', 'html'],
               ['symlink-jspm', 'symlink-data'],
-              'jspm-builder',
-              'jspm-bundles',
+              'jspm-build',
               cb);
 });

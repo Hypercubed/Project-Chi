@@ -3,22 +3,22 @@ import browserSync from 'browser-sync';
 
 import config from '../config';
 
-gulp.task('dev', [], done => {
+gulp.task('server:dev', done => {
   browserSync(config.devServer, done);
 });
 
-gulp.task('dist', ['build'], done => {
+gulp.task('server:dist', done => {
   browserSync(config.distServer, done);
 });
 
-gulp.task('watch', ['server'], () => {
-  gulp.watch([`${config.paths.base}/**/*.{js,css,html,json}`], file => {
-    browserSync.reload(file.path);
-  }).on('change', event => {
-    console.log(`File ${event.path} was ${event.type}, running tasks...`);
-  });
+gulp.task('watch', () => {
+  gulp.watch(config.paths.resources, ['copy']);
+  gulp.watch(config.paths.data, ['data']);
+  gulp.watch(config.paths.templates, ['html', 'jspm-build']);
+  gulp.watch(config.paths.scripts, ['js', 'jspm-build']);
+  gulp.watch(config.paths.styles, ['css', 'jspm-build']);
 });
 
 // old commands
-gulp.task('server', ['dev']);
-gulp.task('server:dist', ['dist']);
+gulp.task('dev', ['server:dev']);
+gulp.task('dist', ['build', 'watch', 'server:dist']);

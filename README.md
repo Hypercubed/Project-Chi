@@ -29,22 +29,22 @@ npm install -g gulp-cli jspm
 ## Install
 
 ```bash
-git clone https://github.com/Hypercubed/Project-Chi.git
+git clone -b master https://github.com/Hypercubed/Project-Chi.git --single-branch --depth 1
 cd Project-Chi
 npm install # jspm install is run post-install by npm
 ```
 
-## Run
+## Run examples
 
-```
-gulp server
+```bash
+gulp dev
 ```
 
 ## Gulp Tasks
 
-* `gulp server`, run development server (building is not required)
+* `gulp dev`, run development server (building is not required)
 * `gulp build`, build into the dist directory
-* `gulp server:dist`, build and run server from dist directory
+* `gulp dist`, build and run server from dist directory
 * `gulp deploy`, build and push to gh-pages
 
 ## File Structure
@@ -72,11 +72,11 @@ gulp server
 
 ## Separation of template and dataset
 
-By default all content in the `app` directory will be served by the development server when running `gulp server` and built into the `dist` folder when running `gulp build`.  However, to encourage contribution back to the `project-χ` repository and enable using the same `project-χ` source across multiple projects the developer may put project specific resources and configuration into a separate directory.  This folder can then be served and built along with the `project-χ` core.  For example, if you create a `myProject` folder inside the `dataset` directory the following commands will work as indicated:
+By default all content in the `app` directory will be served by the development server when running `gulp server` and built into the `dist` folder when running `gulp build`.  However, to encourage contribution back to the `project-χ` repository and enable using the same `project-χ` source across multiple projects the developer may put project specific resources and configuration into a separate directory.  This folder can then be served and built along with the `project-χ` core.  For example, if you create a `extra` folder inside the `dataset` directory the following commands will work as indicated:
 
-* `gulp server --dataset ./dataset/myProject`
+* `gulp dev --dataset=./dataset/extra`
 
-	runs the development server serving the combination of the `app` directory and `dataset/myProject` directories as the web root.  Files in `dataset/myProject/app` override `app` and `dataset/myProject/gulp/config.js` augments (deep-extends) `gulp/config.js`.  If no dataset is given `./dataset/example` is assumed.
+	runs the development server serving the combination of the `app` directory and `dataset/extra` directories as the web root.  Files in `dataset/extra/app` override `app` and `dataset/extra/gulp/config.js` augments (deep-extends) `gulp/config.js`.  If no dataset is given `./dataset/example` is assumed.
 
 * The `gulp build`, `gulp server:dist`, `gulp deploy` all work similarly.
 
