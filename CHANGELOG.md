@@ -7,6 +7,9 @@ _(none)_
 --------------------
 
 ## 1.0.0-alpha.3 (2016-05-10)
+_(none)_
+
+## 1.0.0-alpha.3 (2016-05-10)
 * using font-awesome
 * removed some unused dependecies
 * Moved Marey's trains and Hexbin examples to [example sub project](https://github.com/Hypercubed/Project-Chi-Test)
