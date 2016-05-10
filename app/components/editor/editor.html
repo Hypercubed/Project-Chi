@@ -6,12 +6,12 @@
 
 <section class="datapckage-editor-container hidden-print" style="position: relative">
 
-  <tabset id="dataPackageEditor" ng-show="$ctrl.panel.open" xxng-if="$ctrl.enableOpen || $ctrl.enableProtected">
-    <tab ng-repeat="tab in $ctrl.data.resources track by $index" select="$ctrl.ui.refresh()" active="tab.active">
-      <tab-heading file-dropzone="{{$ctrl.types}}" data-max-file-size="30" dropped="$ctrl.droppedOver($index, file)">
+  <uib-tabset id="dataPackageEditor" ng-show="$ctrl.panel.open" xxng-if="$ctrl.enableOpen || $ctrl.enableProtected">
+    <uib-tab ng-repeat="tab in $ctrl.data.resources track by $index" select="$ctrl.ui.refresh()" active="tab.active">
+      <uib-tab-heading file-dropzone="{{$ctrl.types}}" data-max-file-size="30" dropped="$ctrl.droppedOver($index, file)">
         {{ $ctrl.data.resources.length < 7 ? tab.name : $index }}
         <a class="close" ng-click="$ctrl.remove($index)">&nbsp;&times;</a>
-      </tab-heading>
+      </uib-tab-heading>
       <div file-dropzone="{{$ctrl.types}}" data-max-file-size="30" dropped="$ctrl.droppedOver($index, file)">
         <form class="meta form-inline">
           <div class="form-group">
@@ -36,18 +36,18 @@
             }" ng-change="$ctrl.change(tab)" ui-refresh="$ctrl.ui.count"></textarea>
         </div>
       </div>
-    </tab>
-    <tab ng-click="$ctrl.newFile('new.txt')" active="true === false" ng-if="$ctrl.enableAdd">
-      <tab-heading file-dropzone="{{$ctrl.types}}" data-max-file-size="3" dropped="$ctrl.dropped(file)">
+    </uib-tab>
+    <uib-tab ng-click="$ctrl.newFile('new.txt')" active="true === false" ng-if="$ctrl.enableAdd">
+      <uib-tab-heading file-dropzone="{{$ctrl.types}}" data-max-file-size="3" dropped="$ctrl.dropped(file)">
         <i class="fa fa-plus-square" aria-hidden="true"></i>
-      </tab-heading>
-    </tab>
-  </tabset>
+      </uib-tab-heading>
+    </uib-tab>
+  </uib-tabset>
 
   <div class="btn-toolbar" role="toolbar" aria-label="toolbar">
 
-    <div id="data-download" class="btn-group" dropdown>
-      <button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle aria-expanded="false" ng-if="$ctrl.enableFileDownload">
+    <div id="data-download" class="btn-group" uib-dropdown>
+      <button type="button" class="btn btn-primary btn-sm dropdown-toggle" uib-dropdown-toggle aria-expanded="false" ng-if="$ctrl.enableFileDownload">
         <div class="pull-right">
           <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>
           Download Data <span class="caret"></span>
@@ -61,8 +61,8 @@
       </ul>
     </div>
 
-    <div id="svg-download" class="btn-group hidden-print" dropdown svg-download-dropdown="svgList in #charts" ng-if="$ctrl.enableSvgDownload || $ctrl.enablePngDownload">
-      <button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle aria-expanded="false">
+    <div id="svg-download" class="btn-group hidden-print" uib-dropdown svg-download-dropdown="svgList in #charts" ng-if="$ctrl.enableSvgDownload || $ctrl.enablePngDownload">
+      <button type="button" class="btn btn-primary btn-sm dropdown-toggle" uib-dropdown-toggle aria-expanded="false">
         <div class="pull-right">
           <i class="fa fa-picture-o" aria-hidden="true"></i>
           Download SVG <span class="caret"></span>

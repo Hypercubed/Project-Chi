@@ -6,7 +6,7 @@ import 'angular-route';
 import 'angular-cookies';
 import 'angular-sanitize';
 
-import 'angular-bootstrap';
+import 'angular-ui-bootstrap';
 
 import angularMarked from 'angular-marked';
 import 'ui-codemirror';
@@ -46,8 +46,9 @@ export default angular
     'angular-loading-bar',
     'angular-growl'
   ])
-  .config(['$logProvider', function ($logProvider) {
-    $logProvider.debugEnabled(false);
+  .config(['$logProvider', '$compileProvider', function ($logProvider, $compileProvider) {
+    $logProvider.debugEnabled(!System.production);
+    $compileProvider.debugInfoEnabled(!System.production);
   }])
   .run(['$rootScope', '$location', function isPath ($rootScope, $location) {
     $rootScope.isPath = path => path === $location.path();

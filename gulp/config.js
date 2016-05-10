@@ -9,7 +9,7 @@ import {argv} from 'yargs';
 
 const root = path.dirname(__dirname);  // needed so that imports could co-exist with requires (on some edge cases)
 
-const dataSetPath = argv.dataset || 'dataset/example';
+const dataSetPath = argv.dataset || argv.d || 'dataset/example';
 const overidesFile = path.join(root, `${dataSetPath}/gulp/config.js`);
 
 const config = {

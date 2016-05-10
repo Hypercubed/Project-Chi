@@ -11,6 +11,7 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
+  production: true,
   buildCSS: true,
   separateCSS: true,
   buildHTML: true,
@@ -33,21 +34,19 @@ System.config({
     "FileSaver": "github:eligrey/FileSaver.js@master",
     "URIjs": "npm:URIjs@1.16.1",
     "_F": "github:Hypercubed/_F@0.0.11",
-    "angular": "github:angular/bower-angular@1.5.5",
-    "angular-animate": "github:angular/bower-angular-animate@1.5.5",
-    "angular-bootstrap": "github:angular-ui/bootstrap-bower@0.13.4",
-    "angular-cookies": "github:angular/bower-angular-cookies@1.5.5",
+    "angular": "npm:angular@1.5.5",
+    "angular-animate": "npm:angular-animate@1.5.5",
+    "angular-cookies": "npm:angular-cookies@1.5.5",
     "angular-downloadsvg-directive": "npm:angular-downloadsvg-directive@0.1.5",
     "angular-growl": "npm:angular-growl-v2@0.7.5",
     "angular-intro.js": "npm:angular-intro.js@2.0.1",
     "angular-loading-bar": "npm:angular-loading-bar@0.8.0",
     "angular-marked": "npm:angular-marked@1.2.0",
-    "angular-route": "github:angular/bower-angular-route@1.5.5",
-    "angular-sanitize": "github:angular/bower-angular-sanitize@1.5.5",
-    "angular-slider": "github:angular-slider/angularjs-slider@2.13.0",
-    "angular-slider/angularjs-slider": "github:angular-slider/angularjs-slider@2.13.0",
-    "angular-ui/bootstrap-bower": "github:angular-ui/bootstrap-bower@0.13.4",
-    "angular-ui/bower-ui-grid": "github:angular-ui/bower-ui-grid@3.1.1",
+    "angular-route": "npm:angular-route@1.5.5",
+    "angular-sanitize": "npm:angular-sanitize@1.5.5",
+    "angular-ui-bootstrap": "npm:angular-ui-bootstrap@1.3.2",
+    "angular-ui-grid": "npm:angular-ui-grid@3.1.1",
+    "angularjs-slider": "npm:angularjs-slider@2.13.0",
     "assert": "npm:assert@1.3.0",
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
@@ -84,8 +83,7 @@ System.config({
     "lodash": "npm:lodash@3.10.1",
     "md": "github:guybedford/system-md@0.1.0",
     "mime-lookup": "npm:mime-lookup@0.0.2",
-    "model": "npm:model-js@0.2.4",
-    "model-js": "github:curran/model@0.2.5",
+    "model-js": "npm:model-js@0.2.5",
     "polymer": "github:Polymer/polymer@1.4.0",
     "process": "github:jspm/nodelibs-process@0.1.2",
     "screenfull": "npm:screenfull@2.0.0",
@@ -93,23 +91,11 @@ System.config({
     "ui-codemirror": "github:angular-ui/ui-codemirror@0.3.0",
     "ui-grid": "github:angular-ui/bower-ui-grid@3.1.1",
     "ui-select": "npm:ui-select@0.16.1",
-    "venn": "npm:venn.js@0.2.9",
+    "venn.js": "npm:venn.js@0.2.9",
     "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.22",
     "webtreemap": "github:martine/webtreemap@gh-pages",
     "github:Hypercubed/systemjs-plugin-html@0.0.8": {
       "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.22"
-    },
-    "github:angular/bower-angular-animate@1.5.5": {
-      "angular": "github:angular/bower-angular@1.5.5"
-    },
-    "github:angular/bower-angular-cookies@1.5.5": {
-      "angular": "github:angular/bower-angular@1.5.5"
-    },
-    "github:angular/bower-angular-route@1.5.5": {
-      "angular": "github:angular/bower-angular@1.5.5"
-    },
-    "github:angular/bower-angular-sanitize@1.5.5": {
-      "angular": "github:angular/bower-angular@1.5.5"
     },
     "github:guybedford/system-md@0.1.0": {
       "showdown": "github:showdownjs/showdown@1.3.0"
@@ -124,7 +110,7 @@ System.config({
       "path-browserify": "npm:path-browserify@0.0.0"
     },
     "github:jspm/nodelibs-process@0.1.2": {
-      "process": "npm:process@0.11.2"
+      "process": "npm:process@0.11.3"
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
@@ -135,11 +121,24 @@ System.config({
     "npm:URIjs@1.16.1": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:angular-animate@1.5.5": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
     "npm:angular-downloadsvg-directive@0.1.5": {
       "svgsaver": "npm:svgsaver@0.6.1"
     },
     "npm:angular-marked@1.2.0": {
       "marked": "npm:marked@0.3.5"
+    },
+    "npm:angular-sanitize@1.5.5": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:angular-ui-grid@3.1.1": {
+      "angular": "npm:angular@1.5.5",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:angularjs-slider@2.13.0": {
+      "angular": "npm:angular@1.5.5"
     },
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
@@ -167,21 +166,21 @@ System.config({
       "chiasm-component": "npm:chiasm-component@0.2.3",
       "chiasm-dataset": "npm:chiasm-dataset@0.1.1",
       "d3": "npm:d3@3.5.16",
-      "model-js": "npm:model-js@0.2.4"
+      "model-js": "npm:model-js@0.2.5"
     },
     "npm:chiasm-component@0.2.3": {
-      "model-js": "npm:model-js@0.2.4"
+      "model-js": "npm:model-js@0.2.5"
     },
     "npm:chiasm-layout@0.2.4": {
       "chiasm-component": "npm:chiasm-component@0.2.3",
       "d3": "npm:d3@3.5.16",
       "lodash": "npm:lodash@3.10.1",
-      "model-js": "npm:model-js@0.2.4"
+      "model-js": "npm:model-js@0.2.5"
     },
     "npm:chiasm@0.3.0": {
       "es6-promise": "npm:es6-promise@3.1.2",
       "lodash": "npm:lodash@3.10.1",
-      "model-js": "npm:model-js@0.2.4",
+      "model-js": "npm:model-js@0.2.5",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:clipboard@1.5.10": {
@@ -251,13 +250,6 @@ System.config({
     "npm:mime-lookup@0.0.2": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:model-js@0.2.4": {
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "path": "github:jspm/nodelibs-path@0.1.0",
-      "process": "github:jspm/nodelibs-process@0.1.2",
-      "systemjs-json": "github:systemjs/plugin-json@0.1.2",
-      "util": "github:jspm/nodelibs-util@0.1.0"
-    },
     "npm:parse-headers@2.0.1": {
       "for-each": "npm:for-each@0.3.2",
       "trim": "npm:trim@0.0.1"
@@ -265,7 +257,7 @@ System.config({
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:process@0.11.2": {
+    "npm:process@0.11.3": {
       "assert": "github:jspm/nodelibs-assert@0.1.0"
     },
     "npm:svgsaver@0.6.1": {
