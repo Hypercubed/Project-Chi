@@ -1,0 +1,15 @@
+{
+  "name": "Index",
+  "title": "Additional Visualizations",
+  "description": "Additional Examples of visualizations using the Project-χ framework",
+  "resources": [
+    {
+      "path": "trains/datapackage.json",
+      "link": "#/extra/trains/"
+    },
+    {
+      "path": "hexbin/datapackage.json",
+      "link": "#/extra/hexbin/"
+    }
+  ]
+}

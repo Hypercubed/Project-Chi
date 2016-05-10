@@ -1,0 +1,100 @@
+<!-- from http://bl.ocks.org/mbostock/7833311
+          https://gist.github.com/mbostock/7833311 -->
+
+<style>
+
+.hexagon {
+	fill: none;
+	stroke: #000;
+	stroke-width: .5px;
+}
+
+</style>
+
+<div datapackage-edit></div>
+
+<div class="container">
+    <marked>
+## d3 chart in template
+
+An example of including JS directly in the HTML template.  Computing hexbins from a constantly-fluctuating sample of 2,000 random points. Visualization from [M. Bostock](http://bl.ocks.org/mbostock/7833311).
+   </marked>
+
+   <div id="charts">
+   	 <div id="chart" />
+   </div>
+
+</div>
+
+<script>
+	/* global d3:true  */
+	/* global jQuery:true */
+
+	(function() {
+		'use strict';
+
+		var width = 960,
+			height = 500,
+			i = -1,
+			θ = 0,
+			δθ = 0.03,
+			n = 2000,
+			k = 20; // samples to replace per frame
+
+		var svg = d3.select('#chart').append('svg')
+			.attr('width', width)
+			.attr('height', height);
+
+		var randomX = d3.random.normal(width / 2, 80),
+			randomY = d3.random.normal(height / 2, 80),
+			points = d3.range(n).map(function() { return [randomX(), randomY()]; });
+
+		var color = d3.scale.linear()
+			.domain([0, 20])
+			.range(['white', 'steelblue'])
+			.interpolate(d3.interpolateLab);
+
+		System.import('d3-plugins/hexbin/hexbin').then(function() {
+
+			var hexbin = d3.hexbin()
+				.size([width, height])
+				.radius(20);
+
+			var hexagon = svg.append('g')
+				.attr('class', 'hexagons')
+				.selectAll('path')
+				.data(hexbin(points))
+				.enter().append('path')
+				.attr('d', hexbin.hexagon(19.5))
+				.attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
+				.style('fill', function(d) { return color(d.length); });
+
+			d3.timer(function() {
+				θ += δθ;
+				randomX = d3.random.normal(width / 2 + 80 * Math.cos(θ), 80);
+				randomY = d3.random.normal(height / 2 + 80 * Math.sin(θ), 80);
+
+				for (var j = 0; j < k; ++j) {
+					i = (i + 1) % n;
+					points[i][0] = randomX();
+					points[i][1] = randomY();
+				}
+
+				hexagon = hexagon
+					.data(hexbin(points), function(d) { return d.i + ',' + d.j; });
+
+				hexagon.exit().remove();
+
+				hexagon.enter().append('path')
+					.attr('d', hexbin.hexagon(19.5))
+					.attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; });
+
+				hexagon
+					.style('fill', function(d) { return color(d.length); });
+			});
+
+		});
+
+	})();
+
+</script>

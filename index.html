@@ -1,1 +1,66 @@
-My Page
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Project-χ</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <style type="text/css">
+      [ng-cloak] {
+        display: none;
+      }
+    </style>
+	  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="components/bundle.css">
+    <link rel="import" href="components/bundle.html">
+  </head>
+  <body ng-cloak>
+    <noscript>
+      <div class="deprecation-warning">
+        <h1>Please enable Javascript</h1>
+        <p>Requires your browser to have Javascript enabled.
+        <a href="http://enable-javascript.com" target="_blank">Learn more</a></p>
+      </div>
+    </noscript>
+
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="header" ng-include="'common/partials/header.html'"></div>
+
+    <div class="container">
+      <div ng-view=""></div>
+    </div>
+
+    <div class="footer" ng-include="'common/partials/footer.html'">
+    </div>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-49359515-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+    <script src="jspm_packages/system.js"></script>
+    <script src="system.config.js"></script>
+    <script src="components/bundle.js"></script>
+    <script>
+      // first try to get webcomponentsjs, if not boot anyway
+      System.import('webcomponentsjs/webcomponents-lite.js').then(function () {
+        window.addEventListener('WebComponentsReady', function (e) {
+          System.import('components/boot');
+        });
+      }).catch(function () {
+        System.import('components/boot');
+      });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+    <div id="venn"></div>
+Dataset from <a href="http://www.cs.uic.edu/~wilkinson/Publications/venneuler.pdf">figure 8 of this paper</a>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="../venn.js"></script>
+<script src="medical.jsonp"></script>
+<script>
+var chart = venn.VennDiagram()
+                 .width(600)
+                 .height(400);
+
+d3.select("#venn").datum(sets).call(chart);
+
+</script>
+</html>

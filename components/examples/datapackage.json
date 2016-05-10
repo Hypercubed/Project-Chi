@@ -1,0 +1,27 @@
+{
+  "name": "Index",
+  "title": "Example Visualizations",
+  "description": "Examples of interactive visualizations using the Project-χ framework",
+  "resources": [
+    {
+      "path": "bars/datapackage.json",
+      "link": "#/examples/bars/"
+    },
+    {
+      "path": "treemap/datapackage.json",
+      "link": "#/examples/treemap/"
+    },
+    {
+      "path": "biojs/datapackage.json",
+      "link": "#/examples/biojs/"
+    },
+    {
+      "path": "chiasm/datapackage.json",
+      "link": "#/examples/chiasm/"
+    },
+    {
+      "path": "polymer/datapackage.json",
+      "link": "#/examples/polymer/"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+<link rel="import"
+      href="../polymer/polymer.html">
+
+<dom-module id="dom-element">
+
+  <link rel="import" type="css" href="dom-element.css">
+
+  <template>
+    <p>{{greeting}}</p>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'dom-element',
+      properties: {
+        greeting: {
+          type: String,
+          value: 'I\'m a DOM element. This is my local DOM!'
+        }
+      },
+      created: function() {
+        this.createdRan = true;
+      }
+    });
+  </script>
+
+</dom-module>

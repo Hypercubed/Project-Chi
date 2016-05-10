@@ -1,0 +1,10 @@
+{
+	"name": "Treemap",
+	"title": "webtreemap",
+	"description": "A simple treemap implementation using web technologies (DOM nodes, CSS styling and transitions) rather than a big canvas/svg/plugin.",
+	"resources": [
+		"tree.tsv"
+	],
+	"image": "thumbnail.png",
+	"readme": "README.md"
+}

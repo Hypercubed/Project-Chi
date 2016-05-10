@@ -1,0 +1,14 @@
+{
+  "name": "Lizio_et_al_2015",
+  "description": "Exploring FANTOM5 Phase 2 Time Course Data",
+  "title": "Lizio et. al. 2015",
+  "homepage": "http://fantom.gsc.riken.jp/5/sstar/Time_Courses_chart",
+  "version": "0.1.0",
+  "license": "CC-BY-4.0",
+  "resources": [
+    "timeCourse.tsv"
+  ],
+  "repository": "git@gist.github.com:/b4269831b309c13bd612.git",
+  "image": "thumbnail.png",
+  "readme": "README.md"
+}

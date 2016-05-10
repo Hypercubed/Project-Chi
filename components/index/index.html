@@ -1,0 +1,23 @@
+<div ng-include="'common/partials/intro.html'"></div>
+
+<div class="row _common_styles_index__index">
+
+  <div class="row" ng-repeat="(filename,file) in $ctrl.dataPackage.resources">
+    <h2 class="title">{{file.data.title}}</h2>
+    <p class="lead">{{file.data.description}}</p>
+
+    <div class="col-md-4" ng-repeat="(filename,file) in file.data.resources">
+
+      <a ng-href="{{file.link}}">
+        <div class="card" style="background-image: url({{file.data.image}});">
+          <div>
+            <h3>{{file.data.title}}</h3>
+            <p marked="file.data.description"></p>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div>

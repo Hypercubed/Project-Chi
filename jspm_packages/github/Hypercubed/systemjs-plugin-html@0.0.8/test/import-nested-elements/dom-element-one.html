@@ -1,0 +1,33 @@
+<link rel="import"
+      href="../polymer/polymer.html">
+
+<dom-module id="dom-element-one2">
+
+  <style>
+    :host p {
+      font-style: italic;
+      font-family: sans-serif;
+      color: white;
+      background: steelblue;
+      padding: 0.4em;
+    }
+  </style>
+
+  <template>
+    <p>{{greeting}}</p>
+  </template>
+  <script type="module">
+    Polymer({
+      is: 'dom-element-one2',
+      properties: {
+        greeting: {
+          type: String,
+          value: 'I\'m a nested DOM element. This is my local DOM!'
+        }
+      },
+      created: function() {
+        this.createdRan = true;
+      }
+    });
+  </script>
+</dom-module>

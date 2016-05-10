@@ -1,0 +1,11 @@
+{
+  "name": "Forrest_et_al_2014",
+  "title": "Forrest et al. 2014",
+  "description": "Promoter discovery and definition in FANTOM5",
+  "resources": [
+    "peaks_count4.csv"
+  ],
+  "license": "CC-BY-4.0",
+  "image": "venn.png",
+  "readme": "README.md"
+}

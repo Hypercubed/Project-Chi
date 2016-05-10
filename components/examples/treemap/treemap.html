@@ -1,0 +1,10 @@
+<div datapackage-edit="$ctrl.editorOptions"></div>
+
+<div id="charts" class="container">
+  <h2>{{$ctrl.dataPackage.title}}</h2>
+  <div marked="$ctrl.dataPackage.description"></div>
+  <marked ng-include="$ctrl.dataPackage.readme"></marked>
+
+  <div id="_examples_treemap__chart" class="_examples_treemap__bars"></div>
+  <button class="btn btn-link pull-right" ng-click="$ctrl.fullscreen()">full screen</button>
+</div>

@@ -1,0 +1,9 @@
+# About Project χ
+
+This website was built using the Project χ platform. Project χ (pronounced project kai or /<abbr title="/ˈ/ primary stress follows">ˈ</abbr><abbr title="'k' in 'kind'">k</abbr><abbr title="/iː/ long 'e' in 'bead'">iː</abbr>/) is an modular open source visualization gallery framework built by Jayson Harshbarger at the [RIKEN Institute in Yokohama Japan](http://www.yokohama.riken.jp/english/).  It offers a framework and toolset for building self-hosted data-centric visualization websites. Geared towards sharing of supplemental materials associated with scientific publications; Project χ allows visitors to interact with visualizations, download associated data and images, and even try the visualization with their own uploaded or publicly available datasets.  For developers the framework comes packaged with tools necessary for quickly integrating interactive visualizations using [d3.js](http://d3js.org/), [AngularJS](https://angularjs.org/), and [BioJS](http://biojs.io/). Features of the framework include:
+
+* Simple,  modular, and customizable design using [AngularJS](https://angularjs.org/) templates and [bootstrap](http://getbootstrap.com/) CSS framework.
+* Supports CommonJS, AMD, and ES6 modules using the [SystemJS](https://github.com/systemjs/systemjs) Universal dynamic module loader.
+* Integrate additional visualizations, including [BioJS](http://biojs.io/) and [Chiasm](https://github.com/curran/chiasm) modules, directly from any registry such as [NPM](https://www.npmjs.com) or [GitHub](https://github.com/) using [JSPM](http://jspm.io/).
+* Self-hosted fully client-side application doesn't require a server; easily hosted on [WebDAV](https://en.wikipedia.org/wiki/WebDAV) or [GitHub Pages](https://pages.github.com/).
+* Contains AngularJS services and directives for loading, parsing, and downloading data and as well as downloading generated publication quality SVG images.

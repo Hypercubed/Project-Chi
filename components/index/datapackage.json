@@ -1,0 +1,16 @@
+{
+  "name": "Index",
+  "title": "Index",
+  "description": "Index of Visualizations",
+  "resources": [
+    {
+      "path": "../fantom5/datapackage.json"
+    },
+    {
+      "path": "../examples/datapackage.json"
+    },
+    {
+      "path": "../extra/datapackage.json"
+    }
+  ]
+}

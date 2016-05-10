@@ -1,0 +1,19 @@
+{
+  "name": "Index",
+  "title": "FANTOM5 Interactive Visualizations",
+  "description": "Selection of interactive visualizations from FANTOM5 papers",
+  "resources": [
+    {
+      "path": "../fantom5/Lizio_et_al_2015/datapackage.json",
+      "link": "#/fantom5/Lizio_et_al_2015/"
+    },
+    {
+      "path": "../fantom5/Forrest_et_al_2014/datapackage.json",
+      "link": "#/fantom5/Forrest_et_al_2014/"
+    },
+    {
+      "path": "../fantom5/Motakis_et_al_2013/datapackage.json",
+      "link": "#/fantom5/Motakis_et_al_2013/"
+    }
+  ]
+}

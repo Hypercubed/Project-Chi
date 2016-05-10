@@ -1,0 +1,38 @@
+<link rel="import"
+      href="../polymer/polymer.html">
+
+<dom-module id="dom-element-dep">
+
+  <style>
+    p {
+      font-family: sans-serif;
+      color: white;
+      background: steelblue;
+      padding: 0.4em;
+    }
+  </style>
+
+  <template>
+    <p id="content"></p>
+  </template>
+
+  <script type="module">
+    import Polymer from 'polymerjs';
+    import marked from 'marked';
+
+    Polymer({
+      is: 'dom-element-dep',
+      properties: {
+        greeting: {
+          type: String,
+          value: '*I\'m a DOM element. This is my local DOM!*'
+        }
+      },
+      ready: function() {
+        var markdown = marked(this.greeting);
+        this.$.content.innerHTML = markdown;
+      }
+    });
+  </script>
+
+</dom-module>

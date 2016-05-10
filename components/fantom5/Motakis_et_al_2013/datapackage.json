@@ -1,0 +1,11 @@
+{
+  "name": "Motakis_et_al_2013",
+  "title" : "Motakis et al. 2013",
+  "description": "Redefinition of the human mast cell transcriptome by deep sequencing",
+  "resources": [
+    "PCA_data.tsv"
+  ],
+  "license": "CC-BY-4.0",
+  "image": "scatter.png",
+  "readme": "README.md"
+}

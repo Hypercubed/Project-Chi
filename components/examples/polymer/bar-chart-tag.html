@@ -1,0 +1,29 @@
+<dom-module id="bar-chart">
+  <style>
+    :host ::content .axis path,
+    :host ::content .poly-bars .axis line {
+    	fill: none;
+    	stroke: #000;
+    	shape-rendering: crispEdges;
+    }
+
+    :host ::content .bar {
+    	fill: steelblue;
+    }
+
+    :host ::content .x.axis path {
+    	display: none;
+      font-size: 10px;
+    }
+
+    div {  /* testing shadow dom */
+    	background-color: #eee;
+    }
+  </style>
+	<template>
+		<content>
+			<div id="chart" class="poly-bars">
+			</div>
+		</content>
+	</template>
+</dom-module>
