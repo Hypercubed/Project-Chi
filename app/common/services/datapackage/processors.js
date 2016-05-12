@@ -1,4 +1,6 @@
 import Papa from 'babyparse';
+import yaml from 'yaml';
+
 import {setLineEnding} from 'crlf-helper';
 
 const dos2unix = content => setLineEnding(content, 'LF');
@@ -31,6 +33,12 @@ const processors = {
   'text/plain': {
     translate: load => {
       load.content = dos2unix(load.content);
+    }
+  },
+
+  'text/yaml': {
+    translate: load => {
+      load.data = yaml.eval(load.content);
     }
   },
 

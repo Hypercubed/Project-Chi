@@ -94,6 +94,7 @@ System.config({
     "venn.js": "npm:venn.js@0.2.9",
     "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.22",
     "webtreemap": "github:martine/webtreemap@gh-pages",
+    "yaml": "npm:yaml@0.3.0",
     "github:Hypercubed/systemjs-plugin-html@0.0.8": {
       "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.22"
     },
@@ -281,6 +282,10 @@ System.config({
       "parse-headers": "npm:parse-headers@2.0.1",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "xtend": "npm:xtend@4.0.1"
+    },
+    "npm:yaml@0.3.0": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "process": "github:jspm/nodelibs-process@0.1.2"
     }
   }
 });

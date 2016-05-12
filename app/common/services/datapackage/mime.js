@@ -17,6 +17,9 @@ export const MimeDb = {
     compressible: true,
     extensions: ['txt', 'text', 'conf', 'def', 'list', 'log', 'in', 'ini']
   },
+  'text/yaml': {
+    extensions: ['yaml', 'yml']
+  },
   'application/json': {
     source: 'iana',
     charset: 'UTF-8',

@@ -108,7 +108,8 @@
       "ui-select": "npm:ui-select@^0.16.1",
       "venn.js": "npm:venn.js@^0.2.9",
       "webcomponentsjs": "github:webcomponents/webcomponentsjs@^0.7.7",
-      "webtreemap": "github:martine/webtreemap@gh-pages"
+      "webtreemap": "github:martine/webtreemap@gh-pages",
+      "yaml": "npm:yaml@^0.3.0"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
