@@ -26,6 +26,14 @@ gulp.task('copy', () => {
     .pipe(gulp.dest(paths.dist));
 });
 
+// copy jspm_package resources to distribution
+gulp.task('copy-jspm', () => {
+  return gulp.src(paths.jspmResources, {followSymlinks: true})
+    .pipe(cached('copy-jspm'))
+    .pipe(plumber())
+    .pipe(gulp.dest(paths.dist));
+});
+
 // copy data to distribution folder
 gulp.task('data', () => {
   return gulp.src(paths.data)
@@ -88,6 +96,9 @@ gulp.task('symlink-jspm', () => {
 
 // symlink data into temp folder to avoid copy
 gulp.task('symlink-data', () => {
+  if (!paths.dataLink || paths.dataLink.length === 0) {
+    return;
+  }
   return vfs.src(paths.dataLink, {followSymlinks: false, buffer: false, allowEmpty: true})
     .pipe(vfs.symlink(`${paths.dist}/data`));
 });
@@ -123,8 +134,8 @@ gulp.task('jspm-build', cb => {
 
 gulp.task('build', cb => {
   runSequence(['clean-tmp', 'clean-dist'],
+              ['copy', 'js', 'css', 'data', 'html', 'copy-jspm'],
               ['symlink-jspm', 'symlink-data'],
-              ['copy', 'js', 'css', 'data', 'html'],
               'jspm-build',
               cb);
 });

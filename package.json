@@ -23,7 +23,6 @@
     "gulp-cached": "^1.1.0",
     "gulp-gh-pages": "^0.5.1",
     "gulp-plumber": "^1.0.1",
-    "gulp-symlink": "^2.1.4",
     "gulp-task-listing": "^1.0.1",
     "hydrolysis": "1.21.4",
     "jspm": "^0.16.34",

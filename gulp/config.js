@@ -30,11 +30,13 @@ const config = {
     resources: [
       'app/*.{js,json,ico,txt,md}',
       'app/.nojekyll',
-      'app/{jspm_packages,lib}/*.{js,map}',
-      'app/{jspm_packages,lib}/**/*.{svg,png,eot,ttf,gif,wot,woff,woff2}',
       'app/{components,common,assets}/**/*.{png,svg,txt,md}',
       `${dataSetPath}/app/*.{json,ico,txt,md}`,
       `${dataSetPath}/app/{components,common,assets}/**/*.{png,svg,md,json}`
+    ],
+    jspmResources: [
+      'app/{jspm_packages,lib}/*.{js,map}',
+      'app/{jspm_packages,lib}/**/*.{svg,png,eot,ttf,gif,wot,woff,woff2}'
     ],
     data: [
       `app/{components,common,assets}/**/*.{json,csv,tsv,txt}`,
