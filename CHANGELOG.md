@@ -4,6 +4,7 @@ CHANGELOG
 ## HEAD (Unreleased)
 * Improved gulp build
 * Support text/yaml files
+* Added preliminary matrix table parser
 
 --------------------
 

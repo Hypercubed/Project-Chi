@@ -20,6 +20,10 @@ export const MimeDb = {
   'text/yaml': {
     extensions: ['yaml', 'yml']
   },
+  'text/matrix': {
+    source: 'custom',
+    extensions: ['matrix', 'expression', 'osc']
+  },
   'application/json': {
     source: 'iana',
     charset: 'UTF-8',
