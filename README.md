@@ -1,5 +1,7 @@
 # Project χ
 
+[![Join the chat at https://gitter.im/Hypercubed/Project-Chi](https://badges.gitter.im/Hypercubed/Project-Chi.svg)](https://gitter.im/Hypercubed/Project-Chi?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Project χ (pronounced project /ˈ</span><span title="'k' in 'kind'">k</span><span title="/aɪ/ long 'i' in 'tide'">aɪ</span></span>/) is an modular open source visualization gallery toolkit.  It offers a boilerplate and toolset for building self-hosted data-centric visualization websites. Geared towards sharing of supplemental materials associated with scientific publications; Project χ allows visitors to interact with visualizations, download associated data and images, and even try the visualization with their own uploaded or publicly available datasets.  For developers the toolkit comes preconfigured with the popular design frameworks (Twitter Bootstrap, Angular UI) and cutting edge build tools (gulp, jspm, SystemJS) and examples integrating interactive visualizations using [d3.js](http://d3js.org/), [AngularJS](https://angularjs.org/), and [BioJS](http://biojs.io/).
 
 **Note: Project χ is experimental.  Many things will change.  If you are interested in this project or have issues please feel free to contact me.**
