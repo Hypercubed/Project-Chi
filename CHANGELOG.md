@@ -2,12 +2,15 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+--------------------
+
+## 1.0.0-beta (2016-06-01)
 * Improved gulp build
 * Support text/yaml files
 * Added preliminary matrix table parser
 * Added minimal build time templating
-
---------------------
 
 ## 1.0.0-alpha.3 (2016-05-10)
 _(none)_
