@@ -5,6 +5,7 @@ CHANGELOG
 * Improved gulp build
 * Support text/yaml files
 * Added preliminary matrix table parser
+* Added minimal build time templating
 
 --------------------
 

@@ -2,7 +2,7 @@ import './app.css!';
 
 import angular from 'angular';
 import 'angular-route';
-// import 'angular-animate';
+import 'angular-animate';
 import 'angular-cookies';
 import 'angular-sanitize';
 
@@ -31,7 +31,7 @@ import onResize from 'common/directives/resize';
 export default angular
   .module('projectX', [
     'ngRoute',
-    // 'ngAnimate',
+    'ngAnimate',
     'ngCookies',
     'ngSanitize',
     // 'ngTouch',

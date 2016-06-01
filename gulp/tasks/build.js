@@ -5,11 +5,11 @@ import del from 'del';
 import vfs from 'vinyl-fs';
 import SystemJSBuilder from 'systemjs-builder';
 import runSequence from 'run-sequence';
-// import gulpLoad from 'gulp-load-plugins';
+// import htmlmin from 'gulp-htmlmin';
 import taskListing from 'gulp-task-listing';
 import cached from 'gulp-cached';
 import plumber from 'gulp-plumber';
-// import {argv as args} from 'yargs';
+import template from 'gulp-template';
 
 import config from '../config';
 
@@ -40,15 +40,25 @@ gulp.task('data', () => {
     .pipe(gulp.dest(paths.dist));
 });
 
+gulp.task('html-tmp', () => {
+  return gulp.src(paths.templates)
+    .pipe(cached('templates'))
+    .pipe(plumber())
+    .pipe(template(config))
+    /* .pipe(htmlmin({
+      collapseWhitespace: true
+    })) */
+    .pipe(gulp.dest(paths.temp));
+});
+
 // copy templates to temp and distribution folder
 gulp.task('html', () => {
   return gulp.src(paths.templates)
     .pipe(cached('templates'))
     .pipe(plumber())
-    /* .pipe($.minifyHtml({
-      empty: true,
-      spare: true,
-      quotes: true
+    .pipe(template(config))
+    /* .pipe(htmlmin({
+      collapseWhitespace: true
     })) */
     .pipe(gulp.dest(paths.temp))
     .pipe(gulp.dest(paths.dist));
@@ -137,5 +147,6 @@ gulp.task('build', cb => {
               ['copy', 'js', 'css', 'data', 'html', 'copy-jspm'],
               ['symlink-jspm', 'symlink-data'],
               'jspm-build',
+              'tree',
               cb);
 });

@@ -47,7 +47,7 @@ System.config({
     "angular-ui-bootstrap": "npm:angular-ui-bootstrap@1.3.2",
     "angular-ui-grid": "npm:angular-ui-grid@3.1.1",
     "angularjs-slider": "npm:angularjs-slider@2.13.0",
-    "assert": "npm:assert@1.3.0",
+    "assert": "npm:assert@1.4.0",
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "babyparse": "npm:babyparse@0.4.6",
@@ -77,13 +77,14 @@ System.config({
     "html": "github:Hypercubed/systemjs-plugin-html@0.0.8",
     "inlet": "github:enjalot/Inlet@0.1.1",
     "intro.js": "npm:intro.js@2.1.0",
-    "jquery": "npm:jquery@2.2.3",
+    "jquery": "npm:jquery@2.2.4",
     "json": "github:systemjs/plugin-json@0.1.2",
     "jspm/nodelibs-assert": "github:jspm/nodelibs-assert@0.1.0",
     "lodash": "npm:lodash@3.10.1",
     "md": "github:guybedford/system-md@0.1.0",
     "mime-lookup": "npm:mime-lookup@0.0.2",
     "model-js": "npm:model-js@0.2.5",
+    "pivottable": "npm:pivottable@2.0.2",
     "polymer": "github:Polymer/polymer@1.4.0",
     "process": "github:jspm/nodelibs-process@0.1.2",
     "screenfull": "npm:screenfull@2.0.0",
@@ -102,7 +103,10 @@ System.config({
       "showdown": "github:showdownjs/showdown@1.3.0"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
-      "assert": "npm:assert@1.3.0"
+      "assert": "npm:assert@1.4.0"
+    },
+    "github:jspm/nodelibs-buffer@0.1.0": {
+      "buffer": "npm:buffer@3.6.0"
     },
     "github:jspm/nodelibs-events@0.1.1": {
       "events": "npm:events@1.0.2"
@@ -117,7 +121,7 @@ System.config({
       "util": "npm:util@0.10.3"
     },
     "github:twbs/bootstrap@3.3.6": {
-      "jquery": "npm:jquery@2.2.3"
+      "jquery": "npm:jquery@2.2.4"
     },
     "npm:URIjs@1.16.1": {
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -141,7 +145,11 @@ System.config({
     "npm:angularjs-slider@2.13.0": {
       "angular": "npm:angular@1.5.5"
     },
-    "npm:assert@1.3.0": {
+    "npm:assert@1.4.0": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "buffer-shims": "npm:buffer-shims@1.0.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
       "util": "npm:util@0.10.3"
     },
     "npm:babel-runtime@5.8.38": {
@@ -162,6 +170,17 @@ System.config({
     },
     "npm:biojs-vis-example@0.1.4": {
       "d3": "npm:d3@3.5.16"
+    },
+    "npm:buffer-shims@1.0.0": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0"
+    },
+    "npm:buffer@3.6.0": {
+      "base64-js": "npm:base64-js@0.0.8",
+      "child_process": "github:jspm/nodelibs-child_process@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "ieee754": "npm:ieee754@1.1.6",
+      "isarray": "npm:isarray@1.0.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:chiasm-charts@0.1.5": {
       "chiasm-component": "npm:chiasm-component@0.2.3",
@@ -245,6 +264,9 @@ System.config({
       "events": "github:jspm/nodelibs-events@0.1.1",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:isarray@1.0.0": {
+      "systemjs-json": "github:systemjs/plugin-json@0.1.2"
+    },
     "npm:lodash@3.10.1": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -256,6 +278,11 @@ System.config({
       "trim": "npm:trim@0.0.1"
     },
     "npm:path-browserify@0.0.0": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:pivottable@2.0.2": {
+      "child_process": "github:jspm/nodelibs-child_process@0.1.0",
+      "jquery": "npm:jquery@2.2.4",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:process@0.11.3": {

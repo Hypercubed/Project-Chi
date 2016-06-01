@@ -2,7 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title>Project-χ</title>
+    <title><%= template.title %></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <style type="text/css">
@@ -12,8 +12,10 @@
     </style>
 	  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 
-    <link rel="stylesheet" type="text/css" href="components/bundle.css">
-    <link rel="import" href="components/bundle.html">
+    <% if (ENV === 'prod') { %>
+      <link rel="stylesheet" type="text/css" href="components/bundle.css">
+      <link rel="import" href="components/bundle.html">
+    <% } %>
   </head>
   <body ng-cloak>
     <noscript>
@@ -28,42 +30,44 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div class="header" ng-include="'common/partials/header.html'"></div>
+  <%= template.content %>
 
-    <div class="container">
-      <div ng-view=""></div>
-    </div>
-
-    <div class="footer" ng-include="'common/partials/footer.html'">
-    </div>
-
-    <div growl></div>
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-    <!-- script>
+  <% if (ENV === 'prod') { %>
+    <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
        }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-       ga('create', 'UA-XXXXX-X');
+       ga('create', '<%= template.google %>');
        ga('send', 'pageview');
-    </script -->
-
+    </script>
+  <% } %>
     <script src="jspm_packages/system.js"></script>
     <script src="system.config.js"></script>
+  <% if (ENV === 'prod') { %>
     <script src="components/bundle.js"></script>
+  <% } %>
+
     <script>
+    <% if (template.webcomponents === true) { %>
       // first try to get webcomponentsjs, if not boot anyway
       System.import('webcomponentsjs/webcomponents-lite.js').then(function () {
-        window.addEventListener('WebComponentsReady', function (e) {
-          System.import('components/boot');
-        });
-      }).catch(function () {
-        System.import('components/boot');
-      });
+        window.addEventListener('WebComponentsReady', $$boot);
+      }).catch($$boot);
+    <% } else { %>
+      $$boot();
+    <% } %>
+
+      function $$boot () {
+        System.import('<%= paths.build %>')
+          .catch(function (e) {
+            console.error(e, 'Please report this error');
+          });
+      }
     </script>
+
+
 
 </body>
 </html>
