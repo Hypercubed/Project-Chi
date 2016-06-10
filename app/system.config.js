@@ -47,6 +47,7 @@ System.config({
     "angular-ui-bootstrap": "npm:angular-ui-bootstrap@1.3.2",
     "angular-ui-grid": "npm:angular-ui-grid@3.1.1",
     "angularjs-slider": "npm:angularjs-slider@2.13.0",
+    "animate": "npm:animate.css@3.5.1",
     "assert": "npm:assert@1.4.0",
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",

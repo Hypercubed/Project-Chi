@@ -3,6 +3,8 @@
 import {existsSync} from 'fs';
 import {join} from 'path';
 
+import cuid from 'cuid';
+
 import extend from 'deep-extend';
 import gutil from 'gulp-util';
 // import {argv} from 'yargs';
@@ -115,13 +117,15 @@ const config = {
   ENV: getEnvironment(),
   DEBUG: argv.debug || false,
   template: {
+    title: 'Project-χ',
+    bust: cuid(),
     google: 'UA-XXXXX-X',
     webcomponents: true,
     content: `
       <div class="header" ng-include="'common/partials/header.html'"></div>
 
       <div class="container">
-        <div ng-view=""></div>
+        <div ng-view autoscroll></div>
       </div>
 
       <div class="footer" ng-include="'common/partials/footer.html'">

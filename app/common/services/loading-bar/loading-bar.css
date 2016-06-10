@@ -1,0 +1,51 @@
+
+#loading-bar-spinner {
+  position: fixed;
+  top: 10%;
+  bottom: 10%;
+  left: 10%;
+  width: 80%;
+  text-align: center;
+  display: table;
+  z-index: 3000;
+  padding: 20px;
+  background-color: rgba(217,237,247, 0.8);
+}
+
+#loading-bar-spinner span {
+  width: 100%;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 24px;
+}
+
+#loading-bar-spinner.ng-enter,
+#loading-bar-spinner.ng-leave.ng-leave-active {
+  opacity: 0;
+  transition: opacity linear .3s;
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+
+#loading-bar-spinner.ng-enter.ng-enter-active,
+#loading-bar-spinner.ng-leave {
+  opacity: 1;
+  transition: opacity linear .5s;
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+}
+
+#loading-bar .bar {
+  z-index: 3000;
+}
+
+#loading-bar-spinner .spinner-box {
+  width: 28px;
+  height: 28px;
+  margin: 30px auto 30px auto;
+}
+
+#loading-bar-spinner .spinner-icon {
+  width: 28px;
+  height: 28px;
+}
