@@ -6,6 +6,9 @@ _(none)_
 
 --------------------
 
+## 1.0.0-beta-2 (2016-06-29)
+_(none)_
+
 ## 1.0.0-beta (2016-06-01)
 * Improved gulp build
 * Support text/yaml files
