@@ -27,7 +27,10 @@ function configRoutes ($routeProvider) {
   });
 }
 
-export default angular
+const routes = angular
   .module('routes', [examples.name])
   .component('index', indexComponent)
-  .config(configRoutes);
+  .config(configRoutes)
+  .name;
+
+export default routes;

@@ -121,18 +121,7 @@ const config = {
     bust: cuid(),
     google: 'UA-XXXXX-X',
     webcomponents: true,
-    content: `
-      <div class="header" ng-include="'common/partials/header.html'"></div>
-
-      <div class="container">
-        <div ng-view autoscroll></div>
-      </div>
-
-      <div class="footer" ng-include="'common/partials/footer.html'">
-      </div>
-
-      <div growl></div>
-    `
+    content: '<app></app>'  // TODO: deprecate
   }
 };
 

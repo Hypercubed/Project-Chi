@@ -1,15 +1,16 @@
 
 #loading-bar-spinner {
   position: fixed;
-  top: 10%;
-  bottom: 10%;
-  left: 10%;
-  width: 80%;
+  top: 0;
+  bottom: 52px;
+  left: 0;
+  right: 0;
+  width: 100%;
   text-align: center;
   display: table;
   z-index: 3000;
-  padding: 20px;
-  background-color: rgba(217,237,247, 0.8);
+  padding: 0;
+  background-color: rgba(217,237,247, 0);
 }
 
 #loading-bar-spinner span {
@@ -42,7 +43,7 @@
 #loading-bar-spinner .spinner-box {
   width: 28px;
   height: 28px;
-  margin: 30px auto 30px auto;
+  margin: 12px auto 12px auto;
 }
 
 #loading-bar-spinner .spinner-icon {
