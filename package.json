@@ -108,6 +108,7 @@
       "md": "github:guybedford/system-md@^0.1.0",
       "mime-lookup": "npm:mime-lookup@^0.0.2",
       "model-js": "npm:model-js@0.2.5",
+      "mongodb-extended-json": "npm:mongodb-extended-json@^1.6.3",
       "pivottable": "npm:pivottable@^2.0.2",
       "polymer": "github:Polymer/polymer@^1.4.0",
       "process": "github:jspm/nodelibs-process@^0.1.1",
