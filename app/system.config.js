@@ -86,6 +86,7 @@ System.config({
     "lodash": "npm:lodash@3.10.1",
     "md": "github:guybedford/system-md@0.1.0",
     "mime-lookup": "npm:mime-lookup@0.0.2",
+    "ml-pca": "npm:ml-pca@1.1.1",
     "model-js": "npm:model-js@0.2.5",
     "pivottable": "npm:pivottable@2.0.2",
     "polymer": "github:Polymer/polymer@1.4.0",
@@ -294,6 +295,10 @@ System.config({
     "npm:mime-lookup@0.0.2": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:ml-pca@1.1.1": {
+      "ml-matrix": "npm:ml-matrix@1.1.5",
+      "ml-stat": "npm:ml-stat@1.2.0"
+    },
     "npm:parse-headers@2.0.1": {
       "for-each": "npm:for-each@0.3.2",
       "trim": "npm:trim@0.0.1"
@@ -329,8 +334,7 @@ System.config({
       "crossfilter2": "npm:crossfilter2@1.4.0-alpha.6",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "q": "npm:q@1.4.1",
-      "reductio": "npm:reductio@0.6.0",
-      "systemjs-json": "github:systemjs/plugin-json@0.1.2"
+      "reductio": "npm:reductio@0.6.0"
     },
     "npm:util@0.10.3": {
       "inherits": "npm:inherits@2.0.1",
