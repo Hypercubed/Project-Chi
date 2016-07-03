@@ -110,6 +110,19 @@ const config = {
   deploy: {
     // empty to avoid accidental deploy
   },
+  builder: {
+    config: {
+      buildCSS: true,
+      buildHTML: true
+    },
+    bundle: {
+      sourceMaps: true,
+      minify: true,
+      mangle: true,
+      runtime: false,
+      esOptimize: true
+    }
+  },
   pkg,
   VERSION: pkg.version,
   VERSION_CHI: pkg.version,

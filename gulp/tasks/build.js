@@ -14,6 +14,7 @@ import template from 'gulp-template';
 import config from '../config';
 
 const paths = config.paths;
+const builder = config.builder;
 
 gulp.task('help', taskListing);
 
@@ -115,22 +116,8 @@ gulp.task('symlink-data', () => {
 
 gulp.task('bundle', () => {
   const builder = new SystemJSBuilder(paths.temp, `${paths.temp}/system.config.js`);
-
-  // var builder = new jspm.Builder({baseURL: path.temp});
-
-  builder.config({
-    buildCSS: true,
-    buildHTML: true
-  });
-
-  return builder.bundle(paths.build, `${paths.temp}/components/bundle.js`, {
-    sourceMaps: true,
-    minify: true,
-    mangle: true,
-    runtime: false,
-    esOptimize: true
-    /* inject: true */
-  });
+  builder.config(config.builder.config);
+  return builder.bundle(paths.build, `${paths.temp}/components/bundle.js`, config.builder.bundle);
 });
 
 gulp.task('clean-dist', () => del(paths.dist));

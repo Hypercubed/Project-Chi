@@ -11,6 +11,7 @@ import svgDropdownDownload from 'common/directives/svg-download-dropdown';
 import fileDrop from 'common/directives/file-drop';
 import fileDownload from 'common/directives/fileDownload';
 import mime from 'common/services/datapackage/mime';
+import {processors} from 'common/services/datapackage/processors';
 
 import template from './editor.html!text';
 
@@ -84,7 +85,7 @@ function controller ($cookies, $timeout, dataService) {
     enableAdd: true,
     enableDrop: false,
     enableProtected: false,
-    types: ['text/plain', 'text/csv', 'text/tab-separated-values', 'application/json']
+    types: Object.keys(processors)
 
     // svgsFrom: '#chart' // TODO
   }, this.options);

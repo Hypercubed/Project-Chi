@@ -86,6 +86,8 @@ System.config({
     "lodash": "npm:lodash@3.10.1",
     "md": "github:guybedford/system-md@0.1.0",
     "mime-lookup": "npm:mime-lookup@0.0.2",
+    "ml-matrix": "npm:ml-matrix@1.1.5",
+    "ml-pca": "npm:ml-pca@1.1.1",
     "model-js": "npm:model-js@0.2.5",
     "mongodb-extended-json": "npm:mongodb-extended-json@1.6.3",
     "pivottable": "npm:pivottable@2.0.2",
@@ -390,6 +392,10 @@ System.config({
     "npm:mime-lookup@0.0.2": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:ml-pca@1.1.1": {
+      "ml-matrix": "npm:ml-matrix@1.1.5",
+      "ml-stat": "npm:ml-stat@1.2.0"
+    },
     "npm:mongodb-extended-json@1.6.3": {
       "JSONStream": "npm:JSONStream@1.1.2",
       "async": "npm:async@1.5.2",
@@ -481,8 +487,7 @@ System.config({
       "crossfilter2": "npm:crossfilter2@1.4.0-alpha.6",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "q": "npm:q@1.4.1",
-      "reductio": "npm:reductio@0.6.0",
-      "systemjs-json": "github:systemjs/plugin-json@0.1.2"
+      "reductio": "npm:reductio@0.6.0"
     },
     "npm:url@0.10.3": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
