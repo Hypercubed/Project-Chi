@@ -134,6 +134,6 @@ gulp.task('build', cb => {
               ['copy', 'js', 'css', 'data', 'html', 'copy-jspm'],
               ['symlink-jspm', 'symlink-data'],
               'jspm-build',
-              // 'tree',
+              'tree',
               cb);
 });

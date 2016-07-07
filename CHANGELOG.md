@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Added facet and grid services
+* Generate tree when building
 
 --------------------
 

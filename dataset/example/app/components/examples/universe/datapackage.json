@@ -7,5 +7,6 @@
 			"path": "https://cdn.rawgit.com/crossfilter/crossfilter/gh-pages/flights-3m.json",
 			"mediatype": "text/csv"
 		}
-	]
+	],
+	"image": "thumbnail.png"
 }

@@ -66,7 +66,7 @@ function controller ($scope, $log, cfpLoadingBar) {
     },
     raw: $ctrl.dataPackage.resources[0].data,
     $onInit () {
-      $log.info('onInit');
+      $log.debug('onInit');
       process();
     }
   });
@@ -75,7 +75,7 @@ function controller ($scope, $log, cfpLoadingBar) {
     cfpLoadingBar.start();
     const raw = $ctrl.raw = $ctrl.dataPackage.resources[0].data;
 
-    $log.info('processing', raw.length);
+    $log.debug('processing', raw.length);
 
     raw.forEach((d, i) => {
       d.index = i;
@@ -112,7 +112,7 @@ function controller ($scope, $log, cfpLoadingBar) {
         await setup();
         update();
 
-        $log.info('universe setup done');
+        $log.debug('universe setup done');
       })
       .catch(console.error.bind(console));
   }

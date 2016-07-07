@@ -5,35 +5,39 @@
   text-rendering: optimizeLegibility;
 }
 
-.chart {
+#_examples_universe__chart #charts {
+  height: 150px;
+}
+
+#_examples_universe__chart .chart {
   display: inline-block;
   height: 151px;
   margin-bottom: 20px;
 }
-.reset {
+#_examples_universe__chart .reset {
   padding-left: 1em;
   font-size: smaller;
   color: #ccc;
 }
-.background.bar {
+#_examples_universe__chart .background.bar {
   fill: #ccc;
 }
-.foreground.bar {
+#_examples_universe__chart .foreground.bar {
   fill: steelblue;
 }
-.axis path, .axis line {
+#_examples_universe__chart .axis path, #_examples_universe__chart .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
 }
-.axis text {
+#_examples_universe__chart .axis text {
   font: 10px sans-serif;
 }
-.brush rect.extent {
+#_examples_universe__chart .brush rect.extent {
   fill: steelblue;
   fill-opacity: .125;
 }
-.brush .resize path {
+.#_examples_universe__chart brush .resize path {
   fill: #eee;
   stroke: #666;
 }
@@ -48,8 +52,4 @@
 
 #flight-list .early {
   color: green;
-}
-
-#_examples_universe__chart #charts {
-  height: 150px;
 }
