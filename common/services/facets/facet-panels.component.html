@@ -1,0 +1,23 @@
+<div class="text-right">
+  <a class="btn btn-sm btn-link"
+    ng-click="$ctrl.clearAll()">
+    <i class="fa fa-times-circle-o" aria-label="Remove Filter">
+      Clear all
+    </i>
+  </a>
+</div>
+<div class="panel panel-default panel-facet"
+  ng-repeat="facet in $ctrl.facets"
+  ng-if="!facet.hidden">
+  <div class="panel-heading" ng-click="facet.collapsed = !facet.collapsed">
+    <h3 class="panel-title" uib-tooltip-html="::facet.description" tooltip-placement="right" tooltip-append-to-body="true">
+      {{(facet.displayName || facet.key)}} <small>{{facet.query.data.length}}</small>
+      <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': facet.collapsed, 'glyphicon-chevron-right': !facet.collapsed}"></i>
+    </h3>
+  </div>
+  <div class="panel-body" uib-collapse="facet.collapsed">
+    <small>
+      <facet facet="facet"></facet>
+    </small>
+  </div>
+</div>

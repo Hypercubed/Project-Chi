@@ -1,0 +1,12 @@
+{
+	"name": "universe",
+	"title": "crossfilter/universe Example",
+	"description": "An example using a [crossfilter/universe](https://github.com/crossfilter/universe).  Data Source: [ASA Data Expo](http://stat-computing.org/dataexpo/2009/) dataset",
+	"resources": [
+		{
+			"path": "https://cdn.rawgit.com/crossfilter/crossfilter/gh-pages/flights-3m.json",
+			"mediatype": "text/csv"
+		}
+	],
+	"image": "thumbnail.png"
+}

@@ -10,10 +10,12 @@
         display: none;
       }
     </style>
-	  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+	  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 
-    <link rel="stylesheet" type="text/css" href="components/bundle.css">
-    <link rel="import" href="components/bundle.html">
+    
+      <link rel="stylesheet" type="text/css" href="components/bundle.css">
+      <link rel="import" href="components/bundle.html">
+    
   </head>
   <body ng-cloak>
     <noscript>
@@ -28,38 +30,40 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div class="header" ng-include="'common/partials/header.html'"></div>
+  <app></app>
 
-    <div class="container">
-      <div ng-view=""></div>
-    </div>
-
-    <div class="footer" ng-include="'common/partials/footer.html'">
-    </div>
-
+  
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-49359515-2', 'auto');
-      ga('send', 'pageview');
+       ga('create', 'UA-49359515-2');
+       ga('send', 'pageview');
     </script>
-
+  
     <script src="jspm_packages/system.js"></script>
     <script src="system.config.js"></script>
-    <script src="components/bundle.js"></script>
+  
+    <script src="components/bundle.js?ciqbvyqi70000trq8y3j2qpuk"></script>
+  
+
     <script>
+
+    
       // first try to get webcomponentsjs, if not boot anyway
       System.import('webcomponentsjs/webcomponents-lite.js').then(function () {
-        window.addEventListener('WebComponentsReady', function (e) {
-          System.import('components/boot');
-        });
-      }).catch(function () {
-        System.import('components/boot');
-      });
+        window.addEventListener('WebComponentsReady', $$boot);
+      }).catch($$boot);
+    
+
+      function $$boot () {
+        System.import('components/boot')
+          .catch(function (e) {
+            console.error(e, 'Please report this error');
+          });
+      }
     </script>
 
 </body>
