@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Added facet and grid services
-* Generate tree when building
+_(none)_
 
 --------------------
+
+## 1.0.0-rc.1 (2016-07-07)
+* Added facet and grid services
+* Generate tree when building
 
 ## 1.0.0-beta-2 (2016-06-29)
 _(none)_
