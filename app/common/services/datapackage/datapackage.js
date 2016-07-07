@@ -30,13 +30,15 @@ export function normalizeResource (base, resource) {
     resource = {path: resource};
   }
 
-  const uri = uRIjs(resource.path);
+  if (resource.path) {
+    const uri = uRIjs(resource.path);
 
-  resource.format = resource.format || uri.suffix();
-  resource.name = resource.name || uri.filename();
+    resource.format = resource.format || uri.suffix();
+    resource.name = resource.name || uri.filename();
 
-  resource.url = resource.url || uri.absoluteTo(base).href();
-  resource.mediatype = resource.mediatype || mime.lookup(resource.format);
+    resource.url = resource.url || uri.absoluteTo(base).href();
+    resource.mediatype = resource.mediatype || mime.lookup(resource.format);
+  }
 
   return resource;
 }

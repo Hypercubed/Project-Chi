@@ -6,7 +6,7 @@
 }
 
 #_examples_universe__chart #charts {
-  height: 150px;
+  min-height: 150px;
 }
 
 #_examples_universe__chart .chart {

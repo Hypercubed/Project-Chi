@@ -4,11 +4,11 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 
 - [x] css-minify
 - [ ] html minify?
-- [ ] gulp-template during development
+- [x] gulp-template during development
 - [ ] tests
 - [ ] Fix printing
 - [x] Add watch to dist
-- [-] Make symlinking data dirs configurable
+- [x] Make symlinking data dirs configurable
 - [ ] jspm 0.17 when released
 - [ ] gulp 4.0 when released
 - [ ] Angular 2 when released (typescript?)
