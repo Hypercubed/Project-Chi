@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Improved faceting
-* Improved universe example
+_(none)_
 
 --------------------
+
+## 1.0.0-rc.2 (2016-07-07)
+* Improved faceting
+* Improved universe example
 
 ## 1.0.0-rc.1 (2016-07-07)
 * Added facet and grid services
