@@ -1,0 +1,25 @@
+<package-editor options="$ctrl.editorOptions"></package-editor>
+
+<div class="container">
+  <h2>{{$ctrl.dataPackage.title}}</h2>
+  <div marked="$ctrl.dataPackage.description"></div>
+
+  <div id="_examples_universe__chart" class="row _examples_universe__bars">
+    <div class="col-md-3">
+      <h2>Refine by</h2>
+      <div class="row">
+        <div class="col-xs-12">
+          <facetpanels facets="$ctrl.facets" clear-all="$ctrl.clearAll()"></facetpanels>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div id="charts" class="col-md-12">
+      </div>
+      <h2>Flights <small>{{$ctrl.gridOpts.data.length}} of {{$ctrl.raw.length}} flights selected.</small></h2>
+      <div id="flight-list" ui-grid="::$ctrl.gridOpts" class="flightGrid" ui-grid-resize-columns>
+    </div>
+  </div>
+
+  <marked ng-include="$ctrl.dataPackage.readme"></marked>
+</div>

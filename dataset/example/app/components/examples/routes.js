@@ -1,5 +1,8 @@
 import angular from 'angular';
 
+import grid from 'common/services/grid/grid';
+import facets from 'common/services/facets/facets';
+
 // examples
 import examplesComponent from 'components/examples/index';
 import chiasmComponent from 'components/examples/chiasm/chiasm';
@@ -7,11 +10,16 @@ import bioJSComponent from 'components/examples/biojs/biojs';
 import barsComponent from 'components/examples/bars/bars';
 import treeMapComponent from 'components/examples/treemap/treemap';
 import polymerComponent from 'components/examples/polymer/barChart-controller';
+import universeComponent from 'components/examples/universe/universe';
 
 import 'd3-plugins/hexbin/hexbin';  // needed for /examples/hexbin
 
 export default angular
-  .module('examples', ['projectX.dataService'])
+  .module('examples', [
+    'projectX.dataService',
+    grid,
+    facets
+  ])
   .component('bars', barsComponent)
   .component('examples', examplesComponent)
   .component('biojs', bioJSComponent)
@@ -19,6 +27,7 @@ export default angular
   // .component('trains', trainsComponent)
   .component('polymer', polymerComponent)
   .component('treemap', treeMapComponent)
+  .component('universe', universeComponent)
   .config(['$routeProvider', $routeProvider => {
     $routeProvider
       .when('/examples', {
@@ -44,5 +53,9 @@ export default angular
       .when('/examples/polymer', {
         template: '<polymer data-package="$resolve.dataPackage"></polymer>',
         datapackageUrl: 'components/examples/polymer/datapackage.json'
+      })
+      .when('/examples/universe', {
+        template: '<universe data-package="$resolve.dataPackage"></universe>',
+        datapackageUrl: 'components/examples/universe/datapackage.json'
       });
   }]);

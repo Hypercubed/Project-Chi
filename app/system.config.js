@@ -57,6 +57,7 @@ System.config({
     "biojs-io-fasta": "npm:biojs-io-fasta@0.1.15",
     "biojs-vis-example": "npm:biojs-vis-example@0.1.4",
     "blobjs": "github:eligrey/Blob.js@master",
+    "bluebird": "npm:bluebird@3.4.1",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "chiasm": "npm:chiasm@0.3.0",
     "chiasm-charts": "npm:chiasm-charts@0.1.5",
@@ -70,6 +71,7 @@ System.config({
     "crlf-helper": "npm:crlf-helper@0.1.0",
     "crossfilter": "npm:crossfilter2@1.4.0-alpha.6",
     "css": "github:systemjs/plugin-css@0.1.21",
+    "cuid": "npm:cuid@1.3.8",
     "d3": "npm:d3@3.5.16",
     "d3-plugins": "github:d3/d3-plugins@master",
     "d3-svg-legend": "npm:d3-svg-legend@1.10.0",
@@ -125,6 +127,9 @@ System.config({
       "stream": "github:jspm/nodelibs-stream@0.1.0",
       "url": "github:jspm/nodelibs-url@0.1.0",
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "github:jspm/nodelibs-os@0.1.0": {
+      "os-browserify": "npm:os-browserify@0.1.2"
     },
     "github:jspm/nodelibs-path@0.1.0": {
       "path-browserify": "npm:path-browserify@0.0.0"
@@ -209,6 +214,9 @@ System.config({
     "npm:biojs-vis-example@0.1.4": {
       "d3": "npm:d3@3.5.16"
     },
+    "npm:bluebird@3.4.1": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
     "npm:bson@0.4.23": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
@@ -264,6 +272,13 @@ System.config({
       "lodash.result": "npm:lodash.result@4.4.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
+    },
+    "npm:cuid@1.3.8": {
+      "browser-fingerprint": "npm:browser-fingerprint@0.0.1",
+      "core-js": "npm:core-js@1.2.6",
+      "node-fingerprint": "npm:node-fingerprint@0.0.2",
+      "os": "github:jspm/nodelibs-os@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:d3-interpolate@0.7.0": {
       "d3-color": "npm:d3-color@0.4.2"
@@ -407,6 +422,13 @@ System.config({
       "moment": "npm:moment@2.13.0",
       "raf": "npm:raf@3.2.0",
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:node-fingerprint@0.0.2": {
+      "os": "github:jspm/nodelibs-os@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:os-browserify@0.1.2": {
+      "os": "github:jspm/nodelibs-os@0.1.0"
     },
     "npm:parse-headers@2.0.1": {
       "for-each": "npm:for-each@0.3.2",

@@ -22,6 +22,10 @@
     {
       "path": "polymer/datapackage.json",
       "link": "#/examples/polymer/"
+    },
+    {
+      "path": "universe/datapackage.json",
+      "link": "#/examples/universe/"
     }
   ]
 }
