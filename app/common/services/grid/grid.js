@@ -1,7 +1,7 @@
 import angular from 'angular';
 
-import 'ui-grid';
-import 'ui-grid/ui-grid.css!';
+import 'angular-ui-grid';
+import 'angular-ui-grid/ui-grid.css!';
 import './grid.css!';
 
 const name = 'projectX.grid';

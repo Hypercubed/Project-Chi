@@ -7,12 +7,8 @@ import {readableName} from './facet.utils';
 controller.$inject = ['$scope', '$log'];
 function controller ($scope, $log) {
   const $ctrl = this;
-  const facet = $ctrl.facet;
 
-  facet.displayName = facet.displayName || readableName(facet.key);
-  const sortBy = facet.sortBy || function (a, b) {
-    return b.value.count - a.value.count;
-  };
+  $ctrl.facet.displayName = $ctrl.facet.displayName || readableName($ctrl.facet.key);
 
   const minLimit = 5;
   const maxLimit = 100;
@@ -20,24 +16,10 @@ function controller ($scope, $log) {
   const scale = d3.scale.linear()
     .range([0, 100]);
 
-  const listener = $scope.$watch(() => facet.universe, u => {
-    if (u) {
-      listener();  // remove listener
-
-      $log.debug('facet.universe defined', facet.key);
-
-      u.onFilter(setScale);
-
-      u.query({
-        groupBy: facet.groupBy || facet.key,
-        type: facet.type || 'string'
-      })
-      .then(q => {
-        facet.query = q;
-        $ctrl.list = q.data.slice().sort(sortBy);
-        setScale();
-      })
-      .catch(console.error.bind(console));
+  $scope.$watch(() => $ctrl.facet.collapsed, c => {
+    if (!c) {
+      $log.debug('opened', $ctrl.facet.key);
+      setupFacet();
     }
   });
 
@@ -54,6 +36,50 @@ function controller ($scope, $log) {
     clear
   });
 
+  function setupFacet () {
+    const facet = $ctrl.facet;
+
+    if (!facet.query) {
+      if (facet.universe) {
+        loadQuery();
+      } else {
+        const listener = $scope.$watch(() => facet.universe, u => {
+          if (u) {
+            listener();  // remove listener
+            $log.debug('facet.universe defined', facet.key);
+            loadQuery();
+          }
+        });
+      }
+    }
+  }
+
+  function loadQuery () {
+    const facet = $ctrl.facet;
+
+    facet.displayName = facet.displayName || readableName(facet.key);
+    const sortBy = facet.sortBy || function (a, b) {
+      return b.value.count - a.value.count;
+    };
+
+    const u = facet.universe;
+    const start = new Date();
+
+    $log.debug('start query', facet.key);
+    u.query({
+      groupBy: facet.groupBy || facet.key,
+      type: facet.type || 'string'
+    })
+    .then(q => {
+      $log.debug('done query', facet.key, new Date() - start, 'ms');
+      facet.query = q;
+      $ctrl.list = q.data.slice().sort(sortBy);
+      setScale();
+      u.onFilter(setScale);
+    })
+    .catch(console.error.bind(console));
+  }
+
   function setScale () {
     if ($ctrl.list) {
       $scope.$applyAsync(() => {
@@ -64,12 +90,12 @@ function controller ($scope, $log) {
   }
 
   function clear () {
-    $ctrl.facets.filter(facet.key);
+    $ctrl.facets.filter($ctrl.facet.key);
   }
 
   function exists (item) {
     const filter = $ctrl.facet.universe
-      .filters[facet.key];
+      .filters[$ctrl.facet.key];
     if (filter) {
       if (Array.isArray(filter.value)) {
         return filter.value.indexOf(item) > -1;
@@ -81,7 +107,7 @@ function controller ($scope, $log) {
 
   function toggle (item) {
     $ctrl.facet.universe
-      .filter(facet.key, item)
+      .filter($ctrl.facet.key, item)
       .catch(console.error.bind(console));
   }
 

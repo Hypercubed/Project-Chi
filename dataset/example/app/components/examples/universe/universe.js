@@ -38,6 +38,10 @@ const columnDefs = [
   {name: 'destination'}
 ];
 
+const _keySort = function (a, b) {
+  return Number(a.key > b.key) || Number(a.key === b.key) - 1;
+};
+
 controller.$inject = ['$scope', '$log', 'cfpLoadingBar'];
 function controller ($scope, $log, cfpLoadingBar) {
   const $ctrl = this;
@@ -58,11 +62,10 @@ function controller ($scope, $log, cfpLoadingBar) {
       onChange: _.debounce(process, 300)
     },
     gridOpts,
-    clearAll () {
+    async clearAll () {
       cfpLoadingBar.start();
-      $ctrl.universe.filterAll().then(() => {
-        $ctrl.charts.forEach(chart => chart.method.clearBrush());
-      });
+      await $ctrl.universe.filterAll();
+      $ctrl.charts.forEach(chart => chart.barChart.clearBrush());
     },
     raw: $ctrl.dataPackage.resources[0].data,
     $onInit () {
@@ -71,7 +74,7 @@ function controller ($scope, $log, cfpLoadingBar) {
     }
   });
 
-  function process () {
+  async function process () {
     cfpLoadingBar.start();
     const raw = $ctrl.raw = $ctrl.dataPackage.resources[0].data;
 
@@ -91,36 +94,33 @@ function controller ($scope, $log, cfpLoadingBar) {
 
     $ctrl.facets = [
       {key: 'dayOfWeek', displayName: 'Day of the Week'},
-      {key: 'origin'},
-      {key: 'destination'}
+      {key: 'origin', collapsed: true, sortBy: _keySort},
+      {key: 'destination', collapsed: true, sortBy: _keySort}
     ];
 
-    universe(raw, {generatedColumns})
-      .then(async service => {
-        $ctrl.universe = service;
-        $ctrl.universe.onFilter(update);
+    const service = await universe(raw, {generatedColumns});
 
-        await $ctrl.universe.column($ctrl.facets.map(d => d.key));
+    $ctrl.universe = service;
+    $ctrl.universe.onFilter(_.debounce(update, 20));
 
-        $ctrl.facets.forEach(facet => {
-          facet.universe = service;
-        });
+    await $ctrl.universe.column('index');  // main data list
+    $ctrl.id = $ctrl.universe.column.find('index').dimension;
 
-        await $ctrl.universe.column('index');  // main data list
-        $ctrl.id = $ctrl.universe.column.find('index').dimension;
+    setup();
+    update();
 
-        await setup();
-        update();
+    $ctrl.facets.forEach(facet => {
+      facet.universe = service;
+    });
 
-        $log.debug('universe setup done');
-      })
-      .catch(console.error.bind(console));
+    $log.debug('universe setup done');
   }
 
   function update () {
     $scope.$applyAsync(() => {
-      $ctrl.gridOpts.data = $ctrl.data = $ctrl.id.top(Infinity);
+      $ctrl.gridOpts.data = $ctrl.data = $ctrl.id.top(1000);
       renderAll();
+      cfpLoadingBar.complete();
     });
   }
 
@@ -137,33 +137,29 @@ function controller ($scope, $log, cfpLoadingBar) {
       {groupBy: 'distances', displayName: 'Distance (mi.)'}
     ];
 
-    const p = $ctrl.charts.map(chart => {
-      chart.element = container
+    return Promise.all($ctrl.charts.map(async chart => {
+      const element = container
         .append('div')
         .attr('class', 'col-md-4');
 
-      const width = chart.element[0][0].clientWidth;
-      chart.method = barChart()
+      const width = element[0][0].clientWidth;
+      chart.barChart = barChart()
         .width(width - 20)
         .title(chart.displayName);
 
-      return $ctrl.universe.query(chart)
-        .then(q => chart.element.datum(q));
-    });
-
-    return Promise.all(p);
-  }
-
-  function render (chart) {
-    if (chart.element && chart.method) {
-      chart.element
-        .call(chart.method);
-    }
+      const q = await $ctrl.universe.query(chart);
+      return element
+        .datum(q)
+        .call(chart.barChart);
+    }));
   }
 
   function renderAll () {
-    $ctrl.charts.forEach(render);
-    cfpLoadingBar.complete();
+    $ctrl.charts.forEach(chart => {
+      if (chart.barChart.update) {
+        chart.barChart.update();
+      }
+    });
   }
 
   function parseDate (d) {

@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Improved faceting
+* Improved universe example
 
 --------------------
 

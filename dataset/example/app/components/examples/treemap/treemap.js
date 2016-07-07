@@ -7,7 +7,8 @@ import webtreemap from 'webtreemap';
 import 'webtreemap/webtreemap.css!';
 import './treemap.css!';
 
-function controller () {
+controller.$inject = ['$log'];
+function controller ($log) {
   const $ctrl = this;
 
   const $map = document.getElementById('_examples_treemap__chart');
@@ -26,7 +27,7 @@ function controller () {
     };
 
     document.addEventListener(screenfull.raw.fullscreenchange, () => {
-      console.log('screenfull.raw.fullscreenerror');
+      $log.debug('screenfull.raw.fullscreenerror');
       angular.element($map)[screenfull.isFullscreen ? 'addClass' : 'removeClass']('fullscreen');
       change();
     });

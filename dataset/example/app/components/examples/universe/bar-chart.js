@@ -82,6 +82,10 @@ export default function barChart () {
         const gBrush = g.append('g').attr('class', 'brush').call(brush);
         gBrush.selectAll('rect').attr('height', height);
         gBrush.selectAll('.resize').append('path').attr('d', resizePath);
+
+        chart.update = function () {
+          div.call(chart);
+        };
       }
       // Only redraw the brush if set externally.
       if (brushDirty) {

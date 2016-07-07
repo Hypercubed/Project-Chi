@@ -37,7 +37,8 @@
   fill: steelblue;
   fill-opacity: .125;
 }
-.#_examples_universe__chart brush .resize path {
+
+#_examples_universe__chart .brush .resize path {
   fill: #eee;
   stroke: #666;
 }
