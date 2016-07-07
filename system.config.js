@@ -35,29 +35,28 @@ System.config({
     "URIjs": "npm:URIjs@1.16.1",
     "_F": "github:Hypercubed/_F@0.0.11",
     "angular": "npm:angular@1.5.7",
-    "angular-animate": "npm:angular-animate@1.5.5",
-    "angular-cookies": "npm:angular-cookies@1.5.5",
+    "angular-animate": "npm:angular-animate@1.5.7",
+    "angular-cookies": "npm:angular-cookies@1.5.7",
     "angular-downloadsvg-directive": "npm:angular-downloadsvg-directive@0.1.5",
     "angular-growl": "npm:angular-growl-v2@0.7.5",
     "angular-intro.js": "npm:angular-intro.js@2.0.1",
     "angular-json-tree": "npm:angular-json-tree@1.0.1",
-    "angular-loading-bar": "npm:angular-loading-bar@0.8.0",
-    "angular-marked": "npm:angular-marked@1.2.0",
-    "angular-route": "npm:angular-route@1.5.5",
-    "angular-sanitize": "npm:angular-sanitize@1.5.5",
+    "angular-loading-bar": "npm:angular-loading-bar@0.9.0",
+    "angular-marked": "npm:angular-marked@1.2.1",
+    "angular-route": "npm:angular-route@1.5.7",
+    "angular-sanitize": "npm:angular-sanitize@1.5.7",
     "angular-touch": "npm:angular-touch@1.5.7",
-    "angular-ui-bootstrap": "npm:angular-ui-bootstrap@1.3.2",
-    "angular-ui-grid": "npm:angular-ui-grid@3.1.1",
+    "angular-ui-bootstrap": "npm:angular-ui-bootstrap@1.3.3",
+    "angular-ui-grid": "npm:angular-ui-grid@3.2.5",
     "angularjs-slider": "npm:angularjs-slider@2.13.0",
     "animate": "npm:animate.css@3.5.1",
     "assert": "npm:assert@1.4.1",
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "babyparse": "npm:babyparse@0.4.6",
-    "biojs-io-fasta": "npm:biojs-io-fasta@0.1.15",
+    "biojs-io-fasta": "npm:biojs-io-fasta@0.1.17",
     "biojs-vis-example": "npm:biojs-vis-example@0.1.4",
     "blobjs": "github:eligrey/Blob.js@master",
-    "bluebird": "npm:bluebird@3.4.1",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "chiasm": "npm:chiasm@0.3.0",
     "chiasm-charts": "npm:chiasm-charts@0.1.5",
@@ -72,7 +71,7 @@ System.config({
     "crossfilter": "npm:crossfilter2@1.4.0-alpha.6",
     "css": "github:systemjs/plugin-css@0.1.21",
     "cuid": "npm:cuid@1.3.8",
-    "d3": "npm:d3@3.5.16",
+    "d3": "npm:d3@3.5.17",
     "d3-plugins": "github:d3/d3-plugins@master",
     "d3-svg-legend": "npm:d3-svg-legend@1.10.0",
     "d3-tip": "github:Caged/d3-tip@0.6.7",
@@ -94,14 +93,14 @@ System.config({
     "mongodb-extended-json": "npm:mongodb-extended-json@1.6.3",
     "pivottable": "npm:pivottable@2.0.2",
     "polymer": "github:Polymer/polymer@1.4.0",
-    "process": "github:jspm/nodelibs-process@0.1.2",
+    "process": "npm:process@0.11.5",
+    "q": "npm:q@1.4.1",
     "screenfull": "npm:screenfull@2.0.0",
     "text": "github:systemjs/plugin-text@0.0.2",
     "ui-codemirror": "github:angular-ui/ui-codemirror@0.3.0",
-    "ui-grid": "github:angular-ui/bower-ui-grid@3.1.1",
     "ui-select": "npm:ui-select@0.16.1",
-    "universe": "npm:universe@0.6.4",
-    "venn.js": "npm:venn.js@0.2.9",
+    "universe": "npm:universe@0.7.0",
+    "venn.js": "npm:venn.js@0.2.10",
     "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.22",
     "webtreemap": "github:martine/webtreemap@gh-pages",
     "yaml": "npm:yaml@0.3.0",
@@ -164,22 +163,16 @@ System.config({
     "npm:URIjs@1.16.1": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:angular-animate@1.5.5": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
     "npm:angular-downloadsvg-directive@0.1.5": {
       "svgsaver": "npm:svgsaver@0.6.1"
     },
     "npm:angular-json-tree@1.0.1": {
       "angular": "npm:angular@1.5.7"
     },
-    "npm:angular-marked@1.2.0": {
+    "npm:angular-marked@1.2.1": {
       "marked": "npm:marked@0.3.5"
     },
-    "npm:angular-sanitize@1.5.5": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
-    "npm:angular-ui-grid@3.1.1": {
+    "npm:angular-ui-grid@3.2.5": {
       "angular": "npm:angular@1.5.7",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -202,7 +195,7 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:biojs-io-fasta@0.1.15": {
+    "npm:biojs-io-fasta@0.1.17": {
       "biojs-io-parser": "npm:biojs-io-parser@1.0.0",
       "msa-seqtools": "npm:msa-seqtools@0.1.8",
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -212,10 +205,7 @@ System.config({
       "xhr": "npm:xhr@2.2.0"
     },
     "npm:biojs-vis-example@0.1.4": {
-      "d3": "npm:d3@3.5.16"
-    },
-    "npm:bluebird@3.4.1": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
+      "d3": "npm:d3@3.5.17"
     },
     "npm:bson@0.4.23": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -233,7 +223,7 @@ System.config({
     "npm:chiasm-charts@0.1.5": {
       "chiasm-component": "npm:chiasm-component@0.2.3",
       "chiasm-dataset": "npm:chiasm-dataset@0.1.1",
-      "d3": "npm:d3@3.5.16",
+      "d3": "npm:d3@3.5.17",
       "model-js": "npm:model-js@0.2.5"
     },
     "npm:chiasm-component@0.2.3": {
@@ -241,7 +231,7 @@ System.config({
     },
     "npm:chiasm-layout@0.2.4": {
       "chiasm-component": "npm:chiasm-component@0.2.3",
-      "d3": "npm:d3@3.5.16",
+      "d3": "npm:d3@3.5.17",
       "lodash": "npm:lodash@3.10.1",
       "model-js": "npm:model-js@0.2.5"
     },
@@ -284,7 +274,7 @@ System.config({
       "d3-color": "npm:d3-color@0.4.2"
     },
     "npm:d3-svg-legend@1.10.0": {
-      "d3": "npm:d3@3.5.16"
+      "d3": "npm:d3@3.5.17"
     },
     "npm:d3-transition@0.2.8": {
       "d3-color": "npm:d3-color@0.4.2",
@@ -332,7 +322,7 @@ System.config({
       "stream": "github:jspm/nodelibs-stream@0.1.0"
     },
     "npm:global@4.3.0": {
-      "process": "npm:process@0.5.2"
+      "process": "npm:process@0.11.5"
     },
     "npm:good-listener@1.1.7": {
       "delegate": "npm:delegate@3.0.1"
@@ -468,12 +458,12 @@ System.config({
       "core-util-is": "npm:core-util-is@1.0.2",
       "events": "github:jspm/nodelibs-events@0.1.1",
       "inherits": "npm:inherits@2.0.1",
-      "isarray": "npm:isarray@0.0.1",
+      "isarray": "npm:isarray@1.0.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "stream-browserify": "npm:stream-browserify@1.0.0",
       "string_decoder": "npm:string_decoder@0.10.31"
     },
-    "npm:reductio@0.6.0": {
+    "npm:reductio@0.6.2": {
       "crossfilter2": "npm:crossfilter2@1.4.0-alpha.6",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -505,11 +495,12 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:universe@0.6.4": {
+    "npm:universe@0.7.0": {
       "crossfilter2": "npm:crossfilter2@1.4.0-alpha.6",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "q": "npm:q@1.4.1",
-      "reductio": "npm:reductio@0.6.0"
+      "reductio": "npm:reductio@0.6.2",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
     "npm:url@0.10.3": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",

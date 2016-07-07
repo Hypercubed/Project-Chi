@@ -5,6 +5,8 @@
   <div marked="$ctrl.dataPackage.description"></div>
 
   <div id="_examples_universe__chart" class="row _examples_universe__bars">
+    <div id="charts" class="col-md-12">
+    </div>
     <div class="col-md-3">
       <h2>Refine by</h2>
       <div class="row">
@@ -14,8 +16,6 @@
       </div>
     </div>
     <div class="col-md-9">
-      <div id="charts" class="col-md-12">
-      </div>
       <h2>Flights <small>{{$ctrl.gridOpts.data.length}} of {{$ctrl.raw.length}} flights selected.</small></h2>
       <div id="flight-list" ui-grid="::$ctrl.gridOpts" class="flightGrid" ui-grid-resize-columns>
     </div>
