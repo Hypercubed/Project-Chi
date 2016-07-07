@@ -535,7 +535,7 @@ jspm_packages/npm/angular@1.5.7/angular.js	168054
 jspm_packages/npm/angular@1.5.7.js	244
 common/directives/active-path.js	694
 common/common.js	339
-common/partials/footer.html	496
+common/partials/footer.html	494
 common/partials/header.html	1166
 components/app.component.js	998
 components/app.js	723
