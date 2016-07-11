@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Generate seperate bundles for app and deps
+* Improved build workflow
 
 --------------------
 

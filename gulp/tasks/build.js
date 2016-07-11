@@ -3,10 +3,8 @@ import gulp from 'gulp';
 // import jspm from 'jspm';
 import del from 'del';
 import vfs from 'vinyl-fs';
-import SystemJSBuilder from 'systemjs-builder';
 import runSequence from 'run-sequence';
-// import htmlmin from 'gulp-htmlmin';
-import taskListing from 'gulp-task-listing';
+
 import cached from 'gulp-cached';
 import plumber from 'gulp-plumber';
 import template from 'gulp-template';
@@ -14,12 +12,9 @@ import template from 'gulp-template';
 import config from '../config';
 
 const paths = config.paths;
-const builder = config.builder;
-
-gulp.task('help', taskListing);
 
 // copy resources to distribution and temp folder
-gulp.task('copy', () => {
+gulp.task('copy-resources', () => {
   return gulp.src(paths.resources, {followSymlinks: true})
     .pipe(cached('copy'))
     .pipe(plumber())
@@ -28,7 +23,7 @@ gulp.task('copy', () => {
 });
 
 // copy jspm_package resources to distribution
-gulp.task('copy-jspm', () => {
+gulp.task('copy-jspm-resources', () => {
   return gulp.src(paths.jspmResources, {followSymlinks: true})
     .pipe(cached('copy-jspm'))
     .pipe(plumber())
@@ -36,24 +31,13 @@ gulp.task('copy-jspm', () => {
 });
 
 // copy data to distribution folder
-gulp.task('data', () => {
+gulp.task('copy-data', () => {
   return gulp.src(paths.data)
     .pipe(gulp.dest(paths.dist));
 });
 
-gulp.task('html-tmp', () => {
-  return gulp.src(paths.templates)
-    .pipe(cached('templates'))
-    .pipe(plumber())
-    .pipe(template(config))
-    /* .pipe(htmlmin({
-      collapseWhitespace: true
-    })) */
-    .pipe(gulp.dest(paths.temp));
-});
-
 // copy templates to temp and distribution folder
-gulp.task('html', () => {
+gulp.task('copy-html', () => {
   return gulp.src(paths.templates)
     .pipe(cached('templates'))
     .pipe(plumber())
@@ -66,7 +50,7 @@ gulp.task('html', () => {
 });
 
 // copy scripts to temp folder
-gulp.task('js', () => {
+gulp.task('copy-js', () => {
   return gulp.src(paths.scripts)
     .pipe(cached('scripts'))
     .pipe(plumber())
@@ -83,26 +67,12 @@ gulp.task('js', () => {
     .pipe(gulp.dest(paths.temp));
 });
 
-// copy bundles to dist folder
-gulp.task('bundles', () => {
-  return gulp.src(`${paths.temp}/components/bundle.*`, {base: paths.temp})
-    // .pipe($.cached('bundle'))
-    // .pipe($.plumber())
-    .pipe(gulp.dest(paths.dist));
-});
-
 // copy css to temp folder
-gulp.task('css', () => {
+gulp.task('copy-css', () => {
   return gulp.src(paths.styles)
     .pipe(cached('styles'))
     .pipe(plumber())
     .pipe(gulp.dest(paths.temp));
-});
-
-// symlink jspm_packages into temp folder to avoid copy
-gulp.task('symlink-jspm', () => {
-  return vfs.src(paths.jspmLink, {followSymlinks: false, buffer: false})
-    .pipe(vfs.symlink(`${paths.temp}/jspm_packages`, {overwrite: true}));
 });
 
 // symlink data into temp folder to avoid copy
@@ -114,26 +84,15 @@ gulp.task('symlink-data', () => {
     .pipe(vfs.symlink(`${paths.dist}/data`));
 });
 
-gulp.task('bundle', () => {
-  const builder = new SystemJSBuilder(paths.temp, `${paths.temp}/system.config.js`);
-  builder.config(config.builder.config);
-  return builder.bundle(paths.build, `${paths.temp}/components/bundle.js`, config.builder.bundle);
-});
-
 gulp.task('clean-dist', () => del(paths.dist));
 gulp.task('clean-tmp', () => del(paths.temp));
 
-gulp.task('jspm-build', cb => {
-  runSequence('bundle',
-              'bundles',
-              cb);
-});
+gulp.task('clean', ['clean-tmp', 'clean-dist']);
+gulp.task('copy', ['copy-resources', 'copy-js', 'copy-css', 'copy-data', 'copy-html', 'copy-jspm-resources']);
 
 gulp.task('build', cb => {
-  runSequence(['clean-tmp', 'clean-dist'],
-              ['copy', 'js', 'css', 'data', 'html', 'copy-jspm'],
-              ['symlink-jspm', 'symlink-data'],
-              'jspm-build',
-              'tree',
+  runSequence('clean',
+              'copy',
+              ['symlink-data', 'jspm-build'],
               cb);
 });

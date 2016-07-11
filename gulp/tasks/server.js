@@ -4,15 +4,15 @@ import runSequence from 'run-sequence';
 
 import config from '../config';
 
-gulp.task('server:dev', done => {
+gulp.task('server-dev', done => {
   browserSync(config.devServer, done);
 });
 
-gulp.task('server:dist', done => {
+gulp.task('server-dist', done => {
   browserSync(config.distServer, done);
 });
 
-gulp.task('watch', () => {
+gulp.task('watch-src', () => {
   gulp.watch(config.paths.resources, ['copy']);
   gulp.watch(config.paths.data, ['data']);
   gulp.watch(config.paths.templates, ['html', 'jspm-build']);
@@ -24,20 +24,17 @@ gulp.task('watch-tmp', () => {
   gulp.watch(config.paths.templates, ['html']);
 });
 
-// old commands
-gulp.task('dev', ['clean-tmp', 'server:dev']);
-
 gulp.task('dev', cb => {
   runSequence('clean-tmp',
-              'html-tmp',
-              'server:dev',
+              'copy-html',
+              'server-dev',
               'watch-tmp',
               cb);
 });
 
 gulp.task('dist', cb => {
   runSequence('build',
-              'watch',
-              'server:dist',
+              'watch-src',
+              'server-dist',
               cb);
 });

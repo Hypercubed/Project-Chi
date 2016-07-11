@@ -10,11 +10,11 @@ controller.$inject = ['$log'];
 function controller ($log) {
   const $ctrl = this;
 
-  const $map = document.getElementById('_examples_treemap__chart');
+  const $map = angular.element(document.getElementById('_examples_treemap__chart'));
 
   if (screenfull.enabled) {
     $ctrl.fullscreen = function () {
-      screenfull.request($map);
+      screenfull.request($map[0]);
     };
 
     document.addEventListener(screenfull.raw.fullscreenchange, () => {
@@ -36,45 +36,53 @@ function controller ($log) {
   });
 
   function change () {
-    while ($map.firstChild) {
-      $map.removeChild($map.firstChild);
-    }
+    console.log('change');
 
-    const tree = $ctrl.dataPackage.resources[0].data;
-    const treeData = newNode('/');
+    $map.empty();
 
-    if ($ctrl.dataPackage.resources[0].table) {
-      tree.forEach(d => {
-        addNode(d.Source, Number(d.Size), d.Tag);
-      });
-    } else {
-      for (const source in tree) {
-        if (Object.hasOwnProperty.call(tree, source)) {
-          addNode(source, tree[source]);
+    $ctrl.dataPackage.resources.forEach(res => {
+      const tree = res.data;
+      const treeData = newNode('/');
+
+      if (res.table) {
+        tree.forEach(d => {
+          addNode(d.Source, Number(d.Size), d.Tag);
+        });
+      } else {
+        for (const source in tree) {
+          if (Object.hasOwnProperty.call(tree, source)) {
+            addNode(source, tree[source]);
+          }
         }
       }
-    }
 
-    addSizeToTitle(treeData, treeData.data.$area);
+      addSizeToTitle(treeData, treeData.data.$area);
 
-    function addNode (path, size, tag) {
-      const parts = path.split('/');
-      let node = treeData;
-      node.data.$area += size;
-
-      parts.forEach(part => {
-        let child = node.children.find(child => child.name === part);
-        if (!child) {
-          child = newNode(part, tag);
-          node.children.push(child);
-        }
-
-        node = child;
+      function addNode (path, size, tag) {
+        const parts = path.split('/');
+        let node = treeData;
         node.data.$area += size;
-      });
-    }
 
-    webtreemap($map, treeData);
+        parts.forEach(part => {
+          let child = node.children.find(child => child.name === part);
+          if (!child) {
+            child = newNode(part, tag);
+            node.children.push(child);
+          }
+
+          node = child;
+          node.data.$area += size;
+        });
+      }
+
+      const h = angular.element(`<h4>${res.name}</h4>`);
+      angular.element($map).append(h);
+
+      const d = angular.element('<div></div>');
+      $map.append(d);
+
+      webtreemap(d[0], treeData);
+    });
   }
 
   function newNode (name, tag) {

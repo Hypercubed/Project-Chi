@@ -69,7 +69,7 @@ System.config({
     "core-js": "npm:core-js@1.2.6",
     "crlf-helper": "npm:crlf-helper@0.1.0",
     "crossfilter": "npm:crossfilter2@1.4.0-alpha.6",
-    "css": "github:systemjs/plugin-css@0.1.21",
+    "css": "github:systemjs/plugin-css@0.1.23",
     "cuid": "npm:cuid@1.3.8",
     "d3": "npm:d3@3.5.17",
     "d3-plugins": "github:d3/d3-plugins@master",
@@ -313,7 +313,7 @@ System.config({
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:font-awesome@4.6.1": {
-      "css": "github:systemjs/plugin-css@0.1.21"
+      "css": "github:systemjs/plugin-css@0.1.23"
     },
     "npm:for-each@0.3.2": {
       "is-function": "npm:is-function@1.0.1"

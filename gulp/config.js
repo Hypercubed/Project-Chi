@@ -35,6 +35,7 @@ const PRODTASKS = ['build', 'dist', 'deploy'];
 
 const DIST = 'dist';
 const TMP = '.tmp';
+const BUILD = 'components/boot.js';
 
 /**
  * This is the basic configuration.  It is augmented later with project specific config
@@ -44,9 +45,9 @@ const config = {
     base: 'app',
     dist: DIST,
     temp: TMP,
-    build: 'components/boot',
+    build: BUILD,
     systemConfig: 'app/system.config.js',
-    bundle: 'dist/components/bundle.js',
+    bundles: 'bundles',
     dataset: dataSetPath,
     dataLink: `${dataSetPath}/app/data/`,
     jspmLink: 'app/jspm_packages/',
@@ -62,24 +63,24 @@ const config = {
       'app/{jspm_packages,lib}/**/*.{svg,png,eot,ttf,gif,wot,woff,woff2}'
     ],
     data: [  // these are copied to paths.dist
-      `app/{components,common,assets}/**/*.{json,csv,tsv,txt}`,
-      `${dataSetPath}/app/{components,common,assets}/**/*.{json,csv,tsv,txt}`
+      `app/{components,common,assets,bundles}/**/*.{json,csv,tsv,txt}`,
+      `${dataSetPath}/app/{components,common,assets,bundles}/**/*.{json,csv,tsv,txt}`
     ],
     templates: [  // these are copied to paths.temp and paths.dist, but modified by the gulp-template task
       `app/*.html`,
-      `app/{components,common}/**/*.html`,
+      `app/{components,common,bundles}/**/*.html`,
       `${dataSetPath}/app/*.html`,
-      `${dataSetPath}/app/{components,common}/**/*.html`
+      `${dataSetPath}/app/{components,common,bundles}/**/*.html`
     ],
     scripts: [  // these are copied to paths.temp
       `app/*.js`,
-      `app/{components,common}/**/*.js`,
-      `${dataSetPath}/app/{components,common}/**/*.js`
+      `app/{components,common,bundles}/**/*.js`,
+      `${dataSetPath}/app/{components,common,bundles}/**/*.js`
     ],
     styles: [  // these are copied to paths.temp
       `app/*.{css,css.map}`,
-      `app/{components,common}/**/*.{css,css.map}`,
-      `${dataSetPath}/app/{components,common}/**/*.{css,css.map}`
+      `app/{components,common,bundles}/**/*.{css,css.map}`,
+      `${dataSetPath}/app/{components,common,bundles}/**/*.{css,css.map}`
     ]
   },
   devServer: {
@@ -111,9 +112,15 @@ const config = {
     // empty to avoid accidental deploy
   },
   builder: {
+    bundles: {
+      deps: `${BUILD} - [components/**/*] - [common/**/*] - [**/*!css] - [**/*!text] - [**/*!md]`,
+      app: `${BUILD} - bundles/deps.js`
+    },
     config: {
       buildCSS: true,
-      buildHTML: true
+      buildHTML: true,
+      rootURL: '.tmp/bundles/deps.css',
+      separateCSS: true
     },
     bundle: {
       sourceMaps: true,
@@ -121,6 +128,7 @@ const config = {
       mangle: true,
       runtime: false,
       esOptimize: true,
+      cssOptimize: true,
       rollup: true
     }
   },

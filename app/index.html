@@ -13,8 +13,11 @@
 	  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 
     <% if (ENV === 'prod') { %>
-      <link rel="stylesheet" type="text/css" href="components/bundle.css">
-      <link rel="import" href="components/bundle.html">
+    <link rel="stylesheet" type="text/css" href="bundles/deps.css">
+    <link rel="stylesheet" type="text/css" href="bundles/app.css">
+    <% if (template.webcomponents === true) { %>
+    <link rel="import" href="bundles/deps.html">
+    <% } %>
     <% } %>
   </head>
   <body ng-cloak>
@@ -46,7 +49,8 @@
     <script src="jspm_packages/system.js"></script>
     <script src="system.config.js"></script>
   <% if (ENV === 'prod') { %>
-    <script src="components/bundle.js?<%= template.bust %>"></script>
+    <script src="bundles/deps.js?<%= template.bust %>"></script>
+    <script src="bundles/app.js?<%= template.bust %>"></script>
   <% } %>
 
     <script>
