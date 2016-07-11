@@ -4,7 +4,8 @@
   <h2>{{$ctrl.dataPackage.title}}</h2>
   <div marked="$ctrl.dataPackage.description"></div>
 
-  <div id="_examples_bars__chart" class="_examples_bars__bars"></div>
+  <div id="_examples_bars__chart" class="_examples_bars__bars" on-resize="$ctrl.draw()">
+  </div>
 
   <marked ng-include="$ctrl.dataPackage.readme"></marked>
 </div>

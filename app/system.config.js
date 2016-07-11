@@ -81,10 +81,10 @@ System.config({
     "html": "github:Hypercubed/systemjs-plugin-html@0.0.8",
     "inlet": "github:enjalot/Inlet@0.1.1",
     "intro.js": "npm:intro.js@2.1.0",
-    "jquery": "npm:jquery@2.2.4",
+    "jquery": "npm:jquery@3.1.0",
     "json": "github:systemjs/plugin-json@0.1.2",
     "jspm/nodelibs-assert": "github:jspm/nodelibs-assert@0.1.0",
-    "lodash": "npm:lodash@3.10.1",
+    "lodash": "npm:lodash@4.13.1",
     "md": "github:guybedford/system-md@0.1.0",
     "mime-lookup": "npm:mime-lookup@0.0.2",
     "ml-matrix": "npm:ml-matrix@1.1.5",
@@ -96,10 +96,10 @@ System.config({
     "process": "npm:process@0.11.5",
     "q": "npm:q@1.4.1",
     "screenfull": "npm:screenfull@2.0.0",
-    "text": "github:systemjs/plugin-text@0.0.2",
+    "text": "github:systemjs/plugin-text@0.0.8",
     "ui-codemirror": "github:angular-ui/ui-codemirror@0.3.0",
     "ui-select": "npm:ui-select@0.16.1",
-    "universe": "npm:universe@0.7.0",
+    "universe": "npm:universe@0.8.0",
     "venn.js": "npm:venn.js@0.2.10",
     "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.22",
     "webtreemap": "github:martine/webtreemap@gh-pages",
@@ -152,7 +152,7 @@ System.config({
       "vm-browserify": "npm:vm-browserify@0.0.4"
     },
     "github:twbs/bootstrap@3.3.6": {
-      "jquery": "npm:jquery@2.2.4"
+      "jquery": "npm:jquery@3.1.0"
     },
     "npm:JSONStream@1.1.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -232,12 +232,13 @@ System.config({
     "npm:chiasm-layout@0.2.4": {
       "chiasm-component": "npm:chiasm-component@0.2.3",
       "d3": "npm:d3@3.5.17",
-      "lodash": "npm:lodash@3.10.1",
-      "model-js": "npm:model-js@0.2.5"
+      "lodash": "npm:lodash@4.13.1",
+      "model-js": "npm:model-js@0.2.5",
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:chiasm@0.3.0": {
       "es6-promise": "npm:es6-promise@3.1.2",
-      "lodash": "npm:lodash@3.10.1",
+      "lodash": "npm:lodash@4.13.1",
       "model-js": "npm:model-js@0.2.5",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -340,6 +341,9 @@ System.config({
     "npm:isarray@1.0.0": {
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
+    "npm:jquery@3.1.0": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
     "npm:jsonparse@1.2.0": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -385,9 +389,6 @@ System.config({
       "lodash.isfunction": "npm:lodash.isfunction@3.0.8",
       "lodash.istypedarray": "npm:lodash.istypedarray@3.0.6",
       "lodash.keys": "npm:lodash.keys@3.1.2"
-    },
-    "npm:lodash@3.10.1": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:map-stream@0.1.0": {
       "process": "github:jspm/nodelibs-process@0.1.2",
@@ -435,7 +436,7 @@ System.config({
     },
     "npm:pivottable@2.0.2": {
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
-      "jquery": "npm:jquery@2.2.4",
+      "jquery": "npm:jquery@3.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:process@0.11.5": {
@@ -495,7 +496,7 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:universe@0.7.0": {
+    "npm:universe@0.8.0": {
       "crossfilter2": "npm:crossfilter2@1.4.0-alpha.6",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "q": "npm:q@1.4.1",

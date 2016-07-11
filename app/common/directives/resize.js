@@ -8,8 +8,8 @@ angular
   .module(moduleName, [])
   .directive('onResize', onResize);
 
-onResize.$inject = ['$window'];
-function onResize ($window) {
+onResize.$inject = ['$window', '$timeout'];
+function onResize ($window, $timeout) {
   return {
     scope: {
       onResize: '&'
@@ -18,9 +18,9 @@ function onResize ($window) {
       let timeout = null;
       function debounceRedraw () {
         if (timeout) {
-          clearTimeout(timeout);
+          $timeout.cancel(timeout);
         }
-        timeout = setTimeout(() => {
+        timeout = $timeout(() => {
           scope.onResize();
         }, 500);
       }

@@ -103,10 +103,10 @@
       "html": "github:Hypercubed/systemjs-plugin-html@^0.0.8",
       "inlet": "github:enjalot/Inlet@^0.1.1",
       "intro.js": "npm:intro.js@^2.1.0",
-      "jquery": "npm:jquery@^2.1.4",
+      "jquery": "npm:jquery@^3.1.0",
       "json": "github:systemjs/plugin-json@^0.1.0",
       "jspm/nodelibs-assert": "github:jspm/nodelibs-assert@^0.1.0",
-      "lodash": "npm:lodash@^3.9.3",
+      "lodash": "npm:lodash@^4.13.1",
       "md": "github:guybedford/system-md@^0.1.0",
       "mime-lookup": "npm:mime-lookup@^0.0.2",
       "ml-matrix": "npm:ml-matrix@^1.1.5",
@@ -118,10 +118,10 @@
       "process": "npm:process@^0.11.5",
       "q": "npm:q@1.4.1",
       "screenfull": "npm:screenfull@^2.0.0",
-      "text": "github:systemjs/plugin-text@0.0.2",
+      "text": "github:systemjs/plugin-text@^0.0.8",
       "ui-codemirror": "github:angular-ui/ui-codemirror@^0.3.0",
       "ui-select": "npm:ui-select@^0.16.1",
-      "universe": "npm:universe@^0.7.0",
+      "universe": "npm:universe@^0.8.0",
       "venn.js": "npm:venn.js@^0.2.10",
       "webcomponentsjs": "github:webcomponents/webcomponentsjs@^0.7.22",
       "webtreemap": "github:martine/webtreemap@gh-pages",
@@ -135,13 +135,6 @@
     "overrides": {
       "github:enjalot/Inlet@0.1.1": {
         "main": "inlet"
-      },
-      "npm:universe@0.7.0": {
-        "dependencies": {
-          "crossfilter2": "1.4.0-alpha.6",
-          "q": "^1.4.1",
-          "reductio": "^0.6.2"
-        }
       },
       "github:codemirror/codemirror@5.3.0": {
         "format": "global",

@@ -120,7 +120,8 @@ const config = {
       minify: true,
       mangle: true,
       runtime: false,
-      esOptimize: true
+      esOptimize: true,
+      rollup: true
     }
   },
   pkg,

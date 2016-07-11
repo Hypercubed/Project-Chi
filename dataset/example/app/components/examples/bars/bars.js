@@ -19,14 +19,19 @@ function controller () {
       .filter(d => Boolean(d.data))
       .map(d => d.data);
 
-    const divs = d3.select('#_examples_bars__chart')
-      .selectAll('div').data(data);
+    const element = d3.select('#_examples_bars__chart');
+
+    const width = element[0][0].clientWidth;
+
+    const divs = element
+      .selectAll('div')
+      .data(data);
 
     divs.enter().append('div');
 
     divs.exit().remove();
 
-    divs.call(chart);
+    divs.call(chart.width(width).height('auto'));
   }
 }
 

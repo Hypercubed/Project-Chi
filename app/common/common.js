@@ -1,7 +1,7 @@
 import angular from 'angular';
 
 import dataServices from 'common/services/datapackage/index';
-import dataPackageEditor from 'components/editor/editor';
+import dataPackageEditor from 'common/components/editor/editor';
 
 import loadingBar from 'common/services/loading-bar/loading-bar';
 import dynamicTitle from 'common/services/dynamic-title/dynamic-title';

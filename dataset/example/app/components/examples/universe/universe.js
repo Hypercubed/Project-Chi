@@ -1,6 +1,6 @@
 import d3 from 'd3';
 import universe from 'universe';
-import _ from 'lodash';
+import debounce from 'lodash/debounce';
 
 import {gridDefaults} from 'common/services/grid/grid.utils';
 
@@ -59,7 +59,7 @@ function controller ($scope, $log, cfpLoadingBar) {
   return Object.assign($ctrl, {
     editorOptions: {
       data: $ctrl.dataPackage,
-      onChange: _.debounce(process, 300)
+      onChange: debounce(process, 300)
     },
     gridOpts,
     async clearAll () {
@@ -71,7 +71,8 @@ function controller ($scope, $log, cfpLoadingBar) {
     $onInit () {
       $log.debug('onInit');
       process();
-    }
+    },
+    draw
   });
 
   async function process () {
@@ -101,7 +102,7 @@ function controller ($scope, $log, cfpLoadingBar) {
     const service = await universe(raw, {generatedColumns});
 
     $ctrl.universe = service;
-    $ctrl.universe.onFilter(_.debounce(update, 20));
+    $ctrl.universe.onFilter(debounce(update, 20));
 
     await $ctrl.universe.column('index');  // main data list
     $ctrl.id = $ctrl.universe.column.find('index').dimension;
@@ -119,7 +120,7 @@ function controller ($scope, $log, cfpLoadingBar) {
   function update () {
     $scope.$applyAsync(() => {
       $ctrl.gridOpts.data = $ctrl.data = $ctrl.id.top(1000);
-      renderAll();
+      draw();
       cfpLoadingBar.complete();
     });
   }
@@ -144,7 +145,7 @@ function controller ($scope, $log, cfpLoadingBar) {
 
       const width = element[0][0].clientWidth;
       chart.barChart = barChart()
-        .width(width - 20)
+        .width(width - 30)
         .title(chart.displayName);
 
       const q = await $ctrl.universe.query(chart);
@@ -154,10 +155,11 @@ function controller ($scope, $log, cfpLoadingBar) {
     }));
   }
 
-  function renderAll () {
+  function draw () {
     $ctrl.charts.forEach(chart => {
       if (chart.barChart.update) {
-        chart.barChart.update();
+        chart.barChart
+          .update();
       }
     });
   }

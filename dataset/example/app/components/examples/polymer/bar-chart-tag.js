@@ -14,14 +14,18 @@ Polymer({
       Type: String,
       notify: true
     },
-    width: Number,
-    height: {
-      type: Number,
-      value: 400
-    },
     data: {
       computed: 'parse(barData)'
     }
+  },
+
+  attached () {
+    this.resized = this.draw.bind(this);
+    window.addEventListener('resize', this.resized);
+  },
+
+  detached () {
+    window.removeEventListener('resize', this.resized);
   },
 
   observers: [
@@ -43,8 +47,10 @@ Polymer({
       return;
     }
 
+    const width = this.clientWidth - 80;
+
     d3.select(this.elem)
-      .datum(this.data).call(this.bars);
+      .datum(this.data).call(this.bars.width(width).height('auto'));
   },
 
   ready () {

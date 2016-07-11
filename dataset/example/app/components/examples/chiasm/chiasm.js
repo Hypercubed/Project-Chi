@@ -1,18 +1,13 @@
 import Chiasm from 'chiasm';
-import Charts from 'chiasm-charts';
+import ChiasmBarChart from 'chiasm-charts/src/components/barChart';
 import ChiasmLayout from 'chiasm-layout';
 import ChiasmLinks from 'chiasm-links';
-
-import _ from 'lodash';
 
 // import barChart from './barChart';
 import './barChart.css!';
 
 import 'codemirror/lib/codemirror.css!';
 import 'inlet/inlet.css!';
-
-// because chiasm-layout is missing underscore/lodash import.  https://github.com/chiasm-project/chiasm-layout/issues/1
-window._ = _;
 
 function controller () {
   const $ctrl = this;
@@ -21,7 +16,7 @@ function controller () {
 
   chiasm.plugins.layout = ChiasmLayout;
   chiasm.plugins.links = ChiasmLinks;
-  chiasm.plugins.barChart = Charts.components.barChart;
+  chiasm.plugins.barChart = ChiasmBarChart;
 
   chiasm.getComponent('layout').then(comp => {
     comp.when(['containerSVG'], svg => {
@@ -29,6 +24,10 @@ function controller () {
     });
 
     $ctrl.layoutComponent = comp;
+  });
+
+  chiasm.getComponent('barChart').then(comp => {
+    $ctrl.barChart = comp;
   });
 
   Object.assign($ctrl, {
@@ -49,8 +48,8 @@ function controller () {
     chiasm.dataset = {
       metadata: {
         columns: [
-          {name: "letter", type: "string"},
-          {name: "frequency", type: "number"}
+          {name: 'letter', type: 'string'},
+          {name: 'frequency', type: 'number'}
         ]
       },
       data: $ctrl.dataPackage.resources[0].data

@@ -9,7 +9,7 @@ import chiasmComponent from 'components/examples/chiasm/chiasm';
 import bioJSComponent from 'components/examples/biojs/biojs';
 import barsComponent from 'components/examples/bars/bars';
 import treeMapComponent from 'components/examples/treemap/treemap';
-import polymerComponent from 'components/examples/polymer/barChart-controller';
+import polymerComponent from 'components/examples/polymer/bar-chart-controller';
 import universeComponent from 'components/examples/universe/universe';
 
 import 'd3-plugins/hexbin/hexbin';  // needed for /examples/hexbin

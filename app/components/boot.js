@@ -8,8 +8,8 @@ import 'webcomponentsjs/webcomponents-lite.js';
 /* Some older browsers need a shim */
 import 'core-js/shim';
 
-import 'jquery';
-import 'bootstrap/js/bootstrap';
+// import 'jquery';
+// import 'bootstrap/js/bootstrap';
 import 'bootstrap/css/bootstrap.css!';
 
 import 'font-awesome/css/font-awesome.css!';

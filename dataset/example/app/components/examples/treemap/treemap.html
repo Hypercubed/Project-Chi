@@ -5,6 +5,7 @@
   <div marked="$ctrl.dataPackage.description"></div>
   <marked ng-include="$ctrl.dataPackage.readme"></marked>
 
-  <div id="_examples_treemap__chart" class="_examples_treemap__bars"></div>
+  <div id="_examples_treemap__chart" class="_examples_treemap__bars" on-resize="$ctrl.draw()">
+  </div>
   <button class="btn btn-link pull-right" ng-click="$ctrl.fullscreen()">full screen</button>
 </div>

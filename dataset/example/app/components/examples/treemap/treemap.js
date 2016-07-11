@@ -1,5 +1,4 @@
 import angular from 'angular';
-import _ from 'lodash';
 
 import screenfull from 'screenfull';
 
@@ -13,14 +12,6 @@ function controller ($log) {
 
   const $map = document.getElementById('_examples_treemap__chart');
 
-  $ctrl.$onInit = change;
-  $ctrl.editorOptions = {
-    data: $ctrl.dataPackage,
-    enableSvgDownload: false,
-    enablePngDownload: false,
-    onChange: change
-  };
-
   if (screenfull.enabled) {
     $ctrl.fullscreen = function () {
       screenfull.request($map);
@@ -33,10 +24,20 @@ function controller ($log) {
     });
   }
 
+  return Object.assign($ctrl, {
+    editorOptions: {
+      data: $ctrl.dataPackage,
+      enableSvgDownload: false,
+      enablePngDownload: false,
+      onChange: change
+    },
+    draw: change,
+    $onInit: change
+  });
+
   function change () {
-    const map = $map;
     while ($map.firstChild) {
-      map.removeChild(map.firstChild);
+      $map.removeChild($map.firstChild);
     }
 
     const tree = $ctrl.dataPackage.resources[0].data;
@@ -62,7 +63,7 @@ function controller ($log) {
       node.data.$area += size;
 
       parts.forEach(part => {
-        let child = _.find(node.children, child => child.name === part);
+        let child = node.children.find(child => child.name === part);
         if (!child) {
           child = newNode(part, tag);
           node.children.push(child);
@@ -73,7 +74,7 @@ function controller ($log) {
       });
     }
 
-    webtreemap(map, treeData);
+    webtreemap($map, treeData);
   }
 
   function newNode (name, tag) {
