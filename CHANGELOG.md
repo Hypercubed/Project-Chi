@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Generate seperate bundles for app and deps
+* Generate separate bundles for app and dependencies
 * Improved build workflow
 
 --------------------
@@ -22,19 +22,19 @@ _(none)_
 * Improved gulp build
 * Support text/yaml files
 * Added preliminary matrix table parser
-* Added minimal build time templating
+* Added minimal build time HTML templates
 
 ## 1.0.0-alpha.3 (2016-05-10)
 _(none)_
 
 ## 1.0.0-alpha.3 (2016-05-10)
 * using font-awesome
-* removed some unused dependecies
-* Moved Marey's trains and Hexbin examples to [example sub project](https://github.com/Hypercubed/Project-Chi-Test)
+* removed some unused dependencies
+* Moved Marey's trains and HexBin examples to [example sub project](https://github.com/Hypercubed/Project-Chi-Test)
 * Updated angular-ui-bootstrap
 * Now using npm versions of all angular modules
 * Now set `debugEnabled` and `debugInfoEnabled` based on System.production
-* Added git watch task, gulp dist starts watch
+* Added gulp watch task, gulp dist starts watch
 
 ## 1.0.0-alpha.2 (2016-05-06)
 _(none)_

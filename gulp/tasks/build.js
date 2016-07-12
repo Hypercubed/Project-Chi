@@ -49,6 +49,15 @@ gulp.task('copy-html', () => {
     .pipe(gulp.dest(paths.dist));
 });
 
+// copy templates to temp and distribution folder
+gulp.task('copy-html-tmp', () => {
+  return gulp.src(config.paths.templates)
+    .pipe(cached('templates'))
+    .pipe(plumber())
+    .pipe(template(config))
+    .pipe(gulp.dest(config.paths.temp));
+});
+
 // copy scripts to temp folder
 gulp.task('copy-js', () => {
   return gulp.src(paths.scripts)
@@ -94,5 +103,11 @@ gulp.task('build', cb => {
   runSequence('clean',
               'copy',
               ['symlink-data', 'jspm-build'],
+              cb);
+});
+
+gulp.task('rebuild', cb => {
+  runSequence('copy',
+              'jspm-rebuild',
               cb);
 });

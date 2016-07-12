@@ -233,11 +233,10 @@ System.config({
       "chiasm-component": "npm:chiasm-component@0.2.3",
       "d3": "npm:d3@3.5.17",
       "lodash": "npm:lodash@4.13.1",
-      "model-js": "npm:model-js@0.2.5",
-      "process": "github:jspm/nodelibs-process@0.1.2"
+      "model-js": "npm:model-js@0.2.5"
     },
     "npm:chiasm@0.3.0": {
-      "es6-promise": "npm:es6-promise@3.1.2",
+      "es6-promise": "npm:es6-promise@3.2.1",
       "lodash": "npm:lodash@4.13.1",
       "model-js": "npm:model-js@0.2.5",
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -296,7 +295,7 @@ System.config({
     "npm:duplexer@0.1.1": {
       "stream": "github:jspm/nodelibs-stream@0.1.0"
     },
-    "npm:es6-promise@3.1.2": {
+    "npm:es6-promise@3.2.1": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:event-stream@3.3.3": {

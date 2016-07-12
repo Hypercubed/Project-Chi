@@ -4,37 +4,35 @@ import runSequence from 'run-sequence';
 
 import config from '../config';
 
-gulp.task('server-dev', done => {
-  browserSync(config.devServer, done);
+Object.keys(config.server).forEach(key => {
+  gulp.task(`server-${key}`, done => {
+    browserSync(config.server[key], done);
+  });
 });
 
-gulp.task('server-dist', done => {
-  browserSync(config.distServer, done);
+gulp.task('watch-dist', () => {
+  gulp.watch(config.paths.resources, ['copy-resources']);
+  gulp.watch(config.paths.data, ['copy-data']);
+  gulp.watch(config.paths.templates, ['copy-html', 'rebuild']);
+  gulp.watch(config.paths.scripts, ['copy-js', 'rebuild']);
+  gulp.watch(config.paths.styles, ['copy-css', 'rebuild']);
 });
 
-gulp.task('watch-src', () => {
-  gulp.watch(config.paths.resources, ['copy']);
-  gulp.watch(config.paths.data, ['data']);
-  gulp.watch(config.paths.templates, ['html', 'jspm-build']);
-  gulp.watch(config.paths.scripts, ['js', 'jspm-build']);
-  gulp.watch(config.paths.styles, ['css', 'jspm-build']);
-});
-
-gulp.task('watch-tmp', () => {
-  gulp.watch(config.paths.templates, ['html']);
+gulp.task('watch-dev', () => {
+  gulp.watch(config.paths.templates, ['copy-html-tmp']);
 });
 
 gulp.task('dev', cb => {
   runSequence('clean-tmp',
-              'copy-html',
+              'copy-html-tmp',
               'server-dev',
-              'watch-tmp',
+              'watch-dev',
               cb);
 });
 
 gulp.task('dist', cb => {
   runSequence('build',
-              'watch-src',
+              'watch-dist',
               'server-dist',
               cb);
 });

@@ -1,13 +1,11 @@
 import angular from 'angular';
 
-const name = 'projectX.dynamicTitle';
-
-export default name;
-
-angular
+const module = angular
   .module(name, [])
   .provider('dynamicTitle', DynamicTitleProvider)
   .run(setupRouteChange);
+
+export default module.name;
 
 setupRouteChange.$inject = ['$rootScope', 'dynamicTitle'];
 function setupRouteChange ($rootScope, dynamicTitle) {

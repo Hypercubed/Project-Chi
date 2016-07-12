@@ -10,8 +10,6 @@ import 'angular-touch';
 import 'angular-ui-bootstrap';
 
 import angularMarked from 'angular-marked';
-import 'ui-codemirror';
-import 'angular-downloadsvg-directive';
 
 import routes from 'components/routes';
 import common from 'common/common';
@@ -24,10 +22,8 @@ export default angular
     'ngCookies',
     'ngSanitize',
     'ngTouch',
-    'hc.downloader',
     'ui.bootstrap',
     angularMarked,
-    'ui.codemirror',
     routes.name || routes,
     common
   ])

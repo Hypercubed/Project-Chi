@@ -54,7 +54,9 @@ gulp dev  # uses the default "example" dataset (same as gelp dev --dataset=./dat
 ```
 .
 ├── app/                   <- browser application resources
-│   ├── common/            <- shared tools that are not components
+│   ├── bundles/           <- resource bundles
+│   ├── common/            <- shared tools
+│   │   ├── components/
 │   │   ├── directives/
 │   │   ├── filters/
 │   │   ├── partials/
@@ -62,7 +64,6 @@ gulp dev  # uses the default "example" dataset (same as gelp dev --dataset=./dat
 │   │   └── styles/
 │   ├── components/        <- site components
 │   │   ├── about/
-│   │   ├── editor/
 │   │   ├── error/
 │   │   ├── boot.js
 │   │   ├── app.js
@@ -75,6 +76,8 @@ gulp dev  # uses the default "example" dataset (same as gelp dev --dataset=./dat
 │   ├── tasks/             <- gulp tasks
 │   │   ├── build.js
 │   │   ├── deploy.js
+│   │   ├── jspm.js
+│   │   ├── other.js
 │   │   └── server.js
 │   └── config.js          <- gulp config
 ├── dataset/               <- datasets
@@ -92,7 +95,7 @@ gulp dev  # uses the default "example" dataset (same as gelp dev --dataset=./dat
 
 ## Separation of template and dataset
 
-By default all content in the `app` directory will be served by the development server when running `gulp server` and built into the `dist` folder when running `gulp build`.  However, to encourage contribution back to the `project-χ` repository and enable using the same `project-χ` source across multiple projects the developer may put project specific resources and configuration into a separate directory.  This folder can then be served and built along with the `project-χ` core.  For example, if you create a `extra` folder inside the `dataset` directory the following commands will work as indicated:
+By default all content in the `app` directory will be served by the development server when running `gulp dev` and built into the `dist` folder when running `gulp build`.  However, to encourage contribution back to the `project-χ` repository and enable using the same `project-χ` source across multiple projects the developer may put project specific resources and configuration into a separate directory.  This folder can then be served and built along with the `project-χ` core.  For example, if you create a `extra` folder inside the `dataset` directory the following commands will work as indicated:
 
 * `gulp dev --dataset=./dataset/extra`
 
@@ -102,13 +105,15 @@ By default all content in the `app` directory will be served by the development 
 
 ### File Structure of dataset
 
+File structure of a sub-project (dataset) is similar that of the Project-χ root structure.  All directories and files are optional.
+
 ```
 .
 ├── app/               <- application resources here override Project-Chi/app
 │   ├── components/    <- site components combine with and override Project-Chi/app/components/
 │   ├── common/        <- shared tools that combine with and override Project-Chi/app/common/
 │   ├── data/          <- special data folder that will be symlinked on build, good for large data
-│   └── index.html     <- single page application override Project-Chi/app/index.html
+│   └── index.html     <- optionally override Project-Chi/app/index.html (usually not needed)
 └── gulp/
     └── config.js      <- gulp config augments (deep-extends) Project-Chi/app/gulp/config.js`
 ```
@@ -116,6 +121,12 @@ By default all content in the `app` directory will be served by the development 
 ## Provided services and directives
 
 TBR
+
+## Examples
+
+- [Project-χ](http://hypercubed.github.io/Project-Chi/)
+- [DEIVA](https://hypercubed.github.io/DEIVA/)
+- [PCA Example](https://thorwahlestedt.github.io/thor-chi/#/examples/pca)
 
 ## Contributing
 

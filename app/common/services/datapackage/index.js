@@ -2,13 +2,12 @@ import angular from 'angular';
 import {DataService} from './dataservice';
 import addDataPackageResolver from './resolver';
 
-export const moduleName = 'projectX.dataService';
-
-angular.module(moduleName, ['ngRoute'])
+const module = angular
+  .module('projectX.dataService', ['ngRoute'])
   .service('dataService', DataService)
   .decorator('$route', ['$delegate', $delegate => {
     angular.forEach($delegate.routes, addDataPackageResolver);
     return $delegate;
   }]);
 
-export default moduleName;
+export default module.name;

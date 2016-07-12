@@ -1,12 +1,12 @@
-import {execSync} from 'child_process';
-
 import gulp from 'gulp';
 
-import tap from 'gulp-tap';
+// import tap from 'gulp-tap';
 import vfs from 'vinyl-fs';
 import SystemJSBuilder from 'systemjs-builder';
 import runSequence from 'run-sequence';
 import gutil from 'gulp-util';
+import through from 'through2';
+import execa from 'execa';
 
 import config from '../config';
 
@@ -36,16 +36,33 @@ gulp.task('jspm-copy-bundles', () => {
     .pipe(gulp.dest(paths.dist));
 });
 
-const cmd = bundle => `node_modules/.bin/source-map-explorer --tsv ${bundle} ${bundle}.map`;
+function generateTreemap () {
+  return through.obj((file, encoding, callback) => {
+    gutil.log(`Generating treemap for ${file.relative}`);
+    execa.stdout('source-map-explorer', ['--tsv', file.path, `${file.path}.map`])
+      .then(result => {
+        file.contents = new Buffer(result);
+        file.path = gutil.replaceExtension(file.path, '.tsv');
+        callback(null, file);
+      })
+      .catch(err => {
+        console.log(err);
+        callback(err);
+      });
+  });
+}
 
 gulp.task('jspm-treemaps', () => {
-  gulp.src(`${config.paths.dist}/${config.paths.bundles}/*.js`)
-    .pipe(tap(file => {
-      gutil.log(`generating treemap for ${file.path}`);
-      file.contents = execSync(cmd(file.path));
-      file.path = gutil.replaceExtension(file.path, '.tsv');
-    }))
+  gulp.src(`${config.paths.dist}/${config.paths.bundles}/*.js`, {read: false})
+    .pipe(generateTreemap())
     .pipe(gulp.dest(`${config.paths.dist}/${config.paths.bundles}`));
+});
+
+gulp.task('jspm-rebuild', cb => {
+  runSequence('jspm-bundle-app',
+              'jspm-copy-bundles',
+              'jspm-treemaps',
+              cb);
 });
 
 gulp.task('jspm-build', cb => {

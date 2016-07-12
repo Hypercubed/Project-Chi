@@ -1,5 +1,5 @@
 import uRIjs from 'URIjs';
-import mime from './mime';
+import {mime} from './mime';
 
 export function normalizePackage (uri, datapackage) {
   datapackage.base = datapackage.base || uRIjs(uri).normalizePathname().directory();

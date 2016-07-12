@@ -4,11 +4,7 @@ import angular from 'angular';
 
 import mime from 'common/services/datapackage/mime';
 
-const moduleName = 'projectX.fileDrop';
-
-export default moduleName;
-
-angular.module(moduleName, [])
+const module = angular.module('projectX.fileDrop', [])
 .directive('fileDropzone', ['$window', function ($window) {
   return {
     restrict: 'A',
@@ -93,3 +89,5 @@ angular.module(moduleName, [])
     }
   };
 }]);
+
+export default module.name;

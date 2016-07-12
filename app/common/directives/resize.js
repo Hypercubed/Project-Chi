@@ -1,12 +1,10 @@
 import angular from 'angular';
 
-const moduleName = 'projectX.onResize';
-
-export default moduleName;
-
-angular
-  .module(moduleName, [])
+const module = angular
+  .module('projectX.onResize', [])
   .directive('onResize', onResize);
+
+export default module.name;
 
 onResize.$inject = ['$window', '$timeout'];
 function onResize ($window, $timeout) {

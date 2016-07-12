@@ -83,33 +83,39 @@ const config = {
       `${dataSetPath}/app/{components,common,bundles}/**/*.{css,css.map}`
     ]
   },
-  devServer: {
-    open: Boolean(argv.open),
-    port: argv.port || 9000,
-    online: Boolean(argv.online),
-    server: {
-      baseDir: [TMP, `${dataSetPath}/app`, 'app'],
-      middleware: (req, res, next) => {
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        next();
+  server: {
+    dev: {
+      open: Boolean(argv.open),
+      port: argv.port || 9000,
+      online: Boolean(argv.online),
+      server: {
+        baseDir: [TMP, `${dataSetPath}/app`, 'app'],
+        middleware: (req, res, next) => {
+          res.setHeader('Access-Control-Allow-Origin', '*');
+          next();
+        }
       }
-    }
-  },
-  distServer: {
-    open: Boolean(argv.open),
-    port: argv.port || 9000,
-    online: Boolean(argv.online),
-    ghostMode: false,
-    server: {
-      baseDir: DIST,
-      middleware: (req, res, next) => {
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        next();
+    },
+    dist: {
+      open: Boolean(argv.open),
+      port: argv.port || 9000,
+      online: Boolean(argv.online),
+      ghostMode: false,
+      server: {
+        baseDir: DIST,
+        middleware: (req, res, next) => {
+          res.setHeader('Access-Control-Allow-Origin', '*');
+          next();
+        }
       }
     }
   },
   deploy: {
-    // empty to avoid accidental deploy
+    /* empty to avoid accidental deploy
+    ghPages: {
+      "remoteUrl": "git@github.com:Hypercubed/Project-Chi.git",
+      "branch": "gh-pages"
+    } */
   },
   builder: {
     bundles: {
@@ -124,7 +130,7 @@ const config = {
     },
     bundle: {
       sourceMaps: true,
-      minify: true,
+      minify: false,
       mangle: true,
       runtime: false,
       esOptimize: true,

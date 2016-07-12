@@ -24,8 +24,8 @@ export function DataService ($http, $q) {
     return $http.get(filePath)
     .then(res => processPackage(filePath, res.data))
     .catch(
-      e => {
-        throw new Error(`error loading ${filePath}, ${e}`);
+      err => {
+        throw new Error(`error loading ${filePath}, ${err}`);
       }
     );
   }
@@ -47,8 +47,8 @@ export function DataService ($http, $q) {
 
   function reloadResource (resource) {
     return $http(createHttpRequest(resource))
-    .catch(e => {
-      throw new Error(`error loading ${resource.url}, ${e}`);
+    .catch(err => {
+      throw new Error(`error loading ${resource.url}, ${err}`);
     });
   }
 

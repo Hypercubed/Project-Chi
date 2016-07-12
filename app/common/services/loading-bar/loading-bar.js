@@ -6,12 +6,8 @@ import './loading-bar.css!';
 
 import spinnerTemplate from './loading-bar.html!text';
 
-const name = 'projectX.loading-bar';
-
-export default name;
-
-angular
-  .module(name, [
+const mod = angular
+  .module('projectX.loading-bar', [
     'angular-loading-bar'
   ])
   .config(['cfpLoadingBarProvider', cfpLoadingBarProvider => {
@@ -31,3 +27,5 @@ angular
       cfpLoadingBar.complete();
     });
   }]);
+
+export default mod.name;

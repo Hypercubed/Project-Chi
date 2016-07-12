@@ -3,13 +3,11 @@ import 'angular-growl/build/angular-growl.css!';
 
 import angular from 'angular';
 
-const name = 'projectX.growl';
-
-export default name;
-
-angular
-  .module(name, ['angular-growl'])
+const mod = angular
+  .module('projectX.growl', ['angular-growl'])
   .run(runGrowl);
+
+export default mod.name;
 
 runGrowl.$inject = ['$rootScope', '$location', 'growl'];
 function runGrowl ($rootScope, $location, growl) {

@@ -1,11 +1,7 @@
 import angular from 'angular';
 
-const name = 'projectX.percentFilter';
-
-export default name;
-
-angular
-  .module(name, [])
+const module = angular
+  .module('projectX.percentFilter', [])
   .filter('percent', () => {
     return function (input, divided, round) {
       const divider = angular.isString(input) ? Number(input) : input;
@@ -25,3 +21,5 @@ angular
     const n = $filter('number')(input * 100, decimals);
     return `${n}%`;
   }]);
+
+export default module.name;

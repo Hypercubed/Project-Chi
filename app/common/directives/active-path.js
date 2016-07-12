@@ -1,12 +1,10 @@
 import angular from 'angular';
 
-const moduleName = 'projectX.activePath';
-
-export default moduleName;
-
-angular
-  .module(moduleName, [])
+const activePath = angular
+  .module('projectX.activePath', [])
   .directive('activePath', activePathDirective);
+
+export default activePath.name;
 
 activePathDirective.$inject = ['$log', '$location'];
 function activePathDirective ($log, $location) {

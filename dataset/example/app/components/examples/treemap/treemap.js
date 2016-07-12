@@ -36,8 +36,6 @@ function controller ($log) {
   });
 
   function change () {
-    console.log('change');
-
     $map.empty();
 
     $ctrl.dataPackage.resources.forEach(res => {
