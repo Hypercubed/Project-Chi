@@ -2,13 +2,16 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+--------------------
+
+## 1.0.0-rc.3 (2016-07-13)
 * Generate separate bundles for app and dependencies
 * Improved build workflow
 * Refactored file structure for jspm
 * Added more details to examples
 * Expanded Chiasm example
-
---------------------
 
 ## 1.0.0-rc.2 (2016-07-07)
 * Improved faceting
