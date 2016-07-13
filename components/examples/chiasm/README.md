@@ -1,4 +1,4 @@
-# Chiasm plugins from CJS module
+# Chiasm and Chiasm plugins
 
 An example using [Chiasm](https://github.com/chiasm-project/chiasm).
 

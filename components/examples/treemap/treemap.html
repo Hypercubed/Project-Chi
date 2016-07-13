@@ -5,7 +5,13 @@
 <div id="charts" class="container">
   <div class="row">
     <div id="_examples_treemap__chart" class="_examples_treemap__bars" on-resize="$ctrl.draw()">
+
+      <div ng-repeat="item in $ctrl.dataPackage.resources">
+        <h2>{{item.name}}</h2>
+        <treemap class="treemap" ng-attr-data-name="{{item.name}}"></treemap>
+        <button class="btn btn-link" ng-click="$ctrl.fullscreen($event)">Fullscreen</button>
+      </div>
+
     </div>
-    <button class="btn btn-link pull-right" ng-click="$ctrl.fullscreen()">full screen</button>
   </div>
 </div>

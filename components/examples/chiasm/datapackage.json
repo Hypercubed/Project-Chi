@@ -1,6 +1,6 @@
 {
 	"name": "Chiasm Example",
-	"title": "Chiasm plugins from CJS module",
+	"title": "Chiasm and Chiasm plugins",
 	"description": "An example using [Chiasm](https://github.com/chiasm-project/chiasm).",
 	"resources": [
 		"https://gist.githubusercontent.com/curran/4b18d7b107c0e5b97407/raw/b28930834776a2f114351dd68e1e05fc2b32dd81/barChartData.csv",
