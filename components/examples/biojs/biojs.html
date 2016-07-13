@@ -1,9 +1,8 @@
 <div datapackage-edit="$ctrl.editorOptions"></div>
 
-<div id="charts" class="container">
-  <h2>{{$ctrl.dataPackage.title}}</h2>
-  <div marked="$ctrl.dataPackage.description"></div>
+<marked src="$ctrl.dataPackage.readme"></marked>
 
+<div id="charts" class="container">
   <h4>{{$ctrl.fasta.name}}</h4>
   <div id="_examples_biojs__viewer"></div>
 </div>

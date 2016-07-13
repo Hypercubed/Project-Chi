@@ -4,21 +4,19 @@
   "description": "External Examples of visualizations using the Project-χ framework",
   "resources": [
     {
-      "path": ".",
       "link": "https://hypercubed.github.io/DEIVA/#/",
       "data": {
         "title": "DEIVA",
         "description": "Interactive Visual Analysis of differential gene expression test results<br />with [Anton Kratz](https://github.com/antonkratz)",
-        "image": "deiva.png"
+        "image": "components/index/deiva.png"
       }
     },
     {
-      "path": ".",
       "link": "https://thorwahlestedt.github.io/thor-chi/#/examples/pca",
       "data": {
         "title": "PCA",
         "description": "Example of Principal Component Analysis in Project-χ<br />by [Thor Wahlestedt](https://github.com/thorWahlestedt)",
-        "image": "pca.png"
+        "image": "components/index/pca.png"
       }
     }
   ]

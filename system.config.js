@@ -1,4 +1,5 @@
 System.config({
+  baseURL: "./",
   defaultJSExtensions: true,
   transpiler: "babel",
   babelOptions: {
@@ -61,6 +62,7 @@ System.config({
     "chiasm": "npm:chiasm@0.3.0",
     "chiasm-charts": "npm:chiasm-charts@0.1.5",
     "chiasm-component": "npm:chiasm-component@0.2.3",
+    "chiasm-data-reduction": "npm:chiasm-data-reduction@0.3.0",
     "chiasm-layout": "npm:chiasm-layout@0.2.4",
     "chiasm-links": "npm:chiasm-links@0.2.3",
     "clipboard": "npm:clipboard@1.5.10",
@@ -69,7 +71,7 @@ System.config({
     "core-js": "npm:core-js@1.2.6",
     "crlf-helper": "npm:crlf-helper@0.1.0",
     "crossfilter": "npm:crossfilter2@1.4.0-alpha.6",
-    "css": "github:systemjs/plugin-css@0.1.21",
+    "css": "github:systemjs/plugin-css@0.1.23",
     "cuid": "npm:cuid@1.3.8",
     "d3": "npm:d3@3.5.17",
     "d3-plugins": "github:d3/d3-plugins@master",
@@ -81,10 +83,10 @@ System.config({
     "html": "github:Hypercubed/systemjs-plugin-html@0.0.8",
     "inlet": "github:enjalot/Inlet@0.1.1",
     "intro.js": "npm:intro.js@2.1.0",
-    "jquery": "npm:jquery@2.2.4",
+    "jquery": "npm:jquery@3.1.0",
     "json": "github:systemjs/plugin-json@0.1.2",
     "jspm/nodelibs-assert": "github:jspm/nodelibs-assert@0.1.0",
-    "lodash": "npm:lodash@3.10.1",
+    "lodash": "npm:lodash@4.13.1",
     "md": "github:guybedford/system-md@0.1.0",
     "mime-lookup": "npm:mime-lookup@0.0.2",
     "ml-matrix": "npm:ml-matrix@1.1.5",
@@ -96,10 +98,10 @@ System.config({
     "process": "npm:process@0.11.5",
     "q": "npm:q@1.4.1",
     "screenfull": "npm:screenfull@2.0.0",
-    "text": "github:systemjs/plugin-text@0.0.2",
+    "text": "github:systemjs/plugin-text@0.0.8",
     "ui-codemirror": "github:angular-ui/ui-codemirror@0.3.0",
     "ui-select": "npm:ui-select@0.16.1",
-    "universe": "npm:universe@0.7.0",
+    "universe": "npm:universe@0.8.0",
     "venn.js": "npm:venn.js@0.2.10",
     "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.22",
     "webtreemap": "github:martine/webtreemap@gh-pages",
@@ -152,7 +154,7 @@ System.config({
       "vm-browserify": "npm:vm-browserify@0.0.4"
     },
     "github:twbs/bootstrap@3.3.6": {
-      "jquery": "npm:jquery@2.2.4"
+      "jquery": "npm:jquery@3.1.0"
     },
     "npm:JSONStream@1.1.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -229,15 +231,21 @@ System.config({
     "npm:chiasm-component@0.2.3": {
       "model-js": "npm:model-js@0.2.5"
     },
+    "npm:chiasm-data-reduction@0.3.0": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "chiasm-component": "npm:chiasm-component@0.2.3",
+      "data-reduction": "npm:data-reduction@0.3.0",
+      "model-js": "npm:model-js@0.2.5"
+    },
     "npm:chiasm-layout@0.2.4": {
       "chiasm-component": "npm:chiasm-component@0.2.3",
       "d3": "npm:d3@3.5.17",
-      "lodash": "npm:lodash@3.10.1",
+      "lodash": "npm:lodash@4.13.1",
       "model-js": "npm:model-js@0.2.5"
     },
     "npm:chiasm@0.3.0": {
-      "es6-promise": "npm:es6-promise@3.1.2",
-      "lodash": "npm:lodash@3.10.1",
+      "es6-promise": "npm:es6-promise@3.2.1",
+      "lodash": "npm:lodash@4.13.1",
       "model-js": "npm:model-js@0.2.5",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -270,11 +278,25 @@ System.config({
       "os": "github:jspm/nodelibs-os@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:d3-interpolate@0.1.4": {
+      "d3-color": "npm:d3-color@0.2.8"
+    },
     "npm:d3-interpolate@0.7.0": {
       "d3-color": "npm:d3-color@0.4.2"
     },
+    "npm:d3-scale@0.1.5": {
+      "d3-arrays": "npm:d3-arrays@0.3.1",
+      "d3-color": "npm:d3-color@0.2.8",
+      "d3-format": "npm:d3-format@0.3.6",
+      "d3-interpolate": "npm:d3-interpolate@0.1.4",
+      "d3-time": "npm:d3-time@0.0.7",
+      "d3-time-format": "npm:d3-time-format@0.1.5"
+    },
     "npm:d3-svg-legend@1.10.0": {
       "d3": "npm:d3@3.5.17"
+    },
+    "npm:d3-time-format@0.1.5": {
+      "d3-time": "npm:d3-time@0.0.7"
     },
     "npm:d3-transition@0.2.8": {
       "d3-color": "npm:d3-color@0.4.2",
@@ -289,13 +311,19 @@ System.config({
       "d3-selection": "npm:d3-selection@0.7.1",
       "d3-transition": "npm:d3-transition@0.2.8"
     },
+    "npm:data-reduction@0.3.0": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "d3-arrays": "npm:d3-arrays@0.4.1",
+      "d3-scale": "npm:d3-scale@0.1.5",
+      "d3-time": "npm:d3-time@0.0.7"
+    },
     "npm:delegate@3.0.1": {
       "closest": "npm:closest@0.0.1"
     },
     "npm:duplexer@0.1.1": {
       "stream": "github:jspm/nodelibs-stream@0.1.0"
     },
-    "npm:es6-promise@3.1.2": {
+    "npm:es6-promise@3.2.1": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:event-stream@3.3.3": {
@@ -312,7 +340,7 @@ System.config({
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:font-awesome@4.6.1": {
-      "css": "github:systemjs/plugin-css@0.1.21"
+      "css": "github:systemjs/plugin-css@0.1.23"
     },
     "npm:for-each@0.3.2": {
       "is-function": "npm:is-function@1.0.1"
@@ -339,6 +367,9 @@ System.config({
     },
     "npm:isarray@1.0.0": {
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
+    },
+    "npm:jquery@3.1.0": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:jsonparse@1.2.0": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -386,9 +417,6 @@ System.config({
       "lodash.istypedarray": "npm:lodash.istypedarray@3.0.6",
       "lodash.keys": "npm:lodash.keys@3.1.2"
     },
-    "npm:lodash@3.10.1": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
     "npm:map-stream@0.1.0": {
       "process": "github:jspm/nodelibs-process@0.1.2",
       "stream": "github:jspm/nodelibs-stream@0.1.0",
@@ -435,7 +463,7 @@ System.config({
     },
     "npm:pivottable@2.0.2": {
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
-      "jquery": "npm:jquery@2.2.4",
+      "jquery": "npm:jquery@3.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:process@0.11.5": {
@@ -495,7 +523,7 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:universe@0.7.0": {
+    "npm:universe@0.8.0": {
       "crossfilter2": "npm:crossfilter2@1.4.0-alpha.6",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "q": "npm:q@1.4.1",

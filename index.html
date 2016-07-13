@@ -13,8 +13,11 @@
 	  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 
     
-      <link rel="stylesheet" type="text/css" href="components/bundle.css">
-      <link rel="import" href="components/bundle.html">
+    <link rel="stylesheet" type="text/css" href="bundles/deps.css">
+    <link rel="stylesheet" type="text/css" href="bundles/app.css">
+    
+    <link rel="import" href="bundles/deps.html">
+    
     
   </head>
   <body ng-cloak>
@@ -46,7 +49,8 @@
     <script src="jspm_packages/system.js"></script>
     <script src="system.config.js"></script>
   
-    <script src="components/bundle.js?ciqcb6fho00007iq87ygaillm"></script>
+    <script src="bundles/deps.js?ciqkbz69e000088q8pypmyby9"></script>
+    <script src="bundles/app.js?ciqkbz69e000088q8pypmyby9"></script>
   
 
     <script>
@@ -59,7 +63,7 @@
     
 
       function $$boot () {
-        System.import('components/boot')
+        System.import('components/boot.js')
           .catch(function (e) {
             console.error(e, 'Please report this error');
           });

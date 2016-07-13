@@ -1,10 +1,13 @@
 {
 	"name": "Chiasm Example",
-	"title": "Chiasm plugin from CJS module",
-	"description": "An example using a [Chiasm plugin](https://github.com/chiasm-project/chiasm).  Data Source: [Cryptological Mathematics](http://books.google.com/books?id=dx8zM-VeKI8C&lpg=PP1&dq=LEWAND%2C%20Robert.%20Cryptological%20mathematics&pg=PA36#v=onepage&q=letter%20frequency&f=false), Robert Lewand.",
+	"title": "Chiasm plugins from CJS module",
+	"description": "An example using [Chiasm](https://github.com/chiasm-project/chiasm).",
 	"resources": [
-		"bars.tsv",
-		"configBarChart.json"
+		"https://gist.githubusercontent.com/curran/4b18d7b107c0e5b97407/raw/b28930834776a2f114351dd68e1e05fc2b32dd81/barChartData.csv",
+		"https://gist.githubusercontent.com/curran/4b18d7b107c0e5b97407/raw/b28930834776a2f114351dd68e1e05fc2b32dd81/iris.csv",
+		"https://gist.githubusercontent.com/curran/4b18d7b107c0e5b97407/raw/b28930834776a2f114351dd68e1e05fc2b32dd81/lineChartData.csv",
+		"config.json"
 	],
-	"image": "thumbnail.png"
+	"image": "https://camo.githubusercontent.com/9336adb126b0ed5e4cb760bc2ee5adf8427d0410/687474703a2f2f626c2e6f636b732e6f72672f63757272616e2f7261772f34623138643762313037633065356239373430372f7468756d626e61696c2e706e67",
+	"readme": "README.md"
 }
