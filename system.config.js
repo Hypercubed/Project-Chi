@@ -1,4 +1,5 @@
 System.config({
+  baseURL: "./",
   defaultJSExtensions: true,
   transpiler: "babel",
   babelOptions: {
@@ -61,6 +62,7 @@ System.config({
     "chiasm": "npm:chiasm@0.3.0",
     "chiasm-charts": "npm:chiasm-charts@0.1.5",
     "chiasm-component": "npm:chiasm-component@0.2.3",
+    "chiasm-data-reduction": "npm:chiasm-data-reduction@0.3.0",
     "chiasm-layout": "npm:chiasm-layout@0.2.4",
     "chiasm-links": "npm:chiasm-links@0.2.3",
     "clipboard": "npm:clipboard@1.5.10",
@@ -229,6 +231,12 @@ System.config({
     "npm:chiasm-component@0.2.3": {
       "model-js": "npm:model-js@0.2.5"
     },
+    "npm:chiasm-data-reduction@0.3.0": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "chiasm-component": "npm:chiasm-component@0.2.3",
+      "data-reduction": "npm:data-reduction@0.3.0",
+      "model-js": "npm:model-js@0.2.5"
+    },
     "npm:chiasm-layout@0.2.4": {
       "chiasm-component": "npm:chiasm-component@0.2.3",
       "d3": "npm:d3@3.5.17",
@@ -270,11 +278,25 @@ System.config({
       "os": "github:jspm/nodelibs-os@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:d3-interpolate@0.1.4": {
+      "d3-color": "npm:d3-color@0.2.8"
+    },
     "npm:d3-interpolate@0.7.0": {
       "d3-color": "npm:d3-color@0.4.2"
     },
+    "npm:d3-scale@0.1.5": {
+      "d3-arrays": "npm:d3-arrays@0.3.1",
+      "d3-color": "npm:d3-color@0.2.8",
+      "d3-format": "npm:d3-format@0.3.6",
+      "d3-interpolate": "npm:d3-interpolate@0.1.4",
+      "d3-time": "npm:d3-time@0.0.7",
+      "d3-time-format": "npm:d3-time-format@0.1.5"
+    },
     "npm:d3-svg-legend@1.10.0": {
       "d3": "npm:d3@3.5.17"
+    },
+    "npm:d3-time-format@0.1.5": {
+      "d3-time": "npm:d3-time@0.0.7"
     },
     "npm:d3-transition@0.2.8": {
       "d3-color": "npm:d3-color@0.4.2",
@@ -288,6 +310,12 @@ System.config({
       "d3-array": "npm:d3-array@0.7.1",
       "d3-selection": "npm:d3-selection@0.7.1",
       "d3-transition": "npm:d3-transition@0.2.8"
+    },
+    "npm:data-reduction@0.3.0": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "d3-arrays": "npm:d3-arrays@0.4.1",
+      "d3-scale": "npm:d3-scale@0.1.5",
+      "d3-time": "npm:d3-time@0.0.7"
     },
     "npm:delegate@3.0.1": {
       "closest": "npm:closest@0.0.1"

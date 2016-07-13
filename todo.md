@@ -6,6 +6,7 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 - [ ] html minify?
 - [ ] tests
 - [ ] Fix printing
+- [ ] Real time example
 - [ ] Version updates
   - [ ] jspm 0.17 (when released)
   - [ ] gulp 4.0 (when released)

@@ -1,9 +1,8 @@
 <package-editor options="$ctrl.editorOptions"></package-editor>
 
-<div class="container">
-  <h2>{{$ctrl.dataPackage.title}}</h2>
-  <div marked="$ctrl.dataPackage.description"></div>
+<marked src="$ctrl.dataPackage.readme"></marked>
 
+<div class="container">
   <div id="_examples_universe__chart" class="row _examples_universe__bars">
     <div id="charts" class="col-md-12">
     </div>
@@ -20,6 +19,4 @@
       <div id="flight-list" ui-grid="::$ctrl.gridOpts" class="flightGrid" ui-grid-resize-columns>
     </div>
   </div>
-
-  <marked ng-include="$ctrl.dataPackage.readme"></marked>
 </div>

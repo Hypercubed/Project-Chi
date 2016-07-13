@@ -24,7 +24,7 @@ gulp.task('copy-resources', () => {
 
 // copy jspm_package resources to distribution
 gulp.task('copy-jspm-resources', () => {
-  return gulp.src(paths.jspmResources, {followSymlinks: true})
+  return gulp.src(paths.jspmResources, {followSymlinks: true, base: './'})
     .pipe(cached('copy-jspm'))
     .pipe(plumber())
     .pipe(gulp.dest(paths.dist));

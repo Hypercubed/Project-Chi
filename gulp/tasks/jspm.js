@@ -5,6 +5,7 @@ import vfs from 'vinyl-fs';
 import SystemJSBuilder from 'systemjs-builder';
 import runSequence from 'run-sequence';
 import gutil from 'gulp-util';
+import replace from 'gulp-replace';
 import through from 'through2';
 import execa from 'execa';
 
@@ -19,13 +20,13 @@ gulp.task('jspm-symlink', () => {
 });
 
 gulp.task('jspm-bundle-app', () => {
-  const builder = new SystemJSBuilder(paths.temp, `${paths.temp}/system.config.js`);
+  const builder = new SystemJSBuilder('./', './system.config.js');
   builder.config(config.builder.config);
   return builder.bundle(config.builder.bundles.app, `${paths.temp}/${paths.bundles}/app.js`, config.builder.bundle);
 });
 
 gulp.task('jspm-bundle-deps', () => {
-  const builder = new SystemJSBuilder(paths.temp, `${paths.temp}/system.config.js`);
+  const builder = new SystemJSBuilder('./', './system.config.js');
   builder.config(config.builder.config);
   return builder.bundle(config.builder.bundles.deps, `${paths.temp}/${paths.bundles}/deps.js`, config.builder.bundle);
 });
@@ -33,6 +34,13 @@ gulp.task('jspm-bundle-deps', () => {
 // copy bundles to dist folder
 gulp.task('jspm-copy-bundles', () => {
   return gulp.src(`${paths.temp}/${paths.bundles}/*.*`, {base: paths.temp})
+    .pipe(replace('../../jspm_packages', '../jspm_packages'))  // fix relative paths in css
+    .pipe(gulp.dest(paths.dist));
+});
+
+gulp.task('jspm-copy-config', () => {
+  return gulp.src(paths.systemConfig)
+    .pipe(gulp.dest(paths.temp))
     .pipe(gulp.dest(paths.dist));
 });
 
@@ -66,10 +74,12 @@ gulp.task('jspm-rebuild', cb => {
 });
 
 gulp.task('jspm-build', cb => {
-  runSequence('jspm-symlink',
-              'jspm-bundle-deps',
-              'jspm-bundle-app',
-              'jspm-copy-bundles',
-              'jspm-treemaps',
-              cb);
+  runSequence(
+    // 'jspm-symlink',
+    'jspm-copy-config',
+    'jspm-bundle-deps',
+    'jspm-bundle-app',
+    'jspm-copy-bundles',
+    'jspm-treemaps',
+  cb);
 });

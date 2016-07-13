@@ -1,11 +1,7 @@
 
 <div datapackage-edit="$ctrl.editorOptions"></div>
 
+<marked src="$ctrl.dataPackage.readme"></marked>
 <div id="charts" class="container">
-  <h2>{{$ctrl.dataPackage.title}}</h2>
-  <div marked="$ctrl.dataPackage.description"></div>
-
 	<bar-chart class="col-xs-12" ng-attr-bar-data="{{$ctrl.dataPackage.resources[0].data}}"></bar-chart>
-
-  <marked ng-include="$ctrl.dataPackage.readme"></marked>
 </div>

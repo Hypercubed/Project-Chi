@@ -1,5 +1,7 @@
 
-#_examples_treemap__chart > div {
+#_examples_treemap__chart .treemap,
+#_examples_treemap__chart treemap {
+  display: block;
   position: relative;
   height: 500px;
   width: 100%;
@@ -9,7 +11,7 @@
   cursor: pointer;
 }
 
-#_examples_treemap__chart.fullscreen {;
+#_examples_treemap__chart .fullscreen {;
   position: absolute;
   top: 0;
   bottom: 0;

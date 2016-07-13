@@ -46,11 +46,10 @@ const config = {
     dist: DIST,
     temp: TMP,
     build: BUILD,
-    systemConfig: 'app/system.config.js',
+    systemConfig: './system.config.js',
     bundles: 'bundles',
     dataset: dataSetPath,
     dataLink: `${dataSetPath}/app/data/`,
-    jspmLink: 'app/jspm_packages/',
     resources: [  // these are copied to paths.temp and paths.dist
       'app/*.{js,json,ico,txt,md}',
       'app/.nojekyll',
@@ -59,8 +58,8 @@ const config = {
       `${dataSetPath}/app/{components,common,assets}/**/*.{png,svg,md,json}`
     ],
     jspmResources: [  // these are copied to paths.dist
-      'app/{jspm_packages,lib}/*.{js,map}',
-      'app/{jspm_packages,lib}/**/*.{svg,png,eot,ttf,gif,wot,woff,woff2}'
+      'jspm_packages/*.{js,map}',
+      'jspm_packages/**/*.{svg,png,eot,ttf,gif,wot,woff,woff2}'
     ],
     data: [  // these are copied to paths.dist
       `app/{components,common,assets,bundles}/**/*.{json,csv,tsv,txt}`,
@@ -89,7 +88,7 @@ const config = {
       port: argv.port || 9000,
       online: Boolean(argv.online),
       server: {
-        baseDir: [TMP, `${dataSetPath}/app`, 'app'],
+        baseDir: [TMP, `${dataSetPath}/app`, 'app', './'],
         middleware: (req, res, next) => {
           res.setHeader('Access-Control-Allow-Origin', '*');
           next();
@@ -119,18 +118,25 @@ const config = {
   },
   builder: {
     bundles: {
-      deps: `${BUILD} - [components/**/*] - [common/**/*] - [**/*!css] - [**/*!text] - [**/*!md]`,
-      app: `${BUILD} - bundles/deps.js`
+      deps: `${TMP}/${BUILD} - [${TMP}/**/*] - [${TMP}/**/*!css] - [${TMP}/**/*!text] - [${TMP}/**/*!md]`,
+      app: `${TMP}/${BUILD} - ${TMP}/bundles/deps.js`
     },
     config: {
       buildCSS: true,
       buildHTML: true,
-      rootURL: '.tmp/bundles/deps.css',
-      separateCSS: true
+      // rootURL: '.',
+      separateCSS: true,
+      paths: {
+        'github:*': 'jspm_packages/github/*',
+        'npm:*': 'jspm_packages/npm/*',
+        'components/*': `${TMP}/components/*`,
+        'common/*': `${TMP}/common/*`,
+        'bundles/*': `${TMP}/bundles/*`
+      }
     },
     bundle: {
       sourceMaps: true,
-      minify: false,
+      minify: true,
       mangle: true,
       runtime: false,
       esOptimize: true,

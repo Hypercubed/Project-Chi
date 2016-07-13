@@ -8,5 +8,6 @@
 			"mediatype": "text/csv"
 		}
 	],
-	"image": "thumbnail.png"
+	"image": "thumbnail.png",
+	"readme": "README.md"
 }

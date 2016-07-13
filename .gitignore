@@ -29,7 +29,7 @@ docs
 
 # Dependency directories
 node_modules
-app/jspm_packages
+jspm_packages
 
 # Optional npm cache directory
 .npm

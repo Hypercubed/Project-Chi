@@ -27,6 +27,7 @@
     "gulp-gh-pages": "^0.5.4",
     "gulp-htmlmin": "^2.0.0",
     "gulp-plumber": "^1.1.0",
+    "gulp-replace": "^0.5.4",
     "gulp-tap": "^0.1.3",
     "gulp-task-listing": "^1.0.1",
     "gulp-template": "^4.0.0",
@@ -52,11 +53,7 @@
     "check": "xo app/**/*.js dataset/example/**/*.js"
   },
   "jspm": {
-    "registry": "jspm",
-    "directories": {
-      "baseURL": "app"
-    },
-    "configFile": "app/system.config.js",
+    "configFile": "system.config.js",
     "dependencies": {
       "FileSaver": "github:eligrey/FileSaver.js@master",
       "URIjs": "npm:URIjs@^1.16.1",
@@ -86,6 +83,7 @@
       "chiasm": "npm:chiasm@^0.3.0",
       "chiasm-charts": "npm:chiasm-charts@^0.1.5",
       "chiasm-component": "npm:chiasm-component@^0.2.3",
+      "chiasm-data-reduction": "npm:chiasm-data-reduction@^0.3.0",
       "chiasm-layout": "npm:chiasm-layout@^0.2.4",
       "chiasm-links": "npm:chiasm-links@^0.2.3",
       "clipboard": "npm:clipboard@^1.5.10",

@@ -1,0 +1,252 @@
+{
+  "layout": {
+    "plugin": "layout",
+    "state": {
+      "containerSelector": "#_example_chiasm__container",
+      "layout": {
+        "orientation": "vertical",
+        "children": [
+          {
+            "orientation": "horizontal",
+            "children": [
+              "myBarChart",
+              "myScatterPlot",
+              "myScatterPlotOrdinalX",
+              "myBoxPlot"
+            ]
+          },
+          {
+            "orientation": "horizontal",
+            "children": [
+              "myHistogram",
+              "myHeatmap",
+              {
+                "orientation": "vertical",
+                "children": [
+                  "myHeatmapOrdinal",
+                  "myHeatmapOrdinalY"
+                ]
+              },
+              {
+                "orientation": "vertical",
+                "children": [
+                  "myScatterPlotTimeX",
+                  "myLineChart"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "myLineChart": {
+    "plugin": "lineChart",
+    "state": {
+      "xAxisLabelText": "Time",
+      "xColumn": "timestamp",
+      "yAxisLabelText": "Temperature",
+      "yColumn": "temperature",
+      "xAxisLabelTextOffset": 6,
+      "yAxisLabelTextOffset": 15,
+      "margin": { "top": 10, "right": 10, "bottom": 40, "left": 42 },
+      "marginEditor": ["left"]
+    }
+  },
+  "myBarChart": {
+    "plugin": "barChart",
+    "state": {
+      "xAxisLabelText": "Name",
+      "xColumn": "name",
+      "yAxisLabelText": "Amount",
+      "yColumn": "amount",
+      "fill": "#1EABE8",
+      "stroke": "#008CC8",
+      "xAxisLabelTextOffset": 6,
+      "yAxisLabelTextOffset": 15,
+      "margin": { "top": 10, "right": 10, "bottom": 40, "left": 42 }
+    }
+  },
+  "myScatterPlot": {
+    "plugin": "scatterPlot",
+    "state": {
+      "xAxisLabelText": "Petal Width",
+      "xColumn": "petal_width",
+      "yAxisLabelText": "Petal Length",
+      "yColumn": "petal_length",
+      "xAxisLabelTextOffset": 6,
+      "yAxisLabelTextOffset": 15,
+      "margin": { "top": 10, "right": 10, "bottom": 40, "left": 42 }
+    }
+  },
+  "myScatterPlotOrdinalX": {
+    "plugin": "scatterPlot",
+    "state": {
+      "xAxisLabelText": "Species",
+      "xColumn": "species",
+      "yAxisLabelText": "Petal Length",
+      "yColumn": "petal_length",
+      "circleRadius": 20,
+      "fill": "rgba(100, 0, 0, 0.1)",
+      "xAxisLabelTextOffset": 6,
+      "yAxisLabelTextOffset": 15,
+      "margin": { "top": 10, "right": 10, "bottom": 40, "left": 42 }
+    }
+  },
+  "myScatterPlotTimeX": {
+    "plugin": "scatterPlot",
+    "state": {
+      "xAxisLabelText": "Time",
+      "xColumn": "timestamp",
+      "yAxisLabelText": "Temperature",
+      "yColumn": "temperature",
+      "circleRadius": 2,
+      "xAxisLabelTextOffset": 6,
+      "yAxisLabelTextOffset": 15,
+      "margin": { "top": 10, "right": 10, "bottom": 40, "left": 42 }
+    }
+  },
+  "myBoxPlot": {
+    "plugin": "boxPlot",
+    "state": {
+      "xAxisLabelText": "Species",
+      "xColumn": "species",
+      "yAxisLabelText": "Sepal Length",
+      "yColumn": "sepal_length",
+      "xAxisLabelTextOffset": 6,
+      "yAxisLabelTextOffset": 15,
+      "margin": { "top": 10, "right": 10, "bottom": 40, "left": 42 }
+    }
+  },
+  "myHistogram": {
+    "plugin": "barChart",
+    "state": {
+      "xAxisLabelText": "Petal Length",
+      "xColumn": "petal_length",
+      "yAxisLabelText": "Count",
+      "yColumn": "count",
+      "xAxisLabelTextOffset": 6,
+      "yAxisLabelTextOffset": 15,
+      "margin": { "top": 10, "right": 10, "bottom": 40, "left": 42 }
+    }
+  },
+  "myHeatmap": {
+    "plugin": "heatMap",
+    "state": {
+      "xAxisLabelText": "Petal Length",
+      "xColumn": "petal_length",
+      "yAxisLabelText": "Sepal Length",
+      "yColumn": "sepal_length",
+      "colorColumn": "count",
+      "xAxisLabelTextOffset": 6,
+      "yAxisLabelTextOffset": 15,
+      "margin": { "top": 10, "right": 10, "bottom": 40, "left": 42 }
+    }
+  },
+  "myHeatmapOrdinal": {
+    "plugin": "heatMap",
+    "state": {
+      "xAxisLabelText": "Species",
+      "xColumn": "species",
+      "yAxisLabelText": "Petal Length",
+      "yColumn": "petal_length",
+      "colorColumn": "count",
+      "xAxisLabelTextOffset": 6,
+      "yAxisLabelTextOffset": 15,
+      "margin": { "top": 10, "right": 10, "bottom": 40, "left": 42 }
+    }
+  },
+  "myHeatmapOrdinalY": {
+    "plugin": "heatMap",
+    "state": {
+      "xAxisLabelText": "Petal Length",
+      "xColumn": "petal_length",
+      "yAxisLabelText": "Species",
+      "yColumn": "species",
+      "colorColumn": "count",
+      "xAxisLabelTextOffset": 6,
+      "yAxisLabelTextOffset": 15,
+      "margin": { "top": 10, "right": 10, "bottom": 40, "left": 75 }
+    }
+  },
+  "heatmapOrdinalData": {
+    "plugin": "dataReduction",
+    "state": {
+      "aggregate": {
+        "dimensions": [
+          {
+            "column": "petal_length",
+            "histogram": true,
+            "numBins": 15
+          },
+          {
+            "column": "species"
+          }
+        ],
+        "measures": [{
+          "outColumn": "count",
+          "operator": "count"
+        }]
+      }
+    }
+  },
+  "heatmapData": {
+    "plugin": "dataReduction",
+    "state": {
+      "aggregate": {
+        "dimensions": [
+          {
+            "column": "petal_length",
+            "histogram": true,
+            "numBins": 10
+          },
+          {
+            "column": "sepal_length",
+            "histogram": true,
+            "numBins": 10
+          }
+        ],
+        "measures": [{
+          "outColumn": "count",
+          "operator": "count"
+        }]
+      }
+    }
+  },
+  "histogramData": {
+    "plugin": "dataReduction",
+    "state": {
+      "aggregate": {
+        "dimensions": [{
+          "column": "petal_length",
+          "histogram": true,
+          "numBins": 20
+        }],
+        "measures": [{
+          "outColumn": "count",
+          "operator": "count"
+        }]
+      }
+    }
+  },
+  "links": {
+    "plugin": "links",
+    "state": {
+      "bindings": [
+        "self.barsData -> myBarChart.dataset",
+        "self.lineData -> myLineChart.dataset",
+        "self.lineData -> myScatterPlotTimeX.dataset",
+        "self.scatterData -> myScatterPlot.dataset",
+        "self.scatterData -> myScatterPlotOrdinalX.dataset",
+        "self.scatterData -> myBoxPlot.dataset",
+        "self.scatterData -> histogramData.datasetIn",
+        "self.scatterData -> heatmapData.datasetIn",
+        "self.scatterData -> heatmapOrdinalData.datasetIn",
+        "histogramData.datasetOut -> myHistogram.dataset",
+        "heatmapData.datasetOut -> myHeatmap.dataset",
+        "heatmapOrdinalData.datasetOut -> myHeatmapOrdinal.dataset",
+        "heatmapOrdinalData.datasetOut -> myHeatmapOrdinalY.dataset"
+      ]
+    }
+  }
+}

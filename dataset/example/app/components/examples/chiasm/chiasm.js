@@ -1,10 +1,11 @@
 import Chiasm from 'chiasm';
-import ChiasmBarChart from 'chiasm-charts/src/components/barChart';
-import ChiasmLayout from 'chiasm-layout';
-import ChiasmLinks from 'chiasm-links';
+import chiasmCharts from 'chiasm-charts';
+import chiasmLayout from 'chiasm-layout';
+import chiasmLinks from 'chiasm-links';
+import chiasmDataReduction from 'chiasm-data-reduction';
 
 // import barChart from './barChart';
-import './barChart.css!';
+import './chiasm.css!';
 
 import 'codemirror/lib/codemirror.css!';
 import 'inlet/inlet.css!';
@@ -12,47 +13,79 @@ import 'inlet/inlet.css!';
 function controller () {
   const $ctrl = this;
 
-  const chiasm = $ctrl.chiasm = new Chiasm();
+  const chiasm = new Chiasm();
 
-  chiasm.plugins.layout = ChiasmLayout;
-  chiasm.plugins.links = ChiasmLinks;
-  chiasm.plugins.barChart = ChiasmBarChart;
+  chiasm.plugins.layout = chiasmLayout;
+  chiasm.plugins.links = chiasmLinks;
 
+  chiasm.plugins.dataReduction = chiasmDataReduction;
+
+  chiasm.plugins.barChart = chiasmCharts.components.barChart;
+  chiasm.plugins.scatterPlot = chiasmCharts.components.scatterPlot;
+  chiasm.plugins.lineChart = chiasmCharts.components.lineChart;
+  chiasm.plugins.heatMap = chiasmCharts.components.heatMap;
+  chiasm.plugins.boxPlot = chiasmCharts.components.boxPlot;
+
+  let layoutComponent = null;
   chiasm.getComponent('layout').then(comp => {
     comp.when(['containerSVG'], svg => {
-      svg.attr('title', 'Bar Chart');
+      svg.attr('title', 'Chiasm Chart');
     });
 
-    $ctrl.layoutComponent = comp;
+    layoutComponent = comp;
   });
 
-  chiasm.getComponent('barChart').then(comp => {
-    $ctrl.barChart = comp;
-  });
-
-  Object.assign($ctrl, {
+  return Object.assign($ctrl, {
     editorOptions: {
       data: $ctrl.dataPackage,
       onChange: draw
     },
     $onInit: draw,
     $onDestroy: () => {
-      if ($ctrl.layoutComponent && typeof $ctrl.layoutComponent.destroy === 'function') {
-        $ctrl.layoutComponent.destroy();
+      if (layoutComponent && typeof layoutComponent.destroy === 'function') {
+        layoutComponent.destroy();
       }
     }
   });
 
   function draw () {
-    chiasm.config = $ctrl.dataPackage.resources[1].data;
-    chiasm.dataset = {
+    const resources = $ctrl.dataPackage.resourcesByName;
+
+    resources['lineChartData.csv'].data.forEach(d => {
+      d.temperature = Number(d.temperature);
+      d.timestamp = new Date(d.timestamp);
+    });
+
+    chiasm.config = resources['config.json'].data;
+    chiasm.barsData = {
       metadata: {
         columns: [
-          {name: 'letter', type: 'string'},
-          {name: 'frequency', type: 'number'}
+          {name: 'name', type: 'string'},
+          {name: 'amount', type: 'number'}
         ]
       },
-      data: $ctrl.dataPackage.resources[0].data
+      data: resources['barChartData.csv'].data
+    };
+    chiasm.lineData = {
+      metadata: {
+        columns: [
+          {name: 'timestamp', type: 'date'},
+          {name: 'temperature', type: 'number'}
+        ]
+      },
+      data: resources['lineChartData.csv'].data
+    };
+    chiasm.scatterData = {
+      metadata: {
+        columns: [
+          {name: 'sepal_length', type: 'number', label: 'Sepal Length'},
+          {name: 'sepal_width', type: 'number', label: 'Sepal Width'},
+          {name: 'petal_length', type: 'number', label: 'Petal Length'},
+          {name: 'petal_width', type: 'number', label: 'Petal Width'},
+          {name: 'species', type: 'string', label: 'Species'}
+        ]
+      },
+      data: resources['iris.csv'].data
     };
   }
 }

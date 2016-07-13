@@ -1,8 +1,7 @@
 <div datapackage-edit="$ctrl.editorOptions"></div>
 
-<div id="charts" class="container">
-  <h2>{{$ctrl.dataPackage.title}}</h2>
-  <div marked="$ctrl.dataPackage.description"></div>
+<marked src="$ctrl.dataPackage.readme"></marked>
 
+<div id="charts" class="container">
   <div id="_example_chiasm__container"></div>
 </div>

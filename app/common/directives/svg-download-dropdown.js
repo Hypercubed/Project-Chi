@@ -14,7 +14,7 @@ function link (scope, element, attr) {
 
   getSVGs();
 
-  element.find('.dropdown-toggle').on('click', () => {
+  element.on('click', () => {
     scope.$apply(() => {
       getSVGs();
     });

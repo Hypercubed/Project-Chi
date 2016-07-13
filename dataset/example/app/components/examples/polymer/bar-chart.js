@@ -12,7 +12,7 @@ function controller (/* $scope */) {
 
 export default {
   controller,
-  templateUrl: 'components/examples/polymer/bar-chart-template.html',
+  templateUrl: 'components/examples/polymer/bar-chart.html',
   bindings: {
     dataPackage: '<package'
   }

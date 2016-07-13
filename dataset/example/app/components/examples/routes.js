@@ -8,8 +8,8 @@ import examplesComponent from 'components/examples/index';
 import chiasmComponent from 'components/examples/chiasm/chiasm';
 import bioJSComponent from 'components/examples/biojs/biojs';
 import barsComponent from 'components/examples/bars/bars';
-import treeMapComponent from 'components/examples/treemap/treemap';
-import polymerComponent from 'components/examples/polymer/bar-chart-controller';
+import treemapComponent from 'components/examples/treemap/treemap';
+import polymerComponent from 'components/examples/polymer/bar-chart';
 import universeComponent from 'components/examples/universe/universe';
 
 import 'd3-plugins/hexbin/hexbin';  // needed for /examples/hexbin
@@ -26,7 +26,7 @@ export default angular
   .component('chiasm', chiasmComponent)
   // .component('trains', trainsComponent)
   .component('polymer', polymerComponent)
-  .component('treemap', treeMapComponent)
+  .component('treemapPage', treemapComponent)
   .component('universe', universeComponent)
   .config(['$routeProvider', $routeProvider => {
     $routeProvider
@@ -47,7 +47,7 @@ export default angular
         datapackageUrl: 'components/examples/bars/datapackage.json'
       })
       .when('/examples/treemap', {
-        template: '<treemap data-package="$resolve.dataPackage"></treemap>',
+        template: '<treemap-page data-package="$resolve.dataPackage"></treemap-page>',
         datapackageUrl: 'components/examples/treemap/datapackage.json'
       })
       .when('/examples/polymer', {

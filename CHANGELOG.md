@@ -4,6 +4,9 @@ CHANGELOG
 ## HEAD (Unreleased)
 * Generate separate bundles for app and dependencies
 * Improved build workflow
+* Refactored file structure for jspm
+* Added more details to examples
+* Expanded Chiasm example
 
 --------------------
 
