@@ -5,7 +5,7 @@ function controller () {
   const $ctrl = this;
   const chart = new BarChart();
 
-  Object.assign($ctrl, {
+  return Object.assign($ctrl, {
     editorOptions: {
       data: $ctrl.dataPackage,
       onChange: draw

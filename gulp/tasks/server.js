@@ -13,9 +13,9 @@ Object.keys(config.server).forEach(key => {
 gulp.task('watch-dist', () => {
   gulp.watch(config.paths.resources, ['copy-resources']);
   gulp.watch(config.paths.data, ['copy-data']);
-  gulp.watch(config.paths.templates, ['copy-html', 'rebuild']);
-  gulp.watch(config.paths.scripts, ['copy-js', 'rebuild']);
-  gulp.watch(config.paths.styles, ['copy-css', 'rebuild']);
+  gulp.watch(config.paths.templates, ['copy-html', 'jspm-build-app']);
+  gulp.watch(config.paths.scripts, ['copy-js', 'jspm-build-app']);
+  gulp.watch(config.paths.styles, ['copy-css', 'jspm-build-app']);
 });
 
 gulp.task('watch-dev', () => {

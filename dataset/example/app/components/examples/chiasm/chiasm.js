@@ -51,20 +51,20 @@ function controller () {
   function draw () {
     const resources = $ctrl.dataPackage.resourcesByName;
 
-    resources['lineChartData.csv'].data.forEach(d => {
-      d.temperature = Number(d.temperature);
-      d.timestamp = new Date(d.timestamp);
+    resources['week_temperature_sf.csv'].data.forEach(d => {
+      /* d.temperature = Number(d.temperature);
+      d.timestamp = new Date(d.timestamp); */
     });
 
     chiasm.config = resources['config.json'].data;
     chiasm.barsData = {
       metadata: {
         columns: [
-          {name: 'name', type: 'string'},
-          {name: 'amount', type: 'number'}
+          {name: 'letter', type: 'string'},
+          {name: 'frequency', type: 'number'}
         ]
       },
-      data: resources['barChartData.csv'].data
+      data: resources['letterFrequency.tsv'].data
     };
     chiasm.lineData = {
       metadata: {
@@ -73,16 +73,16 @@ function controller () {
           {name: 'temperature', type: 'number'}
         ]
       },
-      data: resources['lineChartData.csv'].data
+      data: resources['week_temperature_sf.csv'].data
     };
     chiasm.scatterData = {
       metadata: {
         columns: [
-          {name: 'sepal_length', type: 'number', label: 'Sepal Length'},
-          {name: 'sepal_width', type: 'number', label: 'Sepal Width'},
-          {name: 'petal_length', type: 'number', label: 'Petal Length'},
-          {name: 'petal_width', type: 'number', label: 'Petal Width'},
-          {name: 'species', type: 'string', label: 'Species'}
+          {name: 'Sepal.Length', type: 'number', label: 'Sepal Length'},
+          {name: 'Sepal.Width', type: 'number', label: 'Sepal Width'},
+          {name: 'Petal.Length', type: 'number', label: 'Petal Length'},
+          {name: 'Petal.Width', type: 'number', label: 'Petal Width'},
+          {name: 'Species', type: 'string', label: 'Species'}
         ]
       },
       data: resources['iris.csv'].data

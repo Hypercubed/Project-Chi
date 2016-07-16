@@ -5,11 +5,13 @@
 </div>
 
 <section class="datapckage-editor-container hidden-print" style="position: relative">
-
-  <uib-tabset id="dataPackageEditor" ng-show="$ctrl.panel.open" xxng-if="$ctrl.enableOpen || $ctrl.enableProtected">
-    <uib-tab ng-repeat="tab in $ctrl.data.resources track by $index" select="$ctrl.ui.refresh()" active="tab.active">
+  <uib-tabset id="dataPackageEditor"
+    active="$ctrl.activeTab"
+    ng-show="$ctrl.panel.open"
+    ng-if="$ctrl.enableOpen || $ctrl.enableProtected">
+    <uib-tab ng-repeat="tab in $ctrl.data.resources track by $index" select="$ctrl.ui.refresh()">
       <uib-tab-heading file-dropzone="{{$ctrl.types}}" data-max-file-size="30" dropped="$ctrl.droppedOver($index, file)">
-        {{ $ctrl.data.resources.length < 7 ? tab.name : $index }}
+        {{tab.active}} {{ $ctrl.data.resources.length < 7 ? tab.name : $index }}
         <a class="close" ng-click="$ctrl.remove($index)">&nbsp;&times;</a>
       </uib-tab-heading>
       <div file-dropzone="{{$ctrl.types}}" data-max-file-size="30" dropped="$ctrl.droppedOver($index, file)">
@@ -27,20 +29,21 @@
         </form>
 
         <div>
-          <textarea class="editor" ng-model="tab.content" ui-codemirror ui-codemirror-opts="{
+          <textarea class="editor"
+            ng-model="tab.content"
+            ng-model-options="{ debounce: 200 }"
+            ng-change="$ctrl.change(tab)"
+            ui-codemirror
+            ui-codemirror-opts="{
               lineNumbers: true,
               lineWrapping: false,
               mode: file.type,
               allowDropFileTypes: false,
               onLoad: $ctrl.ui.codemirrorLoaded
-            }" ng-change="$ctrl.change(tab)" ui-refresh="$ctrl.ui.count"></textarea>
+            }"
+            ui-refresh="$ctrl.ui.count"></textarea>
         </div>
       </div>
-    </uib-tab>
-    <uib-tab ng-click="$ctrl.newFile('new.txt')" active="true === false" ng-if="$ctrl.enableAdd">
-      <uib-tab-heading file-dropzone="{{$ctrl.types}}" data-max-file-size="3" dropped="$ctrl.dropped(file)">
-        <i class="fa fa-plus-square" aria-hidden="true"></i>
-      </uib-tab-heading>
     </uib-tab>
   </uib-tabset>
 
@@ -63,7 +66,9 @@
       </ul>
     </div>
 
-    <div id="svg-download" class="btn-group hidden-print" uib-dropdown svg-download-dropdown="svgList in #charts" ng-if="$ctrl.enableSvgDownload || $ctrl.enablePngDownload">
+    <div id="svg-download" class="btn-group hidden-print"
+      uib-dropdown svg-download-dropdown="svgList in #charts"
+      ng-if="$ctrl.enableSvgDownload || $ctrl.enablePngDownload">
       <button type="button" class="btn btn-primary btn-sm dropdown-toggle" uib-dropdown-toggle aria-expanded="false">
         <div class="pull-right">
           <i class="fa fa-picture-o" aria-hidden="true"></i>
@@ -81,16 +86,32 @@
     </div>
 
     <div class="btn-group pull-right panel-toggle">
+      <button type="button" class="btn btn-link btn-sm" tooltip="Add new resource"
+        ng-show="$ctrl.enableAdd && $ctrl.panel.open"
+        ng-click="$ctrl.newFile()"
+        file-dropzone="{{$ctrl.types}}"
+        data-max-file-size="30"
+        dropped="$ctrl.dropped(file)">
+        <i class="fa fa-plus-square" aria-hidden="true"></i>
+      </button>
 
-      <button type="button" class="btn btn-primary btn-sm" ng-click="$ctrl.play()" ng-if="$ctrl.enableProtected" >
+      <button type="button" class="btn btn-primary btn-sm"
+        ng-click="$ctrl.play()"
+        ng-if="$ctrl.enableProtected">
         Try your own data
       </button>
 
-      <button id="data-drop" type="button" class="btn btn-primary btn-sm" ng-if="$ctrl.enableDrop" file-dropzone="{{$ctrl.types}}" data-max-file-size="30" dropped="$ctrl.droppedOver($ctrl.data.resources.length - 1, file)">
+      <button id="data-drop" type="button" class="btn btn-primary btn-sm" tooltip="Add new resource"
+        ng-if="$ctrl.enableDrop"
+        file-dropzone="{{$ctrl.types}}"
+        data-max-file-size="30"
+        dropped="$ctrl.droppedOver($ctrl.data.resources.length - 1, file)">
         Drop your own data here
       </button>
 
-      <button type="button" class="btn btn-link btn-sm" tooltip="Show/hide resources panel" ng-if="$ctrl.enableOpen" ng-click="$ctrl.tooglePanel()">
+      <button type="button" class="btn btn-link btn-sm" tooltip="Show/hide resources panel"
+        ng-show="$ctrl.enableOpen"
+        ng-click="$ctrl.tooglePanel()">
         <i class="fa fa-cog" aria-hidden="true"></i>
       </button>
 

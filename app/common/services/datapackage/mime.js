@@ -28,7 +28,7 @@ export const MimeDb = {
     source: 'iana',
     charset: 'UTF-8',
     compressible: true,
-    extensions: ['json', 'map']
+    extensions: ['json', 'map', 'json5']
   }
 };
 

@@ -32,7 +32,8 @@
     "gulp-task-listing": "^1.0.1",
     "gulp-template": "^4.0.0",
     "hydrolysis": "1.21.4",
-    "jspm": "^0.16.39",
+    "jspm": "^0.17.0-beta.22",
+    "mkdirp": "^0.5.1",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.2.2",
     "source-map-explorer": "^1.3.2",
@@ -53,12 +54,15 @@
     "check": "xo app/**/*.js dataset/example/**/*.js"
   },
   "jspm": {
-    "configFile": "system.config.js",
+    "main": "project-chi.js",
+    "configFiles": {
+      "jspm": "jspm.config.js"
+    },
+    "configFile": "jspm.config.js",
     "dependencies": {
       "FileSaver": "github:eligrey/FileSaver.js@master",
       "URIjs": "npm:URIjs@^1.16.1",
       "_F": "github:Hypercubed/_F@^0.0.11",
-      "angular": "npm:angular@^1.5.7",
       "angular-animate": "npm:angular-animate@^1.5.7",
       "angular-cookies": "npm:angular-cookies@^1.5.7",
       "angular-downloadsvg-directive": "npm:angular-downloadsvg-directive@^0.1.5",
@@ -74,7 +78,6 @@
       "angular-ui-grid": "npm:angular-ui-grid@^3.2.5",
       "angularjs-slider": "npm:angularjs-slider@^2.13.0",
       "animate": "npm:animate.css@^3.5.1",
-      "assert": "npm:assert@^1.3.0",
       "babyparse": "npm:babyparse@^0.4.6",
       "biojs-io-fasta": "npm:biojs-io-fasta@^0.1.17",
       "biojs-vis-example": "npm:biojs-vis-example@^0.1.4",
@@ -84,7 +87,7 @@
       "chiasm-charts": "npm:chiasm-charts@^0.1.5",
       "chiasm-component": "npm:chiasm-component@^0.2.3",
       "chiasm-data-reduction": "npm:chiasm-data-reduction@^0.3.0",
-      "chiasm-layout": "npm:chiasm-layout@^0.2.4",
+      "chiasm-layout": "github:chiasm-project/chiasm-layout@^0.3.0",
       "chiasm-links": "npm:chiasm-links@^0.2.3",
       "clipboard": "npm:clipboard@^1.5.10",
       "codemirror": "github:codemirror/codemirror@^5.3.0",
@@ -93,19 +96,19 @@
       "crossfilter": "npm:crossfilter2@1.4.0-alpha.6",
       "css": "github:systemjs/plugin-css@^0.1.23",
       "cuid": "npm:cuid@^1.3.8",
-      "d3": "npm:d3@3.5.17",
       "d3-plugins": "github:d3/d3-plugins@master",
       "d3-svg-legend": "npm:d3-svg-legend@^1.10.0",
       "d3-tip": "github:Caged/d3-tip@0.6.7",
       "d3plus-text": "npm:d3plus-text@^0.4.4",
       "font-awesome": "npm:font-awesome@^4.6.1",
-      "fs": "github:jspm/nodelibs-fs@^0.1.2",
       "html": "github:Hypercubed/systemjs-plugin-html@^0.0.8",
       "inlet": "github:enjalot/Inlet@^0.1.1",
       "intro.js": "npm:intro.js@^2.1.0",
       "jquery": "npm:jquery@^3.1.0",
+      "js-yaml": "npm:js-yaml@^3.6.1",
       "json": "github:systemjs/plugin-json@^0.1.0",
-      "jspm/nodelibs-assert": "github:jspm/nodelibs-assert@^0.1.0",
+      "json5": "npm:json5@^0.5.0",
+      "jsontableschema": "github:frictionlessdata/jsontableschema-js@master",
       "lodash": "npm:lodash@^4.13.1",
       "md": "github:guybedford/system-md@^0.1.0",
       "mime-lookup": "npm:mime-lookup@^0.0.2",
@@ -114,8 +117,8 @@
       "model-js": "npm:model-js@0.2.5",
       "mongodb-extended-json": "npm:mongodb-extended-json@^1.6.3",
       "pivottable": "npm:pivottable@^2.0.2",
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.12",
       "polymer": "github:Polymer/polymer@^1.4.0",
-      "process": "npm:process@^0.11.5",
       "q": "npm:q@1.4.1",
       "screenfull": "npm:screenfull@^2.0.0",
       "text": "github:systemjs/plugin-text@^0.0.8",
@@ -124,23 +127,160 @@
       "universe": "npm:universe@^0.8.0",
       "venn.js": "npm:venn.js@^0.2.10",
       "webcomponentsjs": "github:webcomponents/webcomponentsjs@^0.7.22",
-      "webtreemap": "github:martine/webtreemap@gh-pages",
-      "yaml": "npm:yaml@^0.3.0"
+      "webtreemap": "github:evmar/webtreemap@gh-pages"
     },
     "devDependencies": {
-      "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
       "core-js": "npm:core-js@^1.1.4"
     },
+    "peerDependencies": {
+      "angular": "npm:angular@^1.5.7",
+      "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
+      "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
+      "child_process": "github:jspm/nodelibs-child_process@^0.2.0-alpha",
+      "constants": "github:jspm/nodelibs-constants@^0.2.0-alpha",
+      "crypto": "github:jspm/nodelibs-crypto@^0.2.0-alpha",
+      "d3": "npm:d3@3.5.17",
+      "dgram": "github:jspm/nodelibs-dgram@^0.2.0-alpha",
+      "dns": "github:jspm/nodelibs-dns@^0.2.0-alpha",
+      "ecc-jsbn": "npm:ecc-jsbn@~0.1.1",
+      "events": "github:jspm/nodelibs-events@^0.2.0-alpha",
+      "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
+      "http": "github:jspm/nodelibs-http@^0.2.0-alpha",
+      "https": "github:jspm/nodelibs-https@^0.2.0-alpha",
+      "jodid25519": "npm:jodid25519@^1.0.0",
+      "jsbn": "npm:jsbn@0.1",
+      "jspm/nodelibs-assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
+      "net": "github:jspm/nodelibs-net@^0.2.0-alpha",
+      "os": "github:jspm/nodelibs-os@^0.2.0-alpha",
+      "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
+      "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
+      "punycode": "github:jspm/nodelibs-punycode@^0.2.0-alpha",
+      "querystring": "github:jspm/nodelibs-querystring@^0.2.0-alpha",
+      "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
+      "string_decoder": "github:jspm/nodelibs-string_decoder@^0.2.0-alpha",
+      "tls": "github:jspm/nodelibs-tls@^0.2.0-alpha",
+      "tty": "github:jspm/nodelibs-tty@^0.2.0-alpha",
+      "tweetnacl": "npm:tweetnacl@0.13",
+      "url": "github:jspm/nodelibs-url@^0.2.0-alpha",
+      "util": "github:jspm/nodelibs-util@^0.2.0-alpha",
+      "vm": "github:jspm/nodelibs-vm@^0.2.0-alpha",
+      "zlib": "github:jspm/nodelibs-zlib@^0.2.0-alpha"
+    },
     "overrides": {
-      "github:enjalot/Inlet@0.1.1": {
-        "main": "inlet"
+      "github:chiasm-project/chiasm-layout@0.3.0": {
+        "registry": "npm"
       },
-      "github:codemirror/codemirror@5.3.0": {
+      "github:codemirror/codemirror@5.14.2": {
         "format": "global",
         "directories": {
           "lib": "."
         }
+      },
+      "github:enjalot/Inlet@0.1.1": {
+        "main": "inlet"
+      },
+      "github:frictionlessdata/jsontableschema-js@master": {
+        "registry": "npm"
+      },
+      "github:twbs/bootstrap@3.3.6": {
+        "shim": {
+          "js/bootstrap": {
+            "deps": [
+              "jquery"
+            ],
+            "exports": "$"
+          }
+        },
+        "dependencies": {
+          "jquery": "2"
+        },
+        "files": [
+          "dist",
+          "fonts",
+          "js",
+          "css",
+          "less",
+          "grunt",
+          "LICENSE"
+        ],
+        "systemjs": {
+          "main": "dist/js/bootstrap.js",
+          "modules": {
+            "dist/js/bootstrap.js": {
+              "deps": [
+                "jquery"
+              ],
+              "exports": "$"
+            }
+          }
+        }
+      },
+      "npm:angular@1.5.7": {
+        "format": "global",
+        "jspmNodeConversion": false,
+        "main": "angular",
+        "meta": {
+          "angular.js": {
+            "exports": "angular",
+            "format": "global"
+          }
+        }
+      },
+      "npm:babel-runtime@5.8.38": {
+        "main": false,
+        "dependencies": {},
+        "optionalDependencies": {
+          "core-js": "^1.2.0"
+        }
+      },
+      "npm:browserify-zlib@0.1.4": {
+        "dependencies": {
+          "readable-stream": "^2.0.2",
+          "pako": "~0.2.0"
+        },
+        "map": {
+          "_stream_transform": "readable-stream/transform"
+        }
+      },
+      "npm:cuid@1.3.8": {
+        "main": "dist/browser-cuid"
+      },
+      "npm:d3@3.5.17": {
+        "meta": {
+          "d3.js": {
+            "exports": "d3",
+            "format": "global"
+          }
+        }
+      },
+      "npm:esprima@2.7.2": {
+        "jspmNodeConversion": false
+      },
+      "npm:font-awesome@4.6.1": {
+        "main": "css/font-awesome.css!",
+        "jspmNodeConversion": false,
+        "registry": "jspm",
+        "dependencies": {
+          "css": "0.1"
+        }
+      },
+      "npm:inherits@2.0.1": {
+        "ignore": [
+          "test.js"
+        ]
+      },
+      "npm:lodash@4.13.1": {
+        "map": {
+          "buffer": "@empty",
+          "process": "@empty"
+        }
+      },
+      "npm:moment@2.13.0": {
+        "jspmNodeConversion": false
+      },
+      "npm:moment@2.14.1": {
+        "jspmNodeConversion": false
       }
     }
   },

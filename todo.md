@@ -21,3 +21,6 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
   - [ ] Ontology files (owl, obo)
   - [ ] Bio files (fasta, bam, sam, bed)
   - [ ] network files (sif)
+- [ ] Schema
+  - [ ] Support schemas from URLS
+  - [ ] Add schema selector to editor

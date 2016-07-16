@@ -46,12 +46,16 @@ function controller ($log, $timeout, $element) {
   function drawMap (elm, res) {
     elm.empty();
 
+    if (!res.data) {
+      return;
+    }
+
     const tree = res.data;
     const treeData = newNode('/');
 
     if (res.table) {
       tree.forEach(d => {
-        addNode(d.Source, Number(d.Size), d.Tag);
+        addNode(d.Source, d.Size, d.Tag);
       });
     } else {
       for (const source in tree) {

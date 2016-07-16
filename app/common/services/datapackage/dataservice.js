@@ -17,7 +17,9 @@ export function DataService ($http, $q) {
 
     normalize: normalizeResource,
     normalizePackage,
-    processResource: processByType
+    processResource: processByType,
+
+    addResource
   };
 
   function loadPackage (filePath) {
@@ -30,19 +32,24 @@ export function DataService ($http, $q) {
     );
   }
 
-  function processPackage (filePath, _package) {
-    _package = normalizePackage(filePath, _package);
-    const q = _package.resources ? _package.resources.map(loadResource) : [];
+  function processPackage (filePath, datapackage) {
+    datapackage = normalizePackage(filePath, datapackage);
+    const q = datapackage.resources ? datapackage.resources.map(loadResource) : [];
 
-    return $q.all(q).then(() => {
-      _package.resourcesByName = {};
-      _package.resources.forEach(r => {
-        if (r.name && !_package.resourcesByName[r.name]) {
-          _package.resourcesByName[r.name] = r;
-        }
-      });
-      return _package;
+    return $q.all(q)
+    .then(() => {
+      return reindexPackage(datapackage);
     });
+  }
+
+  function reindexPackage (datapackage) {
+    datapackage.resourcesByName = {};
+    datapackage.resources.forEach(r => {
+      if (r.name && !datapackage.resourcesByName[r.name]) {
+        datapackage.resourcesByName[r.name] = r;
+      }
+    });
+    return datapackage;
   }
 
   function reloadResource (resource) {
@@ -54,9 +61,18 @@ export function DataService ($http, $q) {
 
   function loadResource (resource) {
     if (resource.url && !(resource.content || resource.data)) {
-      return reloadResource(resource);
+      return reloadResource(resource);  // todo: check for urls
     }
     return $q(resolve => resolve({data: processByType(resource)}));
+  }
+
+  function addResource (datapackage, resource) {
+    normalizeResource(datapackage, resource);
+
+    datapackage.resources.push(resource);
+    datapackage.resourcesByName[resource.name] = resource;
+
+    processByType(resource);
   }
 }
 

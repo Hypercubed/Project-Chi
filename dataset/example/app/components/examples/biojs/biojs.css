@@ -1,4 +1,4 @@
-#_examples_biojs__viewer div {
+#_examples_biojs__viewer biovisexample div {
   font: 10px sans-serif;
   background-color: steelblue;
   text-align: right;
@@ -7,6 +7,6 @@
   color: white;
 }
 
-#_examples_biojs__viewer div:hover {
+#_examples_biojs__viewer biovisexample div:hover {
   background-color: cadetblue;
 }

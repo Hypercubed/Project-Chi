@@ -1,6 +1,6 @@
 import d3 from 'd3';
 import universe from 'universe';
-import debounce from 'lodash/debounce';
+import {debounce} from 'lodash';
 
 import {gridDefaults} from 'common/services/grid/grid.utils';
 
@@ -81,13 +81,6 @@ function controller ($scope, $log, cfpLoadingBar) {
 
     $log.debug('processing', raw.length);
 
-    raw.forEach((d, i) => {
-      d.index = i;
-      d.date = parseDate(d.date);
-      d.delay = Number(d.delay);
-      d.distance = Number(d.distance);
-    });
-
     if ($ctrl.universe) {
       $ctrl.universe.clear();
       $ctrl.universe = null;
@@ -104,8 +97,8 @@ function controller ($scope, $log, cfpLoadingBar) {
     $ctrl.universe = service;
     $ctrl.universe.onFilter(debounce(update, 20));
 
-    await $ctrl.universe.column('index');  // main data list
-    $ctrl.id = $ctrl.universe.column.find('index').dimension;
+    await $ctrl.universe.column('date');  // main data list
+    $ctrl.id = $ctrl.universe.column.find('date').dimension;
 
     setup();
     update();
@@ -162,14 +155,6 @@ function controller ($scope, $log, cfpLoadingBar) {
           .update();
       }
     });
-  }
-
-  function parseDate (d) {
-    return new Date(2001,
-        d.substring(0, 2) - 1,
-        d.substring(2, 4),
-        d.substring(4, 6),
-        d.substring(6, 8));
   }
 }
 

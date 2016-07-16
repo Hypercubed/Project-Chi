@@ -46,7 +46,7 @@ const config = {
     dist: DIST,
     temp: TMP,
     build: BUILD,
-    systemConfig: './system.config.js',
+    systemConfig: './jspm.*.js',
     bundles: 'bundles',
     dataset: dataSetPath,
     dataLink: `${dataSetPath}/app/data/`,
@@ -118,8 +118,8 @@ const config = {
   },
   builder: {
     bundles: {
-      deps: `${TMP}/${BUILD} - [${TMP}/**/*] - [${TMP}/**/*!css] - [${TMP}/**/*!text] - [${TMP}/**/*!md]`,
-      app: `${TMP}/${BUILD} - ${TMP}/bundles/deps.js`
+      'deps-bundle': `${TMP}/${BUILD} - [${TMP}/**/*] - [${TMP}/**/*!css] - [${TMP}/**/*!text] - [${TMP}/**/*!md]`,
+      'app-bundle': `${TMP}/${BUILD} - ${TMP}/bundles/deps-bundle.js`
     },
     config: {
       buildCSS: true,
@@ -137,7 +137,7 @@ const config = {
     bundle: {
       sourceMaps: true,
       minify: true,
-      mangle: true,
+      mangle: false,
       runtime: false,
       esOptimize: true,
       cssOptimize: true,

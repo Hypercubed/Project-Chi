@@ -1,6 +1,5 @@
 import gulp from 'gulp';
 
-// import jspm from 'jspm';
 import del from 'del';
 import vfs from 'vinyl-fs';
 import runSequence from 'run-sequence';
@@ -42,9 +41,6 @@ gulp.task('copy-html', () => {
     .pipe(cached('templates'))
     .pipe(plumber())
     .pipe(template(config))
-    /* .pipe(htmlmin({
-      collapseWhitespace: true
-    })) */
     .pipe(gulp.dest(paths.temp))
     .pipe(gulp.dest(paths.dist));
 });
@@ -63,16 +59,6 @@ gulp.task('copy-js', () => {
   return gulp.src(paths.scripts)
     .pipe(cached('scripts'))
     .pipe(plumber())
-    /* .pipe(babel({
-      modules: 'system',
-      externalHelpers: true,
-    	comments: false,
-    	compact: false,
-      moduleIds: false
-    }))
-    .pipe(ngAnnotate({
-      sourceType: 'module'
-    })) */
     .pipe(gulp.dest(paths.temp));
 });
 

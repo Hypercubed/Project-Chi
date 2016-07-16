@@ -56,24 +56,24 @@
   "myBarChart": {
     "plugin": "barChart",
     "state": {
-      "xAxisLabelText": "Name",
-      "xColumn": "name",
-      "yAxisLabelText": "Amount",
-      "yColumn": "amount",
+      "xAxisLabelText": "Letter",
+      "xColumn": "letter",
+      "yAxisLabelText": "Frequency",
+      "yColumn": "frequency",
       "fill": "#1EABE8",
       "stroke": "#008CC8",
       "xAxisLabelTextOffset": 6,
       "yAxisLabelTextOffset": 15,
-      "margin": { "top": 10, "right": 10, "bottom": 40, "left": 42 }
+      "margin": { "top": 10, "right": 10, "bottom": 40, "left": 48 }
     }
   },
   "myScatterPlot": {
     "plugin": "scatterPlot",
     "state": {
       "xAxisLabelText": "Petal Width",
-      "xColumn": "petal_width",
+      "xColumn": "Petal.Width",
       "yAxisLabelText": "Petal Length",
-      "yColumn": "petal_length",
+      "yColumn": "Petal.Length",
       "xAxisLabelTextOffset": 6,
       "yAxisLabelTextOffset": 15,
       "margin": { "top": 10, "right": 10, "bottom": 40, "left": 42 }
@@ -83,9 +83,9 @@
     "plugin": "scatterPlot",
     "state": {
       "xAxisLabelText": "Species",
-      "xColumn": "species",
+      "xColumn": "Species",
       "yAxisLabelText": "Petal Length",
-      "yColumn": "petal_length",
+      "yColumn": "Petal.Length",
       "circleRadius": 20,
       "fill": "rgba(100, 0, 0, 0.1)",
       "xAxisLabelTextOffset": 6,
@@ -110,9 +110,9 @@
     "plugin": "boxPlot",
     "state": {
       "xAxisLabelText": "Species",
-      "xColumn": "species",
+      "xColumn": "Species",
       "yAxisLabelText": "Sepal Length",
-      "yColumn": "sepal_length",
+      "yColumn": "Sepal.Length",
       "xAxisLabelTextOffset": 6,
       "yAxisLabelTextOffset": 15,
       "margin": { "top": 10, "right": 10, "bottom": 40, "left": 42 }
@@ -122,7 +122,7 @@
     "plugin": "barChart",
     "state": {
       "xAxisLabelText": "Petal Length",
-      "xColumn": "petal_length",
+      "xColumn": "Petal.Length",
       "yAxisLabelText": "Count",
       "yColumn": "count",
       "xAxisLabelTextOffset": 6,
@@ -134,9 +134,9 @@
     "plugin": "heatMap",
     "state": {
       "xAxisLabelText": "Petal Length",
-      "xColumn": "petal_length",
+      "xColumn": "Petal.Length",
       "yAxisLabelText": "Sepal Length",
-      "yColumn": "sepal_length",
+      "yColumn": "Sepal.Length",
       "colorColumn": "count",
       "xAxisLabelTextOffset": 6,
       "yAxisLabelTextOffset": 15,
@@ -147,9 +147,9 @@
     "plugin": "heatMap",
     "state": {
       "xAxisLabelText": "Species",
-      "xColumn": "species",
+      "xColumn": "Species",
       "yAxisLabelText": "Petal Length",
-      "yColumn": "petal_length",
+      "yColumn": "Petal.Length",
       "colorColumn": "count",
       "xAxisLabelTextOffset": 6,
       "yAxisLabelTextOffset": 15,
@@ -160,9 +160,9 @@
     "plugin": "heatMap",
     "state": {
       "xAxisLabelText": "Petal Length",
-      "xColumn": "petal_length",
+      "xColumn": "Petal.Length",
       "yAxisLabelText": "Species",
-      "yColumn": "species",
+      "yColumn": "Species",
       "colorColumn": "count",
       "xAxisLabelTextOffset": 6,
       "yAxisLabelTextOffset": 15,
@@ -175,12 +175,12 @@
       "aggregate": {
         "dimensions": [
           {
-            "column": "petal_length",
+            "column": "Petal.Length",
             "histogram": true,
             "numBins": 15
           },
           {
-            "column": "species"
+            "column": "Species"
           }
         ],
         "measures": [{
@@ -196,12 +196,12 @@
       "aggregate": {
         "dimensions": [
           {
-            "column": "petal_length",
+            "column": "Petal.Length",
             "histogram": true,
             "numBins": 10
           },
           {
-            "column": "sepal_length",
+            "column": "Sepal.Length",
             "histogram": true,
             "numBins": 10
           }
@@ -218,7 +218,7 @@
     "state": {
       "aggregate": {
         "dimensions": [{
-          "column": "petal_length",
+          "column": "Petal.Length",
           "histogram": true,
           "numBins": 20
         }],

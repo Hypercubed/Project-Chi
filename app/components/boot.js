@@ -10,7 +10,7 @@ import 'webcomponentsjs/webcomponents-lite.js';
 
 // import 'jquery';
 // import 'bootstrap/js/bootstrap';
-import 'bootstrap/css/bootstrap.css!';
+import 'bootstrap/dist/css/bootstrap.css!';
 
 import 'font-awesome/css/font-awesome.css!';
 

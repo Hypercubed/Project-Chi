@@ -3,7 +3,15 @@
 	"title": "Polymer Web Component using SystemJS loader",
 	"description": "An example using a [Polymer](https://www.polymer-project.org/1.0/) Web Component that imports a reusable d3 chart",
 	"resources": [
-		"../bars/bars.tsv"
+		{
+			"url": "https://cdn.rawgit.com/curran/data/gh-pages/d3Examples/letterFrequency/letterFrequency.tsv",
+			"schema": {
+				"fields": [
+					{ "name": "letter", "type": "string" },
+					{ "name": "frequency", "type": "number" }
+				]
+			}
+		}
 	],
 	"image": "../bars/thumbnail.png",
 	"readme": "README.md"

@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 import biovisexample from 'biojs-vis-example';
 import fasta from 'biojs-io-fasta/lib/fasta';
 
@@ -5,30 +7,35 @@ import './biojs.css!';
 
 function controller () {
   const $ctrl = this;
-  const $el = document.getElementById('_examples_biojs__viewer');
+  const $el = angular.element(document.getElementById('_examples_biojs__viewer'));
 
-  Object.assign($ctrl, {
+  return Object.assign($ctrl, {
     editorOptions: {
       data: $ctrl.dataPackage,
       enableSvgDownload: false,
       enablePngDownload: false,
-      onChange: update
+      onChange: draw
     },
     $onInit () {
-      update();
+      draw();
     }
   });
 
-  function update () {
-    while ($el.firstChild) {
-      $el.removeChild($el.firstChild);
-    }
+  function draw () {
+    $el.empty();
 
-    $ctrl.fasta = fasta.parse($ctrl.dataPackage.resources[0].content)[0];
+    const data = fasta.parse($ctrl.dataPackage.resources[0].content);
 
-    biovisexample({
-      el: $el,
-      sequence: $ctrl.fasta.seq
+    data.forEach(d => {
+      const $fe = angular.element(`
+        <div>
+          <h3>${d.name}</h3>
+          <biovisexample></biovisexample>
+        </div>`
+      );
+
+      biovisexample({el: $fe.find('biovisexample')[0], sequence: d.seq});
+      $el.append($fe);
     });
   }
 }

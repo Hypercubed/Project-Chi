@@ -2,7 +2,9 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Process dataPackage schemas
+* Use hjson for more flexable JSON input
+* Updated to JSPM v0.17 beta
 
 --------------------
 
