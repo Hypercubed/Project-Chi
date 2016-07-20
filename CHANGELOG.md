@@ -2,13 +2,16 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+--------------------
+
+## 1.0.0-rc.4 (2016-07-20)
 * Process dataPackage schemas
 * Use hjson for more flexible JSON input
 * Updated to JSPM v0.17 beta
 * Add apply and cancel buttons to datapackage editor
 * Moved datapackage services to external lib [chi-datapackage](https://github.com/Hypercubed/chi-datapackage)
-
---------------------
 
 ## 1.0.0-rc.3 (2016-07-13)
 * Generate separate bundles for app and dependencies
