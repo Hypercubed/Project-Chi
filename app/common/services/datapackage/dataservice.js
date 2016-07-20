@@ -1,17 +1,47 @@
 // import process from 'process';
 
-import {processByType} from './processors';
-import {normalizePackage, normalizeResource} from './datapackage';
+import dp from './datapackage';
+
+// import {processByType} from './processors';
+// import {normalizePackage, normalizeResource} from './datapackage';
 
 // window.process = process;  // annoying
+run.$inject = ['$http'];
+export function run ($http) {
+  dp.loader.fetch = url => $http({
+    url,
+    method: 'GET',
+    transformResponse: data => data
+  })
+  .then(res => res.data);
+}
 
-DataService.$inject = ['$http', '$q'];
-export function DataService ($http, $q) {
+export function dataservice () {
+  // for v1.0.0-rc3 compatability
   return {
-    loadPackage,  // these require $http
-    reloadResource,
+    loadPackage: async url => {
+      const datapackage = await dp.load(url);
+      datapackage.resourcesByName = datapackage.$resourcesByName;
+      return datapackage;
+    },
+    normalizePackage: (url, datapackage) => {
+      Object.assign(datapackage, dp.normalizePackage({...datapackage, url}));
+    },
+    reloadResource: async resource => {
+      resource = await dp.loader.resource(resource);
+      resource = dp.processor.resource(resource);
+      return resource;
+    },
+    processPackage: async (url, datapackage) => {
+      datapackage = dp.normalize.datapackage({...datapackage, url});
+      datapackage = dp.normalize.resources(datapackage);
+      datapackage = await dp.loader.resources(datapackage);
+      datapackage = dp.processor.datapackage(datapackage);
+      datapackage.resourcesByName = datapackage.$resourcesByName;
+      return datapackage;
+    }
 
-    loadResource,
+    /* loadResource,
     _loadPackage: processPackage,  // todo: remove
     processPackage,
 
@@ -21,20 +51,10 @@ export function DataService ($http, $q) {
 
     reindexPackage,
 
-    addResource
+    addResource */
   };
 
-  function loadPackage (filePath) {
-    return $http.get(filePath)
-    .then(res => processPackage(filePath, res.data))
-    .catch(
-      err => {
-        throw new Error(`error loading ${filePath}, ${err}`);
-      }
-    );
-  }
-
-  function processPackage (filePath, datapackage) {
+  /* function processPackage (filePath, datapackage) {
     datapackage = normalizePackage(filePath, datapackage);
     const q = datapackage.resources ? datapackage.resources.map(loadResource) : [];
 
@@ -75,10 +95,10 @@ export function DataService ($http, $q) {
     datapackage.resourcesByName[resource.name] = resource;
 
     processByType(resource);
-  }
+  } */
 }
 
-function createHttpRequest (resource) {
+/* function createHttpRequest (resource) {
   return {
     method: 'GET',
     url: resource.url,
@@ -98,4 +118,4 @@ function createHttpRequest (resource) {
       return processByType(resource);
     }
   };
-}
+} */

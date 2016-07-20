@@ -6,6 +6,7 @@ CHANGELOG
 * Use hjson for more flexible JSON input
 * Updated to JSPM v0.17 beta
 * Add apply and cancel buttons to datapackage editor
+* Moved datapackage services to external lib [chi-datapackage](https://github.com/Hypercubed/chi-datapackage)
 
 --------------------
 

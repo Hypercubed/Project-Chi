@@ -2,7 +2,9 @@
 
 import angular from 'angular';
 
-import mime from 'common/services/datapackage/mime';
+import dp from 'common/services/datapackage/datapackage';
+
+// import mime from 'common/services/datapackage/mime';
 
 const module = angular.module('projectX.fileDrop', [])
 .directive('fileDropzone', ['$window', function ($window) {
@@ -60,7 +62,7 @@ const module = angular.module('projectX.fileDrop', [])
         const reader = new FileReader();
         reader.onload = function (evt) {
           file.content = evt.target.result;
-          const type = mime.lookup(file.name);
+          const type = dp.processor.mime.lookup(file.name);
           if (checkSize(file.size) && isTypeValid(type)) {
             return scope.$apply(() => {
               scope.dropped({file});

@@ -5,8 +5,8 @@
  */
 import 'webcomponentsjs/webcomponents-lite.js';
 
-/* Some older browsers need a shim */
-// import 'core-js/shim';
+/* Some older browsers need a shim. needed for Object.values */
+import 'core-js/shim';
 
 // import 'jquery';
 // import 'bootstrap/js/bootstrap';

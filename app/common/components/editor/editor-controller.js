@@ -1,10 +1,9 @@
 /* global FileReader, Blob */
 
-import mime from 'common/services/datapackage/mime';
-import {processByType, processors} from 'common/services/datapackage/processors';
+import dp from 'common/services/datapackage/datapackage';
 
-controller.$inject = ['$cookies', '$timeout', '$log', 'dataService'];
-export default function controller ($cookies, $timeout, $log, dataService) {
+controller.$inject = ['$cookies', '$timeout', '$log'];
+export default function controller ($cookies, $timeout, $log) {
   const $ctrl = this;
   const hasOptions = Boolean($ctrl.options);
   const hasPackage = hasOptions && Boolean($ctrl.options.data);
@@ -55,7 +54,7 @@ export default function controller ($cookies, $timeout, $log, dataService) {
     enableAdd: true,
     enableDrop: false,
     enableProtected: false,
-    types: Object.keys(processors),
+    types: Object.keys(dp.processor.translators),
     defaultFormat: hasPackage ? $ctrl.options.data.resources[0].format : 'txt',
     defaultSchema: hasPackage ? $ctrl.options.data.resources[0].schema : undefined
 
@@ -74,7 +73,7 @@ export default function controller ($cookies, $timeout, $log, dataService) {
     $log.debug('submit');
     if (hasPackage) {
       $ctrl.options.data.resources = $ctrl.resources;
-      dataService.reindexPackage($ctrl.options.data);
+      dp.Normalizer.index($ctrl.options.data);
     }
     $timeout(() => {
       $ctrl.onChange();
@@ -86,7 +85,7 @@ export default function controller ($cookies, $timeout, $log, dataService) {
     return {
       path: name,
       name,
-      mediatype: mime.lookup(name),
+      mediatype: dp.normalize.mime.lookup(name),
       content,
       schema: $ctrl.defaultSchema
     };
@@ -129,7 +128,7 @@ export default function controller ($cookies, $timeout, $log, dataService) {
     if (resource.schema && typeof resource.schema === 'string') {  // Move this
       resource.schema = $ctrl.data.schemas[resource.schema];
     }
-    processByType(resource);
+    dp.processor.resource(resource);
   }
 
   function removeResourceByIndex (i) {

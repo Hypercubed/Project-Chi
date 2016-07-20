@@ -83,6 +83,7 @@
       "biojs-vis-example": "npm:biojs-vis-example@^0.1.4",
       "blobjs": "github:eligrey/Blob.js@master",
       "bootstrap": "github:twbs/bootstrap@^3.3.6",
+      "chi-datapackage": "npm:chi-datapackage@^2.0.0",
       "chiasm": "npm:chiasm@^0.3.0",
       "chiasm-charts": "npm:chiasm-charts@^0.1.5",
       "chiasm-component": "npm:chiasm-component@^0.2.3",
@@ -92,6 +93,7 @@
       "clipboard": "npm:clipboard@^1.5.10",
       "codemirror": "github:codemirror/codemirror@^5.3.0",
       "core-decorators": "npm:core-decorators@^0.9.2",
+      "core-js": "npm:core-js@^2.4.1",
       "crlf-helper": "npm:crlf-helper@^0.1.0",
       "crossfilter": "npm:crossfilter2@1.4.0-alpha.6",
       "css": "github:systemjs/plugin-css@^0.1.23",
@@ -130,8 +132,7 @@
       "webtreemap": "github:evmar/webtreemap@gh-pages"
     },
     "devDependencies": {
-      "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^1.1.4"
+      "babel-runtime": "npm:babel-runtime@^5.8.24"
     },
     "peerDependencies": {
       "angular": "npm:angular@^1.5.7",
@@ -254,6 +255,20 @@
           }
         }
       },
+      "npm:debug@2.2.0": {
+        "main": "browser.js",
+        "jspmNodeConversion": false,
+        "format": "cjs",
+        "map": {
+          "./browser.js": {
+            "node": "./node.js"
+          },
+          "fs": "@node/fs",
+          "net": "@node/net",
+          "tty": "@node/tty",
+          "util": "@node/util"
+        }
+      },
       "npm:esprima@2.7.2": {
         "jspmNodeConversion": false
       },
@@ -281,6 +296,10 @@
       },
       "npm:moment@2.14.1": {
         "jspmNodeConversion": false
+      },
+      "npm:ms@0.7.1": {
+        "jspmNodeConversion": false,
+        "format": "cjs"
       }
     }
   },

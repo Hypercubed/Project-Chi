@@ -53,7 +53,7 @@ function controller ($log, $timeout, $element) {
     const tree = res.data;
     const treeData = newNode('/');
 
-    if (res.table) {
+    if (Array.isArray(tree)) {
       tree.forEach(d => {
         addNode(d.Source, d.Size, d.Tag);
       });

@@ -2,7 +2,8 @@ SystemJS.config({
   nodeConfig: {
     "paths": {
       "github:": "jspm_packages/github/",
-      "npm:": "jspm_packages/npm/"
+      "npm:": "jspm_packages/npm/",
+      "project-chi/": "src/"
     }
   },
   transpiler: "plugin-babel",
@@ -10,7 +11,9 @@ SystemJS.config({
     "optional": [
       "runtime",
       "optimisation.modules.system"
-    ]
+    ],
+    "es2015": true,
+    "stage3": true
   },
   buildCSS: true,
   separateCSS: true,
@@ -70,6 +73,7 @@ SystemJS.config({
     "blobjs": "github:eligrey/Blob.js@master",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
+    "chi-datapackage": "npm:chi-datapackage@2.0.0",
     "chiasm": "npm:chiasm@0.3.0",
     "chiasm-charts": "npm:chiasm-charts@0.1.5",
     "chiasm-component": "npm:chiasm-component@0.2.3",
@@ -81,6 +85,7 @@ SystemJS.config({
     "codemirror": "github:codemirror/codemirror@5.14.2",
     "constants": "github:jspm/nodelibs-constants@0.2.0-alpha",
     "core-decorators": "npm:core-decorators@0.9.2",
+    "core-js": "npm:core-js@2.4.1",
     "crlf-helper": "npm:crlf-helper@0.1.0",
     "crossfilter": "npm:crossfilter2@1.4.0-alpha.6",
     "crypto": "github:jspm/nodelibs-crypto@0.2.0-alpha",
@@ -1041,6 +1046,25 @@ SystemJS.config({
     "npm:d3-time-format@0.3.2": {
       "map": {
         "d3-time": "npm:d3-time@0.2.6"
+      }
+    },
+    "npm:debug@2.2.0": {
+      "map": {
+        "ms": "npm:ms@0.7.1"
+      }
+    },
+    "npm:chi-datapackage@2.0.0": {
+      "map": {
+        "crlf-helper": "npm:crlf-helper@0.1.0",
+        "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
+        "deep-extend": "npm:deep-extend@0.4.1",
+        "datapackage-identifier": "npm:datapackage-identifier@0.4.1",
+        "debug": "npm:debug@2.2.0",
+        "urijs": "npm:urijs@1.18.1",
+        "babyparse": "npm:babyparse@0.4.6",
+        "json5": "npm:json5@0.5.0",
+        "mime-lookup": "npm:mime-lookup@0.0.2",
+        "js-yaml": "npm:js-yaml@3.6.1"
       }
     }
   }
