@@ -17,6 +17,7 @@ export default function controller ($cookies, $timeout, $log, dataService) {
   return Object.assign($ctrl, {
     // "internal"
     activeTab: 0,
+    resources: hasPackage ? $ctrl.options.data.resources.slice() : [],
     panel: {
       open: false
     },
@@ -26,6 +27,8 @@ export default function controller ($cookies, $timeout, $log, dataService) {
     newFile: addResource,
     dropped: fileDropped,
     droppedOver: fileDroppedOver,
+    submit,
+    cancel,
     tooglePanel,
     play,
     ui: {
@@ -41,7 +44,7 @@ export default function controller ($cookies, $timeout, $log, dataService) {
       }
     },
 
-    // user config events
+    // user config event
     onChange: () => {},
 
     // user config defaults
@@ -59,6 +62,25 @@ export default function controller ($cookies, $timeout, $log, dataService) {
     // svgsFrom: '#chart' // TODO
   }, this.options);
 
+  function cancel (form) {
+    $log.debug('cancel');
+    form.$rollbackViewValue();
+    if (hasPackage) {
+      $ctrl.resources = $ctrl.options.data.resources.slice();
+    }
+  }
+
+  function submit () {
+    $log.debug('submit');
+    if (hasPackage) {
+      $ctrl.options.data.resources = $ctrl.resources;
+      dataService.reindexPackage($ctrl.options.data);
+    }
+    $timeout(() => {
+      $ctrl.onChange();
+    });
+  }
+
   function createNewResource (name, content = '') {
     name = name || `new.${$ctrl.defaultFormat}`;
     return {
@@ -74,7 +96,7 @@ export default function controller ($cookies, $timeout, $log, dataService) {
     $log.debug('fileDroppedOver', $index, file);
     const resource = createNewResource(file.name, file.content);
     $ctrl.activeTab = $index;
-    $ctrl.data.resources.splice($index, 1, resource);
+    $ctrl.resources.splice($index, 1, resource);
     resourceChanged(resource);
     $ctrl.ui.refresh();
   }
@@ -87,11 +109,11 @@ export default function controller ($cookies, $timeout, $log, dataService) {
   function addResource (name, content = '') {
     $log.debug('addResource', name, content);
     const resource = createNewResource(name, content);
-    dataService.addResource($ctrl.data, resource);
+    $ctrl.resources.push(resource);
     resourceChanged(resource);
     $timeout(() => {
       $ctrl.ui.refresh();
-      $ctrl.activeTab = $ctrl.data.resources.length - 1;
+      $ctrl.activeTab = $ctrl.resources.length - 1;
     });
     return false;
   }
@@ -108,22 +130,19 @@ export default function controller ($cookies, $timeout, $log, dataService) {
       resource.schema = $ctrl.data.schemas[resource.schema];
     }
     processByType(resource);
-    $ctrl.onChange();
   }
 
   function removeResourceByIndex (i) {
     if (i > -1) {
-      $ctrl.data.resources.splice(i, 1);
-      $ctrl.onChange();
+      $ctrl.resources.splice(i, 1);
     }
   }
 
   function resourceRenamed (resource) {
-    if (!resource.path) {
+    if (!resource.name) {
       return;
     }
-    resource.name = resource.path;
-    resource.mediatype = resource.lookup(resource.path);
+    resource.path = resource.name;
     resourceChanged(resource);
   }
 

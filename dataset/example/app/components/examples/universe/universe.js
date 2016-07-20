@@ -59,6 +59,7 @@ function controller ($scope, $log, cfpLoadingBar) {
   return Object.assign($ctrl, {
     editorOptions: {
       data: $ctrl.dataPackage,
+      enableAdd: false,
       onChange: debounce(process, 300)
     },
     gridOpts,

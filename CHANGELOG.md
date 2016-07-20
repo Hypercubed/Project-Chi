@@ -3,8 +3,9 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Process dataPackage schemas
-* Use hjson for more flexable JSON input
+* Use hjson for more flexible JSON input
 * Updated to JSPM v0.17 beta
+* Add apply and cancel buttons to datapackage editor
 
 --------------------
 

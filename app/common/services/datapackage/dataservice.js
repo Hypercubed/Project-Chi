@@ -19,6 +19,8 @@ export function DataService ($http, $q) {
     normalizePackage,
     processResource: processByType,
 
+    reindexPackage,
+
     addResource
   };
 

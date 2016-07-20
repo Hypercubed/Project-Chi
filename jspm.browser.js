@@ -1,5 +1,4 @@
 SystemJS.config({
-  baseURL: ".",
   production: true,
   paths: {
     "github:": "jspm_packages/github/",
