@@ -73,7 +73,7 @@ SystemJS.config({
     "blobjs": "github:eligrey/Blob.js@master",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
-    "chi-datapackage": "npm:chi-datapackage@1.0.0",
+    "chi-datapackage": "npm:chi-datapackage@2.0.0",
     "chiasm": "npm:chiasm@0.3.0",
     "chiasm-charts": "npm:chiasm-charts@0.1.5",
     "chiasm-component": "npm:chiasm-component@0.2.3",
@@ -1048,23 +1048,23 @@ SystemJS.config({
         "d3-time": "npm:d3-time@0.2.6"
       }
     },
-    "npm:chi-datapackage@1.0.0": {
-      "map": {
-        "json5": "npm:json5@0.5.0",
-        "deep-extend": "npm:deep-extend@0.4.1",
-        "urijs": "npm:urijs@1.18.1",
-        "debug": "npm:debug@2.2.0",
-        "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
-        "crlf-helper": "npm:crlf-helper@0.1.0",
-        "mime-lookup": "npm:mime-lookup@0.0.2",
-        "datapackage-identifier": "npm:datapackage-identifier@0.4.1",
-        "babyparse": "npm:babyparse@0.4.6",
-        "js-yaml": "npm:js-yaml@3.6.1"
-      }
-    },
     "npm:debug@2.2.0": {
       "map": {
         "ms": "npm:ms@0.7.1"
+      }
+    },
+    "npm:chi-datapackage@2.0.0": {
+      "map": {
+        "crlf-helper": "npm:crlf-helper@0.1.0",
+        "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
+        "deep-extend": "npm:deep-extend@0.4.1",
+        "datapackage-identifier": "npm:datapackage-identifier@0.4.1",
+        "debug": "npm:debug@2.2.0",
+        "urijs": "npm:urijs@1.18.1",
+        "babyparse": "npm:babyparse@0.4.6",
+        "json5": "npm:json5@0.5.0",
+        "mime-lookup": "npm:mime-lookup@0.0.2",
+        "js-yaml": "npm:js-yaml@3.6.1"
       }
     }
   }
