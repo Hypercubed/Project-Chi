@@ -6,6 +6,6 @@
     { "path": "../fantom5/datapackage.json" },
     { "path": "../examples/datapackage.json" },
     { "path": "../extra/datapackage.json" },
-    { "path": "./external.json" }
+    { "path": "../external/datapackage.json" }
   ]
 }

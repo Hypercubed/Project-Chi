@@ -3,9 +3,18 @@
 	"title": "webtreemap",
 	"description": "A simple treemap implementation using web technologies (DOM nodes, CSS styling and transitions) rather than a big canvas/svg/plugin.",
 	"resources": [
-		"../../../bundles/app.tsv",
-		"../../../bundles/deps.tsv"
+		{"path": "../../../bundles/app-bundle.tsv", "schema": "treemap-schema" },
+		{"path": "../../../bundles/deps-bundle.tsv", "schema": "treemap-schema" }
 	],
+	"schemas": {
+		"treemap-schema": {
+			"fields": [
+				{ "name": "Source", "type": "string" },
+				{ "name": "Size", "type": "number" },
+				{ "name": "Tag", "type": "string" }
+			]
+		}
+	},
 	"image": "thumbnail.png",
 	"readme": "README.md"
 }
