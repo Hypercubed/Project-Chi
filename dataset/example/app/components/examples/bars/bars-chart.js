@@ -21,6 +21,7 @@ export default function Bars (opts) {
   const yScale = d3.scale.linear(); // value -> display
   const yMap = d => yScale(yValue(d)); // data -> display
   const yAxis = d3.svg.axis().scale(yScale).orient('left').tickFormat(formatPercent);
+  const yAxisLabel = 'Frequency';
 
   function bars (selection) {
     selection.each(function (d) {
@@ -54,7 +55,7 @@ export default function Bars (opts) {
         .attr('y', 6)
         .attr('dy', '.71em')
         .style('text-anchor', 'end')
-        .text('Frequency');
+        .text(yAxisLabel);
 
       svg.selectAll('.bar')
         .data(d)

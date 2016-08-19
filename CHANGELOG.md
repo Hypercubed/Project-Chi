@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Default to no webcomponents
+* Add error output to editor
 
 --------------------
 

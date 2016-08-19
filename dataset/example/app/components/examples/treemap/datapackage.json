@@ -9,8 +9,8 @@
 	"schemas": {
 		"treemap-schema": {
 			"fields": [
-				{ "name": "Source", "type": "string" },
-				{ "name": "Size", "type": "number" },
+				{ "name": "Source", "type": "string", "constraints": { "required": true } },
+				{ "name": "Size", "type": "number", "constraints": { "required": true } },
 				{ "name": "Tag", "type": "string" }
 			]
 		}

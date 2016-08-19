@@ -32,12 +32,11 @@
     "gulp-task-listing": "^1.0.1",
     "gulp-template": "^4.0.0",
     "hydrolysis": "1.21.4",
-    "jspm": "^0.17.0-beta.22",
+    "jspm": "^0.17.0-beta.25",
     "mkdirp": "^0.5.1",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.2.2",
     "source-map-explorer": "^1.3.2",
-    "uglify-js": "^2.7.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-fs": "^2.4.3",
     "vulcanize": "1.14.8",
@@ -83,7 +82,7 @@
       "biojs-vis-example": "npm:biojs-vis-example@^0.1.4",
       "blobjs": "github:eligrey/Blob.js@master",
       "bootstrap": "github:twbs/bootstrap@^3.3.6",
-      "chi-datapackage": "npm:chi-datapackage@^2.0.0",
+      "chi-datapackage": "npm:chi-datapackage@^3.0.0",
       "chiasm": "npm:chiasm@^0.3.0",
       "chiasm-charts": "npm:chiasm-charts@^0.1.5",
       "chiasm-component": "npm:chiasm-component@^0.2.3",
@@ -103,7 +102,7 @@
       "d3-tip": "github:Caged/d3-tip@0.6.7",
       "d3plus-text": "npm:d3plus-text@^0.4.4",
       "font-awesome": "npm:font-awesome@^4.6.1",
-      "html": "github:Hypercubed/systemjs-plugin-html@^0.0.8",
+      "html": "github:Hypercubed/systemjs-plugin-html@0.0.8",
       "inlet": "github:enjalot/Inlet@^0.1.1",
       "intro.js": "npm:intro.js@^2.1.0",
       "jquery": "npm:jquery@^3.1.0",
@@ -290,9 +289,6 @@
           "buffer": "@empty",
           "process": "@empty"
         }
-      },
-      "npm:moment@2.13.0": {
-        "jspmNodeConversion": false
       },
       "npm:moment@2.14.1": {
         "jspmNodeConversion": false

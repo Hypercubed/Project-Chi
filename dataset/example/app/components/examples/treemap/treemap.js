@@ -39,7 +39,7 @@ function controller ($log, $timeout, $element) {
     angular.forEach($element.find('treemap'), d => {
       const elm = angular.element(d);
       const name = elm.attr('data-name');
-      drawMap(elm, $ctrl.dataPackage.resourcesByName[name]);
+      drawMap(elm, $ctrl.dataPackage.$resourcesByName[name]);
     });
   }
 

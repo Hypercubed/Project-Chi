@@ -36,3 +36,5 @@ gulp.task('dist', cb => {
               'server-dist',
               cb);
 });
+
+gulp.task('default', ['dev']);
