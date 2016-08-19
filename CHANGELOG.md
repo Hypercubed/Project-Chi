@@ -6,6 +6,9 @@ _(none)_
 
 --------------------
 
+## 1.0.0-rc.5 (2016-08-19)
+_(none)_
+
 ## 1.0.0-rc.4 (2016-07-20)
 * Process dataPackage schemas
 * Use hjson for more flexible JSON input
