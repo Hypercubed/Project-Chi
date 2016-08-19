@@ -3,19 +3,44 @@
 	"title": "Chiasm and Chiasm plugins",
 	"description": "An example using [Chiasm](https://github.com/chiasm-project/chiasm).",
 	"resources": [
-		"https://cdn.rawgit.com/curran/data/gh-pages/d3Examples/letterFrequency/letterFrequency.tsv",
-		"https://cdn.rawgit.com/curran/data/60e8c1cec25523e0aeba3b2aa46d25fe0b4e3251/Rdatasets/csv/datasets/iris.csv",
+    {
+      "name": "letterFrequency",
+			"url": "https://cdn.rawgit.com/curran/data/gh-pages/d3Examples/letterFrequency/letterFrequency.tsv",
+			"schema": {
+				"fields": [
+					{ "name": "letter", "type": "string", "constraints": { "required": true } },
+					{ "name": "frequency", "type": "number", "constraints": { "required": true } }
+				]
+			}
+		},
+    {
+      "name": "iris",
+      "url": "https://cdn.rawgit.com/curran/data/60e8c1cec25523e0aeba3b2aa46d25fe0b4e3251/Rdatasets/csv/datasets/iris.csv",
+      "schema": {
+        "fields": [
+          {"name": "Sepal.Length", "type": "number", "label": "Sepal Length", "constraints": { "required": true }},
+          {"name": "Sepal.Width", "type": "number", "label": "Sepal Width", "constraints": { "required": true }},
+          {"name": "Petal.Length", "type": "number", "label": "Petal Length", "constraints": { "required": true }},
+          {"name": "Petal.Width", "type": "number", "label": "Petal Width", "constraints": { "required": true }},
+          {"name": "Species", "type": "string", "label": "Species", "constraints": { "required": true }}
+        ]
+      }
+    },
 		{
+      "name": "temperature",
 			"url": "https://cdn.rawgit.com/curran/data/60e8c1cec25523e0aeba3b2aa46d25fe0b4e3251/senseYourCity/week_temperature_sf.csv",
 			"schema": "temperature-schema"
 		},
-		"config.json"
+    {
+      "name": "config",
+      "path": "config.json"
+    }
 	],
 	"schemas": {
 		"temperature-schema": {
 			"fields": [
-				{ "name": "timestamp",   "type": "date" },
-		    { "name": "temperature", "type": "number" }
+				{ "name": "timestamp",   "type": "date", "format": "any", "constraints": { "required": true } },
+		    { "name": "temperature", "type": "number", "constraints": { "required": true } }
 			]
 		}
 	},

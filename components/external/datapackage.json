@@ -4,6 +4,14 @@
   "description": "External Examples of visualizations using the Project-χ framework",
   "resources": [
     {
+      "link": "http://hypercubed.github.io/connectome/",
+      "data": {
+        "title": "connectome",
+        "description": "A visual guide to FANTOM5 Ligand-Receptor interactions<br />from [doi:10.1038/ncomms8866](https://dx.doi.org/10.1038/ncomms8866)<br />Predecessor to Project-χ",
+        "image": "components/index/connectome.png"
+      }
+    },
+    {
       "link": "https://hypercubed.github.io/DEIVA/#/",
       "data": {
         "title": "DEIVA",

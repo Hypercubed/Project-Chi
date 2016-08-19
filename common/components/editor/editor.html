@@ -38,7 +38,7 @@
     </button>
   </div>
 
-  <form name="userForm">
+  <form name="userForm" ng-submit="$ctrl.submit(userForm)">
     <uib-tabset id="dataPackageEditor"
       active="$ctrl.activeTab"
       ng-show="$ctrl.panel.open"
@@ -73,9 +73,12 @@
           <div class="row">
             <div class="col-xs-12">
               <textarea class="editor"
+                resource="tab"
+                datapackage="$ctrl.data"
+                name="input{{$index}}"
                 ng-model="tab.content"
                 ng-model-options="{ updateOn: 'submit', debounce: 200 }"
-                ng-change="$ctrl.change(tab)"
+                ng-change="$ctrl.change(tab, userForm['input' + $index])"
                 ui-codemirror
                 ui-codemirror-opts="{
                   lineNumbers: true,
@@ -85,6 +88,11 @@
                   onLoad: $ctrl.ui.codemirrorLoaded
                 }"
                 ui-refresh="$ctrl.ui.count"></textarea>
+                <div class="col-xs-12 bg-danger">
+                  <ul class="list-unstyled">
+                    <li ng-repeat="error in tab.errors | limitTo:10">row {{error.row}}: {{error.message}}</li>
+                  </ul>
+                </div>
             </div>
           </div>
         </div>
@@ -130,8 +138,7 @@
       </div>
 
       <div class="pull-right btn-toolbar" ng-show="$ctrl.panel.open">
-        <button type="submit" class="btn btn-primary btn-sm"
-          ng-click="$ctrl.submit()">Apply changes</button>
+        <button type="submit" class="btn btn-primary btn-sm">Apply changes</button>
         <button class="btn btn-danger btn-sm"
           ng-click="$ctrl.cancel(userForm)">Cancel</button>
       </div>
