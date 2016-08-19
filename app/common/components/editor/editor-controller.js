@@ -1,9 +1,10 @@
 /* global FileReader, Blob */
+import angular from 'angular';
 
 import dp from 'common/services/datapackage/datapackage';
 
-controller.$inject = ['$cookies', '$timeout', '$log'];
-export default function controller ($cookies, $timeout, $log) {
+controller.$inject = ['$scope', '$cookies', '$timeout', '$log', 'growl'];
+export default function controller ($scope, $cookies, $timeout, $log, growl) {
   const $ctrl = this;
   const hasOptions = Boolean($ctrl.options);
   const hasPackage = hasOptions && Boolean($ctrl.options.data);
@@ -16,18 +17,18 @@ export default function controller ($cookies, $timeout, $log) {
   return Object.assign($ctrl, {
     // "internal"
     activeTab: 0,
-    resources: hasPackage ? $ctrl.options.data.resources.slice() : [],
+    resources: hasPackage ? angular.copy($ctrl.options.data.resources) : [],  // changes are made here first
     panel: {
       open: false
     },
-    change: resourceChanged,
+    change: updateResource,
     remove: removeResourceByIndex,
     rename: resourceRenamed,
     newFile: addResource,
     dropped: fileDropped,
     droppedOver: fileDroppedOver,
-    submit,
-    cancel,
+    submit,  // push changes to data package
+    cancel,  // cancel changes, refresh from data package
     tooglePanel,
     play,
     ui: {
@@ -44,7 +45,7 @@ export default function controller ($cookies, $timeout, $log) {
     },
 
     // user config event
-    onChange: () => {},
+    onChange: () => {},  // ccalled when datapackage updates
 
     // user config defaults
     enableOpen: hasPackage,
@@ -64,20 +65,21 @@ export default function controller ($cookies, $timeout, $log) {
   function cancel (form) {
     $log.debug('cancel');
     form.$rollbackViewValue();
-    if (hasPackage) {
-      $ctrl.resources = $ctrl.options.data.resources.slice();
-    }
+    $ctrl.resources = hasPackage ? angular.copy($ctrl.options.data.resources) : [];
+    form.$setPristine();
   }
 
-  function submit () {
-    $log.debug('submit');
-    if (hasPackage) {
-      $ctrl.options.data.resources = $ctrl.resources;
-      dp.Normalizer.index($ctrl.options.data);
+  function submit (form) {
+    if (form.$valid) {
+      $log.debug('submit');
+      if (hasPackage) {
+        $ctrl.options.data.resources = $ctrl.resources;
+        $ctrl.options.data.$resourcesByName = dp.Normalizer.index($ctrl.options.data);
+      }
+      $timeout(() => {
+        $ctrl.onChange();
+      });
     }
-    $timeout(() => {
-      $ctrl.onChange();
-    });
   }
 
   function createNewResource (name, content = '') {
@@ -96,7 +98,7 @@ export default function controller ($cookies, $timeout, $log) {
     const resource = createNewResource(file.name, file.content);
     $ctrl.activeTab = $index;
     $ctrl.resources.splice($index, 1, resource);
-    resourceChanged(resource);
+    updateResource(resource);
     $ctrl.ui.refresh();
   }
 
@@ -109,7 +111,7 @@ export default function controller ($cookies, $timeout, $log) {
     $log.debug('addResource', name, content);
     const resource = createNewResource(name, content);
     $ctrl.resources.push(resource);
-    resourceChanged(resource);
+    updateResource(resource);
     $timeout(() => {
       $ctrl.ui.refresh();
       $ctrl.activeTab = $ctrl.resources.length - 1;
@@ -124,11 +126,20 @@ export default function controller ($cookies, $timeout, $log) {
     tooglePanel();
   }
 
-  function resourceChanged (resource) {
-    if (resource.schema && typeof resource.schema === 'string') {  // Move this
-      resource.schema = $ctrl.data.schemas[resource.schema];
+  function updateResource (resource, form) {
+    $log.debug('updateResource', $scope);
+
+    dp.normalizeResource($ctrl.data, resource);
+    dp.processResource(resource);
+
+    const error = resource.errors && resource.errors.length > 0;
+
+    if (form) {
+      form.$setValidity('processed', !error);
     }
-    dp.processor.resource(resource);
+    if (error) {
+      return growl.error(`failed to process ${resource.name}`);
+    }
   }
 
   function removeResourceByIndex (i) {
@@ -142,7 +153,7 @@ export default function controller ($cookies, $timeout, $log) {
       return;
     }
     resource.path = resource.name;
-    resourceChanged(resource);
+    updateResource(resource);
   }
 
   function tooglePanel () {

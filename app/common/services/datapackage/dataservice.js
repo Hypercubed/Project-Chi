@@ -25,18 +25,19 @@ export function dataservice () {
       return datapackage;
     },
     normalizePackage: (url, datapackage) => {
-      Object.assign(datapackage, dp.normalizePackage({...datapackage, url}));
+      Object.assign(datapackage, {url});
+      dp.normalizePackage(datapackage);
     },
     reloadResource: async resource => {
       resource = await dp.loader.resource(resource);
-      resource = dp.processor.resource(resource);
-      return resource;
+      return await dp.processor.resource(resource);
     },
     processPackage: async (url, datapackage) => {
-      datapackage = dp.normalize.datapackage({...datapackage, url});
-      datapackage = dp.normalize.resources(datapackage);
-      datapackage = await dp.loader.resources(datapackage);
-      datapackage = dp.processor.datapackage(datapackage);
+      Object.assign(datapackage, {url});
+      await dp.normalizePackage(datapackage);
+      await dp.normalizeResources(datapackage);
+      await dp.loadResources(datapackage);
+      await dp.processPackage(datapackage);
       datapackage.resourcesByName = datapackage.$resourcesByName;
       return datapackage;
     }

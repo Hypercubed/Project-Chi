@@ -154,7 +154,7 @@ const config = {
     title: 'Project-χ',
     bust: cuid(),
     google: 'UA-XXXXX-X',
-    webcomponents: true,
+    webcomponents: false,
     content: '<app></app>'  // TODO: deprecate
   }
 };

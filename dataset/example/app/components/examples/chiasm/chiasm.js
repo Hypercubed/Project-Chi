@@ -48,45 +48,22 @@ function controller () {
     }
   });
 
+  function resourceToChiasm (resource) {
+    return {
+      metadata: {
+        columns: resource.schema ? resource.schema.fields : []
+      },
+      data: resource.data
+    };
+  }
+
   function draw () {
-    const resources = $ctrl.dataPackage.resourcesByName;
-
-    resources['week_temperature_sf.csv'].data.forEach(d => {
-      /* d.temperature = Number(d.temperature);
-      d.timestamp = new Date(d.timestamp); */
+    chiasm.config = $ctrl.dataPackage.$resourcesByName.config.data;
+    $ctrl.dataPackage.resources.forEach(resource => {
+      if (resource.name !== 'config') {
+        chiasm[resource.name] = resourceToChiasm(resource);
+      }
     });
-
-    chiasm.config = resources['config.json'].data;
-    chiasm.barsData = {
-      metadata: {
-        columns: [
-          {name: 'letter', type: 'string'},
-          {name: 'frequency', type: 'number'}
-        ]
-      },
-      data: resources['letterFrequency.tsv'].data
-    };
-    chiasm.lineData = {
-      metadata: {
-        columns: [
-          {name: 'timestamp', type: 'date'},
-          {name: 'temperature', type: 'number'}
-        ]
-      },
-      data: resources['week_temperature_sf.csv'].data
-    };
-    chiasm.scatterData = {
-      metadata: {
-        columns: [
-          {name: 'Sepal.Length', type: 'number', label: 'Sepal Length'},
-          {name: 'Sepal.Width', type: 'number', label: 'Sepal Width'},
-          {name: 'Petal.Length', type: 'number', label: 'Petal Length'},
-          {name: 'Petal.Width', type: 'number', label: 'Petal Width'},
-          {name: 'Species', type: 'string', label: 'Species'}
-        ]
-      },
-      data: resources['iris.csv'].data
-    };
   }
 }
 

@@ -7,9 +7,9 @@
 			"path": "https://cdn.rawgit.com/curran/data/gh-pages/vegaExamples/flights-20k.json",
 			"schema": {
 				"fields": [
-					{ "name": "date", "type": "date" },
-					{ "name": "delay", "type": "number" },
-					{ "name": "distance", "type": "number" }
+					{ "name": "date", "type": "date", "format": "any", "constraints": { "required": true } },
+					{ "name": "delay", "type": "number", "constraints": { "required": true } },
+					{ "name": "distance", "type": "number", "constraints": { "required": true } }
 				]
 			}
 		}
