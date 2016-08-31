@@ -49,13 +49,13 @@ SystemJS.config({
     "local:*.json"
   ],
   map: {
+    "angular-downloadsvg-directive": "npm:angular-downloadsvg-directive@0.2.0",
     "FileSaver": "github:eligrey/FileSaver.js@master",
     "URIjs": "npm:URIjs@1.16.1",
     "_F": "github:Hypercubed/_F@0.0.11",
     "angular": "npm:angular@1.5.7",
     "angular-animate": "npm:angular-animate@1.5.7",
     "angular-cookies": "npm:angular-cookies@1.5.7",
-    "angular-downloadsvg-directive": "npm:angular-downloadsvg-directive@0.1.5",
     "angular-growl": "npm:angular-growl-v2@0.7.5",
     "angular-intro.js": "npm:angular-intro.js@2.0.1",
     "angular-json-tree": "npm:angular-json-tree@1.0.1",
@@ -75,7 +75,7 @@ SystemJS.config({
     "blobjs": "github:eligrey/Blob.js@master",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
-    "chi-datapackage": "npm:chi-datapackage@3.0.0",
+    "chi-datapackage": "npm:chi-datapackage@3.0.1",
     "chiasm": "npm:chiasm@0.3.0",
     "chiasm-charts": "npm:chiasm-charts@0.1.5",
     "chiasm-component": "npm:chiasm-component@0.2.3",
@@ -118,7 +118,7 @@ SystemJS.config({
     "jsontableschema": "github:frictionlessdata/jsontableschema-js@master",
     "jspm/nodelibs-assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
     "lodash": "npm:lodash@4.13.1",
-    "md": "github:guybedford/system-md@0.1.0",
+    "md": "github:Hypercubed/system-md-marked@1.0.1",
     "mime-lookup": "npm:mime-lookup@0.0.2",
     "ml-matrix": "npm:ml-matrix@1.1.5",
     "ml-pca": "npm:ml-pca@1.1.1",
@@ -158,11 +158,6 @@ SystemJS.config({
         "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.22"
       }
     },
-    "github:guybedford/system-md@0.1.0": {
-      "map": {
-        "showdown": "github:showdownjs/showdown@1.3.0"
-      }
-    },
     "github:twbs/bootstrap@3.3.6": {
       "map": {
         "jquery": "npm:jquery@3.1.0"
@@ -177,11 +172,6 @@ SystemJS.config({
     "npm:URIjs@1.16.1": {
       "map": {}
     },
-    "npm:angular-downloadsvg-directive@0.1.5": {
-      "map": {
-        "svgsaver": "npm:svgsaver@0.6.1"
-      }
-    },
     "npm:angular-json-tree@1.0.1": {
       "map": {
         "angular": "npm:angular@1.5.7"
@@ -189,7 +179,7 @@ SystemJS.config({
     },
     "npm:angular-marked@1.2.1": {
       "map": {
-        "marked": "npm:marked@0.3.5"
+        "marked": "npm:marked@0.3.6"
       }
     },
     "npm:angular-ui-grid@3.2.5": {
@@ -501,11 +491,6 @@ SystemJS.config({
     },
     "npm:string_decoder@0.10.31": {
       "map": {}
-    },
-    "npm:svgsaver@0.6.1": {
-      "map": {
-        "computed-styles": "npm:computed-styles@1.1.2"
-      }
     },
     "npm:through@2.3.8": {
       "map": {}
@@ -978,23 +963,6 @@ SystemJS.config({
         "builtin-status-codes": "npm:builtin-status-codes@2.0.0"
       }
     },
-    "npm:chi-datapackage@3.0.0": {
-      "map": {
-        "deep-extend": "npm:deep-extend@0.4.1",
-        "json5": "npm:json5@0.5.0",
-        "debug": "npm:debug@2.2.0",
-        "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
-        "cuid": "npm:cuid@1.3.8",
-        "datapackage-identifier": "npm:datapackage-identifier@0.4.1",
-        "urijs": "npm:urijs@1.18.1",
-        "js-yaml": "npm:js-yaml@3.6.1",
-        "babyparse": "npm:babyparse@0.4.6",
-        "mime-lookup": "npm:mime-lookup@0.0.2",
-        "parse-iso-duration": "npm:parse-iso-duration@1.0.0",
-        "d3-time-format": "npm:d3-time-format@2.0.2",
-        "crlf-helper": "npm:crlf-helper@0.1.0"
-      }
-    },
     "npm:debug@2.2.0": {
       "map": {
         "ms": "npm:ms@0.7.1"
@@ -1055,6 +1023,38 @@ SystemJS.config({
     "npm:d3-interpolate@0.1.4": {
       "map": {
         "d3-color": "npm:d3-color@0.2.8"
+      }
+    },
+    "github:Hypercubed/system-md-marked@1.0.1": {
+      "map": {
+        "marked": "npm:marked@0.3.6"
+      }
+    },
+    "npm:chi-datapackage@3.0.1": {
+      "map": {
+        "deep-extend": "npm:deep-extend@0.4.1",
+        "cuid": "npm:cuid@1.3.8",
+        "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
+        "json5": "npm:json5@0.5.0",
+        "debug": "npm:debug@2.2.0",
+        "urijs": "npm:urijs@1.18.1",
+        "js-yaml": "npm:js-yaml@3.6.1",
+        "d3-time-format": "npm:d3-time-format@2.0.2",
+        "crlf-helper": "npm:crlf-helper@0.1.0",
+        "babyparse": "npm:babyparse@0.4.6",
+        "mime-lookup": "npm:mime-lookup@0.0.2",
+        "parse-iso-duration": "npm:parse-iso-duration@1.0.0",
+        "datapackage-identifier": "npm:datapackage-identifier@0.4.2"
+      }
+    },
+    "npm:angular-downloadsvg-directive@0.2.0": {
+      "map": {
+        "svgsaver": "npm:svgsaver@0.6.1"
+      }
+    },
+    "npm:svgsaver@0.6.1": {
+      "map": {
+        "computed-styles": "npm:computed-styles@1.1.2"
       }
     }
   }

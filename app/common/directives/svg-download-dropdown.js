@@ -3,7 +3,21 @@ import 'angular-downloadsvg-directive';
 
 const module = angular
   .module('svgDownloadDropdown', ['hc.downloader'])
-  .directive('svgDownloadDropdown', () => ({link}));
+  .directive('svgDownloadDropdown', () => ({link}))
+  .run(['$rootScope', 'cfpLoadingBar', function ($rootScope, cfpLoadingBar) {
+    $rootScope.$on('$svgSaver:start', () => {
+      console.log('$svgSaver:start');
+      cfpLoadingBar.start();
+    });
+
+    $rootScope.$on('$svgSaver:end', () => {
+      cfpLoadingBar.complete();
+    });
+
+    $rootScope.$on('$svgSaver:error', () => {
+      cfpLoadingBar.complete();
+    });
+  }]);
 
 function link (scope, element, attr) {
   const sAttr = attr.svgDownloadDropdown.split(/\sin\s/);

@@ -12,11 +12,11 @@
     </style>
 	  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 
+    <link rel="stylesheet" type="text/css" href="bundles/deps-bundle.css?<%= template.bust %>">
     <% if (ENV === 'prod') { %>
-    <link rel="stylesheet" type="text/css" href="bundles/deps-bundle.css">
-    <link rel="stylesheet" type="text/css" href="bundles/app-bundle.css">
+    <link rel="stylesheet" type="text/css" href="bundles/app-bundle.css?<%= template.bust %>">
     <% if (template.webcomponents === true) { %>
-    <link rel="import" href="bundles/deps-bundle.html">
+    <link rel="import" href="bundles/deps-bundle.html?<%= template.bust %>">
     <% } %>
     <% } %>
   </head>
@@ -53,8 +53,9 @@
     <script src="jspm.dev.js"></script>
   <% } %>
     <script src="jspm.config.js"></script>
-  <% if (ENV === 'prod') { %>
+
     <script src="bundles/deps-bundle.js?<%= template.bust %>"></script>
+  <% if (ENV === 'prod') { %>
     <script src="bundles/app-bundle.js?<%= template.bust %>"></script>
   <% } %>
 

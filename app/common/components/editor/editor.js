@@ -14,7 +14,7 @@ import fileDrop from 'common/directives/file-drop';
 import fileDownload from 'common/directives/file-download';
 import dataServices from 'common/services/datapackage/index';
 
-import dp from 'common/services/datapackage/datapackage';
+import 'common/services/datapackage/datapackage';
 
 import template from './editor.html!text';
 

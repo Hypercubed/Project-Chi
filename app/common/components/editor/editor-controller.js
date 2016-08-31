@@ -1,4 +1,5 @@
 /* global FileReader, Blob */
+/* eslint max-params: 0 */
 import angular from 'angular';
 
 import dp from 'common/services/datapackage/datapackage';
@@ -13,6 +14,15 @@ export default function controller ($scope, $cookies, $timeout, $log, growl) {
   const isIE = typeof window.navigator.msSaveBlob !== 'undefined';
 
   const enableFileDownload = hasPackage && $ctrl.options.data.resources.length > 0;
+
+  // Don't do this
+  /* $scope.$watch('$ctrl.options.enableSvgDownload', newValue => {
+    $ctrl.enableSvgDownload = newValue;
+  });
+
+  $scope.$watch('$ctrl.options.enablePngDownload', newValue => {
+    $ctrl.enablePngDownload = newValue;
+  }); */
 
   return Object.assign($ctrl, {
     // "internal"

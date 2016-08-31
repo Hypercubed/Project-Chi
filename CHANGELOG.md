@@ -4,6 +4,10 @@ CHANGELOG
 ## HEAD (Unreleased)
 * Default to no webcomponents
 * Add error output to editor
+* Shim saveAs in boot.js
+* Show loader on save SVG/PNG
+* Build dep-bundle for dev
+* Using system-md-marked
 
 --------------------
 

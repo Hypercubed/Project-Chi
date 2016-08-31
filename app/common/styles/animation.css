@@ -1,0 +1,18 @@
+/* ANIMATIONS
+============================================================================= */
+
+.ng-fade.ng-enter,
+.ng-fade.ng-leave.ng-leave-active {
+  opacity: 0;
+  transition: opacity linear .3s;
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+
+.ng-fade.ng-enter.ng-enter-active,
+.ng-fade.ng-leave {
+  opacity: 1;
+  transition: opacity linear .5s;
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}

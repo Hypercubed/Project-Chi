@@ -33,6 +33,7 @@ const ENVIRONMENTS = {
  */
 const PRODTASKS = ['build', 'dist', 'deploy'];
 
+const BASE = 'app';
 const DIST = 'dist';
 const TMP = '.tmp';
 const BUILD = 'components/boot.js';
@@ -42,44 +43,44 @@ const BUILD = 'components/boot.js';
  */
 const config = {
   paths: {
-    base: 'app',
+    base: BASE,
     dist: DIST,
     temp: TMP,
     build: BUILD,
     systemConfig: './jspm.*.js',
     bundles: 'bundles',
     dataset: dataSetPath,
-    dataLink: `${dataSetPath}/app/data/`,
+    dataLink: `${dataSetPath}/${BASE}/data/`,
     resources: [  // these are copied to paths.temp and paths.dist
-      'app/*.{js,json,ico,txt,md}',
-      'app/.nojekyll',
-      'app/{components,common,assets}/**/*.{png,svg,txt,md}',
-      `${dataSetPath}/app/*.{json,ico,txt,md}`,
-      `${dataSetPath}/app/{components,common,assets}/**/*.{png,svg,md,json}`
+      `${BASE}/*.{js,json,ico,txt,md}`,
+      `${BASE}/.nojekyll`,
+      `${BASE}/{components,common,assets}/**/*.{png,svg,txt,md}`,
+      `${dataSetPath}/${BASE}/*.{json,ico,txt,md}`,
+      `${dataSetPath}/${BASE}/{components,common,assets}/**/*.{png,svg,md,json}`
     ],
     jspmResources: [  // these are copied to paths.dist
       'jspm_packages/*.{js,map}',
       'jspm_packages/**/*.{svg,png,eot,ttf,gif,wot,woff,woff2}'
     ],
     data: [  // these are copied to paths.dist
-      `app/{components,common,assets,bundles}/**/*.{json,csv,tsv,txt}`,
-      `${dataSetPath}/app/{components,common,assets,bundles}/**/*.{json,csv,tsv,txt}`
+      `${BASE}/{components,common,assets,bundles}/**/*.{json,csv,tsv,txt}`,
+      `${dataSetPath}/${BASE}/{components,common,assets,bundles}/**/*.{json,csv,tsv,txt}`
     ],
     templates: [  // these are copied to paths.temp and paths.dist, but modified by the gulp-template task
-      `app/*.html`,
-      `app/{components,common,bundles}/**/*.html`,
-      `${dataSetPath}/app/*.html`,
-      `${dataSetPath}/app/{components,common,bundles}/**/*.html`
+      `${BASE}/*.html`,
+      `${BASE}/{components,common,bundles}/**/*.html`,
+      `${dataSetPath}/${BASE}/*.html`,
+      `${dataSetPath}/${BASE}/{components,common,bundles}/**/*.html`
     ],
     scripts: [  // these are copied to paths.temp
-      `app/*.js`,
-      `app/{components,common,bundles}/**/*.js`,
-      `${dataSetPath}/app/{components,common,bundles}/**/*.js`
+      `${BASE}/*.js`,
+      `${BASE}/{components,common,bundles}/**/*.js`,
+      `${dataSetPath}/${BASE}/{components,common,bundles}/**/*.js`
     ],
     styles: [  // these are copied to paths.temp
-      `app/*.{css,css.map}`,
-      `app/{components,common,bundles}/**/*.{css,css.map}`,
-      `${dataSetPath}/app/{components,common,bundles}/**/*.{css,css.map}`
+      `${BASE}/*.{css,css.map}`,
+      `${BASE}/{components,common,bundles}/**/*.{css,css.map}`,
+      `${dataSetPath}/${BASE}/{components,common,bundles}/**/*.{css,css.map}`
     ]
   },
   server: {
@@ -88,7 +89,7 @@ const config = {
       port: argv.port || 9000,
       online: Boolean(argv.online),
       server: {
-        baseDir: [TMP, `${dataSetPath}/app`, 'app', './'],
+        baseDir: [TMP, `${dataSetPath}/${BASE}`, BASE, './'],
         middleware: (req, res, next) => {
           res.setHeader('Access-Control-Allow-Origin', '*');
           next();

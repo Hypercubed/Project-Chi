@@ -6,7 +6,10 @@
 import 'webcomponentsjs/webcomponents-lite.js';
 
 /* Some older browsers need a shim. needed for Object.values */
-import 'core-js/shim';
+import 'core-js/client/shim';
+
+// saveAs shim
+import saveAs from 'FileSaver/FileSaver.js';
 
 // import 'jquery';
 // import 'bootstrap/js/bootstrap';
@@ -16,6 +19,8 @@ import 'font-awesome/css/font-awesome.css!';
 
 import angular from 'angular';
 import app from './app';
+
+window.saveAs = saveAs;
 
 angular.element(document).ready(() => {
   angular.bootstrap(document.body, [app.name], {strictDi: true});
