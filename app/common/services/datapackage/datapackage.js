@@ -5,6 +5,7 @@ const Normalizer = require('chi-datapackage/dist/normalizer');
 
 const dataPackageService = new DataPackageService();
 
+dataPackageService.mime = dataPackageService.normalize.mime;
 dataPackageService.Normalizer = Normalizer;
 
 module.exports = dataPackageService;

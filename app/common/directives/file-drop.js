@@ -62,7 +62,7 @@ const module = angular.module('projectX.fileDrop', [])
         const reader = new FileReader();
         reader.onload = function (evt) {
           file.content = evt.target.result;
-          const type = dp.processor.mime.lookup(file.name);
+          const type = dp.mime.lookup(file.name);
           if (checkSize(file.size) && isTypeValid(type)) {
             return scope.$apply(() => {
               scope.dropped({file});
