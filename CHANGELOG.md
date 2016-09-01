@@ -2,14 +2,17 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+--------------------
+
+## 1.0.0-rc.6 (2016-09-01)
 * Default to no webcomponents
 * Add error output to editor
 * Shim saveAs in boot.js
 * Show loader on save SVG/PNG
 * Build dep-bundle for dev
 * Using system-md-marked
-
---------------------
 
 ## 1.0.0-rc.5 (2016-08-19)
 * Update chi-datapackage
