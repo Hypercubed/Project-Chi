@@ -13,11 +13,46 @@ export function run ($http) {
 
 dataservice.$inject = ['$log', 'growl'];
 export function dataservice ($log, growl) {
-  return {
+  const dataservice = {
+    mime: dp.normalize.mime,
+    error: err => {
+      $log.error(err);
+      growl.error(String(err));
+    },
+    loadResource: async (datapackage, res) => {
+      try {
+        res = dp.normalize.resource(datapackage, res);
+        res = await dp.loader.resource(res);
+      } catch (err) {
+        const msg = (err.status) ? `${err.statusText}; ${err.data}` : String(err);
+        dataservice.error(msg);
+        throw new Error(msg);
+      }
+      return dataservice.processResource(res);
+    },
+    processResource: res => {
+      try {
+        Object.assign(res, dp.processor.resource(res));
+        if (res.errors && res.errors.length > 0) {
+          throw new Error(`Errors processing resource ${res.name}`);
+        }
+        return res;
+      } catch (err) {
+        dataservice.error(err);
+        return Object.assign(res, {$valid: false, $error: err});
+      }
+    },
     loadPackage: async url => {
-      const datapackage = await dp.load(url);
-      datapackage.resourcesByName = datapackage.$resourcesByName;
-      return datapackage;
+      try {
+        const datapackage = await dp.load(url);
+        datapackage.resourcesByName = datapackage.$resourcesByName;
+        return datapackage;
+      } catch (err) {
+        if (err.status) {
+          throw new Error(`Error loading dataPackage; ${err.statusText}; ${err.data}`);
+        }
+        throw new Error(`Error loading dataPackage; ${err}`);
+      }
     },
     normalizePackage: (url, datapackage) => {
       Object.assign(datapackage, {url});
@@ -41,4 +76,6 @@ export function dataservice ($log, growl) {
       return datapackage;
     }
   };
+
+  return dataservice;
 }

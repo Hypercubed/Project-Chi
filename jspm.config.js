@@ -34,6 +34,18 @@ SystemJS.config({
           }
         }
       }
+    },
+    "npm:ml-pca@1.1.1": {
+      "defaultJSExtensions": true,
+      "meta": {
+        "*.js": {
+          "format": "cjs",
+          "loader": "plugin-babel",
+          "babelOptions": {
+            "modularRuntime": false
+          }
+        }
+      }
     }
   },
   map: {
@@ -69,6 +81,7 @@ SystemJS.config({
     "angularjs-slider": "npm:angularjs-slider@2.13.0",
     "animate": "npm:animate.css@3.5.1",
     "assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
+    "babel-plugin-transform-builtin-extend": "npm:babel-plugin-transform-builtin-extend@1.1.0",
     "babyparse": "npm:babyparse@0.4.6",
     "biojs-io-fasta": "npm:biojs-io-fasta@0.1.17",
     "biojs-vis-example": "npm:biojs-vis-example@0.1.4",
@@ -117,10 +130,10 @@ SystemJS.config({
     "json5": "npm:json5@0.5.0",
     "jsontableschema": "github:frictionlessdata/jsontableschema-js@master",
     "jspm/nodelibs-assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
-    "lodash": "npm:lodash@4.13.1",
+    "lodash": "npm:lodash@4.15.0",
     "md": "github:Hypercubed/system-md-marked@1.0.1",
     "mime-lookup": "npm:mime-lookup@0.0.2",
-    "ml-matrix": "npm:ml-matrix@1.1.5",
+    "ml-matrix": "github:Hypercubed/matrix@babel2",
     "ml-pca": "npm:ml-pca@1.1.1",
     "model-js": "npm:model-js@0.2.5",
     "mongodb-extended-json": "npm:mongodb-extended-json@1.6.3",
@@ -153,6 +166,30 @@ SystemJS.config({
     "zlib": "github:jspm/nodelibs-zlib@0.2.0-alpha"
   },
   packages: {
+    "github:Hypercubed/matrix@babel2": {
+      "defaultJSExtensions": true,
+      "meta": {
+        "*.js": {
+          "format": "cjs",
+          "loader": "plugin-babel",
+          "babelOptions": {
+            "modularRuntime": false,
+            "plugins": [
+              [
+                "babel-plugin-transform-builtin-extend",
+                {
+                  "globals": [
+                    "Error",
+                    "Array",
+                    "Object"
+                  ]
+                }
+              ]
+            ]
+          }
+        }
+      }
+    },
     "github:Hypercubed/systemjs-plugin-html@0.0.8": {
       "map": {
         "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.22"
@@ -236,7 +273,7 @@ SystemJS.config({
     "npm:chiasm@0.3.0": {
       "map": {
         "es6-promise": "npm:es6-promise@3.2.1",
-        "lodash": "npm:lodash@4.13.1",
+        "lodash": "npm:lodash@4.15.0",
         "model-js": "npm:model-js@0.2.5"
       }
     },
@@ -419,12 +456,6 @@ SystemJS.config({
     },
     "npm:mime-lookup@0.0.2": {
       "map": {}
-    },
-    "npm:ml-pca@1.1.1": {
-      "map": {
-        "ml-matrix": "npm:ml-matrix@1.1.5",
-        "ml-stat": "npm:ml-stat@1.2.0"
-      }
     },
     "npm:mongodb-extended-json@1.6.3": {
       "map": {
@@ -925,13 +956,13 @@ SystemJS.config({
         "chiasm-component": "npm:chiasm-component@0.2.3",
         "d3": "npm:d3@3.5.17",
         "model-js": "npm:model-js@0.2.5",
-        "lodash": "npm:lodash@4.13.1"
+        "lodash": "npm:lodash@4.15.0"
       }
     },
     "github:frictionlessdata/jsontableschema-js@master": {
       "map": {
         "moment": "npm:moment@2.14.1",
-        "lodash": "npm:lodash@4.13.1",
+        "lodash": "npm:lodash@4.15.0",
         "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
         "d3-time-format": "npm:d3-time-format@2.0.2",
         "tv4": "npm:tv4@1.2.7"
@@ -1055,6 +1086,82 @@ SystemJS.config({
     "npm:svgsaver@0.6.1": {
       "map": {
         "computed-styles": "npm:computed-styles@1.1.2"
+      }
+    },
+    "npm:babel-plugin-transform-builtin-extend@1.1.0": {
+      "map": {
+        "babel-template": "npm:babel-template@6.15.0",
+        "babel-runtime": "npm:babel-runtime@6.11.6"
+      }
+    },
+    "npm:babel-template@6.15.0": {
+      "map": {
+        "babel-runtime": "npm:babel-runtime@6.11.6",
+        "babel-types": "npm:babel-types@6.15.0",
+        "babel-traverse": "npm:babel-traverse@6.15.0",
+        "babylon": "npm:babylon@6.9.1",
+        "lodash": "npm:lodash@4.15.0"
+      }
+    },
+    "npm:babel-runtime@6.11.6": {
+      "map": {
+        "core-js": "npm:core-js@2.4.1",
+        "regenerator-runtime": "npm:regenerator-runtime@0.9.5"
+      }
+    },
+    "npm:babel-types@6.15.0": {
+      "map": {
+        "babel-runtime": "npm:babel-runtime@6.11.6",
+        "lodash": "npm:lodash@4.15.0",
+        "esutils": "npm:esutils@2.0.2",
+        "to-fast-properties": "npm:to-fast-properties@1.0.2"
+      }
+    },
+    "npm:babel-traverse@6.15.0": {
+      "map": {
+        "babel-runtime": "npm:babel-runtime@6.11.6",
+        "babel-types": "npm:babel-types@6.15.0",
+        "babylon": "npm:babylon@6.9.1",
+        "lodash": "npm:lodash@4.15.0",
+        "invariant": "npm:invariant@2.2.1",
+        "babel-messages": "npm:babel-messages@6.8.0",
+        "babel-code-frame": "npm:babel-code-frame@6.11.0",
+        "debug": "npm:debug@2.2.0",
+        "globals": "npm:globals@8.18.0"
+      }
+    },
+    "npm:babylon@6.9.1": {
+      "map": {
+        "babel-runtime": "npm:babel-runtime@6.11.6"
+      }
+    },
+    "npm:babel-messages@6.8.0": {
+      "map": {
+        "babel-runtime": "npm:babel-runtime@6.11.6"
+      }
+    },
+    "npm:babel-code-frame@6.11.0": {
+      "map": {
+        "babel-runtime": "npm:babel-runtime@6.11.6",
+        "esutils": "npm:esutils@2.0.2",
+        "js-tokens": "npm:js-tokens@2.0.0",
+        "chalk": "npm:chalk@1.1.3"
+      }
+    },
+    "npm:invariant@2.2.1": {
+      "map": {
+        "loose-envify": "npm:loose-envify@1.2.0"
+      }
+    },
+    "npm:loose-envify@1.2.0": {
+      "map": {
+        "js-tokens": "npm:js-tokens@1.0.3"
+      }
+    },
+    "npm:ml-pca@1.1.1": {
+      "map": {
+        "ml-stat": "npm:ml-stat@1.3.3",
+        "ml-matrix": "github:Hypercubed/matrix@babel2"
       }
     }
   }
