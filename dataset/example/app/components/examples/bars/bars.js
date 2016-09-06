@@ -19,8 +19,6 @@ function controller () {
       .filter(d => Boolean(d.data))
       .map(d => d.data);
 
-    console.log(typeof data[0][0].frequency);
-
     const element = d3.select('#_examples_bars__chart');
 
     const width = element[0][0].clientWidth;
