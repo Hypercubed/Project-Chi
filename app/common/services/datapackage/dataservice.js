@@ -1,3 +1,4 @@
+import ono from 'ono';
 import dp from './datapackage';
 
 // window.process = process;  // annoying
@@ -26,7 +27,7 @@ export function dataservice ($log, growl) {
       } catch (err) {
         const msg = (err.status) ? `${err.statusText}; ${err.data}` : String(err);
         dataservice.error(msg);
-        throw new Error(msg);
+        throw ono(err, msg);
       }
       return dataservice.processResource(res);
     },
@@ -34,7 +35,7 @@ export function dataservice ($log, growl) {
       try {
         Object.assign(res, dp.processor.resource(res));
         if (res.errors && res.errors.length > 0) {
-          throw new Error(`Errors processing resource ${res.name}`);
+          throw ono(`Errors processing resource ${res.name}`);
         }
         return res;
       } catch (err) {
@@ -48,10 +49,10 @@ export function dataservice ($log, growl) {
         datapackage.resourcesByName = datapackage.$resourcesByName;
         return datapackage;
       } catch (err) {
-        if (err.status) {
-          throw new Error(`Error loading dataPackage; ${err.statusText}; ${err.data}`);
+        if (err.statusText && err.data) {
+          throw ono('Error loading dataPackage; %s; %s', err.statusText, err.data);
         }
-        throw new Error(`Error loading dataPackage; ${err}`);
+        throw ono(err, 'Error loading dataPackage');
       }
     },
     normalizePackage: (url, datapackage) => {

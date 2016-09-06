@@ -20,6 +20,10 @@
       "link": "#/examples/chiasm/"
     },
     {
+      "path": "vega/datapackage.json",
+      "link": "#/examples/vega/"
+    },
+    {
       "path": "polymer/datapackage.json",
       "link": "#/examples/polymer/"
     },

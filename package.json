@@ -62,7 +62,7 @@
       "FileSaver": "github:eligrey/FileSaver.js@master",
       "URIjs": "npm:URIjs@^1.16.1",
       "_F": "github:Hypercubed/_F@^0.0.11",
-      "angular-animate": "npm:angular-animate@^1.5.7",
+      "angular-animate": "npm:angular-animate@1.5.7",
       "angular-cookies": "npm:angular-cookies@^1.5.7",
       "angular-downloadsvg-directive": "npm:angular-downloadsvg-directive@0.2.0",
       "angular-growl": "npm:angular-growl-v2@^0.7.5",
@@ -83,7 +83,7 @@
       "biojs-vis-example": "npm:biojs-vis-example@^0.1.4",
       "blobjs": "github:eligrey/Blob.js@master",
       "bootstrap": "github:twbs/bootstrap@^3.3.6",
-      "chi-datapackage": "npm:chi-datapackage@^3.0.1",
+      "chi-datapackage": "npm:chi-datapackage@3.1.0",
       "chiasm": "npm:chiasm@^0.3.0",
       "chiasm-charts": "npm:chiasm-charts@^0.1.5",
       "chiasm-component": "npm:chiasm-component@^0.2.3",
@@ -104,7 +104,7 @@
       "d3plus-text": "npm:d3plus-text@^0.4.4",
       "font-awesome": "npm:font-awesome@^4.6.1",
       "html": "github:Hypercubed/systemjs-plugin-html@0.0.8",
-      "inlet": "github:enjalot/Inlet@^0.1.1",
+      "inlet": "github:enjalot/Inlet@0.1.1",
       "intro.js": "npm:intro.js@^2.1.0",
       "jquery": "npm:jquery@^3.1.0",
       "js-yaml": "npm:js-yaml@^3.6.1",
@@ -118,6 +118,7 @@
       "ml-pca": "npm:ml-pca@1.1.1",
       "model-js": "npm:model-js@0.2.5",
       "mongodb-extended-json": "npm:mongodb-extended-json@^1.6.3",
+      "ono": "npm:ono@^2.2.1",
       "pivottable": "npm:pivottable@^2.0.2",
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.12",
       "polymer": "github:Polymer/polymer@^1.4.0",
@@ -127,6 +128,8 @@
       "ui-codemirror": "github:angular-ui/ui-codemirror@^0.3.0",
       "ui-select": "npm:ui-select@^0.16.1",
       "universe": "npm:universe@^0.8.0",
+      "vega": "github:vega/vega@^2.6.3",
+      "vega-lite": "github:vega/vega-lite@^1.2.0",
       "venn.js": "npm:venn.js@^0.2.10",
       "webcomponentsjs": "github:webcomponents/webcomponentsjs@^0.7.22",
       "webtreemap": "github:evmar/webtreemap@gh-pages"
@@ -137,6 +140,7 @@
     "peerDependencies": {
       "angular": "npm:angular@^1.5.7",
       "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
+      "bcrypt-pbkdf": "npm:bcrypt-pbkdf@^1.0.0",
       "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
       "child_process": "github:jspm/nodelibs-child_process@^0.2.0-alpha",
       "constants": "github:jspm/nodelibs-constants@^0.2.0-alpha",
@@ -144,6 +148,7 @@
       "d3": "npm:d3@3.5.17",
       "dgram": "github:jspm/nodelibs-dgram@^0.2.0-alpha",
       "dns": "github:jspm/nodelibs-dns@^0.2.0-alpha",
+      "domain": "github:jspm/nodelibs-domain@^0.2.0-alpha",
       "ecc-jsbn": "npm:ecc-jsbn@~0.1.1",
       "events": "github:jspm/nodelibs-events@^0.2.0-alpha",
       "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
@@ -152,12 +157,14 @@
       "jodid25519": "npm:jodid25519@^1.0.0",
       "jsbn": "npm:jsbn@0.1",
       "jspm/nodelibs-assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
+      "module": "github:jspm/nodelibs-module@^0.2.0-alpha",
       "net": "github:jspm/nodelibs-net@^0.2.0-alpha",
       "os": "github:jspm/nodelibs-os@^0.2.0-alpha",
       "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
       "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
       "punycode": "github:jspm/nodelibs-punycode@^0.2.0-alpha",
       "querystring": "github:jspm/nodelibs-querystring@^0.2.0-alpha",
+      "source-map": "npm:source-map",
       "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
       "string_decoder": "github:jspm/nodelibs-string_decoder@^0.2.0-alpha",
       "tls": "github:jspm/nodelibs-tls@^0.2.0-alpha",
@@ -171,6 +178,12 @@
     "overrides": {
       "github:Hypercubed/matrix@babel2": {
         "registry": "npm"
+      },
+      "npm:esprima@2.7.3": {
+        "jspmNodeConversion": false
+      },
+      "npm:jquery@3.1.0": {
+        "format": "amd"
       },
       "npm:ml-pca@1.1.1": {
         "dependencies": {
@@ -186,9 +199,6 @@
         "directories": {
           "lib": "."
         }
-      },
-      "github:enjalot/Inlet@0.1.1": {
-        "main": "inlet"
       },
       "github:frictionlessdata/jsontableschema-js@master": {
         "registry": "npm"
@@ -277,9 +287,6 @@
           "tty": "@node/tty",
           "util": "@node/util"
         }
-      },
-      "npm:esprima@2.7.2": {
-        "jspmNodeConversion": false
       },
       "npm:font-awesome@4.6.1": {
         "main": "css/font-awesome.css!",

@@ -11,6 +11,7 @@ import barsComponent from 'components/examples/bars/bars';
 import treemapComponent from 'components/examples/treemap/treemap';
 import polymerComponent from 'components/examples/polymer/bar-chart';
 import universeComponent from 'components/examples/universe/universe';
+import vegaComponent from 'components/examples/vega/bars';
 
 import 'd3-plugins/hexbin/hexbin';  // needed for /examples/hexbin
 
@@ -28,6 +29,7 @@ export default angular
   .component('polymer', polymerComponent)
   .component('treemapPage', treemapComponent)
   .component('universe', universeComponent)
+  .component('vega', vegaComponent)
   .config(['$routeProvider', $routeProvider => {
     $routeProvider
       .when('/examples', {
@@ -53,6 +55,10 @@ export default angular
       .when('/examples/polymer', {
         template: '<polymer data-package="$resolve.dataPackage"></polymer>',
         datapackageUrl: 'components/examples/polymer/datapackage.json'
+      })
+      .when('/examples/vega', {
+        template: '<vega data-package="$resolve.dataPackage"></vega>',
+        datapackageUrl: 'components/examples/vega/datapackage.json'
       })
       .when('/examples/universe', {
         template: '<universe data-package="$resolve.dataPackage"></universe>',

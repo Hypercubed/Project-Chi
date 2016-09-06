@@ -2,7 +2,9 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Added vega example
+* Updated chi-datapackage to support JSON pointers
+* Improved error reporting
 
 --------------------
 
