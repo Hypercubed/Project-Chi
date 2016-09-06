@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Fixed Vega example
+_(none)_
 
 --------------------
+
+## 1.0.0-rc.8 (2016-09-06)
+* Fixed Vega example
 
 ## 1.0.0-rc.7 (2016-09-06)
 * Added vega example
