@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+--------------------
+
+## 1.0.0-rc.7 (2016-09-06)
 * Added vega example
 * Updated chi-datapackage to support JSON pointers
 * Improved error reporting
-
---------------------
 
 ## 1.0.0-rc.6 (2016-09-01)
 * Default to no webcomponents
