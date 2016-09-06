@@ -1,7 +1,7 @@
 {
   "name": "Index",
   "title": "Additional Visualizations",
-  "description": "Additional Examples of visualizations using the Project-χ framework",
+  "description": "Additional examples of visualizations using the Project-χ framework.",
   "resources": [
     {
       "path": "trains/datapackage.json",
@@ -11,5 +11,6 @@
       "path": "hexbin/datapackage.json",
       "link": "#/extra/hexbin/"
     }
-  ]
+  ],
+  "readme": "readme.md"
 }

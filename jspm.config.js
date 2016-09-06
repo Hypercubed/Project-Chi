@@ -34,10 +34,19 @@ SystemJS.config({
           }
         }
       }
+    },
+    "chi-datapackage": {
+      "defaultJSExtensions": true,
+      "meta": {
+        "*.js": {
+          "format": "cjs",
+          "loader": "plugin-babel",
+          "babelOptions": {
+            "modularRuntime": false
+          }
+        }
+      }
     }
-  },
-  map: {
-    "babel": "npm:babel-core@5.8.38"
   }
 });
 
@@ -49,13 +58,13 @@ SystemJS.config({
     "local:*.json"
   ],
   map: {
+    "angular-animate": "npm:angular-animate@1.5.7",
+    "angular-downloadsvg-directive": "npm:angular-downloadsvg-directive@0.2.0",
     "FileSaver": "github:eligrey/FileSaver.js@master",
     "URIjs": "npm:URIjs@1.16.1",
     "_F": "github:Hypercubed/_F@0.0.11",
     "angular": "npm:angular@1.5.7",
-    "angular-animate": "npm:angular-animate@1.5.7",
     "angular-cookies": "npm:angular-cookies@1.5.7",
-    "angular-downloadsvg-directive": "npm:angular-downloadsvg-directive@0.1.5",
     "angular-growl": "npm:angular-growl-v2@0.7.5",
     "angular-intro.js": "npm:angular-intro.js@2.0.1",
     "angular-json-tree": "npm:angular-json-tree@1.0.1",
@@ -69,13 +78,15 @@ SystemJS.config({
     "angularjs-slider": "npm:angularjs-slider@2.13.0",
     "animate": "npm:animate.css@3.5.1",
     "assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
+    "babel-plugin-transform-builtin-extend": "npm:babel-plugin-transform-builtin-extend@1.1.0",
     "babyparse": "npm:babyparse@0.4.6",
+    "bcrypt-pbkdf": "npm:bcrypt-pbkdf@1.0.0",
     "biojs-io-fasta": "npm:biojs-io-fasta@0.1.17",
     "biojs-vis-example": "npm:biojs-vis-example@0.1.4",
     "blobjs": "github:eligrey/Blob.js@master",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
-    "chi-datapackage": "npm:chi-datapackage@3.0.0",
+    "chi-datapackage": "npm:chi-datapackage@3.1.0",
     "chiasm": "npm:chiasm@0.3.0",
     "chiasm-charts": "npm:chiasm-charts@0.1.5",
     "chiasm-component": "npm:chiasm-component@0.2.3",
@@ -100,6 +111,7 @@ SystemJS.config({
     "d3plus-text": "npm:d3plus-text@0.4.4",
     "dgram": "github:jspm/nodelibs-dgram@0.2.0-alpha",
     "dns": "github:jspm/nodelibs-dns@0.2.0-alpha",
+    "domain": "github:jspm/nodelibs-domain@0.2.0-alpha",
     "ecc-jsbn": "npm:ecc-jsbn@0.1.1",
     "events": "github:jspm/nodelibs-events@0.2.0-alpha",
     "font-awesome": "npm:font-awesome@4.6.1",
@@ -117,14 +129,16 @@ SystemJS.config({
     "json5": "npm:json5@0.5.0",
     "jsontableschema": "github:frictionlessdata/jsontableschema-js@master",
     "jspm/nodelibs-assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
-    "lodash": "npm:lodash@4.13.1",
-    "md": "github:guybedford/system-md@0.1.0",
+    "lodash": "npm:lodash@4.15.0",
+    "md": "github:Hypercubed/system-md-marked@1.0.1",
     "mime-lookup": "npm:mime-lookup@0.0.2",
-    "ml-matrix": "npm:ml-matrix@1.1.5",
+    "ml-matrix": "github:Hypercubed/matrix@babel2",
     "ml-pca": "npm:ml-pca@1.1.1",
     "model-js": "npm:model-js@0.2.5",
+    "module": "github:jspm/nodelibs-module@0.2.0-alpha",
     "mongodb-extended-json": "npm:mongodb-extended-json@1.6.3",
     "net": "github:jspm/nodelibs-net@0.2.0-alpha",
+    "ono": "npm:ono@2.2.1",
     "os": "github:jspm/nodelibs-os@0.2.0-alpha",
     "path": "github:jspm/nodelibs-path@0.2.0-alpha",
     "pivottable": "npm:pivottable@2.0.2",
@@ -135,6 +149,7 @@ SystemJS.config({
     "q": "npm:q@1.4.1",
     "querystring": "github:jspm/nodelibs-querystring@0.2.0-alpha",
     "screenfull": "npm:screenfull@2.0.0",
+    "source-map": "npm:source-map@0.1.43",
     "stream": "github:jspm/nodelibs-stream@0.2.0-alpha",
     "string_decoder": "github:jspm/nodelibs-string_decoder@0.2.0-alpha",
     "text": "github:systemjs/plugin-text@0.0.8",
@@ -146,6 +161,8 @@ SystemJS.config({
     "universe": "npm:universe@0.8.0",
     "url": "github:jspm/nodelibs-url@0.2.0-alpha",
     "util": "github:jspm/nodelibs-util@0.2.0-alpha",
+    "vega": "github:vega/vega@2.6.3",
+    "vega-lite": "github:vega/vega-lite@1.2.0",
     "venn.js": "npm:venn.js@0.2.10",
     "vm": "github:jspm/nodelibs-vm@0.2.0-alpha",
     "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.22",
@@ -153,14 +170,49 @@ SystemJS.config({
     "zlib": "github:jspm/nodelibs-zlib@0.2.0-alpha"
   },
   packages: {
+    "npm:ml-pca@1.1.1": {
+      "defaultJSExtensions": true,
+      "meta": {
+        "*.js": {
+          "format": "cjs",
+          "loader": "plugin-babel",
+          "babelOptions": {
+            "modularRuntime": false
+          }
+        }
+      },
+      "map": {
+        "ml-stat": "npm:ml-stat@1.3.3",
+        "ml-matrix": "github:Hypercubed/matrix@babel2"
+      }
+    },
+    "github:Hypercubed/matrix@babel2": {
+      "defaultJSExtensions": true,
+      "meta": {
+        "*.js": {
+          "format": "cjs",
+          "loader": "plugin-babel",
+          "babelOptions": {
+            "modularRuntime": false,
+            "plugins": [
+              [
+                "babel-plugin-transform-builtin-extend",
+                {
+                  "globals": [
+                    "Error",
+                    "Array",
+                    "Object"
+                  ]
+                }
+              ]
+            ]
+          }
+        }
+      }
+    },
     "github:Hypercubed/systemjs-plugin-html@0.0.8": {
       "map": {
         "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.22"
-      }
-    },
-    "github:guybedford/system-md@0.1.0": {
-      "map": {
-        "showdown": "github:showdownjs/showdown@1.3.0"
       }
     },
     "github:twbs/bootstrap@3.3.6": {
@@ -177,11 +229,6 @@ SystemJS.config({
     "npm:URIjs@1.16.1": {
       "map": {}
     },
-    "npm:angular-downloadsvg-directive@0.1.5": {
-      "map": {
-        "svgsaver": "npm:svgsaver@0.6.1"
-      }
-    },
     "npm:angular-json-tree@1.0.1": {
       "map": {
         "angular": "npm:angular@1.5.7"
@@ -189,7 +236,7 @@ SystemJS.config({
     },
     "npm:angular-marked@1.2.1": {
       "map": {
-        "marked": "npm:marked@0.3.5"
+        "marked": "npm:marked@0.3.6"
       }
     },
     "npm:angular-ui-grid@3.2.5": {
@@ -198,9 +245,7 @@ SystemJS.config({
       }
     },
     "npm:angularjs-slider@2.13.0": {
-      "map": {
-        "angular": "npm:angular@1.5.7"
-      }
+      "map": {}
     },
     "npm:async@1.5.2": {
       "map": {}
@@ -246,7 +291,7 @@ SystemJS.config({
     "npm:chiasm@0.3.0": {
       "map": {
         "es6-promise": "npm:es6-promise@3.2.1",
-        "lodash": "npm:lodash@4.13.1",
+        "lodash": "npm:lodash@4.15.0",
         "model-js": "npm:model-js@0.2.5"
       }
     },
@@ -267,14 +312,13 @@ SystemJS.config({
     },
     "npm:crossfilter2@1.4.0-alpha.6": {
       "map": {
-        "lodash.result": "npm:lodash.result@4.4.0",
-        "systemjs-json": "github:systemjs/plugin-json@0.1.2"
+        "lodash.result": "npm:lodash.result@4.4.0"
       }
     },
     "npm:cuid@1.3.8": {
       "map": {
         "browser-fingerprint": "npm:browser-fingerprint@0.0.1",
-        "core-js": "npm:core-js@2.4.1",
+        "core-js": "npm:core-js@1.2.7",
         "node-fingerprint": "npm:node-fingerprint@0.0.2"
       }
     },
@@ -284,9 +328,7 @@ SystemJS.config({
       }
     },
     "npm:d3-svg-legend@1.10.0": {
-      "map": {
-        "d3": "npm:d3@3.5.17"
-      }
+      "map": {}
     },
     "npm:d3-transition@0.2.8": {
       "map": {
@@ -362,9 +404,7 @@ SystemJS.config({
       "map": {}
     },
     "npm:isarray@1.0.0": {
-      "map": {
-        "systemjs-json": "github:systemjs/plugin-json@0.1.2"
-      }
+      "map": {}
     },
     "npm:jquery@3.1.0": {
       "map": {}
@@ -429,12 +469,6 @@ SystemJS.config({
     },
     "npm:mime-lookup@0.0.2": {
       "map": {}
-    },
-    "npm:ml-pca@1.1.1": {
-      "map": {
-        "ml-matrix": "npm:ml-matrix@1.1.5",
-        "ml-stat": "npm:ml-stat@1.2.0"
-      }
     },
     "npm:mongodb-extended-json@1.6.3": {
       "map": {
@@ -502,11 +536,6 @@ SystemJS.config({
     "npm:string_decoder@0.10.31": {
       "map": {}
     },
-    "npm:svgsaver@0.6.1": {
-      "map": {
-        "computed-styles": "npm:computed-styles@1.1.2"
-      }
-    },
     "npm:through@2.3.8": {
       "map": {}
     },
@@ -517,8 +546,7 @@ SystemJS.config({
       "map": {
         "crossfilter2": "npm:crossfilter2@1.4.0-alpha.6",
         "q": "npm:q@1.4.1",
-        "reductio": "npm:reductio@0.6.2",
-        "systemjs-json": "github:systemjs/plugin-json@0.1.2"
+        "reductio": "npm:reductio@0.6.2"
       }
     },
     "npm:vow@0.4.12": {
@@ -534,9 +562,7 @@ SystemJS.config({
       }
     },
     "npm:xtend@4.0.1": {
-      "map": {
-        "systemjs-json": "github:systemjs/plugin-json@0.1.2"
-      }
+      "map": {}
     },
     "github:jspm/nodelibs-os@0.2.0-alpha": {
       "map": {
@@ -582,7 +608,7 @@ SystemJS.config({
     },
     "npm:bl@1.1.2": {
       "map": {
-        "readable-stream": "npm:readable-stream@2.1.5"
+        "readable-stream": "npm:readable-stream@2.0.6"
       }
     },
     "npm:combined-stream@1.0.5": {
@@ -602,7 +628,7 @@ SystemJS.config({
       "map": {
         "assert-plus": "npm:assert-plus@0.2.0",
         "jsprim": "npm:jsprim@1.3.0",
-        "sshpk": "npm:sshpk@1.8.3"
+        "sshpk": "npm:sshpk@1.10.0"
       }
     },
     "npm:har-validator@2.0.6": {
@@ -621,14 +647,6 @@ SystemJS.config({
     "github:jspm/nodelibs-stream@0.2.0-alpha": {
       "map": {
         "stream-browserify": "npm:stream-browserify@2.0.1"
-      }
-    },
-    "npm:sshpk@1.8.3": {
-      "map": {
-        "assert-plus": "npm:assert-plus@1.0.0",
-        "getpass": "npm:getpass@0.1.6",
-        "asn1": "npm:asn1@0.2.3",
-        "dashdash": "npm:dashdash@1.14.0"
       }
     },
     "npm:sntp@1.0.9": {
@@ -721,16 +739,6 @@ SystemJS.config({
         "extsprintf": "npm:extsprintf@1.0.2"
       }
     },
-    "npm:jodid25519@1.0.2": {
-      "map": {
-        "jsbn": "npm:jsbn@0.1.0"
-      }
-    },
-    "npm:ecc-jsbn@0.1.1": {
-      "map": {
-        "jsbn": "npm:jsbn@0.1.0"
-      }
-    },
     "npm:dashdash@1.14.0": {
       "map": {
         "assert-plus": "npm:assert-plus@1.0.0"
@@ -779,7 +787,7 @@ SystemJS.config({
     },
     "github:jspm/nodelibs-punycode@0.2.0-alpha": {
       "map": {
-        "punycode-browserify": "npm:punycode@1.3.2"
+        "punycode-browserify": "npm:punycode@1.4.1"
       }
     },
     "npm:min-document@2.18.0": {
@@ -927,7 +935,7 @@ SystemJS.config({
     "npm:js-yaml@3.6.1": {
       "map": {
         "argparse": "npm:argparse@1.0.7",
-        "esprima": "npm:esprima@2.7.2"
+        "esprima": "npm:esprima@2.7.3"
       }
     },
     "npm:argparse@1.0.7": {
@@ -940,16 +948,18 @@ SystemJS.config({
         "chiasm-component": "npm:chiasm-component@0.2.3",
         "d3": "npm:d3@3.5.17",
         "model-js": "npm:model-js@0.2.5",
-        "lodash": "npm:lodash@4.13.1"
+        "lodash": "npm:lodash@4.15.0"
       }
     },
     "github:frictionlessdata/jsontableschema-js@master": {
       "map": {
         "moment": "npm:moment@2.14.1",
-        "lodash": "npm:lodash@4.13.1",
+        "lodash": "npm:lodash@4.15.0",
         "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
         "d3-time-format": "npm:d3-time-format@2.0.2",
-        "tv4": "npm:tv4@1.2.7"
+        "tv4": "npm:tv4@1.2.7",
+        "stream-transform": "npm:stream-transform@0.1.1",
+        "csv-parse": "npm:csv-parse@1.1.7"
       }
     },
     "npm:isomorphic-fetch@2.2.1": {
@@ -976,23 +986,6 @@ SystemJS.config({
         "xtend": "npm:xtend@4.0.1",
         "to-arraybuffer": "npm:to-arraybuffer@1.0.1",
         "builtin-status-codes": "npm:builtin-status-codes@2.0.0"
-      }
-    },
-    "npm:chi-datapackage@3.0.0": {
-      "map": {
-        "deep-extend": "npm:deep-extend@0.4.1",
-        "json5": "npm:json5@0.5.0",
-        "debug": "npm:debug@2.2.0",
-        "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
-        "cuid": "npm:cuid@1.3.8",
-        "datapackage-identifier": "npm:datapackage-identifier@0.4.1",
-        "urijs": "npm:urijs@1.18.1",
-        "js-yaml": "npm:js-yaml@3.6.1",
-        "babyparse": "npm:babyparse@0.4.6",
-        "mime-lookup": "npm:mime-lookup@0.0.2",
-        "parse-iso-duration": "npm:parse-iso-duration@1.0.0",
-        "d3-time-format": "npm:d3-time-format@2.0.2",
-        "crlf-helper": "npm:crlf-helper@0.1.0"
       }
     },
     "npm:debug@2.2.0": {
@@ -1055,6 +1048,152 @@ SystemJS.config({
     "npm:d3-interpolate@0.1.4": {
       "map": {
         "d3-color": "npm:d3-color@0.2.8"
+      }
+    },
+    "github:Hypercubed/system-md-marked@1.0.1": {
+      "map": {
+        "marked": "npm:marked@0.3.6"
+      }
+    },
+    "npm:angular-downloadsvg-directive@0.2.0": {
+      "map": {
+        "svgsaver": "npm:svgsaver@0.6.1"
+      }
+    },
+    "npm:svgsaver@0.6.1": {
+      "map": {
+        "computed-styles": "npm:computed-styles@1.1.2"
+      }
+    },
+    "npm:babel-plugin-transform-builtin-extend@1.1.0": {
+      "map": {
+        "babel-template": "npm:babel-template@6.15.0",
+        "babel-runtime": "npm:babel-runtime@6.11.6"
+      }
+    },
+    "npm:babel-template@6.15.0": {
+      "map": {
+        "babel-runtime": "npm:babel-runtime@6.11.6",
+        "babel-types": "npm:babel-types@6.15.0",
+        "babel-traverse": "npm:babel-traverse@6.15.0",
+        "babylon": "npm:babylon@6.9.1",
+        "lodash": "npm:lodash@4.15.0"
+      }
+    },
+    "npm:babel-runtime@6.11.6": {
+      "map": {
+        "core-js": "npm:core-js@2.4.1",
+        "regenerator-runtime": "npm:regenerator-runtime@0.9.5"
+      }
+    },
+    "npm:babel-types@6.15.0": {
+      "map": {
+        "babel-runtime": "npm:babel-runtime@6.11.6",
+        "lodash": "npm:lodash@4.15.0",
+        "esutils": "npm:esutils@2.0.2",
+        "to-fast-properties": "npm:to-fast-properties@1.0.2"
+      }
+    },
+    "npm:babel-traverse@6.15.0": {
+      "map": {
+        "babel-runtime": "npm:babel-runtime@6.11.6",
+        "babel-types": "npm:babel-types@6.15.0",
+        "babylon": "npm:babylon@6.9.1",
+        "lodash": "npm:lodash@4.15.0",
+        "invariant": "npm:invariant@2.2.1",
+        "babel-messages": "npm:babel-messages@6.8.0",
+        "babel-code-frame": "npm:babel-code-frame@6.11.0",
+        "debug": "npm:debug@2.2.0",
+        "globals": "npm:globals@8.18.0"
+      }
+    },
+    "npm:babylon@6.9.1": {
+      "map": {
+        "babel-runtime": "npm:babel-runtime@6.11.6"
+      }
+    },
+    "npm:babel-messages@6.8.0": {
+      "map": {
+        "babel-runtime": "npm:babel-runtime@6.11.6"
+      }
+    },
+    "npm:babel-code-frame@6.11.0": {
+      "map": {
+        "babel-runtime": "npm:babel-runtime@6.11.6",
+        "esutils": "npm:esutils@2.0.2",
+        "js-tokens": "npm:js-tokens@2.0.0",
+        "chalk": "npm:chalk@1.1.3"
+      }
+    },
+    "npm:invariant@2.2.1": {
+      "map": {
+        "loose-envify": "npm:loose-envify@1.2.0"
+      }
+    },
+    "npm:loose-envify@1.2.0": {
+      "map": {
+        "js-tokens": "npm:js-tokens@1.0.3"
+      }
+    },
+    "npm:readable-stream@2.0.6": {
+      "map": {
+        "inherits": "npm:inherits@2.0.1",
+        "isarray": "npm:isarray@1.0.0",
+        "core-util-is": "npm:core-util-is@1.0.2",
+        "util-deprecate": "npm:util-deprecate@1.0.2",
+        "string_decoder": "npm:string_decoder@0.10.31",
+        "process-nextick-args": "npm:process-nextick-args@1.0.7"
+      }
+    },
+    "npm:sshpk@1.10.0": {
+      "map": {
+        "assert-plus": "npm:assert-plus@1.0.0",
+        "asn1": "npm:asn1@0.2.3",
+        "getpass": "npm:getpass@0.1.6",
+        "dashdash": "npm:dashdash@1.14.0"
+      }
+    },
+    "npm:bcrypt-pbkdf@1.0.0": {
+      "map": {
+        "tweetnacl": "npm:tweetnacl@0.14.3"
+      }
+    },
+    "npm:source-map@0.1.43": {
+      "map": {
+        "amdefine": "npm:amdefine@1.0.0"
+      }
+    },
+    "github:jspm/nodelibs-domain@0.2.0-alpha": {
+      "map": {
+        "domain-browserify": "npm:domain-browser@1.1.7"
+      }
+    },
+    "npm:ecc-jsbn@0.1.1": {
+      "map": {
+        "jsbn": "npm:jsbn@0.1.0"
+      }
+    },
+    "npm:jodid25519@1.0.2": {
+      "map": {
+        "jsbn": "npm:jsbn@0.1.0"
+      }
+    },
+    "npm:chi-datapackage@3.1.0": {
+      "map": {
+        "babyparse": "npm:babyparse@0.4.6",
+        "jsonpointer": "npm:jsonpointer@4.0.0",
+        "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
+        "d3-time-format": "npm:d3-time-format@2.0.2",
+        "deep-extend": "npm:deep-extend@0.4.1",
+        "debug": "npm:debug@2.2.0",
+        "datapackage-identifier": "npm:datapackage-identifier@0.4.2",
+        "urijs": "npm:urijs@1.18.1",
+        "parse-iso-duration": "npm:parse-iso-duration@1.0.0",
+        "cuid": "npm:cuid@1.3.8",
+        "crlf-helper": "npm:crlf-helper@0.1.0",
+        "json5": "npm:json5@0.5.0",
+        "mime-lookup": "npm:mime-lookup@0.0.2",
+        "js-yaml": "npm:js-yaml@3.6.1"
       }
     }
   }

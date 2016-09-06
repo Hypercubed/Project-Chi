@@ -1,0 +1,52 @@
+{
+  "mode": "vega",
+  "spec": {
+    "width": 600,
+    "height": 200,
+    "padding": {"top": 10, "left": 30, "bottom": 30, "right": 10},
+    "data": [
+      {
+        "name": "table"
+      }
+    ],
+    "scales": [
+      {
+        "name": "letter",
+        "type": "ordinal",
+        "range": "width",
+        "domain": {"data": "table", "field": "letter"}
+      },
+      {
+        "name": "frequency",
+        "type": "linear",
+        "range": "height",
+        "domain": {"data": "table", "field": "frequency"},
+        "nice": true
+      }
+    ],
+    "axes": [
+      {"type": "x", "scale": "letter"},
+      {"type": "y", "scale": "frequency"}
+    ],
+    "marks": [
+      {
+        "type": "rect",
+        "from": {"data": "table"},
+        "properties": {
+          "enter": {
+            "x": {"scale": "letter", "field": "letter"},
+            "width": {"scale": "letter", "band": true, "offset": -1},
+            "y": {"scale": "frequency", "field": "frequency"},
+            "y2": {"scale": "frequency", "value": 0}
+          },
+          "update": {
+            "fill": {"value": "steelblue"}
+          },
+          "hover": {
+            "fill": {"value": "red"}
+          }
+        }
+      }
+    ]
+  }
+}

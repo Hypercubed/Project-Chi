@@ -5,14 +5,17 @@
 	"resources": [
 		{
 			"url": "https://cdn.rawgit.com/curran/data/gh-pages/d3Examples/letterFrequency/letterFrequency.tsv",
-			"schema": {
-				"fields": [
-					{ "name": "letter", "type": "string", "constraints": { "required": true } },
-					{ "name": "frequency", "type": "number", "constraints": { "required": true } }
-				]
-			}
+			"schema": "letterFrequency"
 		}
 	],
+  "schemas": {
+    "letterFrequency":  {
+      "fields": [
+        { "name": "letter", "type": "string", "constraints": { "required": true } },
+        { "name": "frequency", "type": "number", "constraints": { "required": true } }
+      ]
+    }
+  },
 	"image": "thumbnail.png",
 	"readme": "README.md"
 }
