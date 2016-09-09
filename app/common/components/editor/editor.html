@@ -90,7 +90,9 @@
                 ui-refresh="$ctrl.ui.count"></textarea>
                 <div class="col-xs-12 bg-danger">
                   <ul class="list-unstyled">
-                    <li ng-repeat="error in tab.errors | limitTo:10">row {{error.row}}: {{error.message}}</li>
+                    <li ng-repeat="error in tab.errors | limitTo:10">
+                      <span ng-if="error.row >= 0">row {{error.row}}: </span>{{error.message}}
+                    </li>
                   </ul>
                 </div>
             </div>

@@ -24,7 +24,7 @@ gulp.task('watch-dev', () => {
 
 gulp.task('dev', cb => {
   runSequence('clean-tmp',
-              ['copy-html-tmp', 'jspm-dev-build'],
+              config.devBundle ? ['copy-html-tmp', 'jspm-dev-build'] : 'copy-html-tmp',
               'server-dev',
               'watch-dev',
               cb);

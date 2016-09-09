@@ -5,7 +5,7 @@
 	"resources": [
     "vega-lite-bars.json",
 		{
-			"url": "https://cdn.rawgit.com/curran/data/gh-pages/d3Examples/letterFrequency/letterFrequency.tsv",
+			"path": "https://cdn.rawgit.com/curran/data/gh-pages/d3Examples/letterFrequency/letterFrequency.tsv",
 			"schema": {
 				"fields": [
 					{ "name": "letter", "type": "string", "constraints": { "required": true } },

@@ -2,18 +2,19 @@
 /* eslint max-params: 0 */
 import angular from 'angular';
 
-import dp from 'common/services/datapackage/datapackage';
+// import dp from 'common/services/datapackage/datapackage';
 
-controller.$inject = ['$scope', '$cookies', '$timeout', '$log', 'growl'];
-export default function controller ($scope, $cookies, $timeout, $log, growl) {
+controller.$inject = ['$scope', '$cookies', '$timeout', '$log', 'growl', 'dataService'];
+export default function controller ($scope, $cookies, $timeout, $log, growl, dataservice) {
   const $ctrl = this;
   const hasOptions = Boolean($ctrl.options);
   const hasPackage = hasOptions && Boolean($ctrl.options.data);
+  const hasResources = hasPackage && $ctrl.options.data.resources.length > 0;
 
   const isSafari = /Version\/[\d\.]+.*Safari/.test(navigator.userAgent);
   const isIE = typeof window.navigator.msSaveBlob !== 'undefined';
 
-  const enableFileDownload = hasPackage && $ctrl.options.data.resources.length > 0;
+  const enableFileDownload = hasPackage && hasResources;
 
   // Don't do this
   /* $scope.$watch('$ctrl.options.enableSvgDownload', newValue => {
@@ -27,7 +28,7 @@ export default function controller ($scope, $cookies, $timeout, $log, growl) {
   return Object.assign($ctrl, {
     // "internal"
     activeTab: 0,
-    resources: hasPackage ? angular.copy($ctrl.options.data.resources) : [],  // changes are made here first
+    resources: hasResources ? angular.copy($ctrl.options.data.resources) : [],  // changes are made here first
     panel: {
       open: false
     },
@@ -65,9 +66,9 @@ export default function controller ($scope, $cookies, $timeout, $log, growl) {
     enableAdd: true,
     enableDrop: false,
     enableProtected: false,
-    types: Object.keys(dp.processor.translators),
-    defaultFormat: hasPackage ? $ctrl.options.data.resources[0].format : 'txt',
-    defaultSchema: hasPackage ? $ctrl.options.data.resources[0].schema : undefined
+    types: Object.keys(dataservice.translators),
+    defaultFormat: hasResources ? $ctrl.options.data.resources[0].format : 'txt',
+    defaultSchema: hasResources ? $ctrl.options.data.resources[0].schema : undefined
 
     // svgsFrom: '#chart' // TODO
   }, this.options);
@@ -84,7 +85,7 @@ export default function controller ($scope, $cookies, $timeout, $log, growl) {
       $log.debug('submit');
       if (hasPackage) {
         $ctrl.options.data.resources = $ctrl.resources;
-        $ctrl.options.data.$resourcesByName = dp.Normalizer.index($ctrl.options.data);
+        $ctrl.options.data.$resourcesByName = dataservice.index($ctrl.options.data);
       }
       $timeout(() => {
         $ctrl.onChange();
@@ -97,7 +98,7 @@ export default function controller ($scope, $cookies, $timeout, $log, growl) {
     return {
       path: name,
       name,
-      mediatype: dp.normalize.mime.lookup(name),
+      mediatype: dataservice.mime.lookup(name),
       content,
       schema: $ctrl.defaultSchema
     };
@@ -139,16 +140,13 @@ export default function controller ($scope, $cookies, $timeout, $log, growl) {
   function updateResource (resource, form) {
     $log.debug('updateResource', $scope);
 
-    dp.normalizeResource($ctrl.data, resource);
-    dp.processResource(resource);
+    dataservice.normalizeResource($ctrl.data, resource);
+    dataservice.processResource(resource);
 
-    const error = resource.errors && resource.errors.length > 0;
+    const hasError = Boolean(resource.$error) || (resource.errors && resource.errors.length > 0);
 
     if (form) {
-      form.$setValidity('processed', !error);
-    }
-    if (error) {
-      return growl.error(`failed to process ${resource.name}`);
+      form.$setValidity('processed', !hasError);
     }
   }
 

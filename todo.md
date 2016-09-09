@@ -2,6 +2,8 @@
 
 _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 
+- [ ] Reduce junk in jspm_packages uploaded to gh-pages
+- [ ] Warnings vs. errors in dataservice
 - [ ] modular css?
 - [ ] html minify?
 - [ ] tests

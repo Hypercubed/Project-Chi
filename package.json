@@ -179,8 +179,24 @@
       "github:Hypercubed/matrix@babel2": {
         "registry": "npm"
       },
+      "npm:angular@1.5.8": {
+        "format": "global",
+        "jspmNodeConversion": false,
+        "main": "angular",
+        "meta": {
+          "angular.js": {
+            "exports": "angular",
+            "format": "global"
+          }
+        }
+      },
       "npm:esprima@2.7.3": {
         "jspmNodeConversion": false
+      },
+      "npm:inherits@2.0.3": {
+        "ignore": [
+          "test.js"
+        ]
       },
       "npm:jquery@3.1.0": {
         "format": "amd"
@@ -233,17 +249,6 @@
               ],
               "exports": "$"
             }
-          }
-        }
-      },
-      "npm:angular@1.5.7": {
-        "format": "global",
-        "jspmNodeConversion": false,
-        "main": "angular",
-        "meta": {
-          "angular.js": {
-            "exports": "angular",
-            "format": "global"
           }
         }
       },
