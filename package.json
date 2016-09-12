@@ -16,7 +16,7 @@
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-preset-es2015": "^6.14.0",
-    "browser-sync": "^2.14.3",
+    "browser-sync": "^2.15.0",
     "chg": "^0.3.2",
     "cuid": "^1.3.8",
     "deep-extend": "^0.4.1",
@@ -86,7 +86,7 @@
       "biojs-vis-example": "npm:biojs-vis-example@^0.1.4",
       "blobjs": "github:eligrey/Blob.js@master",
       "bootstrap": "github:twbs/bootstrap@^3.3.6",
-      "chi-datapackage": "npm:chi-datapackage@3.1.0",
+      "chi-datapackage": "npm:chi-datapackage@^4.0.0",
       "chiasm": "npm:chiasm@^0.3.0",
       "chiasm-charts": "npm:chiasm-charts@^0.1.5",
       "chiasm-component": "npm:chiasm-component@^0.2.3",

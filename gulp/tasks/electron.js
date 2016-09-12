@@ -11,7 +11,7 @@ gulp.task('run-electron-prod', () => {
 });
 
 gulp.task('run-electron-build', () => {
-  execa.shell('NODE_ENV=production electron-packager ./dist/ --version 1.3.5 --out builds').catch(console.log.bind(console));
+  execa.shell('NODE_ENV=production electron-packager ./dist/ --out builds --overwrite --asar').catch(console.log.bind(console));
 });
 
 gulp.task('dev-electron', cb => {

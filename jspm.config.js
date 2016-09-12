@@ -86,7 +86,7 @@ SystemJS.config({
     "blobjs": "github:eligrey/Blob.js@master",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
-    "chi-datapackage": "npm:chi-datapackage@3.1.0",
+    "chi-datapackage": "npm:chi-datapackage@4.0.0",
     "chiasm": "npm:chiasm@0.3.0",
     "chiasm-charts": "npm:chiasm-charts@0.1.5",
     "chiasm-component": "npm:chiasm-component@0.2.3",
@@ -765,7 +765,7 @@ SystemJS.config({
         "inherits": "npm:inherits@2.0.3",
         "create-ecdh": "npm:create-ecdh@4.0.0",
         "browserify-cipher": "npm:browserify-cipher@1.0.0",
-        "pbkdf2": "npm:pbkdf2@3.0.4",
+        "pbkdf2": "npm:pbkdf2@3.0.5",
         "create-hmac": "npm:create-hmac@1.1.4",
         "browserify-sign": "npm:browserify-sign@4.0.0",
         "public-encrypt": "npm:public-encrypt@4.0.0",
@@ -788,11 +788,6 @@ SystemJS.config({
     "npm:min-document@2.18.0": {
       "map": {
         "dom-walk": "npm:dom-walk@0.1.1"
-      }
-    },
-    "npm:pbkdf2@3.0.4": {
-      "map": {
-        "create-hmac": "npm:create-hmac@1.1.4"
       }
     },
     "npm:create-hmac@1.1.4": {
@@ -881,7 +876,7 @@ SystemJS.config({
         "browserify-aes": "npm:browserify-aes@1.0.6",
         "create-hash": "npm:create-hash@1.1.2",
         "evp_bytestokey": "npm:evp_bytestokey@1.0.0",
-        "pbkdf2": "npm:pbkdf2@3.0.4",
+        "pbkdf2": "npm:pbkdf2@3.0.5",
         "asn1.js": "npm:asn1.js@4.8.0"
       }
     },
@@ -1151,25 +1146,6 @@ SystemJS.config({
         "jsbn": "npm:jsbn@0.1.0"
       }
     },
-    "npm:chi-datapackage@3.1.0": {
-      "map": {
-        "babyparse": "npm:babyparse@0.4.6",
-        "jsonpointer": "npm:jsonpointer@4.0.0",
-        "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
-        "d3-time-format": "npm:d3-time-format@2.0.2",
-        "deep-extend": "npm:deep-extend@0.4.1",
-        "debug": "npm:debug@2.2.0",
-        "datapackage-identifier": "npm:datapackage-identifier@0.4.2",
-        "urijs": "npm:urijs@1.18.1",
-        "parse-iso-duration": "npm:parse-iso-duration@1.0.0",
-        "cuid": "npm:cuid@1.3.8",
-        "crlf-helper": "npm:crlf-helper@0.1.0",
-        "json5": "npm:json5@0.5.0",
-        "mime-lookup": "npm:mime-lookup@0.0.2",
-        "js-yaml": "npm:js-yaml@3.6.1",
-        "lodash.merge": "npm:lodash.merge@4.6.0"
-      }
-    },
     "npm:stream-http@2.4.0": {
       "map": {
         "readable-stream": "npm:readable-stream@2.1.5",
@@ -1195,6 +1171,29 @@ SystemJS.config({
         "base64-js": "npm:base64-js@1.1.2",
         "isarray": "npm:isarray@1.0.0",
         "ieee754": "npm:ieee754@1.1.6"
+      }
+    },
+    "npm:pbkdf2@3.0.5": {
+      "map": {
+        "create-hmac": "npm:create-hmac@1.1.4"
+      }
+    },
+    "npm:chi-datapackage@4.0.0": {
+      "map": {
+        "cuid": "npm:cuid@1.3.8",
+        "datapackage-identifier": "npm:datapackage-identifier@0.4.2",
+        "jsonpointer": "npm:jsonpointer@4.0.0",
+        "d3-time-format": "npm:d3-time-format@2.0.2",
+        "lodash.merge": "npm:lodash.merge@4.6.0",
+        "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
+        "parse-iso-duration": "npm:parse-iso-duration@1.0.0",
+        "debug": "npm:debug@2.2.0",
+        "urijs": "npm:urijs@1.18.1",
+        "babyparse": "npm:babyparse@0.4.6",
+        "crlf-helper": "npm:crlf-helper@0.1.0",
+        "json5": "npm:json5@0.5.0",
+        "js-yaml": "npm:js-yaml@3.6.1",
+        "mime-lookup": "npm:mime-lookup@0.0.2"
       }
     }
   }

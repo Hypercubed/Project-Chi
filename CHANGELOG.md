@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Added on-read-file directive
+* Test and build electron apps
 
 --------------------
+
+## 1.0.0-rc.9 (2016-09-12)
+* Added on-read-file directive
 
 ## 1.0.0-rc.8 (2016-09-06)
 * Fixed Vega example
