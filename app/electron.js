@@ -9,6 +9,7 @@ const BrowserWindow = electron.BrowserWindow
 let mainWindow
 
 let url
+console.log(process.env.NODE_ENV)
 if (process.env.NODE_ENV === 'development') {
   url = `http://localhost:9000`
 } else {
