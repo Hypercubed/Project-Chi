@@ -31,7 +31,7 @@ const ENVIRONMENTS = {
 /**
  * These tasks force ENVIRONMENTS.PRODUCTION
  */
-const PRODTASKS = ['build', 'dist', 'deploy'];
+const PRODTASKS = ['build', 'dist', 'deploy', 'dist-electron', 'build-electron'];
 
 const BASE = 'app';
 const DIST = 'dist';
@@ -60,6 +60,7 @@ const config = {
     ],
     jspmResources: [  // these are copied to paths.dist
       'jspm_packages/*.{js,map}',
+      'jspm_packages/github/jspm/**/*.*',  // for electron
       'jspm_packages/github/twbs/**/*.{svg,png,eot,ttf,gif,wot,woff,woff2}',
       'jspm_packages/npm/{angular-growl-v2*,angular-ui-grid*,font-awesome*,intro.js*}/**/*.{svg,png,eot,ttf,gif,wot,woff,woff2}'
     ],
@@ -119,9 +120,9 @@ const config = {
     } */
   },
   builder: {
-    devBundle: typeof argv.bundle === 'boolean' ? argv.bundle : true,
+    devBundle: typeof argv.bundle === 'boolean' ? argv.bundle : false,
     bundles: {
-      'deps-bundle': `${TMP}/${BUILD} - [${TMP}/**/*] - [${TMP}/**/*!css] - [${TMP}/**/*!text] - [${TMP}/**/*!md]`,
+      'deps-bundle': `${TMP}/${BUILD} - [${TMP}/**/*] - [${TMP}/**/*!css] - [${TMP}/**/*!text] - [${TMP}/**/*!md] + util`,
       'app-bundle': `${TMP}/${BUILD} - ${TMP}/bundles/deps-bundle.js`
     },
     config: {

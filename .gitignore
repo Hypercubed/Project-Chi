@@ -23,7 +23,7 @@ coverage
 .lock-wscript
 
 # Compiled
-build/Release
+builds
 dist
 docs
 

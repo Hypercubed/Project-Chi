@@ -569,11 +569,6 @@ SystemJS.config({
         "os-browserify": "npm:os-browserify@0.2.1"
       }
     },
-    "github:jspm/nodelibs-buffer@0.2.0-alpha": {
-      "map": {
-        "buffer-browserify": "npm:buffer@4.9.1"
-      }
-    },
     "npm:request@2.73.0": {
       "map": {
         "aws-sign2": "npm:aws-sign2@0.6.0",
@@ -964,19 +959,13 @@ SystemJS.config({
     },
     "npm:isomorphic-fetch@2.2.1": {
       "map": {
-        "node-fetch": "npm:node-fetch@1.6.0",
+        "node-fetch": "npm:node-fetch@1.6.1",
         "whatwg-fetch": "npm:whatwg-fetch@1.0.0"
       }
     },
     "npm:encoding@0.1.12": {
       "map": {
         "iconv-lite": "npm:iconv-lite@0.4.13"
-      }
-    },
-    "npm:node-fetch@1.6.0": {
-      "map": {
-        "encoding": "npm:encoding@0.1.12",
-        "is-stream": "npm:is-stream@1.1.0"
       }
     },
     "npm:debug@2.2.0": {
@@ -987,13 +976,6 @@ SystemJS.config({
     "npm:d3-time-format@2.0.2": {
       "map": {
         "d3-time": "npm:d3-time@1.0.2"
-      }
-    },
-    "npm:buffer@4.9.1": {
-      "map": {
-        "isarray": "npm:isarray@1.0.0",
-        "base64-js": "npm:base64-js@1.1.2",
-        "ieee754": "npm:ieee754@1.1.6"
       }
     },
     "npm:readable-stream@2.1.5": {
@@ -1184,7 +1166,8 @@ SystemJS.config({
         "crlf-helper": "npm:crlf-helper@0.1.0",
         "json5": "npm:json5@0.5.0",
         "mime-lookup": "npm:mime-lookup@0.0.2",
-        "js-yaml": "npm:js-yaml@3.6.1"
+        "js-yaml": "npm:js-yaml@3.6.1",
+        "lodash.merge": "npm:lodash.merge@4.6.0"
       }
     },
     "npm:stream-http@2.4.0": {
@@ -1194,6 +1177,24 @@ SystemJS.config({
         "inherits": "npm:inherits@2.0.3",
         "to-arraybuffer": "npm:to-arraybuffer@1.0.1",
         "builtin-status-codes": "npm:builtin-status-codes@2.0.0"
+      }
+    },
+    "npm:node-fetch@1.6.1": {
+      "map": {
+        "is-stream": "npm:is-stream@1.1.0",
+        "encoding": "npm:encoding@0.1.12"
+      }
+    },
+    "github:jspm/nodelibs-buffer@0.2.0-alpha": {
+      "map": {
+        "buffer-browserify": "npm:buffer@4.9.1"
+      }
+    },
+    "npm:buffer@4.9.1": {
+      "map": {
+        "base64-js": "npm:base64-js@1.1.2",
+        "isarray": "npm:isarray@1.0.0",
+        "ieee754": "npm:ieee754@1.1.6"
       }
     }
   }
