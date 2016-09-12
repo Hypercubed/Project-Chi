@@ -13,6 +13,7 @@ Project χ (pronounced project /ˈ</span><span title="'k' in 'kind'">k</span><sp
 * Supports CommonJS, AMD, and ES6 modules using the [SystemJS](https://github.com/systemjs/systemjs) universal dynamic module loader.
 * Integrate additional visualizations, including [BioJS](http://biojs.io/) and [Chiasm](https://github.com/curran/chiasm) modules, directly from any registry such as [NPM](https://www.npmjs.com) or [GitHub](https://github.com/) using [JSPM](http://jspm.io/).
 * Self-hosted fully client-side application doesn't require a server; easily hosted on [WebDAV](https://en.wikipedia.org/wiki/WebDAV) or [GitHub Pages](https://pages.github.com/).
+* Optionally build to an [electron](http://electron.atom.io/) app.
 * For production builds ES6 into optimized, production ready code ES5 using [Gulp](http://gulpjs.com/) and [SystemJS Builder](https://github.com/systemjs/builder).
 * Modular separation of boilerplate (Project χ) and user projects.  Share tools across projects.
 
@@ -48,7 +49,7 @@ You are now ready to develop the project in the app folder.  See "Separation of 
 
 - node/npm (tested in both v4 & v6)
 - gulp v3.9
-- jspm v0.16
+- jspm v0.17
 
 ## Gulp Tasks
 
@@ -56,6 +57,9 @@ You are now ready to develop the project in the app folder.  See "Separation of 
 * `gulp build`, build into the `dist` directory
 * `gulp dist`, build and run server from `dist` directory
 * `gulp deploy`, build and push to `gh-pages`
+* `gulp dev-electron`, run development server, open in electron
+* `gulp dist-electron`, build and run server from `dist` directory, open in electron
+* `gulp build-electron`, build into the `dist` directory, then build electron app
 
 ## File Structure
 
@@ -77,12 +81,14 @@ You are now ready to develop the project in the app folder.  See "Separation of 
 │   │   ├── app.js
 │   │   ├── app.css
 │   │   └── routes.js
+│   ├── electron.js        <- electron entry point
 │   └── index.html         <- single page application
 ├── gulp/
 │   ├── tasks/             <- gulp tasks
 │   │   ├── build.js
 │   │   ├── deploy.js
 │   │   ├── jspm.js
+│   │   ├── electron.js
 │   │   ├── other.js
 │   │   └── server.js
 │   └── config.js          <- gulp config
