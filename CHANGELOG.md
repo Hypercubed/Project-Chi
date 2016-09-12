@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Test and build electron apps
+_(none)_
 
 --------------------
+
+## 1.0.0-rc.9 (2016-09-12)
+* Test and build electron apps
 
 ## 1.0.0-rc.9 (2016-09-12)
 * Added on-read-file directive
