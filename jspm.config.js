@@ -74,7 +74,7 @@ SystemJS.config({
     "angular-sanitize": "npm:angular-sanitize@1.5.7",
     "angular-touch": "npm:angular-touch@1.5.7",
     "angular-ui-bootstrap": "npm:angular-ui-bootstrap@1.3.3",
-    "angular-ui-grid": "npm:angular-ui-grid@3.2.5",
+    "angular-ui-grid": "npm:angular-ui-grid@3.2.8",
     "angularjs-slider": "npm:angularjs-slider@2.13.0",
     "animate": "npm:animate.css@3.5.1",
     "assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
@@ -86,7 +86,7 @@ SystemJS.config({
     "blobjs": "github:eligrey/Blob.js@master",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
-    "chi-datapackage": "npm:chi-datapackage@4.0.0",
+    "chi-datapackage": "npm:chi-datapackage@4.0.1",
     "chiasm": "npm:chiasm@0.3.0",
     "chiasm-charts": "npm:chiasm-charts@0.1.5",
     "chiasm-component": "npm:chiasm-component@0.2.3",
@@ -237,11 +237,6 @@ SystemJS.config({
     "npm:angular-marked@1.2.1": {
       "map": {
         "marked": "npm:marked@0.3.6"
-      }
-    },
-    "npm:angular-ui-grid@3.2.5": {
-      "map": {
-        "angular": "npm:angular@1.5.8"
       }
     },
     "npm:angularjs-slider@2.13.0": {
@@ -765,7 +760,7 @@ SystemJS.config({
         "inherits": "npm:inherits@2.0.3",
         "create-ecdh": "npm:create-ecdh@4.0.0",
         "browserify-cipher": "npm:browserify-cipher@1.0.0",
-        "pbkdf2": "npm:pbkdf2@3.0.5",
+        "pbkdf2": "npm:pbkdf2@3.0.6",
         "create-hmac": "npm:create-hmac@1.1.4",
         "browserify-sign": "npm:browserify-sign@4.0.0",
         "public-encrypt": "npm:public-encrypt@4.0.0",
@@ -827,7 +822,7 @@ SystemJS.config({
       "map": {
         "inherits": "npm:inherits@2.0.3",
         "des.js": "npm:des.js@1.0.0",
-        "cipher-base": "npm:cipher-base@1.0.2"
+        "cipher-base": "npm:cipher-base@1.0.3"
       }
     },
     "npm:evp_bytestokey@1.0.0": {
@@ -841,7 +836,7 @@ SystemJS.config({
         "evp_bytestokey": "npm:evp_bytestokey@1.0.0",
         "inherits": "npm:inherits@2.0.3",
         "buffer-xor": "npm:buffer-xor@1.0.3",
-        "cipher-base": "npm:cipher-base@1.0.2"
+        "cipher-base": "npm:cipher-base@1.0.3"
       }
     },
     "npm:create-hash@1.1.2": {
@@ -849,7 +844,7 @@ SystemJS.config({
         "inherits": "npm:inherits@2.0.3",
         "ripemd160": "npm:ripemd160@1.0.1",
         "sha.js": "npm:sha.js@2.4.5",
-        "cipher-base": "npm:cipher-base@1.0.2"
+        "cipher-base": "npm:cipher-base@1.0.3"
       }
     },
     "npm:create-ecdh@4.0.0": {
@@ -876,7 +871,7 @@ SystemJS.config({
         "browserify-aes": "npm:browserify-aes@1.0.6",
         "create-hash": "npm:create-hash@1.1.2",
         "evp_bytestokey": "npm:evp_bytestokey@1.0.0",
-        "pbkdf2": "npm:pbkdf2@3.0.5",
+        "pbkdf2": "npm:pbkdf2@3.0.6",
         "asn1.js": "npm:asn1.js@4.8.0"
       }
     },
@@ -910,11 +905,6 @@ SystemJS.config({
         "bn.js": "npm:bn.js@4.11.6",
         "inherits": "npm:inherits@2.0.3",
         "minimalistic-assert": "npm:minimalistic-assert@1.0.0"
-      }
-    },
-    "npm:cipher-base@1.0.2": {
-      "map": {
-        "inherits": "npm:inherits@2.0.3"
       }
     },
     "npm:hash.js@1.0.3": {
@@ -970,7 +960,7 @@ SystemJS.config({
     },
     "npm:d3-time-format@2.0.2": {
       "map": {
-        "d3-time": "npm:d3-time@1.0.2"
+        "d3-time": "npm:d3-time@1.0.3"
       }
     },
     "npm:readable-stream@2.1.5": {
@@ -1173,27 +1163,37 @@ SystemJS.config({
         "ieee754": "npm:ieee754@1.1.6"
       }
     },
-    "npm:pbkdf2@3.0.5": {
+    "npm:chi-datapackage@4.0.1": {
+      "map": {
+        "jsonpointer": "npm:jsonpointer@4.0.0",
+        "lodash.merge": "npm:lodash.merge@4.6.0",
+        "js-yaml": "npm:js-yaml@3.6.1",
+        "json5": "npm:json5@0.5.0",
+        "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
+        "debug": "npm:debug@2.2.0",
+        "parse-iso-duration": "npm:parse-iso-duration@1.0.0",
+        "crlf-helper": "npm:crlf-helper@0.1.0",
+        "urijs": "npm:urijs@1.18.1",
+        "mime-lookup": "npm:mime-lookup@0.0.2",
+        "babyparse": "npm:babyparse@0.4.6",
+        "cuid": "npm:cuid@1.3.8",
+        "datapackage-identifier": "npm:datapackage-identifier@0.4.2",
+        "d3-time-format": "npm:d3-time-format@2.0.2"
+      }
+    },
+    "npm:pbkdf2@3.0.6": {
       "map": {
         "create-hmac": "npm:create-hmac@1.1.4"
       }
     },
-    "npm:chi-datapackage@4.0.0": {
+    "npm:cipher-base@1.0.3": {
       "map": {
-        "cuid": "npm:cuid@1.3.8",
-        "datapackage-identifier": "npm:datapackage-identifier@0.4.2",
-        "jsonpointer": "npm:jsonpointer@4.0.0",
-        "d3-time-format": "npm:d3-time-format@2.0.2",
-        "lodash.merge": "npm:lodash.merge@4.6.0",
-        "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
-        "parse-iso-duration": "npm:parse-iso-duration@1.0.0",
-        "debug": "npm:debug@2.2.0",
-        "urijs": "npm:urijs@1.18.1",
-        "babyparse": "npm:babyparse@0.4.6",
-        "crlf-helper": "npm:crlf-helper@0.1.0",
-        "json5": "npm:json5@0.5.0",
-        "js-yaml": "npm:js-yaml@3.6.1",
-        "mime-lookup": "npm:mime-lookup@0.0.2"
+        "inherits": "npm:inherits@2.0.3"
+      }
+    },
+    "npm:angular-ui-grid@3.2.8": {
+      "map": {
+        "angular": "npm:angular@1.4.12"
       }
     }
   }

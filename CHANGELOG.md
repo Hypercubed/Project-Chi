@@ -2,7 +2,9 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Updated chi-datapackage to 4.0.1
+* Simplified electron gulp tasks
+* Updated ui-grid
 
 --------------------
 
