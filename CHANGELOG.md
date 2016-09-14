@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+--------------------
+
+## 1.0.0-rc.10 (2016-09-14)
 * Updated chi-datapackage to 4.0.1
 * Simplified electron gulp tasks
 * Updated ui-grid
-
---------------------
 
 ## 1.0.0-rc.9 (2016-09-12)
 * Test and build electron apps
