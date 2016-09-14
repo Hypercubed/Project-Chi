@@ -21,8 +21,8 @@ gulp.task('run-electron-prod', cb => {
 
 gulp.task('electron-packager', cb => {
   packager({
-    dir: './dist/',
-    asar: true,
+    dir: paths.dist,
+    asar: false,
     out: 'builds',
     overwrite: true
   }, cb);
