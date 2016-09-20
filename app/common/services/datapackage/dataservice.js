@@ -78,9 +78,10 @@ export function dataservice ($log, growl) {
     reloadResource: async resource => {
       try {
         Object.assign(resource, await dp.loader.resource(resource));
-        dp.processResource(resource);
+        return dp.processResource(resource);
       } catch (err) {
         $log.error(err);
+        return resource;
       }
     },
     processPackage: async (url, datapackage) => {

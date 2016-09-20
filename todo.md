@@ -2,7 +2,7 @@
 
 _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 
-- [ ] Reduce junk in jspm_packages uploaded to gh-pages
+- [x] Reduce junk in jspm_packages uploaded to gh-pages
 - [ ] Warnings vs. errors in dataservice
 - [ ] modular css?
 - [ ] html minify?
@@ -10,7 +10,7 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 - [ ] Fix printing
 - [ ] Real time example
 - [ ] Version updates
-  - [ ] jspm 0.17 (when released)
+  - [x] jspm 0.17 (when released)
   - [ ] gulp 4.0 (when released)
   - [ ] Angular 2 (when released; typescript?)
   - [ ] d3 v4
@@ -26,3 +26,4 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 - [ ] Schema
   - [ ] Support schemas from URLS
   - [ ] Add schema selector to editor
+- [ ] growl titles
