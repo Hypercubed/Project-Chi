@@ -21,6 +21,6 @@ function runGrowl ($rootScope, $location, growl) {
         rej = String(rej);
       }
     }
-    return growl.error(`Failed to change routes; ${rej}`);
+    return growl.error(rej, {title: 'Failed to change routes'});
   });
 }

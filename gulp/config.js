@@ -13,11 +13,27 @@ import minimist from 'minimist';
 
 import pkg from '../package.json';
 
-const argv = minimist(process.argv.slice(2));
+const argv = minimist(process.argv.slice(2), {
+  boolean: ['debug', 'dev', 'prod', 'bundle', 'open', 'online'],
+  alias: {
+    env: ['environment', 'e'],
+    dev: ['development'],
+    prod: ['production'],
+    dataset: ['d']
+  },
+  default: {
+    bundle: false,  // build dev bundle
+    open: false,
+    dataset: 'dataset/example',
+    port: 9000,
+    online: false,
+    debug: false
+  }
+});
 
 const PROJECT_ROOT = join(__dirname, '..');  // needed so that imports could co-exist with requires (on some edge cases)
 
-const dataSetPath = join(argv.dataset || argv.d || 'dataset/example', '.');
+const dataSetPath = join(argv.dataset, '.');
 const overidesFile = join(PROJECT_ROOT, `${dataSetPath}/gulp/config.js`);
 
 /**
@@ -87,9 +103,9 @@ const config = {
   },
   server: {
     dev: {
-      open: Boolean(argv.open),
-      port: argv.port || 9000,
-      online: Boolean(argv.online),
+      open: argv.open,
+      port: argv.port,
+      online: argv.online,
       server: {
         baseDir: [TMP, `${dataSetPath}/${BASE}`, BASE, './'],
         middleware: (req, res, next) => {
@@ -99,9 +115,9 @@ const config = {
       }
     },
     dist: {
-      open: Boolean(argv.open),
-      port: argv.port || 9000,
-      online: Boolean(argv.online),
+      open: argv.open,
+      port: argv.port,
+      online: argv.online,
       ghostMode: false,
       server: {
         baseDir: DIST,
@@ -120,7 +136,7 @@ const config = {
     } */
   },
   builder: {
-    devBundle: typeof argv.bundle === 'boolean' ? argv.bundle : false,
+    devBundle: argv.bundle,
     bundles: {
       'deps-bundle': `${TMP}/${BUILD} - [${TMP}/**/*] - [${TMP}/**/*!css] - [${TMP}/**/*!text] - [${TMP}/**/*!md] + util`,
       'app-bundle': `${TMP}/${BUILD} - ${TMP}/bundles/deps-bundle.js`
@@ -153,7 +169,7 @@ const config = {
   VERSION_CHI: pkg.version,
   APP_TITLE: 'Project-χ',
   ENV: getEnvironment(),
-  DEBUG: argv.debug || false,
+  DEBUG: argv.debug,
   template: {
     title: 'Project-χ',
     bust: cuid(),
@@ -175,11 +191,17 @@ gutil.log('Running in', gutil.colors.magenta(config.ENV), 'environment');
 export default config;
 
 function getEnvironment () {
-  const base = argv._;
-  const prodKeyword = base.some(o => PRODTASKS.indexOf(o) >= 0);
-  const env = (argv.env || '').toLowerCase();
-  if ((base && prodKeyword) || env === ENVIRONMENTS.PRODUCTION) {
-    return ENVIRONMENTS.PRODUCTION;
+  let env = ENVIRONMENTS.DEVELOPMENT;
+  if (typeof argv.env === 'string') {
+    env = argv.env.toLowerCase();
+  } else if (argv.prod) {
+    env = ENVIRONMENTS.PRODUCTION;
+  } else if (argv.dev) {
+    env = ENVIRONMENTS.DEVELOPMENT;
+  } else if (Array.isArray(argv._)) {
+    if (argv._.some(o => PRODTASKS.indexOf(o) >= 0)) {
+      env = ENVIRONMENTS.PRODUCTION;
+    }
   }
-  return ENVIRONMENTS.DEVELOPMENT;
+  return (env === ENVIRONMENTS.PRODUCTION) ? ENVIRONMENTS.PRODUCTION : ENVIRONMENTS.DEVELOPMENT;
 }

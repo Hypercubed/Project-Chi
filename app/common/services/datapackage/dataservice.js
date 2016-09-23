@@ -18,13 +18,14 @@ export function dataservice ($log, growl) {
     mime: dp.normalize.mime,
     translators: dp.processor.translators,
     index: dp.Normalizer.index,
-    warn: err => {
+    warn: (err, opts) => {
       $log.warn(err);
-      growl.warning(String(err));
+      growl.warning(err.message || String(err), opts);
     },
-    error: err => {
+    error: (err, opts) => {
       $log.error(err);
-      growl.error(String(err));
+      growl.error(err.message || String(err), opts);
+      return Promise.reject(err);
     },
     loadResource: async (datapackage, res) => {
       try {
@@ -34,8 +35,7 @@ export function dataservice ($log, growl) {
         }
       } catch (err) {
         const msg = (err.status) ? `${err.statusText}; ${err.data}` : String(err);
-        dataservice.error(msg);
-        throw ono(err, msg);
+        return dataservice.error(msg, {title: 'Error loading resource'});
       }
       return dataservice.processResource(res);
     },
@@ -45,28 +45,32 @@ export function dataservice ($log, growl) {
     processResource: res => {
       dp.processResource(res);
       if (res.$error) {
-        $log.warn(res.$error);
-        growl.warning(String(res.$error));
+        res.$error.message = res.name;
+        dataservice.warn(res.$error, {title: 'Error processing resource'});
         return Object.assign(res, {$valid: false});
       }
       return res;
     },
-    loadPackage: async url => {
+    loadPackage: async (url, growl = false) => {
       try {
         const datapackage = await dp.load(url);
-        datapackage.resourcesByName = datapackage.$resourcesByName;
-        datapackage.resources.forEach(r => {
-          if (r.$error) {
-            $log.warn(r.$error);
-            growl.warning(String(r.$error));
+        datapackage.resourcesByName = datapackage.$resourcesByName;  // WARN: for backwords compat
+        datapackage.resources.forEach(res => {
+          if (res.$error) {
+            dataservice.warn(res.$error);
+            Object.assign(res, {$valid: false});
           }
         });
         return datapackage;
       } catch (err) {
-        if (err.statusText && err.data) {
-          throw ono('Error loading dataPackage; %s; %s', err.statusText, err.data);
+        const msg = 'Error loading dataPackage' +
+          (err.statusText && err.data) ?
+          `${err.statusText}; ${err.data}` :
+          String(err);
+        if (growl) {
+          return dataservice.error(msg);
         }
-        throw ono(err, 'Error loading dataPackage;');
+        return Promise.reject(msg);
       }
     },
     normalizePackage: (url, datapackage) => {
@@ -81,7 +85,7 @@ export function dataservice ($log, growl) {
         return dp.processResource(resource);
       } catch (err) {
         $log.error(err);
-        return resource;
+        return resource;  // reject?
       }
     },
     processPackage: async (url, datapackage) => {
