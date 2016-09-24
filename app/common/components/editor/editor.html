@@ -4,7 +4,6 @@
   </alert>
 </div>
 
-
 <section class="datapckage-editor-container hidden-print" style="position: relative">
 
   <div class="pull-right panel-toggle">
@@ -72,14 +71,27 @@
           </div>
           <div class="row">
             <div class="col-xs-12">
+              {{tab.type}}
               <textarea class="editor"
                 resource="tab"
-                datapackage="$ctrl.data"
                 name="input{{$index}}"
+                ui-codemirror
+                ng-model="tab.content"
+                ng-model-options="{ updateOn: 'submit', debounce: 200, getterSetter: false }"
+                ng-change="$ctrl.change(tab, userForm['input' + $index])"
+                ui-codemirror-opts="{
+                  lineNumbers: true,
+                  lineWrapping: false,
+                  allowDropFileTypes: false,
+                  mode: 'json',
+                  onLoad: $ctrl.ui.codemirrorLoaded
+                }"
+                ui-refresh="$ctrl.ui.count"
+                >
+                <!-- ui-codemirror
                 ng-model="tab.content"
                 ng-model-options="{ updateOn: 'submit', debounce: 200 }"
                 ng-change="$ctrl.change(tab, userForm['input' + $index])"
-                ui-codemirror
                 ui-codemirror-opts="{
                   lineNumbers: true,
                   lineWrapping: false,
@@ -87,7 +99,9 @@
                   allowDropFileTypes: false,
                   onLoad: $ctrl.ui.codemirrorLoaded
                 }"
-                ui-refresh="$ctrl.ui.count"></textarea>
+                ui-refresh="$ctrl.ui.count"
+                datapackage="$ctrl.data" -->
+              </textarea>
                 <div class="col-xs-12 bg-danger">
                   <ul class="list-unstyled">
                     <li ng-repeat="error in tab.errors | limitTo:10">

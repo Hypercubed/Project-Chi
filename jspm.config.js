@@ -134,6 +134,7 @@ SystemJS.config({
     "mime-lookup": "npm:mime-lookup@0.0.2",
     "ml-matrix": "github:Hypercubed/matrix@babel2",
     "ml-pca": "npm:ml-pca@1.1.1",
+    "mobx": "npm:mobx@2.5.1",
     "model-js": "npm:model-js@0.2.5",
     "module": "github:jspm/nodelibs-module@0.2.0-alpha",
     "mongodb-extended-json": "npm:mongodb-extended-json@1.6.3",

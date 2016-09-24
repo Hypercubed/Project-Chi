@@ -16,7 +16,7 @@
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-preset-es2015": "^6.14.0",
-    "browser-sync": "^2.15.0",
+    "browser-sync": "^2.16.0",
     "chg": "^0.3.2",
     "cuid": "^1.3.8",
     "deep-extend": "^0.4.1",
@@ -119,6 +119,7 @@
       "mime-lookup": "npm:mime-lookup@^0.0.2",
       "ml-matrix": "github:Hypercubed/matrix@babel2",
       "ml-pca": "npm:ml-pca@1.1.1",
+      "mobx": "npm:mobx@^2.5.1",
       "model-js": "npm:model-js@0.2.5",
       "mongodb-extended-json": "npm:mongodb-extended-json@^1.6.3",
       "ono": "npm:ono@^2.2.1",
@@ -334,7 +335,7 @@
     "ignores": [
       "app/jspm_packages/**",
       "app/system.config.js",
-      "*.js",
+      "./*.js",
       "dataset/**",
       "!dataset/example/**"
     ],

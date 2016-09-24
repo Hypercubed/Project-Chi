@@ -1,8 +1,9 @@
 /* global FileReader, Blob */
 /* eslint max-params: 0 */
 import angular from 'angular';
+import {observable, extendObservable, asFlat, toJS, autorun, isObservable} from 'mobx';
 
-// import dp from 'common/services/datapackage/datapackage';
+import dp from 'common/services/datapackage/datapackage';
 
 controller.$inject = ['$scope', '$cookies', '$timeout', '$log', 'growl', 'dataService'];
 export default function controller ($scope, $cookies, $timeout, $log, growl, dataservice) {
@@ -16,22 +17,33 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
 
   const enableFileDownload = hasPackage && hasResources;
 
-  // Don't do this
-  /* $scope.$watch('$ctrl.options.enableSvgDownload', newValue => {
-    $ctrl.enableSvgDownload = newValue;
-  });
+  if (hasPackage) {
+    // dataservice.makePackageObservable($ctrl.options.data);
+  }
 
-  $scope.$watch('$ctrl.options.enablePngDownload', newValue => {
-    $ctrl.enablePngDownload = newValue;
-  }); */
+  console.log($ctrl.options.data);
 
   return Object.assign($ctrl, {
-    // "internal"
+    // internal state
     activeTab: 0,
-    resources: hasResources ? angular.copy($ctrl.options.data.resources) : [],  // changes are made here first
+    resources: hasResources ? angular.copy($ctrl.options.data.resources) : [],
     panel: {
       open: false
     },
+
+    // user config defaults
+    enableOpen: hasPackage,
+    enableFileDownload,
+    enableSvgDownload: true,
+    enablePngDownload: !isSafari && !isIE,
+    enableAdd: true,
+    enableDrop: false,
+    enableProtected: false,
+    types: Object.keys(dataservice.translators),
+    defaultFormat: hasResources ? $ctrl.options.data.resources[0].format : 'txt',
+    defaultSchema: hasResources ? $ctrl.options.data.resources[0].schema : undefined,
+
+    // methodsz
     change: updateResource,
     remove: removeResourceByIndex,
     rename: resourceRenamed,
@@ -42,6 +54,7 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
     cancel,  // cancel changes, refresh from data package
     tooglePanel,
     play,
+
     ui: {
       refresh: () => {
         $ctrl.ui.count++;
@@ -56,19 +69,7 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
     },
 
     // user config event
-    onChange: () => {},  // ccalled when datapackage updates
-
-    // user config defaults
-    enableOpen: hasPackage,
-    enableFileDownload,
-    enableSvgDownload: true,
-    enablePngDownload: !isSafari && !isIE,
-    enableAdd: true,
-    enableDrop: false,
-    enableProtected: false,
-    types: Object.keys(dataservice.translators),
-    defaultFormat: hasResources ? $ctrl.options.data.resources[0].format : 'txt',
-    defaultSchema: hasResources ? $ctrl.options.data.resources[0].schema : undefined
+    onChange: () => {},  // called when datapackage updates
 
     // svgsFrom: '#chart' // TODO
   }, this.options);
@@ -76,7 +77,7 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
   function cancel (form) {
     $log.debug('cancel');
     form.$rollbackViewValue();
-    $ctrl.resources = hasPackage ? angular.copy($ctrl.options.data.resources) : [];
+    $ctrl.resources = hasPackage ? angular.copy($ctrl.options.data.resources.slice()) : [];
     form.$setPristine();
   }
 
@@ -84,8 +85,13 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
     if (form.$valid) {
       $log.debug('submit');
       if (hasPackage) {
-        $ctrl.options.data.resources = $ctrl.resources;
-        $ctrl.options.data.$resourcesByName = dataservice.index($ctrl.options.data);
+        if (isObservable($ctrl.options.data.resources)) {
+          const resources = $ctrl.resources.map(dataservice.makeResourceObservable);
+          $ctrl.options.data.resources.replace(resources);
+        } else {
+          $ctrl.options.data.resources = $ctrl.resources;
+          $ctrl.options.data.$resourcesByName = $ctrl.options.data.resourcesByName = dataservice.index($ctrl.options.data);
+        }
       }
       $timeout(() => {
         $ctrl.onChange();
@@ -140,8 +146,8 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
   function updateResource (resource, form) {
     $log.debug('updateResource', $scope);
 
-    dataservice.normalizeResource($ctrl.data, resource);
-    dataservice.processResource(resource);
+    // dataservice.normalizeResource($ctrl.data, resource);
+    // dataservice.processResource(resource);
 
     const hasError = Boolean(resource.$error) || (resource.errors && resource.errors.length > 0);
 

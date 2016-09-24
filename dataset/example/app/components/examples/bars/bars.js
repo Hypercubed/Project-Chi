@@ -1,20 +1,38 @@
 import d3 from 'd3';
+import {autorun} from 'mobx';
+
 import BarChart from './bars-chart';
 
-function controller () {
+controller.$inject = ['$log', 'dataService'];
+function controller ($log, dataservice) {
   const $ctrl = this;
   const chart = new BarChart();
 
   return Object.assign($ctrl, {
     editorOptions: {
       data: $ctrl.dataPackage,
-      onChange: draw
+      onChange: () => {
+        $log.debug('change call back');
+        $log.debug($ctrl.dataPackage);
+      }
     },
-    draw,
-    $onInit: draw
+    draw: () => {
+      $log.debug('draw call back');
+    },
+    $onInit
   });
 
+  function $onInit () {
+    $log.debug('$onInit');
+
+    dataservice.makePackageObservable($ctrl.dataPackage);
+
+    autorun(draw);
+  }
+
   function draw () {
+    console.log($ctrl.dataPackag);
+
     const data = $ctrl.dataPackage.resources
       .filter(d => Boolean(d.data))
       .map(d => d.data);
