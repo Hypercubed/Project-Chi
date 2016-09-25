@@ -70,7 +70,7 @@ function generateTreemap () {
         callback(null, file);
       })
       .catch(err => {
-        console.log(err);
+        console.error(err); // eslint-disable-line no-console
         callback(err);
       });
   });

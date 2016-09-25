@@ -1,7 +1,7 @@
-import ono from 'ono';
-import dp from './datapackage';
+// import ono from 'ono';
+import {toJS, extendObservable, asFlat, isObservable, autorun} from 'mobx';
 
-import {observable, extendObservable, asFlat, toJS, autorun, isObservable} from 'mobx';
+import dp from './datapackage';
 
 // window.process = process;  // annoying
 run.$inject = ['$http'];
@@ -16,7 +16,6 @@ export function run ($http) {
 
 dataservice.$inject = ['$log', 'growl'];
 export function dataservice ($log, growl) {
-
   if (!System.production) {
     const processResource = dp.processor.resource.bind(dp.processor);
     dp.processor.resource = resource => {
@@ -28,11 +27,12 @@ export function dataservice ($log, growl) {
     dp.Normalizer.index = datapackage => {
       $log.debug('Re-indexing', datapackage.name);
       return index(datapackage);
-    }
+    };
   }
 
   const dataservice = {
     dp,
+    normalize: dp.normalize,
     mime: dp.normalize.mime,
     translators: dp.processor.translators,
     index: dp.Normalizer.index,
@@ -48,13 +48,15 @@ export function dataservice ($log, growl) {
     loadPackage: async(url, growl = false) => {
       let datapackage = await __loadPackageJson(url, growl);
       datapackage = await __loadPackageResources(datapackage, growl);
-      return __processPackageResources(datapackage, growl);
+      return dataservice.makePackageObservable(datapackage);
+      // return __processPackageResources(datapackage, growl);
     },
     processPackage: async (url, datapackage, growl = false) => {
       datapackage = __normalizePackage(url, datapackage);
       datapackage = __normalizePackageResourcesAndSchema(datapackage);
       await __loadPackageResources(datapackage, growl);
-      return __processPackageResources(datapackage, growl);
+      return dataservice.makePackageObservable(datapackage);
+      // return __processPackageResources(datapackage, growl);
     },
     loadResource: async (datapackage, res) => {
       try {
@@ -87,32 +89,51 @@ export function dataservice ($log, growl) {
         return resource;
       }
 
-      return extendObservable(resource, {
-        content: resource.content,
-        mediatype: resource.mediatype,
-        name: resource.name,
-        get data() {
-          const r = dp.processor.resource(resource);
-          resource.$error = r.$error;
-          resource.errors = r.errors;
-          return r.data;
+      if (typeof resource.content !== 'undefined' && typeof resource.data === 'undefined') {
+        extendObservable(resource, {
+          content: resource.content,
+          mediatype: resource.mediatype,
+          name: resource.name,
+          get __data__ () {
+            return dp.processor.resource(toJS(resource));
+          },
+          get data () {
+            return resource.__data__.data;
+          },
+          get $error () {
+            return resource.__data__.$error;
+          },
+          get errors () {
+            return resource.__data__.errors;
+          }
+        });
+      }
+
+      autorun(() => {
+        if (resource.$error) {
+          resource.$error.message = resource.name;
+          dataservice.warn(resource.$error, {title: 'Error processing resource'});
+          resource.$valid = false;
         }
+        $log.debug(`${resource.name} updated`);
       });
+
+      return resource;
     },
     makePackageObservable: datapackage => {
       if (isObservable(datapackage)) {
         return datapackage;
       }
-      extendObservable(datapackage, {
+
+      return extendObservable(datapackage, {
         resources: asFlat(datapackage.resources.map(dataservice.makeResourceObservable)),
-        get $resourcesByName() {
-          return dp.Normalizer.index(datapackage)
+        get resourcesByName () {
+          return dp.Normalizer.index(datapackage);
         },
-        get resourcesByName() {
-          this.$resourcesByName;
+        get $resourcesByName () {
+          return datapackage.resourcesByName();
         }
       });
-      return datapackage;
     }
   };
 
@@ -126,7 +147,7 @@ export function dataservice ($log, growl) {
     return res;
   }
 
-  function __processPackageResources (datapackage, growl = false) {
+  /* function __processPackageResources (datapackage, growl = false) {
     try {
       datapackage.resources = datapackage.resources.map(r => __processResource(r));
       datapackage.resourcesByName = datapackage.$resourcesByName = dp.Normalizer.index(datapackage); // WARN: for backwords compat
@@ -141,7 +162,7 @@ export function dataservice ($log, growl) {
       }
       throw ono(err, msg);
     }
-  }
+  } */
 
   async function __loadPackageResources (datapackage, growl = false) {
     try {
@@ -158,7 +179,7 @@ export function dataservice ($log, growl) {
     }
   }
 
-  function __normalizePackage(url, datapackage) {
+  function __normalizePackage (url, datapackage) {
     if (arguments.length === 2) {
       Object.assign(datapackage, {url});
     } else {
@@ -167,7 +188,7 @@ export function dataservice ($log, growl) {
     return dp.normalizePackage(datapackage);
   }
 
-  function __normalizePackageResourcesAndSchema(datapackage) {
+  function __normalizePackageResourcesAndSchema (datapackage) {
     datapackage = dp.normalizeResources(datapackage);
     return dp.normalizeSchemas(datapackage);
   }

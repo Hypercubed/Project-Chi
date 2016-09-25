@@ -1,0 +1,22 @@
+mode: vega-lite
+spec:
+  width: 600
+  height: 200
+  padding:
+    top: 10
+    left: 30
+    bottom: 30
+    right: 10
+  data: {}
+  mark: bar
+  encoding:
+    x:
+      field: letter
+      type: ordinal
+      axis:
+        title: Letter
+    y:
+      field: frequency
+      type: linear
+      axis:
+        title: Frequency

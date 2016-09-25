@@ -4,9 +4,9 @@ import 'angular-downloadsvg-directive';
 const module = angular
   .module('svgDownloadDropdown', ['hc.downloader'])
   .directive('svgDownloadDropdown', () => ({link}))
-  .run(['$rootScope', 'cfpLoadingBar', function ($rootScope, cfpLoadingBar) {
+  .run(['$rootScope', 'cfpLoadingBar', '$log', function ($rootScope, cfpLoadingBar, $log) {
     $rootScope.$on('$svgSaver:start', () => {
-      console.log('$svgSaver:start');
+      $log.debug('$svgSaver:start');
       cfpLoadingBar.start();
     });
 

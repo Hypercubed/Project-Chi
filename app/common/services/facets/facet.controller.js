@@ -77,7 +77,7 @@ function controller ($scope, $log) {
       setScale();
       u.onFilter(setScale);
     })
-    .catch(console.error.bind(console));
+    .catch(console.error.bind(console));  // eslint-disable-line no-console
   }
 
   function setScale () {
@@ -108,7 +108,7 @@ function controller ($scope, $log) {
   function toggle (item) {
     $ctrl.facet.universe
       .filter($ctrl.facet.key, item)
-      .catch(console.error.bind(console));
+      .catch(console.error.bind(console)); // eslint-disable-line no-console
   }
 
   function toggleLimit () {

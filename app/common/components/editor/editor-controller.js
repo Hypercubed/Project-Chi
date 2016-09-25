@@ -1,9 +1,9 @@
 /* global FileReader, Blob */
 /* eslint max-params: 0 */
-import angular from 'angular';
-import {observable, extendObservable, asFlat, toJS, autorun, isObservable} from 'mobx';
+// import angular from 'angular';
+import {isObservable} from 'mobx';
 
-import dp from 'common/services/datapackage/datapackage';
+// import dp from 'common/services/datapackage/datapackage';
 
 controller.$inject = ['$scope', '$cookies', '$timeout', '$log', 'growl', 'dataService'];
 export default function controller ($scope, $cookies, $timeout, $log, growl, dataservice) {
@@ -18,15 +18,13 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
   const enableFileDownload = hasPackage && hasResources;
 
   if (hasPackage) {
-    // dataservice.makePackageObservable($ctrl.options.data);
+    dataservice.makePackageObservable($ctrl.options.data);
   }
-
-  console.log($ctrl.options.data);
 
   return Object.assign($ctrl, {
     // internal state
     activeTab: 0,
-    resources: hasResources ? angular.copy($ctrl.options.data.resources) : [],
+    resources: hasResources ? $ctrl.options.data.resources.slice() : [],
     panel: {
       open: false
     },
@@ -44,9 +42,9 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
     defaultSchema: hasResources ? $ctrl.options.data.resources[0].schema : undefined,
 
     // methodsz
-    change: updateResource,
+    // change: updateResource,
     remove: removeResourceByIndex,
-    rename: resourceRenamed,
+    // rename: resourceRenamed,
     newFile: addResource,
     dropped: fileDropped,
     droppedOver: fileDroppedOver,
@@ -69,7 +67,7 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
     },
 
     // user config event
-    onChange: () => {},  // called when datapackage updates
+    onChange: () => {}  // called when datapackage updates
 
     // svgsFrom: '#chart' // TODO
   }, this.options);
@@ -77,7 +75,7 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
   function cancel (form) {
     $log.debug('cancel');
     form.$rollbackViewValue();
-    $ctrl.resources = hasPackage ? angular.copy($ctrl.options.data.resources.slice()) : [];
+    $ctrl.resources = hasPackage ? $ctrl.options.data.resources.slice() : [];
     form.$setPristine();
   }
 
@@ -114,8 +112,9 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
     $log.debug('fileDroppedOver', $index, file);
     const resource = createNewResource(file.name, file.content);
     $ctrl.activeTab = $index;
-    $ctrl.resources.splice($index, 1, resource);
-    updateResource(resource);
+    $ctrl.resources[$index] = resource;
+    // $ctrl.resources.splice($index, 1, resource);
+    // updateResource(resource);
     $ctrl.ui.refresh();
   }
 
@@ -128,7 +127,8 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
     $log.debug('addResource', name, content);
     const resource = createNewResource(name, content);
     $ctrl.resources.push(resource);
-    updateResource(resource);
+    // updateResource(resource);
+    // console.log($ctrl.resources);
     $timeout(() => {
       $ctrl.ui.refresh();
       $ctrl.activeTab = $ctrl.resources.length - 1;
@@ -143,8 +143,8 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
     tooglePanel();
   }
 
-  function updateResource (resource, form) {
-    $log.debug('updateResource', $scope);
+  /* function updateResource (resource, form) {
+    $log.debug('updateResource');
 
     // dataservice.normalizeResource($ctrl.data, resource);
     // dataservice.processResource(resource);
@@ -154,7 +154,7 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
     if (form) {
       form.$setValidity('processed', !hasError);
     }
-  }
+  } */
 
   function removeResourceByIndex (i) {
     if (i > -1) {
@@ -162,13 +162,13 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
     }
   }
 
-  function resourceRenamed (resource) {
+  /* function resourceRenamed (resource) {
     if (!resource.name) {
       return;
     }
     resource.path = resource.name;
     updateResource(resource);
-  }
+  } */
 
   function tooglePanel () {
     $ctrl.panel.open = !$ctrl.panel.open;

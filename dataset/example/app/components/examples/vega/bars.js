@@ -1,17 +1,20 @@
 import vg from 'vega/vega';
 import vl from 'vega-lite/vega-lite';
+import {autorun} from 'mobx';
 
-controller.$inject = ['$log'];
-function controller ($log) {
+controller.$inject = ['$log', 'dataService'];
+function controller ($log, dataService) {
   const $ctrl = this;
 
   return Object.assign($ctrl, {
     editorOptions: {
-      data: $ctrl.dataPackage,
-      onChange: draw
+      data: $ctrl.dataPackage
     },
-    draw,
-    $onInit: draw
+    $onInit: () => {
+      $log.debug('$onInit');
+      dataService.makePackageObservable($ctrl.dataPackage);
+      autorun(draw);
+    }
   });
 
   function draw () {

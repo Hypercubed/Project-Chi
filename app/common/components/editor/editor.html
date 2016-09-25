@@ -71,7 +71,6 @@
           </div>
           <div class="row">
             <div class="col-xs-12">
-              {{tab.type}}
               <textarea class="editor"
                 resource="tab"
                 name="input{{$index}}"
@@ -83,7 +82,7 @@
                   lineNumbers: true,
                   lineWrapping: false,
                   allowDropFileTypes: false,
-                  mode: 'json',
+                  mode: tab.format,
                   onLoad: $ctrl.ui.codemirrorLoaded
                 }"
                 ui-refresh="$ctrl.ui.count"

@@ -333,13 +333,15 @@
       "browser"
     ],
     "ignores": [
-      "app/jspm_packages/**",
-      "app/system.config.js",
-      "./*.js",
+      "**/jspm_packages/**",
+      ".publish/**",
       "dataset/**",
-      "!dataset/example/**"
+      ".tmp/**",
+      "builds/**",
+      "jspm.**.js"
     ],
     "rules": {
+      "no-console": "error",
       "import/no-extraneous-dependencies": 0,
       "space-before-function-paren": [
         2,
