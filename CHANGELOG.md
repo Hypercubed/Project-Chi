@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Now using chi-datapackage with mobx data store
 
 --------------------
 

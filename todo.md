@@ -27,3 +27,6 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
   - [ ] Support schemas from URLS
   - [ ] Add schema selector to editor
 - [ ] growl titles
+- [ ] dataservice: growl -> options.growl
+- [ ] dataservice: option.readOnly
+- [ ] Cancel should restore state on error, save last valid

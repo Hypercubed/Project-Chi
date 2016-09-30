@@ -1,7 +1,5 @@
 mode: vega-lite
 spec:
-  width: 600
-  height: 200
   padding:
     top: 10
     left: 30

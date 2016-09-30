@@ -24,19 +24,22 @@ function controller () {
   function draw () {
     $el.empty();
 
-    const data = fasta.parse($ctrl.dataPackage.resources[0].content);
+    $ctrl.dataPackage.resources
+      .filter(r => r.format === 'fasta')
+      .forEach(r => {
+        fasta.parse(r.content)
+          .forEach(d => {
+            const $fe = angular.element(`
+              <div>
+                <h3>${d.name}</h3>
+                <biovisexample></biovisexample>
+              </div>`
+            );
 
-    data.forEach(d => {
-      const $fe = angular.element(`
-        <div>
-          <h3>${d.name}</h3>
-          <biovisexample></biovisexample>
-        </div>`
-      );
-
-      biovisexample({el: $fe.find('biovisexample')[0], sequence: d.seq});
-      $el.append($fe);
-    });
+            biovisexample({el: $fe.find('biovisexample')[0], sequence: d.seq});
+            $el.append($fe);
+          });
+      });
   }
 }
 

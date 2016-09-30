@@ -1,11 +1,15 @@
 /* Note, must import chi-datapackage/dist because SystemJS does not support mixed ES6/CJS modules */
 
-const DataPackageService = require('chi-datapackage/dist/service');
+const store = require('chi-datapackage/dist/store');
 const Normalizer = require('chi-datapackage/dist/normalizer');
 
-const dataPackageService = new DataPackageService();
+const dataPackageService = store.dataPackageService;
 
-dataPackageService.mime = dataPackageService.normalize.mime;
 dataPackageService.Normalizer = Normalizer;
+dataPackageService.Resource = store.Resource;
+dataPackageService.Package = store.Package;
+dataPackageService.makeResource = store.makeResource;
+dataPackageService.makePackage = store.makePackage;
+dataPackageService.mime = dataPackageService.normalize.mime;
 
 module.exports = dataPackageService;

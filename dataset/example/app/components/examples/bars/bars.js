@@ -14,12 +14,12 @@ function controller ($log, dataService) {
     },
     $onInit () {
       $log.debug('$onInit');
-      dataService.makePackageObservable($ctrl.dataPackage);
       autorun(draw);
     }
   });
 
   function draw () {
+    $log.debug('draw');
     const data = $ctrl.dataPackage.resources
       .filter(d => Boolean(d.data))
       .map(d => d.data);

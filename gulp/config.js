@@ -81,8 +81,8 @@ const config = {
       'jspm_packages/npm/{angular-growl-v2*,angular-ui-grid*,font-awesome*,intro.js*}/**/*.{svg,png,eot,ttf,gif,wot,woff,woff2}'
     ],
     data: [  // these are copied to paths.dist
-      `${BASE}/{components,common,assets,bundles}/**/*.{json,csv,tsv,txt}`,
-      `${dataSetPath}/${BASE}/{components,common,assets,bundles}/**/*.{json,csv,tsv,txt}`
+      `${BASE}/{components,common,assets,bundles}/**/*.{json,csv,tsv,txt,yaml}`,
+      `${dataSetPath}/${BASE}/{components,common,assets,bundles}/**/*.{json,csv,tsv,txt,yaml}`
     ],
     templates: [  // these are copied to paths.temp and paths.dist, but modified by the gulp-template task
       `${BASE}/*.html`,

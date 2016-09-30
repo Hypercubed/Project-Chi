@@ -17,9 +17,9 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
 
   const enableFileDownload = hasPackage && hasResources;
 
-  if (hasPackage) {
+  /* if (hasPackage) {
     dataservice.makePackageObservable($ctrl.options.data);
-  }
+  } */
 
   return Object.assign($ctrl, {
     // internal state
@@ -75,7 +75,11 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
   function cancel (form) {
     $log.debug('cancel');
     form.$rollbackViewValue();
-    $ctrl.resources = hasPackage ? $ctrl.options.data.resources.slice() : [];
+    if (hasPackage) {
+      $ctrl.resources = $ctrl.options.data.resources.slice();
+    } else {
+      $ctrl.resources = [];
+    }
     form.$setPristine();
   }
 
@@ -84,8 +88,10 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
       $log.debug('submit');
       if (hasPackage) {
         if (isObservable($ctrl.options.data.resources)) {
-          const resources = $ctrl.resources.map(dataservice.makeResourceObservable);
-          $ctrl.options.data.resources.replace(resources);
+          $ctrl.options.data.replaceResources($ctrl.resources);
+
+          // const resources = $ctrl.resources.map(r => dataservice.makeResourceObservable($ctrl.options.data, r));
+          // $ctrl.options.data.resources.replace(resources);
         } else {
           $ctrl.options.data.resources = $ctrl.resources;
           $ctrl.options.data.$resourcesByName = $ctrl.options.data.resourcesByName = dataservice.index($ctrl.options.data);

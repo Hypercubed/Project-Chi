@@ -86,7 +86,7 @@
       "biojs-vis-example": "npm:biojs-vis-example@^0.1.4",
       "blobjs": "github:eligrey/Blob.js@master",
       "bootstrap": "github:twbs/bootstrap@^3.3.6",
-      "chi-datapackage": "npm:chi-datapackage@^4.0.1",
+      "chi-datapackage": "npm:chi-datapackage@^5.0.0",
       "chiasm": "npm:chiasm@^0.3.0",
       "chiasm-charts": "npm:chiasm-charts@^0.1.5",
       "chiasm-component": "npm:chiasm-component@^0.2.3",
@@ -119,7 +119,7 @@
       "mime-lookup": "npm:mime-lookup@^0.0.2",
       "ml-matrix": "github:Hypercubed/matrix@babel2",
       "ml-pca": "npm:ml-pca@1.1.1",
-      "mobx": "npm:mobx@^2.5.1",
+      "mobx-utils": "npm:mobx-utils@^1.1.0",
       "model-js": "npm:model-js@0.2.5",
       "mongodb-extended-json": "npm:mongodb-extended-json@^1.6.3",
       "ono": "npm:ono@^2.2.1",
@@ -161,6 +161,7 @@
       "jodid25519": "npm:jodid25519@^1.0.0",
       "jsbn": "npm:jsbn@0.1",
       "jspm/nodelibs-assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
+      "mobx": "npm:mobx@^2.4.2",
       "module": "github:jspm/nodelibs-module@^0.2.0-alpha",
       "net": "github:jspm/nodelibs-net@^0.2.0-alpha",
       "os": "github:jspm/nodelibs-os@^0.2.0-alpha",
@@ -341,7 +342,7 @@
       "jspm.**.js"
     ],
     "rules": {
-      "no-console": "error",
+      "no-console": "warn",
       "import/no-extraneous-dependencies": 0,
       "space-before-function-paren": [
         2,
@@ -350,7 +351,17 @@
           "named": "always"
         }
       ],
-      "no-warning-comments": 0,
+      "no-warning-comments": [
+        1,
+        {
+          "terms": [
+            "todo",
+            "fixme",
+            "xxx"
+          ],
+          "location": "start"
+        }
+      ],
       "babel/new-cap": [
         2,
         {

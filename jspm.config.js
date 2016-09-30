@@ -86,7 +86,7 @@ SystemJS.config({
     "blobjs": "github:eligrey/Blob.js@master",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
-    "chi-datapackage": "npm:chi-datapackage@4.0.1",
+    "chi-datapackage": "npm:chi-datapackage@5.0.0",
     "chiasm": "npm:chiasm@0.3.0",
     "chiasm-charts": "npm:chiasm-charts@0.1.5",
     "chiasm-component": "npm:chiasm-component@0.2.3",
@@ -134,7 +134,8 @@ SystemJS.config({
     "mime-lookup": "npm:mime-lookup@0.0.2",
     "ml-matrix": "github:Hypercubed/matrix@babel2",
     "ml-pca": "npm:ml-pca@1.1.1",
-    "mobx": "npm:mobx@2.5.1",
+    "mobx": "npm:mobx@2.5.2",
+    "mobx-utils": "npm:mobx-utils@1.1.0",
     "model-js": "npm:model-js@0.2.5",
     "module": "github:jspm/nodelibs-module@0.2.0-alpha",
     "mongodb-extended-json": "npm:mongodb-extended-json@1.6.3",
@@ -761,7 +762,7 @@ SystemJS.config({
         "inherits": "npm:inherits@2.0.3",
         "create-ecdh": "npm:create-ecdh@4.0.0",
         "browserify-cipher": "npm:browserify-cipher@1.0.0",
-        "pbkdf2": "npm:pbkdf2@3.0.6",
+        "pbkdf2": "npm:pbkdf2@3.0.8",
         "create-hmac": "npm:create-hmac@1.1.4",
         "browserify-sign": "npm:browserify-sign@4.0.0",
         "public-encrypt": "npm:public-encrypt@4.0.0",
@@ -800,7 +801,7 @@ SystemJS.config({
         "bn.js": "npm:bn.js@4.11.6",
         "browserify-rsa": "npm:browserify-rsa@4.0.1",
         "parse-asn1": "npm:parse-asn1@5.0.0",
-        "elliptic": "npm:elliptic@6.3.1"
+        "elliptic": "npm:elliptic@6.3.2"
       }
     },
     "npm:browserify-cipher@1.0.0": {
@@ -851,7 +852,7 @@ SystemJS.config({
     "npm:create-ecdh@4.0.0": {
       "map": {
         "bn.js": "npm:bn.js@4.11.6",
-        "elliptic": "npm:elliptic@6.3.1"
+        "elliptic": "npm:elliptic@6.3.2"
       }
     },
     "npm:diffie-hellman@5.0.2": {
@@ -872,8 +873,8 @@ SystemJS.config({
         "browserify-aes": "npm:browserify-aes@1.0.6",
         "create-hash": "npm:create-hash@1.1.2",
         "evp_bytestokey": "npm:evp_bytestokey@1.0.0",
-        "pbkdf2": "npm:pbkdf2@3.0.6",
-        "asn1.js": "npm:asn1.js@4.8.0"
+        "pbkdf2": "npm:pbkdf2@3.0.8",
+        "asn1.js": "npm:asn1.js@4.8.1"
       }
     },
     "npm:sha.js@2.4.5": {
@@ -893,21 +894,6 @@ SystemJS.config({
         "brorand": "npm:brorand@1.0.6"
       }
     },
-    "npm:elliptic@6.3.1": {
-      "map": {
-        "bn.js": "npm:bn.js@4.11.6",
-        "inherits": "npm:inherits@2.0.3",
-        "brorand": "npm:brorand@1.0.6",
-        "hash.js": "npm:hash.js@1.0.3"
-      }
-    },
-    "npm:asn1.js@4.8.0": {
-      "map": {
-        "bn.js": "npm:bn.js@4.11.6",
-        "inherits": "npm:inherits@2.0.3",
-        "minimalistic-assert": "npm:minimalistic-assert@1.0.0"
-      }
-    },
     "npm:hash.js@1.0.3": {
       "map": {
         "inherits": "npm:inherits@2.0.3"
@@ -915,13 +901,8 @@ SystemJS.config({
     },
     "npm:js-yaml@3.6.1": {
       "map": {
-        "argparse": "npm:argparse@1.0.7",
+        "argparse": "npm:argparse@1.0.9",
         "esprima": "npm:esprima@2.7.3"
-      }
-    },
-    "npm:argparse@1.0.7": {
-      "map": {
-        "sprintf-js": "npm:sprintf-js@1.0.3"
       }
     },
     "github:chiasm-project/chiasm-layout@0.3.0": {
@@ -945,7 +926,7 @@ SystemJS.config({
     },
     "npm:isomorphic-fetch@2.2.1": {
       "map": {
-        "node-fetch": "npm:node-fetch@1.6.1",
+        "node-fetch": "npm:node-fetch@1.6.3",
         "whatwg-fetch": "npm:whatwg-fetch@1.0.0"
       }
     },
@@ -961,7 +942,7 @@ SystemJS.config({
     },
     "npm:d3-time-format@2.0.2": {
       "map": {
-        "d3-time": "npm:d3-time@1.0.3"
+        "d3-time": "npm:d3-time@1.0.4"
       }
     },
     "npm:readable-stream@2.1.5": {
@@ -1146,12 +1127,6 @@ SystemJS.config({
         "builtin-status-codes": "npm:builtin-status-codes@2.0.0"
       }
     },
-    "npm:node-fetch@1.6.1": {
-      "map": {
-        "is-stream": "npm:is-stream@1.1.0",
-        "encoding": "npm:encoding@0.1.12"
-      }
-    },
     "github:jspm/nodelibs-buffer@0.2.0-alpha": {
       "map": {
         "buffer-browserify": "npm:buffer@4.9.1"
@@ -1159,32 +1134,9 @@ SystemJS.config({
     },
     "npm:buffer@4.9.1": {
       "map": {
-        "base64-js": "npm:base64-js@1.1.2",
+        "base64-js": "npm:base64-js@1.2.0",
         "isarray": "npm:isarray@1.0.0",
         "ieee754": "npm:ieee754@1.1.6"
-      }
-    },
-    "npm:chi-datapackage@4.0.1": {
-      "map": {
-        "jsonpointer": "npm:jsonpointer@4.0.0",
-        "lodash.merge": "npm:lodash.merge@4.6.0",
-        "js-yaml": "npm:js-yaml@3.6.1",
-        "json5": "npm:json5@0.5.0",
-        "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
-        "debug": "npm:debug@2.2.0",
-        "parse-iso-duration": "npm:parse-iso-duration@1.0.0",
-        "crlf-helper": "npm:crlf-helper@0.1.0",
-        "urijs": "npm:urijs@1.18.1",
-        "mime-lookup": "npm:mime-lookup@0.0.2",
-        "babyparse": "npm:babyparse@0.4.6",
-        "cuid": "npm:cuid@1.3.8",
-        "datapackage-identifier": "npm:datapackage-identifier@0.4.2",
-        "d3-time-format": "npm:d3-time-format@2.0.2"
-      }
-    },
-    "npm:pbkdf2@3.0.6": {
-      "map": {
-        "create-hmac": "npm:create-hmac@1.1.4"
       }
     },
     "npm:cipher-base@1.0.3": {
@@ -1195,6 +1147,57 @@ SystemJS.config({
     "npm:angular-ui-grid@3.2.8": {
       "map": {
         "angular": "npm:angular@1.4.12"
+      }
+    },
+    "npm:pbkdf2@3.0.8": {
+      "map": {
+        "create-hmac": "npm:create-hmac@1.1.4"
+      }
+    },
+    "npm:elliptic@6.3.2": {
+      "map": {
+        "bn.js": "npm:bn.js@4.11.6",
+        "inherits": "npm:inherits@2.0.3",
+        "brorand": "npm:brorand@1.0.6",
+        "hash.js": "npm:hash.js@1.0.3"
+      }
+    },
+    "npm:asn1.js@4.8.1": {
+      "map": {
+        "bn.js": "npm:bn.js@4.11.6",
+        "inherits": "npm:inherits@2.0.3",
+        "minimalistic-assert": "npm:minimalistic-assert@1.0.0"
+      }
+    },
+    "npm:node-fetch@1.6.3": {
+      "map": {
+        "encoding": "npm:encoding@0.1.12",
+        "is-stream": "npm:is-stream@1.1.0"
+      }
+    },
+    "npm:chi-datapackage@5.0.0": {
+      "map": {
+        "jsonpointer": "npm:jsonpointer@4.0.0",
+        "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
+        "debug": "npm:debug@2.2.0",
+        "urijs": "npm:urijs@1.18.2",
+        "json5": "npm:json5@0.5.0",
+        "js-yaml": "npm:js-yaml@3.6.1",
+        "lodash.merge": "npm:lodash.merge@4.6.0",
+        "datapackage-identifier": "npm:datapackage-identifier@0.4.2",
+        "babyparse": "npm:babyparse@0.4.6",
+        "d3-time-format": "npm:d3-time-format@2.0.2",
+        "crlf-helper": "npm:crlf-helper@0.1.0",
+        "mime-lookup": "npm:mime-lookup@0.0.2",
+        "cuid": "npm:cuid@1.3.8",
+        "parse-iso-duration": "npm:parse-iso-duration@1.0.0",
+        "mobx": "npm:mobx@2.5.2",
+        "mobx-utils": "npm:mobx-utils@1.1.0"
+      }
+    },
+    "npm:argparse@1.0.9": {
+      "map": {
+        "sprintf-js": "npm:sprintf-js@1.0.3"
       }
     }
   }
