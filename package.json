@@ -51,7 +51,8 @@
   "scripts": {
     "build": "gulp build",
     "postinstall": "jspm install",
-    "start": "gulp dev",
+    "lint": "xo",
+    "start": "gulp dev --no-bundle",
     "version": "chg release -y && git add -A CHANGELOG.md",
     "check": "xo app/**/*.js dataset/example/**/*.js"
   },
