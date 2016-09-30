@@ -18,6 +18,7 @@ coverage
 .publish
 .sass-cache
 .settings
+cypress/screenshots
 
 # node-waf configuration
 .lock-wscript

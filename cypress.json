@@ -1,0 +1,8 @@
+{
+  "projectId": "323049f1-7844-45ad-b3b9-2da6ba0eea85",
+  "requestTimeout": 10000,
+  "responseTimeout": 10000,
+  "pageLoadTimeout": 10000,
+  "defaultCommandTimeout": 20000,
+  "execTimeout": 10000
+}

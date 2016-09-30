@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Now using chi-datapackage with mobx data store
+* Added cypress tests
 
 --------------------
 
