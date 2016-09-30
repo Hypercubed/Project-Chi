@@ -1,0 +1,18 @@
+sudo: false
+language: node_js
+cache:
+  directories:
+    - node_modules
+    - jspm_packages
+notifications:
+  email: false
+node_js:
+  - '6'
+before_install:
+  - npm install -g cypress-cli
+before_script:
+  - npm prune
+  - gulp build
+script:
+  - npm run lint
+  - CYPRESS_baseUrl=dist/index.html# cypress ci
