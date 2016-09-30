@@ -1,9 +1,6 @@
 /* global FileReader, Blob */
 /* eslint max-params: 0 */
-// import angular from 'angular';
 import {isObservable} from 'mobx';
-
-// import dp from 'common/services/datapackage/datapackage';
 
 controller.$inject = ['$scope', '$cookies', '$timeout', '$log', 'growl', 'dataService'];
 export default function controller ($scope, $cookies, $timeout, $log, growl, dataservice) {
@@ -16,10 +13,6 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
   const isIE = typeof window.navigator.msSaveBlob !== 'undefined';
 
   const enableFileDownload = hasPackage && hasResources;
-
-  /* if (hasPackage) {
-    dataservice.makePackageObservable($ctrl.options.data);
-  } */
 
   return Object.assign($ctrl, {
     // internal state
@@ -89,9 +82,6 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
       if (hasPackage) {
         if (isObservable($ctrl.options.data.resources)) {
           $ctrl.options.data.replaceResources($ctrl.resources);
-
-          // const resources = $ctrl.resources.map(r => dataservice.makeResourceObservable($ctrl.options.data, r));
-          // $ctrl.options.data.resources.replace(resources);
         } else {
           $ctrl.options.data.resources = $ctrl.resources;
           $ctrl.options.data.$resourcesByName = $ctrl.options.data.resourcesByName = dataservice.index($ctrl.options.data);
@@ -119,8 +109,6 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
     const resource = createNewResource(file.name, file.content);
     $ctrl.activeTab = $index;
     $ctrl.resources[$index] = resource;
-    // $ctrl.resources.splice($index, 1, resource);
-    // updateResource(resource);
     $ctrl.ui.refresh();
   }
 
@@ -149,32 +137,11 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
     tooglePanel();
   }
 
-  /* function updateResource (resource, form) {
-    $log.debug('updateResource');
-
-    // dataservice.normalizeResource($ctrl.data, resource);
-    // dataservice.processResource(resource);
-
-    const hasError = Boolean(resource.$error) || (resource.errors && resource.errors.length > 0);
-
-    if (form) {
-      form.$setValidity('processed', !hasError);
-    }
-  } */
-
   function removeResourceByIndex (i) {
     if (i > -1) {
       $ctrl.resources.splice(i, 1);
     }
   }
-
-  /* function resourceRenamed (resource) {
-    if (!resource.name) {
-      return;
-    }
-    resource.path = resource.name;
-    updateResource(resource);
-  } */
 
   function tooglePanel () {
     $ctrl.panel.open = !$ctrl.panel.open;

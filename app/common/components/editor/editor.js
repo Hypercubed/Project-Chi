@@ -47,28 +47,6 @@ const editor = angular
       options: '='
     }
   })
-  /* .directive('resource', () => {
-    return {
-      require: 'ngModel',
-      scope: {
-        resource: '=',
-        datapackage: '='
-      },
-      link (scope, elm, attrs, ctrl) {
-        ctrl.$validators.validInput = function (modelValue, viewValue) {
-          try {
-            console.log(modelValue, viewValue);
-            const resource = {...scope.resource, content: viewValue};
-            dp.normalizeResource(scope.datapackage, resource);
-            dp.processResource(scope.resource);
-          } catch (err) {
-            return false;
-          }
-          return true;
-        };
-      }
-    };
-  }) */
   ;
 
 export default editor.name;

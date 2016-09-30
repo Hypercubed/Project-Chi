@@ -5,7 +5,6 @@ import {default as dp, Package, makeResource} from './datapackage';
 
 const DEBUG = !System.production;
 
-// window.process = process;  // annoying
 run.$inject = ['$http'];
 export function run ($http) {
   dp.loader.fetch = url => $http({
@@ -54,20 +53,9 @@ export function dataservice ($log, growl) {
         const msg = (err.status) ? `${err.statusText}; ${err.data}` : String(err);
         return dataservice.error(msg, {title: 'Error loading DataPackage'});
       }
-
-      /* let datapackage = await __loadPackageJson(url, growl);
-      datapackage = await __loadPackageResources(datapackage, growl);
-      return dataservice.makePackageObservable(datapackage); */
-      // return __processPackageResources(datapackage, growl);
     },
     async processPackage (url, datapackage) { // TODO: errors
       return await makePackage(url).update(datapackage);
-
-      /* datapackage = __normalizePackage(url, datapackage);
-      datapackage = __normalizePackageResourcesAndSchema(datapackage);
-      await __loadPackageResources(datapackage, growl);
-      return dataservice.makePackageObservable(datapackage); */
-      // return __processPackageResources(datapackage, growl);
     },
     async loadResource (datapackage, res) {  // TODO: move to datapackage store action
       try {
@@ -76,19 +64,6 @@ export function dataservice ($log, growl) {
         const msg = (err.status) ? `${err.statusText}; ${err.data}` : String(err);
         return dataservice.error(msg, {title: 'Error loading resource'});
       }
-
-      /*
-      try {
-        res = dp.normalize.resource(datapackage, res);
-        if (!res.data) {
-          res = await dp.loader.resource(res);
-        }
-      } catch (err) {
-        const msg = (err.status) ? `${err.statusText}; ${err.data}` : String(err);
-        return dataservice.error(msg, {title: 'Error loading resource'});
-      }
-      return dataservice.makeResourceObservable(res);
-      // return dataservice.processResource(res); */
     },
     normalizeResource (p, r) { // deprecated
       return Object.assign(r, dp.normalize.resource(p, r));
@@ -105,42 +80,7 @@ export function dataservice ($log, growl) {
       }
     },
     makeResourceObservable: makeResource, // deprecated
-    /* resource => {
-      if (isObservable(resource)) {
-        return resource;
-      }
-
-      if (typeof resource.content !== 'undefined' && typeof resource.data === 'undefined') {
-        extendObservable(resource, {
-          content: resource.content,
-          mediatype: resource.mediatype,
-          name: resource.name
-        });
-      }
-
-      autorun(() => {
-        __processResource(resource);
-      });
-
-      return resource;
-    },*/
     makePackageObservable: makePackage // deprecated
-    /* datapackage => {
-      if (isObservable(datapackage)) {
-        return datapackage;
-      }
-
-      datapackage = extendObservable(datapackage, {
-        resources: asFlat(datapackage.resources.map(dataservice.makeResourceObservable))
-      });
-
-      autorun(() => {
-        datapackage.$resourcesByName = datapackage.resourcesByName = dp.Normalizer.index(datapackage);
-        $log.debug(`${datapackage.name} re-indexed`);
-      });
-
-      return datapackage;
-    }*/
   };
 
   function __processResource (resource) { // deprecated
@@ -181,38 +121,6 @@ export function dataservice ($log, growl) {
     return resource;
   }
 
-  /* function __processPackageResources (datapackage, growl = false) {
-    try {
-      datapackage.resources = datapackage.resources.map(r => __processResource(r));
-      datapackage.resourcesByName = datapackage.$resourcesByName = dp.Normalizer.index(datapackage); // WARN: for backwords compat
-      return datapackage;
-    } catch (err) {
-      const msg = 'Error processing dataPackage resources' +
-        (err.statusText && err.data) ?
-        `${err.statusText}; ${err.data}` :
-        String(err);
-      if (growl) {
-        dataservice.error(msg);
-      }
-      throw ono(err, msg);
-    }
-  } */
-
-  /* async function __loadPackageResources (datapackage, growl = false) {
-    try {
-      return await dp.loadResources(datapackage);
-    } catch (err) {
-      const msg = 'Error loading dataPackage resources' +
-        (err.statusText && err.data) ?
-        `${err.statusText}; ${err.data}` :
-        String(err);
-      if (growl) {
-        dataservice.error(msg);
-      }
-      return Promise.reject(msg);
-    }
-  } */
-
   function __normalizePackage (url, datapackage) { // deprecated
     if (arguments.length === 2) {
       Object.assign(datapackage, {url});
@@ -221,28 +129,6 @@ export function dataservice ($log, growl) {
     }
     return dp.normalizePackage(datapackage);
   }
-
-  /* function __normalizePackageResourcesAndSchema (datapackage) {
-    datapackage = dp.normalizeResources(datapackage);
-    return dp.normalizeSchemas(datapackage);
-  } */
-
-  /* async function __loadPackageJson (url, growl = false) {
-    try {
-      let datapackage = await dp.loader.datapackage(url);
-      datapackage = __normalizePackage(datapackage);
-      return __normalizePackageResourcesAndSchema(datapackage);
-    } catch (err) {
-      const msg = 'Error loading dataPackage' +
-        (err.statusText && err.data) ?
-        `${err.statusText}; ${err.data}` :
-        String(err);
-      if (growl) {
-        dataservice.error(msg);
-      }
-      return Promise.reject(msg);
-    }
-  } */
 
   function makePackage (datapackage) {
     if (isObservable(datapackage)) {
