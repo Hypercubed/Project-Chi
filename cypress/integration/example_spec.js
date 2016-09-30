@@ -1,4 +1,5 @@
 /* global describe, beforeEach, it, cy, context */
+/* eslint xo/filename-case: 0 */
 
 describe('Project χ', () => {
   context('home', () => {
