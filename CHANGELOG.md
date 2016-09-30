@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Now using chi-datapackage with mobx data store
-* Added cypress tests
+_(none)_
 
 --------------------
+
+## 1.0.0-rc.11 (2016-09-30)
+* Now using chi-datapackage with mobx data store
+* Added cypress tests
 
 ## 1.0.0-rc.10 (2016-09-14)
 * Updated chi-datapackage to 4.0.1
