@@ -4,7 +4,7 @@
 describe('Project χ', () => {
   context('home', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:9000');
+      cy.visit('/');
     });
 
     it('cy.should - assert that <title> is correct', () => {
@@ -18,7 +18,7 @@ describe('Project χ', () => {
 
   context('examples/bars', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:9000/#/examples/bars');
+      cy.visit(`/examples/bars`);
     });
 
     it('cy.get() - query DOM elements', () => {
@@ -28,7 +28,7 @@ describe('Project χ', () => {
 
   context('examples/treemap', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:9000/#/examples/treemap');
+      cy.visit(`/examples/treemap`);
     });
 
     it('cy.get() - query DOM elements', () => {
@@ -38,7 +38,7 @@ describe('Project χ', () => {
 
   context('examples/biojs', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:9000/#/examples/biojs');
+      cy.visit(`/examples/biojs`);
     });
 
     it('cy.get() - query DOM elements', () => {
@@ -48,7 +48,7 @@ describe('Project χ', () => {
 
   context('examples/chiasm', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:9000/#/examples/chiasm');
+      cy.visit(`/examples/chiasm`);
     });
 
     it('cy.get() - query DOM elements', () => {
@@ -58,7 +58,7 @@ describe('Project χ', () => {
 
   context('examples/vega', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:9000/#/examples/vega');
+      cy.visit(`/examples/vega`);
     });
 
     it('cy.get() - query DOM elements', () => {
@@ -68,7 +68,7 @@ describe('Project χ', () => {
 
   context('examples/polymer', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:9000/#/examples/polymer');
+      cy.visit(`/examples/polymer`);
     });
 
     it('cy.get() - query DOM elements', () => {
@@ -78,7 +78,7 @@ describe('Project χ', () => {
 
   context('examples/universe', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:9000/#/examples/universe');
+      cy.visit(`/examples/universe`);
     });
 
     it('cy.get() - query DOM elements', () => {

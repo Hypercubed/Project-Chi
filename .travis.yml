@@ -3,6 +3,7 @@ language: node_js
 cache:
   directories:
     - node_modules
+    - jspm_packages
 notifications:
   email: false
 node_js:
@@ -11,8 +12,7 @@ before_install:
   - npm install -g cypress-cli
 before_script:
   - npm prune
-  - jspm install
+  - gulp build
 script:
   - npm run lint
-  - npm start &
-  - cypress ci
+  - CYPRESS_baseUrl=dist/index.html# cypress ci
