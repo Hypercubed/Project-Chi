@@ -4,7 +4,7 @@ import jspm from 'jspm';
 import runSequence from 'run-sequence';
 import gutil from 'gulp-util';
 import replace from 'gulp-replace';
-import through from 'through2';
+import {obj as throughObj} from 'through2';
 import execa from 'execa';
 import mkdirp from 'mkdirp';
 import config from '../config';
@@ -61,7 +61,7 @@ gulp.task('jspm-copy-config', () => {
 });
 
 function generateTreemap () {
-  return through.obj((file, encoding, callback) => {
+  return throughObj((file, encoding, callback) => {
     gutil.log(`Generating treemap for ${file.relative}`);
     execa.stdout('source-map-explorer', ['--tsv', file.path, `${file.path}.map`])
       .then(result => {
