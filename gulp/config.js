@@ -154,6 +154,7 @@ const config = {
       }
     },
     'config-dev-bundle': {
+      production: false,
       buildCSS: true,
       buildHTML: true,
       separateCSS: true,

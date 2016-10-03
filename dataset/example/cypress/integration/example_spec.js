@@ -22,7 +22,11 @@ describe('Project χ', () => {
     });
 
     it('cy.get() - query DOM elements', () => {
-      cy.get('#_examples_bars__chart svg').should('have.attr', 'title', 'Bar Chart');
+      cy.get('#_examples_bars__chart svg')
+        .should('have.attr', 'title', 'Bar Chart');
+
+      cy.get('#_examples_bars__chart svg')
+        .find('rect').should('have.length', 26);
     });
   });
 
@@ -32,7 +36,8 @@ describe('Project χ', () => {
     });
 
     it('cy.get() - query DOM elements', () => {
-      cy.get('#_examples_treemap__chart').find('.treemap').should('have.length', 2);
+      cy.get('#_examples_treemap__chart')
+        .find('.treemap').should('have.length', 2);
     });
   });
 
@@ -42,7 +47,8 @@ describe('Project χ', () => {
     });
 
     it('cy.get() - query DOM elements', () => {
-      cy.get('#_examples_biojs__viewer').find('.chart').should('have.length', 13);
+      cy.get('#_examples_biojs__viewer')
+        .find('.chart').should('have.length', 13);
     });
   });
 
@@ -52,7 +58,8 @@ describe('Project χ', () => {
     });
 
     it('cy.get() - query DOM elements', () => {
-      cy.get('#_example_chiasm__container svg').should('have.attr', 'title', 'Chiasm Chart');
+      cy.get('#_example_chiasm__container svg')
+        .should('have.attr', 'title', 'Chiasm Chart');
     });
   });
 
@@ -62,7 +69,11 @@ describe('Project χ', () => {
     });
 
     it('cy.get() - query DOM elements', () => {
-      cy.get('#_examples_vega__chart svg').should('have.attr', 'class', 'marks');
+      cy.get('#_examples_vega__chart svg')
+        .should('have.attr', 'class', 'marks');
+
+      cy.get('#_examples_vega__chart svg .mark-rect')
+        .find('rect').should('have.length', 26);
     });
   });
 
@@ -72,7 +83,11 @@ describe('Project χ', () => {
     });
 
     it('cy.get() - query DOM elements', () => {
-      cy.get('#chart svg').should('have.attr', 'title', 'Bar Chart');
+      cy.get('#chart svg')
+        .should('have.attr', 'title', 'Bar Chart');
+
+      cy.get('#chart svg')
+        .find('rect').should('have.length', 26);
     });
   });
 
@@ -82,7 +97,8 @@ describe('Project χ', () => {
     });
 
     it('cy.get() - query DOM elements', () => {
-      cy.get('#charts').find('svg').should('have.length', 3);
+      cy.get('#charts').find('svg')
+        .should('have.length', 3);
     });
   });
 });

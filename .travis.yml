@@ -15,4 +15,4 @@ before_script:
   - gulp build
 script:
   - npm run lint
-  - CYPRESS_baseUrl=dist/index.html# cypress ci
+  - cypress ci ./dataset/example --config fileServerFolder=`pwd`,baseUrl=dist/index.html#
