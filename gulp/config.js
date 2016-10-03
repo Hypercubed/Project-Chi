@@ -136,15 +136,14 @@ const config = {
     } */
   },
   builder: {
-    devBundle: argv.bundle,
-    bundles: {
+    'devBundle': argv.bundle,
+    'bundles': {
       'deps-bundle': `${TMP}/${BUILD} - [${TMP}/**/*] - [${TMP}/**/*!css] - [${TMP}/**/*!text] - [${TMP}/**/*!md] + util`,
       'app-bundle': `${TMP}/${BUILD} - ${TMP}/bundles/deps-bundle.js`
     },
-    config: {
+    'config': {
       buildCSS: true,
       buildHTML: true,
-      // rootURL: '.',
       separateCSS: true,
       paths: {
         'github:*': 'jspm_packages/github/*',
@@ -154,7 +153,19 @@ const config = {
         'bundles/*': `${TMP}/bundles/*`
       }
     },
-    bundle: {
+    'config-dev-bundle': {
+      buildCSS: true,
+      buildHTML: true,
+      separateCSS: true,
+      paths: {
+        'github:*': 'jspm_packages/github/*',
+        'npm:*': 'jspm_packages/npm/*',
+        'components/*': 'app/components/*',
+        'common/*': 'app/common/*',
+        'bundles/*': 'app/bundles/*'
+      }
+    },
+    'bundle': {
       sourceMaps: true,
       minify: true,
       mangle: false,
@@ -162,6 +173,15 @@ const config = {
       esOptimize: true,
       cssOptimize: true,
       rollup: true
+    },
+    'bundle-dev': {
+      sourceMaps: true,
+      minify: false,
+      mangle: false,
+      runtime: false,
+      esOptimize: false,
+      cssOptimize: false,
+      rollup: false
     }
   },
   pkg,

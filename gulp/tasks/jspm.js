@@ -22,23 +22,11 @@ Object.keys(config.builder.bundles).forEach(b => {
 
 gulp.task(`jspm-dev-bundle`, () => {
   const builder = new jspm.Builder('./');
-  builder.config({
-    buildCSS: true,
-    buildHTML: true,
-    // rootURL: '.',
-    separateCSS: true,
-    paths: {
-      'github:*': 'jspm_packages/github/*',
-      'npm:*': 'jspm_packages/npm/*',
-      'components/*': 'app/components/*',
-      'common/*': 'app/common/*',
-      'bundles/*': 'app/bundles/*'
-    }
-  });
+  builder.config(config.builder['config-dev-bundle']);
   return builder.bundle(
     `${paths.base}/components/boot.js + universe + d3-svg-legend + d3-tip + URIjs + angular-ui-grid - [${paths.base}/**/*] - [${paths.base}/**/*!css] - [${paths.base}/**/*!text] - [${paths.base}/**/*!md]`,
     `${paths.temp}/${paths.bundles}/deps-bundle.js`,
-    config.builder.bundle
+    config.builder['bundle-dev']
   );
 });
 
