@@ -1,27 +1,30 @@
 # Project χ
 
-[![Join the chat at https://gitter.im/Hypercubed/Project-Chi](https://badges.gitter.im/Hypercubed/Project-Chi.svg)](https://gitter.im/Hypercubed/Project-Chi?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+Project χ (pronounced project /ˈ</span><span title="'k' in 'kind'">k</span><span title="/aɪ/ long 'i' in 'tide'">aɪ</span></span>/) is a modular open-source toolkit for building web and electron data visualization applications.  It offers a boilerplate and toolset for building self-hosted data-centric and electron ready visualization applications. Geared towards sharing of supplemental materials associated with scientific publications, Project χ allows visitors to interact with visualizations, download associated data and images and try the visualization with their own uploaded or publicly available datasets.  For developers the toolkit comes preconfigured with the popular design frameworks (Twitter Bootstrap, Angular UI) and cutting edge build tools (gulp, jspm, SystemJS) and examples integrating interactive visualizations using [d3.js](http://d3js.org/), [AngularJS](https://angularjs.org/), and [BioJS](http://biojs.io/).
 
-Project χ (pronounced project /ˈ</span><span title="'k' in 'kind'">k</span><span title="/aɪ/ long 'i' in 'tide'">aɪ</span></span>/) is an modular open source visualization gallery toolkit.  It offers a boilerplate and toolset for building self-hosted data-centric visualization websites. Geared towards sharing of supplemental materials associated with scientific publications; Project χ allows visitors to interact with visualizations, download associated data and images, and even try the visualization with their own uploaded or publicly available datasets.  For developers the toolkit comes preconfigured with the popular design frameworks (Twitter Bootstrap, Angular UI) and cutting edge build tools (gulp, jspm, SystemJS) and examples integrating interactive visualizations using [d3.js](http://d3js.org/), [AngularJS](https://angularjs.org/), and [BioJS](http://biojs.io/).
+
+[![Join the chat at https://gitter.im/Hypercubed/Project-Chi](https://badges.gitter.im/Hypercubed/Project-Chi.svg)](https://gitter.im/Hypercubed/Project-Chi?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/Hypercubed/Project-Chi.svg?branch=master)](https://travis-ci.org/Hypercubed/Project-Chi)
+
 
 **Note: Project χ is experimental.  Many things will change.  If you are interested in this project or have issues please feel free to contact me.**
 
 ## Features
 
-* Contains AngularJS services and directives for loading, parsing, and downloading tabular data and as well as downloading generated publication quality SVG images.
-* Simple,  modular, and customizable design using [AngularJS](https://angularjs.org/) templates and [bootstrap](http://getbootstrap.com/) CSS framework.
+* Contains AngularJS (v1.5) services and directives for loading, parsing, and downloading tabular data and as well as downloading generated publication quality SVG images.
+* Simple,  modular and customizable design using [AngularJS](https://angularjs.org/) templates and [bootstrap](http://getbootstrap.com/) CSS framework.
 * Supports CommonJS, AMD, and ES6 modules using the [SystemJS](https://github.com/systemjs/systemjs) universal dynamic module loader.
-* Integrate additional visualizations, including [BioJS](http://biojs.io/) and [Chiasm](https://github.com/curran/chiasm) modules, directly from any registry such as [NPM](https://www.npmjs.com) or [GitHub](https://github.com/) using [JSPM](http://jspm.io/).
+* Integrate with visualization tools, including [BioJS](http://biojs.io/), [Vega and Vega-lite](http://vega.github.io/) and [Chiasm](https://github.com/curran/chiasm) modules, installed directly from any registry such as [NPM](https://www.npmjs.com) or [GitHub](https://github.com/) using [JSPM](http://jspm.io/).
 * Self-hosted fully client-side application doesn't require a server; easily hosted on [WebDAV](https://en.wikipedia.org/wiki/WebDAV) or [GitHub Pages](https://pages.github.com/).
 * Optionally build to an [electron](http://electron.atom.io/) app.
-* For production builds ES6 into optimized, production ready code ES5 using [Gulp](http://gulpjs.com/) and [SystemJS Builder](https://github.com/systemjs/builder).
+* For production builds ES6 into optimized, production ready ES5 code using [Gulp](http://gulpjs.com/) and [SystemJS Builder](https://github.com/systemjs/builder).
 * Modular separation of boilerplate (Project χ) and user projects.  Share tools across projects.
 
 # For Developers
 
 ## Background
 
-If you are not familiar it would be worthwhile to read up on [jspm](http://jspm.io/), [SystemJS](https://github.com/systemjs/systemjs), and [gulp](http://gulpjs.com/).
+If you are not familiar, it would be worthwhile to read up on [jspm](http://jspm.io/), [SystemJS](https://github.com/systemjs/systemjs) and [gulp](http://gulpjs.com/).
 
 If you don't already have jspm or gulp you should install them globally.
 
@@ -29,10 +32,10 @@ If you don't already have jspm or gulp you should install them globally.
 npm install -g gulp-cli jspm
 ```
 
-## Install
+## Install Project χ
 
 ```bash
-git clone -b master https://github.com/Hypercubed/Project-Chi.git --single-branch --depth 1
+git clone -b master https://github.com/Hypercubed/Project-Chi.git --single-branch --depth 50
 cd Project-Chi
 npm install # jspm install is run post-install by npm
 ```
@@ -40,7 +43,7 @@ npm install # jspm install is run post-install by npm
 ## Run examples
 
 ```bash
-gulp dev  # uses the default "example" dataset (same as gelp dev --dataset=./dataset/example)
+gulp dev  # uses the default "example" dataset (same as gulp dev --dataset=./dataset/example)
 ```
 
 You are now ready to develop the project in the app folder.  See "Separation of template and dataset" below.
@@ -114,7 +117,7 @@ By default all content in the `app` directory will be served by the development 
 
 * `gulp dev --dataset=./dataset/extra`
 
-	runs the development server serving the combination of the `app` directory and `dataset/extra` directories as the web root.  Files in `dataset/extra/app` override `app` and `dataset/extra/gulp/config.js` augments (deep-extends) `gulp/config.js`.  If no dataset is given `./dataset/example` is assumed.
+	runs the development server, serving the combination of the `app` directory and `dataset/extra` directories as the web root.  Files in `dataset/extra/app` override `app` and `dataset/extra/gulp/config.js` augments (deep-extends) `gulp/config.js`.  If no dataset is given `./dataset/example` is assumed.
 
 * The `gulp build`, `gulp dist`, `gulp deploy` all work similarly.
 
