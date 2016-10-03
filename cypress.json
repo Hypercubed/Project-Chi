@@ -6,5 +6,8 @@
   "defaultCommandTimeout": 20000,
   "execTimeout": 10000,
   "baseUrl": "http://localhost:9000/#",
-  "screenshotsFolder": false
+  "fixturesFolder": "dataset/example/cypress/fixtures",
+  "integrationFolder": "dataset/example/cypress/integration",
+  "screenshotsFolder": false,
+  "supportFolder": "dataset/example/cypress/support"
 }
