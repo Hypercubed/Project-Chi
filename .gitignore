@@ -50,3 +50,7 @@ Desktop.ini
 # Datasets
 dataset/*
 !dataset/example/
+**/cypress/screenshots/
+
+# Tools
+scripts
