@@ -1,6 +1,6 @@
 import d3 from 'd3';
-
-import './bars.css!';
+import d3Tip from 'd3-tip';
+import 'd3-tip/examples/example-styles.css!';
 
 export default function Bars (opts) {
   opts = opts || {};
@@ -23,9 +23,17 @@ export default function Bars (opts) {
   const yAxis = d3.svg.axis().scale(yScale).orient('left').tickFormat(formatPercent);
   const yAxisLabel = 'Frequency';
 
+  const percentFormat = d3.format('.3%');
+
+  const tip = d3Tip()
+    .attr('class', 'd3-tip animate')
+    .offset([-10, 0])
+    .html(d => `Letter: ${d.letter}<br />Frequency: ${percentFormat(d.frequency)}`);
+
   function bars (selection) {
     selection.each(function (d) {
       const el = d3.select(this);
+      tip.rootElement(this);
 
       xScale.rangeRoundBands([0, width], 0.1);
       yScale.range([height, 0]);
@@ -38,6 +46,8 @@ export default function Bars (opts) {
         .attr('height', height + margin.top + margin.bottom)
         .append('g')
           .attr('transform', `translate(${margin.left},${margin.top})`);
+
+      svg.call(tip);
 
       xScale.domain(d.map(xValue));
       yScale.domain([0, d3.max(d, yValue)]);
@@ -64,7 +74,9 @@ export default function Bars (opts) {
         .attr('x', xMap)
         .attr('width', xScale.rangeBand)
         .attr('y', yMap)
-        .attr('height', d => height - yMap(d));
+        .attr('height', d => height - yMap(d))
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide);
     });
   }
 

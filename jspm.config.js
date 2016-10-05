@@ -17,6 +17,7 @@ SystemJS.config({
     "stage3": true
   },
   buildCSS: true,
+  rootURL: "./app",
   separateCSS: true,
   buildHTML: true,
   packages: {
@@ -102,12 +103,12 @@ SystemJS.config({
     "crlf-helper": "npm:crlf-helper@0.1.0",
     "crossfilter": "npm:crossfilter2@1.4.0-alpha.6",
     "crypto": "github:jspm/nodelibs-crypto@0.2.0-alpha",
-    "css": "github:systemjs/plugin-css@0.1.23",
+    "css": "github:systemjs/plugin-css@0.1.30",
     "cuid": "npm:cuid@1.3.8",
     "d3": "npm:d3@3.5.17",
     "d3-plugins": "github:d3/d3-plugins@master",
     "d3-svg-legend": "npm:d3-svg-legend@1.10.0",
-    "d3-tip": "github:Caged/d3-tip@0.6.7",
+    "d3-tip": "npm:d3-tip@0.8.0-alpha.1",
     "d3plus-text": "npm:d3plus-text@0.4.4",
     "dgram": "github:jspm/nodelibs-dgram@0.2.0-alpha",
     "dns": "github:jspm/nodelibs-dns@0.2.0-alpha",
@@ -129,6 +130,7 @@ SystemJS.config({
     "json5": "npm:json5@0.5.0",
     "jsontableschema": "github:frictionlessdata/jsontableschema-js@master",
     "jspm/nodelibs-assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
+    "less": "github:systemjs/plugin-less@0.1.2",
     "lodash": "npm:lodash@4.15.0",
     "md": "github:Hypercubed/system-md-marked@1.0.1",
     "mime-lookup": "npm:mime-lookup@0.0.2",
@@ -368,7 +370,7 @@ SystemJS.config({
     },
     "npm:font-awesome@4.6.1": {
       "map": {
-        "css": "github:systemjs/plugin-css@0.1.23"
+        "css": "github:systemjs/plugin-css@0.1.30"
       }
     },
     "npm:for-each@0.3.2": {
@@ -1198,6 +1200,17 @@ SystemJS.config({
     "npm:argparse@1.0.9": {
       "map": {
         "sprintf-js": "npm:sprintf-js@1.0.3"
+      }
+    },
+    "github:systemjs/plugin-less@0.1.2": {
+      "map": {
+        "css": "github:systemjs/plugin-css@0.1.30"
+      }
+    },
+    "npm:d3-tip@0.8.0-alpha.1": {
+      "map": {
+        "d3-collection": "npm:d3-collection@1.0.1",
+        "d3-selection": "npm:d3-selection@1.0.2"
       }
     }
   }

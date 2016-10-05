@@ -1,5 +1,5 @@
 import d3 from 'd3';
-import './universe.css!';
+import './universe.less!';
 
 // from https://github.com/square/crossfilter/blob/gh-pages/index.html
 export default function barChart () {

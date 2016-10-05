@@ -1,10 +1,11 @@
 import d3 from 'd3';
 import {autorun} from 'mobx';
 
+import './bars.less!';
 import BarChart from './bars-chart';
 
-controller.$inject = ['$log', 'dataService'];
-function controller ($log, dataService) {
+controller.$inject = ['$log'];
+function controller ($log) {
   const $ctrl = this;
   const chart = new BarChart();
 
@@ -15,7 +16,8 @@ function controller ($log, dataService) {
     $onInit () {
       $log.debug('$onInit');
       autorun(draw);
-    }
+    },
+    draw
   });
 
   function draw () {

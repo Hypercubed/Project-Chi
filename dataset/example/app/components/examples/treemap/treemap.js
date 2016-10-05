@@ -4,7 +4,7 @@ import screenfull from 'screenfull';
 
 import webtreemap from 'webtreemap';
 import 'webtreemap/webtreemap.css!';
-import './treemap.css!';
+import './treemap.less!';
 
 controller.$inject = ['$log', '$timeout', '$element'];
 function controller ($log, $timeout, $element) {

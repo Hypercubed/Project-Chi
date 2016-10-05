@@ -7,7 +7,6 @@ import cuid from 'cuid';
 
 import extend from 'deep-extend';
 import gutil from 'gulp-util';
-// import {argv} from 'yargs';
 
 import minimist from 'minimist';
 
@@ -96,9 +95,9 @@ const config = {
       `${dataSetPath}/${BASE}/{components,common,bundles}/**/*.js`
     ],
     styles: [  // these are copied to paths.temp
-      `${BASE}/*.{css,css.map}`,
-      `${BASE}/{components,common,bundles}/**/*.{css,css.map}`,
-      `${dataSetPath}/${BASE}/{components,common,bundles}/**/*.{css,css.map}`
+      `${BASE}/*.{css,css.map,less}`,
+      `${BASE}/{components,common,bundles}/**/*.{css,css.map,less}`,
+      `${dataSetPath}/${BASE}/{components,common,bundles}/**/*.{css,css.map,less}`
     ]
   },
   server: {

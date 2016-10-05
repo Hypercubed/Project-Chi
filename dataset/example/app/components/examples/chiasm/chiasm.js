@@ -5,7 +5,7 @@ import chiasmLinks from 'chiasm-links';
 import chiasmDataReduction from 'chiasm-data-reduction';
 
 // import barChart from './barChart';
-import './chiasm.css!';
+import './chiasm.less!';
 
 import 'codemirror/lib/codemirror.css!';
 import 'inlet/inlet.css!';

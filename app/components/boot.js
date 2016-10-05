@@ -13,9 +13,9 @@ import saveAs from 'FileSaver/FileSaver.js';
 
 // import 'jquery';
 // import 'bootstrap/js/bootstrap';
-import 'bootstrap/dist/css/bootstrap.css!';
+import 'bootstrap/less/bootstrap.less!';
 
-import 'font-awesome/css/font-awesome.css!';
+import 'font-awesome/less/font-awesome.less!';
 
 import angular from 'angular';
 import app from './app';

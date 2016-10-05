@@ -3,7 +3,7 @@ import angular from 'angular';
 import biovisexample from 'biojs-vis-example';
 import fasta from 'biojs-io-fasta/lib/fasta';
 
-import './biojs.css!';
+import './biojs.less!';
 
 function controller () {
   const $ctrl = this;
