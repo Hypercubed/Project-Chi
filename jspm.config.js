@@ -105,9 +105,12 @@ SystemJS.config({
     "css": "github:systemjs/plugin-css@0.1.23",
     "cuid": "npm:cuid@1.3.8",
     "d3": "npm:d3@3.5.17",
+    "d3-hierarchy": "npm:d3-hierarchy@1.0.2",
     "d3-plugins": "github:d3/d3-plugins@master",
+    "d3-selection": "npm:d3-selection@1.0.2",
     "d3-svg-legend": "npm:d3-svg-legend@1.10.0",
     "d3-tip": "github:Caged/d3-tip@0.6.7",
+    "d3-transition": "npm:d3-transition@1.0.2",
     "d3plus-text": "npm:d3plus-text@0.4.4",
     "dgram": "github:jspm/nodelibs-dgram@0.2.0-alpha",
     "dns": "github:jspm/nodelibs-dns@0.2.0-alpha",
@@ -1198,6 +1201,21 @@ SystemJS.config({
     "npm:argparse@1.0.9": {
       "map": {
         "sprintf-js": "npm:sprintf-js@1.0.3"
+      }
+    },
+    "npm:d3-transition@1.0.2": {
+      "map": {
+        "d3-selection": "npm:d3-selection@1.0.2",
+        "d3-ease": "npm:d3-ease@1.0.1",
+        "d3-color": "npm:d3-color@1.0.1",
+        "d3-interpolate": "npm:d3-interpolate@1.1.1",
+        "d3-timer": "npm:d3-timer@1.0.3",
+        "d3-dispatch": "npm:d3-dispatch@1.0.1"
+      }
+    },
+    "npm:d3-interpolate@1.1.1": {
+      "map": {
+        "d3-color": "npm:d3-color@1.0.1"
       }
     }
   }
