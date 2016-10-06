@@ -2,7 +2,9 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Added plugin-less
+* Updated examples to use less
+* Added tool-tips to bar chart
 
 --------------------
 

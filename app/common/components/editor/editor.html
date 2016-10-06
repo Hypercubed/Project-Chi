@@ -4,10 +4,10 @@
   </alert>
 </div>
 
-<section class="datapckage-editor-container hidden-print" style="position: relative">
+<section id="datapckage-editor" class="datapckage-editor-container hidden-print" style="position: relative">
 
   <div class="pull-right panel-toggle">
-    <button type="button" class="btn btn-link btn-sm" tooltip="Add new resource"
+    <button id="data-add" type="button" class="btn btn-link btn-sm" tooltip="Add new resource"
       ng-show="$ctrl.enableAdd && $ctrl.panel.open"
       ng-click="$ctrl.newFile()"
       file-dropzone="{{$ctrl.types}}"
@@ -30,7 +30,7 @@
       Drop your own data here
     </button>
 
-    <button type="button" class="btn btn-link btn-sm" tooltip="Show/hide resources panel"
+    <button id="toogle-panel" type="button" class="btn btn-link btn-sm" tooltip="Show/hide resources panel"
       ng-show="$ctrl.enableOpen"
       ng-click="$ctrl.tooglePanel()">
       <i class="fa fa-cog" aria-hidden="true"></i>
@@ -87,19 +87,6 @@
                 }"
                 ui-refresh="$ctrl.ui.count"
                 >
-                <!-- ui-codemirror
-                ng-model="tab.content"
-                ng-model-options="{ updateOn: 'submit', debounce: 200 }"
-                ng-change="$ctrl.change(tab, userForm['input' + $index])"
-                ui-codemirror-opts="{
-                  lineNumbers: true,
-                  lineWrapping: false,
-                  mode: file.type,
-                  allowDropFileTypes: false,
-                  onLoad: $ctrl.ui.codemirrorLoaded
-                }"
-                ui-refresh="$ctrl.ui.count"
-                datapackage="$ctrl.data" -->
               </textarea>
                 <div class="col-xs-12 bg-danger">
                   <ul class="list-unstyled">

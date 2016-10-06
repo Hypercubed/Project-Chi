@@ -105,7 +105,7 @@
       "cuid": "npm:cuid@^1.3.8",
       "d3-plugins": "github:d3/d3-plugins@master",
       "d3-svg-legend": "npm:d3-svg-legend@^1.10.0",
-      "d3-tip": "npm:d3-tip@0.8.0-alpha.1",
+      "d3-tip": "github:Hypercubed/d3-tip@master",
       "d3plus-text": "npm:d3plus-text@^0.4.4",
       "font-awesome": "npm:font-awesome@^4.6.1",
       "html": "github:Hypercubed/systemjs-plugin-html@0.0.8",
@@ -184,6 +184,9 @@
       "zlib": "github:jspm/nodelibs-zlib@^0.2.0-alpha"
     },
     "overrides": {
+      "github:Hypercubed/d3-tip@master": {
+        "registry": "npm"
+      },
       "github:Hypercubed/matrix@babel2": {
         "registry": "npm"
       },

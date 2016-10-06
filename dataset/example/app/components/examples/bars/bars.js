@@ -31,10 +31,12 @@ function controller ($log) {
     const width = element[0][0].clientWidth;
 
     const divs = element
-      .selectAll('div')
+      .selectAll('.chart')
       .data(data);
 
-    divs.enter().append('div');
+    divs.enter()
+      .append('div')
+      .attr('class', 'chart');
 
     divs.exit().remove();
 

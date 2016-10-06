@@ -108,7 +108,7 @@ SystemJS.config({
     "d3": "npm:d3@3.5.17",
     "d3-plugins": "github:d3/d3-plugins@master",
     "d3-svg-legend": "npm:d3-svg-legend@1.10.0",
-    "d3-tip": "npm:d3-tip@0.8.0-alpha.1",
+    "d3-tip": "github:Hypercubed/d3-tip@master",
     "d3plus-text": "npm:d3plus-text@0.4.4",
     "dgram": "github:jspm/nodelibs-dgram@0.2.0-alpha",
     "dns": "github:jspm/nodelibs-dns@0.2.0-alpha",
@@ -1207,7 +1207,7 @@ SystemJS.config({
         "css": "github:systemjs/plugin-css@0.1.30"
       }
     },
-    "npm:d3-tip@0.8.0-alpha.1": {
+    "github:Hypercubed/d3-tip@master": {
       "map": {
         "d3-collection": "npm:d3-collection@1.0.1",
         "d3-selection": "npm:d3-selection@1.0.2"

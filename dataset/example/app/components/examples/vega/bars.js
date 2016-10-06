@@ -22,10 +22,9 @@ function controller ($log, dataService, growl) {
     const config = $ctrl.dataPackage.resources[0].data;
     const data = $ctrl.dataPackage.resources[1].data;
     let spec = config.spec || {};
-    const width = spec.width || element.clientWidth;
 
-    spec.width = width - 20 - (spec.padding ? spec.padding.left + spec.padding.right : 0);
-    spec.height = spec.height || 440 / 900 * width;
+    spec.width = spec.width || (element.clientWidth - 20 - (spec.padding ? spec.padding.left + spec.padding.right : 0));
+    spec.height = spec.height || 440 / 900 * spec.width;
 
     try {
       if (config.mode === 'vega-lite') {

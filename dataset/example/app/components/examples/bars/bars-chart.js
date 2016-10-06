@@ -33,7 +33,7 @@ export default function Bars (opts) {
   function bars (selection) {
     selection.each(function (d) {
       const el = d3.select(this);
-      tip.rootElement(this);
+      tip.rootElement(this.parentNode);
 
       xScale.rangeRoundBands([0, width], 0.1);
       yScale.range([height, 0]);
@@ -41,6 +41,7 @@ export default function Bars (opts) {
       el.selectAll('svg').remove();
 
       const svg = el.append('svg')
+        .attr('class', 'bar-chart-svg')
         .attr('title', title)
         .attr('width', width + margin.left + margin.right)
         .attr('height', height + margin.top + margin.bottom)
@@ -75,7 +76,9 @@ export default function Bars (opts) {
         .attr('width', xScale.rangeBand)
         .attr('y', yMap)
         .attr('height', d => height - yMap(d))
-        .on('mouseover', tip.show)
+        .on('mouseover', function (d) {
+          tip.show(d, this);
+        })
         .on('mouseout', tip.hide);
     });
   }
