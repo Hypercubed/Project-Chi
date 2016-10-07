@@ -3,10 +3,10 @@
 _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 
 - [x] Reduce junk in jspm_packages uploaded to gh-pages
-- [ ] Warnings vs. errors in dataservice
-- [ ] modular css?
+- [ ] Improve warnings vs. errors in Data Package
+- [-] modular css?
 - [ ] html minify?
-- [ ] tests
+- [x] tests
 - [ ] Fix printing
 - [ ] Real time example
 - [ ] Version updates
@@ -23,10 +23,12 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
   - [ ] Ontology files (owl, obo)
   - [ ] Bio files (fasta, bam, sam, bed)
   - [ ] network files (sif)
+  - [ ]  Separate matrix and osc formats
 - [ ] Schema
   - [ ] Support schemas from URLS
   - [ ] Add schema selector to editor
 - [ ] growl titles
-- [ ] dataservice: growl -> options.growl
-- [ ] dataservice: option.readOnly
-- [ ] Cancel should restore state on error, save last valid
+- [ ] data service
+  - [ ] growl -> options.growl
+  - [ ] option.readOnly?
+- [ ] Cancel should restore state on error, save last valid?

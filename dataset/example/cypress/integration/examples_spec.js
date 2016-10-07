@@ -2,17 +2,6 @@
 /* eslint xo/filename-case: 0 */
 
 describe('Project χ - examples', () => {
-  context('home', () => {
-    beforeEach(() => {
-      cy.visit('/');
-    });
-
-    it('<title> is correct and have an index', () => {
-      cy.title().should('include', 'Project-χ');
-      cy.get('index').find('.card').should('have.length', 7);
-    });
-  });
-
   context('examples/bars', () => {
     beforeEach(() => {
       cy.visit(`/examples/bars`);

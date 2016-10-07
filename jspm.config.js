@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 SystemJS.config({
   nodeConfig: {
     "paths": {
@@ -27,6 +29,14 @@ SystemJS.config({
     },
     "": {
       "defaultJSExtensions": true,
+      "map": {
+        "chi-datapackage/src/store": {
+          "production": "chi-datapackage/dist/store"
+        },
+        "chi-datapackage/src/normalizer": {
+          "production": "chi-datapackage/dist/normalizer"
+        }
+      },
       "meta": {
         "*.md": {
           "loader": "md",
@@ -140,7 +150,7 @@ SystemJS.config({
     "mime-lookup": "npm:mime-lookup@0.0.2",
     "ml-matrix": "github:Hypercubed/matrix@babel2",
     "ml-pca": "npm:ml-pca@1.1.2",
-    "mobx": "npm:mobx@2.5.2",
+    "mobx": "npm:mobx@2.6.0",
     "mobx-utils": "npm:mobx-utils@1.1.0",
     "model-js": "npm:model-js@0.2.5",
     "module": "github:jspm/nodelibs-module@0.2.0-alpha",
@@ -950,7 +960,7 @@ SystemJS.config({
         "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
         "urijs": "npm:urijs@1.18.2",
         "parse-iso-duration": "npm:parse-iso-duration@1.0.0",
-        "mobx": "npm:mobx@2.5.2"
+        "mobx": "npm:mobx@2.6.0"
       }
     },
     "npm:venn.js@0.2.12": {
