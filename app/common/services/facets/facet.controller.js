@@ -1,7 +1,7 @@
 import d3 from 'd3';
 
 // import template from './facet-template.html!text';
-import './facet.css!';
+import './facet.less!';
 import {readableName} from './facet.utils';
 
 controller.$inject = ['$scope', '$log'];

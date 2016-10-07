@@ -1,5 +1,3 @@
-import './facet.css!';
-
 import template from './facet.html!text';
 import controller from './facet.controller';
 

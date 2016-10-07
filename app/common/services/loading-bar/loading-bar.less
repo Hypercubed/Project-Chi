@@ -1,0 +1,51 @@
+#loading-bar .bar {
+  z-index: 3000;
+}
+
+#loading-bar-spinner {
+  position: fixed;
+  top: 0;
+  bottom: 52px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  display: table;
+  z-index: 3000;
+  padding: 0;
+  background-color: rgba(217,237,247, 0);
+
+  span {
+    width: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 24px;
+  }
+
+  &.ng-enter,
+  &.ng-leave.ng-leave-active {
+    opacity: 0;
+    transition: opacity linear .3s;
+    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+  }
+
+  &.ng-enter.ng-enter-active,
+  &.ng-leave {
+    opacity: 1;
+    transition: opacity linear .5s;
+    -webkit-transition-delay: 1s;
+    transition-delay: 1s;
+  }
+
+  .spinner-box {
+    width: 28px;
+    height: 28px;
+    margin: 12px auto 12px auto;
+  }
+
+  .spinner-icon {
+    width: 28px;
+    height: 28px;
+  }
+}

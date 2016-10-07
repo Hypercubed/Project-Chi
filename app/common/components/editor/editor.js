@@ -7,7 +7,7 @@ import 'ui-codemirror';
 import 'codemirror/lib/codemirror';
 
 import 'codemirror/lib/codemirror.css!';
-import './editor.css!';
+import './editor.less!';
 
 import svgDropdownDownload from 'common/directives/svg-download-dropdown';
 import fileDrop from 'common/directives/file-drop';

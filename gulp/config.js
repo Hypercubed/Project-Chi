@@ -8,53 +8,19 @@ import cuid from 'cuid';
 import extend from 'deep-extend';
 import gutil from 'gulp-util';
 
-import minimist from 'minimist';
-
 import pkg from '../package.json';
 
-const argv = minimist(process.argv.slice(2), {
-  boolean: ['debug', 'dev', 'prod', 'bundle', 'open', 'online'],
-  alias: {
-    env: ['environment', 'e'],
-    dev: ['development'],
-    prod: ['production'],
-    dataset: ['d']
-  },
-  default: {
-    bundle: false,  // build dev bundle
-    open: false,
-    dataset: 'dataset/example',
-    port: 9000,
-    online: false,
-    debug: false
-  }
-});
+import {argv, PROJECT_ROOT, BASE, DIST, TMP, BUILD, ENV, DATASET} from './utils/args';
 
-const PROJECT_ROOT = join(__dirname, '..');  // needed so that imports could co-exist with requires (on some edge cases)
-
-const dataSetPath = join(argv.dataset, '.');
-const overidesFile = join(PROJECT_ROOT, `${dataSetPath}/gulp/config.js`);
+// Config files at these paths are deeply merged with this config
+const overideFiles = [
+  join(PROJECT_ROOT, `gulp/config-${ENV}.js`),
+  join(PROJECT_ROOT, `${DATASET}/gulp/config.js`),
+  join(PROJECT_ROOT, `${DATASET}/gulp/config-${ENV}.js`)
+];
 
 /**
- * Available environments.
- */
-const ENVIRONMENTS = {
-  DEVELOPMENT: 'dev',
-  PRODUCTION: 'prod'
-};
-
-/**
- * These tasks force ENVIRONMENTS.PRODUCTION
- */
-const PRODTASKS = ['build', 'dist', 'deploy', 'dist-electron', 'build-electron'];
-
-const BASE = 'app';
-const DIST = 'dist';
-const TMP = '.tmp';
-const BUILD = 'components/boot.js';
-
-/**
- * This is the basic configuration.  It is augmented later with project specific config
+ * This is the basic configuration.  It is augmented later with project project and environment specific config
  */
 const config = {
   paths: {
@@ -64,14 +30,14 @@ const config = {
     build: BUILD,
     systemConfig: './jspm.*.js',
     bundles: 'bundles',
-    dataset: dataSetPath,
-    dataLink: `${dataSetPath}/${BASE}/data/`,
+    dataset: DATASET,
+    dataLink: `${DATASET}/${BASE}/data/`,
     resources: [  // these are copied to paths.temp and paths.dist
       `${BASE}/*.{js,json,ico,txt,md}`,
       `${BASE}/.nojekyll`,
       `${BASE}/{components,common,assets}/**/*.{png,svg,txt,md}`,
-      `${dataSetPath}/${BASE}/*.{json,ico,txt,md}`,
-      `${dataSetPath}/${BASE}/{components,common,assets}/**/*.{png,svg,md,json}`
+      `${DATASET}/${BASE}/*.{json,ico,txt,md}`,
+      `${DATASET}/${BASE}/{components,common,assets}/**/*.{png,svg,md,json}`
     ],
     jspmResources: [  // these are copied to paths.dist
       'jspm_packages/*.{js,map}',
@@ -81,23 +47,23 @@ const config = {
     ],
     data: [  // these are copied to paths.dist
       `${BASE}/{components,common,assets,bundles}/**/*.{json,csv,tsv,txt,yaml}`,
-      `${dataSetPath}/${BASE}/{components,common,assets,bundles}/**/*.{json,csv,tsv,txt,yaml}`
+      `${DATASET}/${BASE}/{components,common,assets,bundles}/**/*.{json,csv,tsv,txt,yaml}`
     ],
     templates: [  // these are copied to paths.temp and paths.dist, but modified by the gulp-template task
       `${BASE}/*.html`,
       `${BASE}/{components,common,bundles}/**/*.html`,
-      `${dataSetPath}/${BASE}/*.html`,
-      `${dataSetPath}/${BASE}/{components,common,bundles}/**/*.html`
+      `${DATASET}/${BASE}/*.html`,
+      `${DATASET}/${BASE}/{components,common,bundles}/**/*.html`
     ],
     scripts: [  // these are copied to paths.temp
       `${BASE}/*.js`,
       `${BASE}/{components,common,bundles}/**/*.js`,
-      `${dataSetPath}/${BASE}/{components,common,bundles}/**/*.js`
+      `${DATASET}/${BASE}/{components,common,bundles}/**/*.js`
     ],
     styles: [  // these are copied to paths.temp
       `${BASE}/*.{css,css.map,less}`,
       `${BASE}/{components,common,bundles}/**/*.{css,css.map,less}`,
-      `${dataSetPath}/${BASE}/{components,common,bundles}/**/*.{css,css.map,less}`
+      `${DATASET}/${BASE}/{components,common,bundles}/**/*.{css,css.map,less}`
     ]
   },
   server: {
@@ -106,7 +72,7 @@ const config = {
       port: argv.port,
       online: argv.online,
       server: {
-        baseDir: [TMP, `${dataSetPath}/${BASE}`, BASE, './'],
+        baseDir: [TMP, `${DATASET}/${BASE}`, BASE, './'],
         middleware: (req, res, next) => {
           res.setHeader('Access-Control-Allow-Origin', '*');
           next();
@@ -135,60 +101,13 @@ const config = {
     } */
   },
   builder: {
-    'devBundle': argv.bundle,
-    'bundles': {
-      'deps-bundle': `${TMP}/${BUILD} - [${TMP}/**/*] - [${TMP}/**/*!css] - [${TMP}/**/*!text] - [${TMP}/**/*!md] + util`,
-      'app-bundle': `${TMP}/${BUILD} - ${TMP}/bundles/deps-bundle.js`
-    },
-    'config': {
-      buildCSS: true,
-      buildHTML: true,
-      separateCSS: true,
-      paths: {
-        'github:*': 'jspm_packages/github/*',
-        'npm:*': 'jspm_packages/npm/*',
-        'components/*': `${TMP}/components/*`,
-        'common/*': `${TMP}/common/*`,
-        'bundles/*': `${TMP}/bundles/*`
-      }
-    },
-    'config-dev-bundle': {
-      production: false,
-      buildCSS: true,
-      buildHTML: true,
-      separateCSS: true,
-      paths: {
-        'github:*': 'jspm_packages/github/*',
-        'npm:*': 'jspm_packages/npm/*',
-        'components/*': 'app/components/*',
-        'common/*': 'app/common/*',
-        'bundles/*': 'app/bundles/*'
-      }
-    },
-    'bundle': {
-      sourceMaps: true,
-      minify: true,
-      mangle: false,
-      runtime: false,
-      esOptimize: true,
-      cssOptimize: true,
-      rollup: true
-    },
-    'bundle-dev': {
-      sourceMaps: true,
-      minify: false,
-      mangle: false,
-      runtime: false,
-      esOptimize: false,
-      cssOptimize: false,
-      rollup: false
-    }
+    // envirnment specific
   },
   pkg,
   VERSION: pkg.version,
   VERSION_CHI: pkg.version,
   APP_TITLE: 'Project-χ',
-  ENV: getEnvironment(),
+  ENV,
   DEBUG: argv.debug,
   template: {
     title: 'Project-χ',
@@ -199,29 +118,15 @@ const config = {
   }
 };
 
-// augmented with project specific config
-if (existsSync(overidesFile)) {
-  gutil.log('Found additional gulp config at', gutil.colors.magenta(overidesFile));
-  const overides = require(overidesFile).default;
-  extend(config, overides);
-}
+// augment with project and environment specific configs
+overideFiles.forEach(file => {
+  if (existsSync(file)) {
+    gutil.log('Found additional gulp config at', gutil.colors.magenta(file));
+    const overides = require(file).default;
+    extend(config, overides);
+  }
+});
 
-gutil.log('Running in', gutil.colors.magenta(config.ENV), 'environment');
+gutil.log('Running in', gutil.colors.magenta(ENV), 'environment');
 
 export default config;
-
-function getEnvironment () {
-  let env = ENVIRONMENTS.DEVELOPMENT;
-  if (typeof argv.env === 'string') {
-    env = argv.env.toLowerCase();
-  } else if (argv.prod) {
-    env = ENVIRONMENTS.PRODUCTION;
-  } else if (argv.dev) {
-    env = ENVIRONMENTS.DEVELOPMENT;
-  } else if (Array.isArray(argv._)) {
-    if (argv._.some(o => PRODTASKS.indexOf(o) >= 0)) {
-      env = ENVIRONMENTS.PRODUCTION;
-    }
-  }
-  return (env === ENVIRONMENTS.PRODUCTION) ? ENVIRONMENTS.PRODUCTION : ENVIRONMENTS.DEVELOPMENT;
-}

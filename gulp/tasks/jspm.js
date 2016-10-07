@@ -7,6 +7,8 @@ import replace from 'gulp-replace';
 import {obj as throughObj} from 'through2';
 import execa from 'execa';
 import mkdirp from 'mkdirp';
+import {loadSourceMap, computeGeneratedFileSizes, adjustSourcePaths} from 'source-map-explorer';
+
 import config from '../config';
 
 const paths = config.paths;
@@ -18,16 +20,6 @@ Object.keys(config.builder.bundles).forEach(b => {
     builder.config(config.builder.config);
     return builder.bundle(config.builder.bundles[b], `${paths.temp}/${paths.bundles}/${b}.js`, config.builder.bundle);
   });
-});
-
-gulp.task(`jspm-dev-bundle`, () => {
-  const builder = new jspm.Builder('./');
-  builder.config(config.builder['config-dev-bundle']);
-  return builder.bundle(
-    `${paths.base}/components/boot.js + universe + d3-svg-legend + d3-tip + URIjs + angular-ui-grid - [${paths.base}/**/*] - [${paths.base}/**/*!css] - [${paths.base}/**/*!text] - [${paths.base}/**/*!md]`,
-    `${paths.temp}/${paths.bundles}/deps-bundle.js`,
-    config.builder['bundle-dev']
-  );
 });
 
 // copy bundles to dist folder
@@ -50,7 +42,20 @@ gulp.task('jspm-copy-config', () => {
 
 function generateTreemap () {
   return throughObj((file, encoding, callback) => {
-    gutil.log(`Generating treemap for ${file.relative}`);
+    gutil.log(`Generating treemap for ${gutil.colors.magenta(file.relative)}`);
+
+    if (typeof loadSourceMap !== 'undefined') {
+      const data = loadSourceMap(file.path, `${file.path}.map`);
+      const sizes = computeGeneratedFileSizes(data.mapConsumer, data.jsData);
+      const asizes = adjustSourcePaths(sizes, true, '', '');
+      const tsv = 'Source\tSize\n' + Object.keys(asizes).map(k => `${k}\t${asizes[k]}`).join('\n');
+
+      file.contents = new Buffer(tsv);
+      file.path = gutil.replaceExtension(file.path, '.tsv');
+      return callback(null, file);
+    }
+
+    gutil.log('Running source-map-explorer in shell');
     execa.stdout('source-map-explorer', ['--tsv', file.path, `${file.path}.map`])
       .then(result => {
         file.contents = new Buffer(result);
@@ -83,7 +88,7 @@ gulp.task('jspm-build-app', cb => {
 gulp.task('jspm-dev-build', cb => {
   runSequence(
     'jspm-mkdir',
-    'jspm-dev-bundle',
+    'jspm-deps-bundle',
   cb);
 });
 

@@ -2,7 +2,7 @@ import angular from 'angular';
 
 import 'angular-loading-bar';
 import 'angular-loading-bar/build/loading-bar.css!';
-import './loading-bar.css!';
+import './loading-bar.less!';
 
 import spinnerTemplate from './loading-bar.html!text';
 

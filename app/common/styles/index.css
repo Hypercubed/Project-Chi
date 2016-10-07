@@ -15,6 +15,7 @@ body h3, html h3 {
 }
 
 ._common_styles_index__index .card {
+  cursor: zoom-in;
   color: #333;
   overflow: hidden;
   height: 160px;
