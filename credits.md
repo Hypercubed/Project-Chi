@@ -1,4 +1,6 @@
-# Credits for projectName
+# Credits for project-chi-next
+## project-chi-next relies on the work of 563 people:
+
 
 ## jspm
 
