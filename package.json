@@ -1,0 +1,34 @@
+{
+  "name": "project-chi-electron-app",
+  "version": "0.0.0",
+  "description": "",
+  "main": "electron.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "xo": "^0.16.0"
+  },
+  "author": "",
+  "license": "MIT",
+  "xo": {
+    "esnext": true,
+    "space": 2,
+    "envs": [
+      "node",
+      "browser"
+    ],
+    "rules": {
+      "no-console": "error",
+      "import/no-extraneous-dependencies": 0,
+      "space-before-function-paren": [
+        2,
+        {
+          "anonymous": "always",
+          "named": "always"
+        }
+      ],
+      "no-warning-comments": 0
+    }
+  }
+}

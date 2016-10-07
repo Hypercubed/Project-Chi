@@ -1,0 +1,9 @@
+{
+  "main": "./domain.js",
+  "map": {
+    "./domain.js": {
+      "node": "@node/domain",
+      "browser": "domain-browserify"
+    }
+  }
+}

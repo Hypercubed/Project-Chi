@@ -12,15 +12,18 @@
     </style>
 	  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 
-    <link rel="stylesheet" type="text/css" href="bundles/deps-bundle.css?cisr2g18z00008qw7tu79qz3h">
     
-    <link rel="stylesheet" type="text/css" href="bundles/app-bundle.css?cisr2g18z00008qw7tu79qz3h">
+    <link rel="stylesheet" type="text/css" href="bundles/deps-bundle.css?citzfj1g50000kqw72lvvf0n9">
     
-    <link rel="import" href="bundles/deps-bundle.html?cisr2g18z00008qw7tu79qz3h">
     
+    <link rel="stylesheet" type="text/css" href="bundles/app-bundle.css?citzfj1g50000kqw72lvvf0n9">
+    
+    
+    <link rel="import" href="bundles/deps-bundle.html?citzfj1g50000kqw72lvvf0n9">
     
   </head>
   <body ng-cloak>
+
     <noscript>
       <div class="deprecation-warning">
         <h1>Please enable Javascript</h1>
@@ -33,9 +36,9 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-  <app></app>
+    <app></app>
 
-  
+    
     <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
@@ -45,17 +48,30 @@
        ga('create', 'UA-49359515-2');
        ga('send', 'pageview');
     </script>
-  
+    
     <script src="jspm_packages/system.js"></script>
-  
+
+    
     <script src="jspm.browser.js"></script>
-  
+    
     <script src="jspm.config.js"></script>
 
-    <script src="bundles/deps-bundle.js?cisr2g18z00008qw7tu79qz3h"></script>
-  
-    <script src="bundles/app-bundle.js?cisr2g18z00008qw7tu79qz3h"></script>
-  
+    <script>
+      // required to run electron
+      if (window.require) {
+        window.nodeRequire = require;
+        delete window.require;
+        delete window.exports;
+        delete window.module;
+      }
+    </script>
+
+    
+    <script src="bundles/deps-bundle.js?citzfj1g50000kqw72lvvf0n9"></script>
+    
+    
+    <script src="bundles/app-bundle.js?citzfj1g50000kqw72lvvf0n9"></script>
+    
 
     <script>
     

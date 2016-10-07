@@ -4,11 +4,10 @@
   </alert>
 </div>
 
-
-<section class="datapckage-editor-container hidden-print" style="position: relative">
+<section id="datapckage-editor" class="datapckage-editor-container hidden-print" style="position: relative">
 
   <div class="pull-right panel-toggle">
-    <button type="button" class="btn btn-link btn-sm" tooltip="Add new resource"
+    <button id="data-add" type="button" class="btn btn-link btn-sm" tooltip="Add new resource"
       ng-show="$ctrl.enableAdd && $ctrl.panel.open"
       ng-click="$ctrl.newFile()"
       file-dropzone="{{$ctrl.types}}"
@@ -31,7 +30,7 @@
       Drop your own data here
     </button>
 
-    <button type="button" class="btn btn-link btn-sm" tooltip="Show/hide resources panel"
+    <button id="toogle-panel" type="button" class="btn btn-link btn-sm" tooltip="Show/hide resources panel"
       ng-show="$ctrl.enableOpen"
       ng-click="$ctrl.tooglePanel()">
       <i class="fa fa-cog" aria-hidden="true"></i>
@@ -39,7 +38,7 @@
   </div>
 
   <form name="userForm" ng-submit="$ctrl.submit(userForm)">
-    <uib-tabset id="dataPackageEditor"
+    <uib-tabset id="dataPackageEditor" class="datapckage-editor-tab"
       active="$ctrl.activeTab"
       ng-show="$ctrl.panel.open"
       ng-if="$ctrl.enableOpen || $ctrl.enableProtected">
@@ -74,23 +73,26 @@
             <div class="col-xs-12">
               <textarea class="editor"
                 resource="tab"
-                datapackage="$ctrl.data"
                 name="input{{$index}}"
-                ng-model="tab.content"
-                ng-model-options="{ updateOn: 'submit', debounce: 200 }"
-                ng-change="$ctrl.change(tab, userForm['input' + $index])"
                 ui-codemirror
+                ng-model="tab.content"
+                ng-model-options="{ updateOn: 'submit', debounce: 200, getterSetter: false }"
+                ng-change="$ctrl.change(tab, userForm['input' + $index])"
                 ui-codemirror-opts="{
                   lineNumbers: true,
                   lineWrapping: false,
-                  mode: file.type,
                   allowDropFileTypes: false,
+                  mode: tab.format,
                   onLoad: $ctrl.ui.codemirrorLoaded
                 }"
-                ui-refresh="$ctrl.ui.count"></textarea>
+                ui-refresh="$ctrl.ui.count"
+                >
+              </textarea>
                 <div class="col-xs-12 bg-danger">
                   <ul class="list-unstyled">
-                    <li ng-repeat="error in tab.errors | limitTo:10">row {{error.row}}: {{error.message}}</li>
+                    <li ng-repeat="error in tab.errors | limitTo:10">
+                      <span ng-if="error.row >= 0">row {{error.row}}: </span>{{error.message}}
+                    </li>
                   </ul>
                 </div>
             </div>

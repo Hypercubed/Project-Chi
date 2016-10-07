@@ -1,0 +1,12 @@
+{
+  "main": "./https.js",
+  "registry": "github",
+  "map": {
+    "./https.js": {
+      "node": "@node/https"
+    }
+  },
+  "peerDependencies": {
+    "http": "jspm/nodelibs-http@^0.2.0-alpha"
+  }
+}

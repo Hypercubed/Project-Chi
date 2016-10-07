@@ -3,9 +3,9 @@
 	"title": "Vega and Vega-lite",
 	"description": "An example using [Vega](https://github.com/vega/vega).",
 	"resources": [
-    "vega-lite-bars.json",
+    "vega-lite-bars.yaml",
 		{
-			"url": "https://cdn.rawgit.com/curran/data/gh-pages/d3Examples/letterFrequency/letterFrequency.tsv",
+			"path": "https://cdn.rawgit.com/curran/data/gh-pages/d3Examples/letterFrequency/letterFrequency.tsv",
 			"schema": {
 				"fields": [
 					{ "name": "letter", "type": "string", "constraints": { "required": true } },

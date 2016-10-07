@@ -1,0 +1,13 @@
+{
+  "main": "./zlib.js",
+  "registry": "github",
+  "map": {
+    "./zlib.js": {
+      "node": "@node/zlib",
+      "browser": "zlib-browserify"
+    }
+  },
+  "dependencies": {
+    "zlib-browserify": "npm:browserify-zlib@^0.1.4"
+  }
+}

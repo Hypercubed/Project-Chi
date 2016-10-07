@@ -1,0 +1,13 @@
+{
+  "main": "./punycode.js",
+  "registry": "github",
+  "map": {
+    "./punycode.js": {
+      "node": "@node/punycode",
+      "browser": "punycode-browserify"
+    }
+  },
+  "dependencies": {
+    "punycode-browserify": "npm:punycode@^1.3.0"
+  }
+}

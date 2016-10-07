@@ -1,0 +1,9 @@
+{
+  "main": "./punycode.js",
+  "map": {
+    "./punycode.js": {
+      "node": "@node/punycode",
+      "browser": "punycode-browserify"
+    }
+  }
+}

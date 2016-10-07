@@ -1,0 +1,9 @@
+{
+  "main": "./net.js",
+  "registry": "github",
+  "map": {
+    "./net.js": {
+      "node": "@node/net"
+    }
+  }
+}

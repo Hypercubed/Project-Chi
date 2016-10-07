@@ -1,0 +1,13 @@
+{
+  "main": "./crypto.js",
+  "registry": "github",
+  "map": {
+    "./crypto.js": {
+      "node": "@node/crypto",
+      "browser": "crypto-browserify"
+    }
+  },
+  "dependencies": {
+    "crypto-browserify": "npm:crypto-browserify@^3.11.0"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "main": "./domain.js",
+  "registry": "github",
+  "map": {
+    "./domain.js": {
+      "node": "@node/domain",
+      "browser": "domain-browserify"
+    }
+  },
+  "dependencies": {
+    "domain-browserify": "npm:domain-browser@^1.1.7"
+  }
+}

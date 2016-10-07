@@ -1,0 +1,9 @@
+{
+  "main": "index",
+  "map": {
+    "./module.js": {
+      "node": "@node/module",
+      "browser": "@empty"
+    }
+  }
+}

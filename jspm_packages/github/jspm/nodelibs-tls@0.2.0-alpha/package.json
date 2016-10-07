@@ -1,0 +1,9 @@
+{
+  "main": "./tls.js",
+  "registry": "github",
+  "map": {
+    "./tls.js": {
+      "node": "@node/tls"
+    }
+  }
+}

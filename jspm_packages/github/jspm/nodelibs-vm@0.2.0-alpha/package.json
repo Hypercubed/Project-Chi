@@ -1,0 +1,9 @@
+{
+  "main": "./vm.js",
+  "registry": "github",
+  "map": {
+    "./vm.js": {
+      "node": "@node/vm"
+    }
+  }
+}

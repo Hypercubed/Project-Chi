@@ -1,0 +1,13 @@
+{
+  "main": "./url.js",
+  "registry": "github",
+  "map": {
+    "./url.js": {
+      "node": "@node/url",
+      "browser": "url-browserify"
+    }
+  },
+  "dependencies": {
+    "url-browserify": "npm:url@^0.11.0"
+  }
+}
