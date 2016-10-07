@@ -31,7 +31,7 @@ gulp.task('jspm-copy-bundles', () => {
 // need to fix relative URLS in css
 gulp.task('jspm-copy-bundles-css', () => {
   return gulp.src([`${paths.temp}/${paths.bundles}/*.css`], {base: paths.temp})
-    .pipe(replace('url(../../jspm_packages', 'url(../jspm_packages'))  // fix relative paths in css
+    .pipe(replace(`url('/../jspm_packages/`, `url('../jspm_packages/`))  // fix relative paths in css
     .pipe(gulp.dest(paths.dist));
 });
 

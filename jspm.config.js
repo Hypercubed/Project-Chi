@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 SystemJS.config({
   nodeConfig: {
     "paths": {
@@ -98,7 +96,7 @@ SystemJS.config({
     "blobjs": "github:eligrey/Blob.js@master",
     "bootstrap": "github:twbs/bootstrap@3.3.7",
     "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
-    "chi-datapackage": "npm:chi-datapackage@5.0.1",
+    "chi-datapackage": "npm:chi-datapackage@5.0.3",
     "chiasm": "npm:chiasm@0.3.0",
     "chiasm-charts": "npm:chiasm-charts@0.1.5",
     "chiasm-component": "npm:chiasm-component@0.2.3",
@@ -266,7 +264,7 @@ SystemJS.config({
     "npm:chiasm@0.3.0": {
       "map": {
         "es6-promise": "npm:es6-promise@3.3.1",
-        "lodash": "npm:lodash@3.10.1",
+        "lodash": "npm:lodash@4.16.3",
         "model-js": "npm:model-js@0.2.5"
       }
     },
@@ -697,13 +695,13 @@ SystemJS.config({
         "chiasm-component": "npm:chiasm-component@0.2.3",
         "d3": "npm:d3@3.5.17",
         "model-js": "npm:model-js@0.2.5",
-        "lodash": "npm:lodash@3.10.1"
+        "lodash": "npm:lodash@4.16.3"
       }
     },
     "github:frictionlessdata/jsontableschema-js@master": {
       "map": {
-        "moment": "npm:moment@2.14.1",
-        "lodash": "npm:lodash@4.15.0",
+        "moment": "npm:moment@2.15.1",
+        "lodash": "npm:lodash@4.16.3",
         "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
         "d3-time-format": "npm:d3-time-format@2.0.2",
         "tv4": "npm:tv4@1.2.7",
@@ -943,26 +941,6 @@ SystemJS.config({
         "css": "github:systemjs/plugin-css@0.1.30"
       }
     },
-    "npm:chi-datapackage@5.0.1": {
-      "map": {
-        "babyparse": "npm:babyparse@0.4.6",
-        "crlf-helper": "npm:crlf-helper@0.1.0",
-        "cuid": "npm:cuid@1.3.8",
-        "js-yaml": "npm:js-yaml@3.6.1",
-        "json5": "npm:json5@0.5.0",
-        "mime-lookup": "npm:mime-lookup@0.0.2",
-        "mobx-utils": "npm:mobx-utils@1.1.0",
-        "debug": "npm:debug@2.2.0",
-        "jsonpointer": "npm:jsonpointer@4.0.0",
-        "lodash.merge": "npm:lodash.merge@4.6.0",
-        "datapackage-identifier": "npm:datapackage-identifier@0.4.2",
-        "d3-time-format": "npm:d3-time-format@2.0.2",
-        "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
-        "urijs": "npm:urijs@1.18.2",
-        "parse-iso-duration": "npm:parse-iso-duration@1.0.0",
-        "mobx": "npm:mobx@2.6.0"
-      }
-    },
     "npm:venn.js@0.2.12": {
       "map": {
         "d3-selection": "npm:d3-selection@1.0.2",
@@ -1022,7 +1000,7 @@ SystemJS.config({
     },
     "npm:angular-ui-grid@3.2.9": {
       "map": {
-        "angular": "npm:angular@1.4.12"
+        "angular": "npm:angular@1.5.8"
       }
     },
     "npm:reductio@0.6.3": {
@@ -1099,7 +1077,7 @@ SystemJS.config({
     },
     "github:twbs/bootstrap@3.3.7": {
       "map": {
-        "jquery": "npm:jquery@2.2.4"
+        "jquery": "npm:jquery@3.1.1"
       }
     },
     "npm:component-matches-selector@0.1.6": {
@@ -1197,6 +1175,26 @@ SystemJS.config({
     "npm:pbkdf2@3.0.9": {
       "map": {
         "create-hmac": "npm:create-hmac@1.1.4"
+      }
+    },
+    "npm:chi-datapackage@5.0.3": {
+      "map": {
+        "cuid": "npm:cuid@1.3.8",
+        "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
+        "jsonpointer": "npm:jsonpointer@4.0.0",
+        "lodash.merge": "npm:lodash.merge@4.6.0",
+        "js-yaml": "npm:js-yaml@3.6.1",
+        "json5": "npm:json5@0.5.0",
+        "urijs": "npm:urijs@1.18.2",
+        "debug": "npm:debug@2.2.0",
+        "datapackage-identifier": "npm:datapackage-identifier@0.4.2",
+        "crlf-helper": "npm:crlf-helper@0.1.0",
+        "babyparse": "npm:babyparse@0.4.6",
+        "d3-time-format": "npm:d3-time-format@2.0.2",
+        "parse-iso-duration": "npm:parse-iso-duration@1.0.0",
+        "mime-lookup": "npm:mime-lookup@0.0.2",
+        "mobx-utils": "npm:mobx-utils@1.1.0",
+        "mobx": "npm:mobx@2.6.0"
       }
     }
   }
