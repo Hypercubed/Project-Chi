@@ -12,15 +12,9 @@
     </style>
 	  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 
-    <% if (ENV === 'prod' || builder.devBundle === true) { %>
-    <link rel="stylesheet" type="text/css" href="bundles/deps-bundle.css?<%= template.bust %>">
-    <% } %>
-    <% if (ENV === 'prod') { %>
-    <link rel="stylesheet" type="text/css" href="bundles/app-bundle.css?<%= template.bust %>">
-    <% } %>
-    <% if (ENV === 'prod' && template.webcomponents === true) { %>
-    <link rel="import" href="bundles/deps-bundle.html?<%= template.bust %>">
-    <% } %>
+    <% if (ENV === 'prod' || builder.devBundle === true) { %><link rel="stylesheet" type="text/css" href="bundles/deps-bundle.css?<%= template.bust %>"><% } %>
+    <% if (ENV === 'prod') { %><link rel="stylesheet" type="text/css" href="bundles/app-bundle.css?<%= template.bust %>"><% } %>
+    <% if (ENV === 'prod' && template.webcomponents === true) { %><link rel="import" href="bundles/deps-bundle.html?<%= template.bust %>"><% } %>
   </head>
   <body ng-cloak>
 
@@ -38,24 +32,21 @@
 
     <%= template.content || '<app></app>' %>
 
-    <% if (ENV === 'prod') { %>
-    <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <% if (ENV === 'prod') { %><script>
+      if (!window.require) {
+        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+        }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-       ga('create', '<%= template.google %>');
-       ga('send', 'pageview');
-    </script>
-    <% } %>
+        ga('create', '<%= template.google %>');
+        ga('send', 'pageview');
+      }
+    </script><% } %>
     <script src="jspm_packages/system.js"></script>
 
-    <% if (ENV === 'prod') { %>
-    <script src="jspm.browser.js"></script>
-    <% } else { %>
-    <script src="jspm.dev.js"></script>
-    <% } %>
+    <% if (ENV === 'prod') { %><script src="jspm.browser.js"></script>
+    <% } else { %><script src="jspm.dev.js"></script><% } %>
     <script src="jspm.config.js"></script>
 
     <script>
@@ -68,12 +59,8 @@
       }
     </script>
 
-    <% if (ENV === 'prod' || builder.devBundle) { %>
-    <script src="bundles/deps-bundle.js?<%= template.bust %>"></script>
-    <% } %>
-    <% if (ENV === 'prod') { %>
-    <script src="bundles/app-bundle.js?<%= template.bust %>"></script>
-    <% } %>
+    <% if (ENV === 'prod' || builder.devBundle) { %><script src="bundles/deps-bundle.js?<%= template.bust %>"></script><% } %>
+    <% if (ENV === 'prod') { %><script src="bundles/app-bundle.js?<%= template.bust %>"></script><% } %>
 
     <script>
     <% if (template.webcomponents === true) { %>
@@ -81,10 +68,7 @@
       System.import('webcomponentsjs/webcomponents-lite.js').then(function () {
         window.addEventListener('WebComponentsReady', $$boot);
       }).catch($$boot);
-    <% } else { %>
-      $$boot();
-    <% } %>
-
+    <% } else { %>$$boot();<% } %>
       function $$boot () {
         System.import('<%= paths.build %>')
           .catch(function (e) {

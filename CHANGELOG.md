@@ -6,6 +6,7 @@ CHANGELOG
 * Updated examples to use less
 * Added tool-tips to bar chart
 * Created config-{dev,prod}
+* Fix building electron app
 
 --------------------
 

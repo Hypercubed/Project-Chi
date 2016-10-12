@@ -115,8 +115,11 @@ SystemJS.config({
     "css": "github:systemjs/plugin-css@0.1.30",
     "cuid": "npm:cuid@1.3.8",
     "d3": "npm:d3@3.5.17",
+    "d3-color": "npm:d3-color@1.0.1",
     "d3-hierarchy": "npm:d3-hierarchy@1.0.2",
     "d3-plugins": "github:d3/d3-plugins@master",
+    "d3-scale": "npm:d3-scale@1.0.3",
+    "d3-scale-chromatic": "npm:d3-scale-chromatic@1.0.2",
     "d3-selection": "npm:d3-selection@1.0.2",
     "d3-svg-legend": "npm:d3-svg-legend@1.12.0",
     "d3-tip": "github:Hypercubed/d3-tip@master",
@@ -1195,6 +1198,22 @@ SystemJS.config({
         "mime-lookup": "npm:mime-lookup@0.0.2",
         "mobx-utils": "npm:mobx-utils@1.1.0",
         "mobx": "npm:mobx@2.6.0"
+      }
+    },
+    "npm:d3-scale@1.0.3": {
+      "map": {
+        "d3-array": "npm:d3-array@1.0.1",
+        "d3-interpolate": "npm:d3-interpolate@1.1.1",
+        "d3-color": "npm:d3-color@1.0.1",
+        "d3-format": "npm:d3-format@1.0.2",
+        "d3-time": "npm:d3-time@1.0.4",
+        "d3-time-format": "npm:d3-time-format@2.0.2",
+        "d3-collection": "npm:d3-collection@1.0.1"
+      }
+    },
+    "npm:d3-scale-chromatic@1.0.2": {
+      "map": {
+        "d3-interpolate": "npm:d3-interpolate@1.1.1"
       }
     }
   }

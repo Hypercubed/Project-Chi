@@ -22,9 +22,10 @@ gulp.task('run-electron-prod', cb => {
 gulp.task('electron-packager', cb => {
   packager({
     dir: paths.dist,
-    asar: false,
+    asar: true,
     out: 'builds',
-    overwrite: true
+    overwrite: true,
+    derefSymlinks: true
   }, cb);
 });
 
