@@ -2,13 +2,16 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+--------------------
+
+## 1.0.0-rc.12 (2016-10-12)
 * Added plugin-less
 * Updated examples to use less
 * Added tool-tips to bar chart
 * Created config-{dev,prod}
 * Fix building electron app
-
---------------------
 
 ## 1.0.0-rc.11 (2016-09-30)
 * Now using chi-datapackage with mobx data store
