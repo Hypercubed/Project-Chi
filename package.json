@@ -54,7 +54,7 @@
     "postinstall": "jspm install",
     "lint": "xo",
     "start": "gulp dev --no-bundle",
-    "version": "chg release -y && git add -A CHANGELOG.md",
+    "version": "chg release -y && credits -r markdown > credits.md && git add -A CHANGELOG.md credits.md",
     "check": "xo app/**/*.js dataset/example/**/*.js"
   },
   "jspm": {
