@@ -1,6 +1,6 @@
-# Credits for project-chi
+# Credits for project-chi-next
+## project-chi-next relies on the work of 587 people:
 
-> project-chi relies on the work of 587 people:
 
 ## jspm
 
@@ -594,3 +594,4 @@
 - **jinjinyun** *jinyun.jin@gmail.com* (1 package)
 - **Michael de Wit** (1 package)
 - **mjwwit** *mjwwit@gmail.com* (1 package)
+

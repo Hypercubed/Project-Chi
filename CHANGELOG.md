@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Added angular-spectrum-colorpicker
-* Make ng-animate opt in by class name filter
+_(none)_
 
 --------------------
+
+## 1.0.0-rc.13 (2016-10-21)
+* Added angular-spectrum-colorpicker
+* Make ng-animate opt in by class name filter
 
 ## 1.0.0-rc.12 (2016-10-12)
 * Added plugin-less
