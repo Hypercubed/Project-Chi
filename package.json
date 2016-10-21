@@ -78,6 +78,7 @@
       "angular-marked": "npm:angular-marked@^1.2.1",
       "angular-route": "npm:angular-route@^1.5.7",
       "angular-sanitize": "npm:angular-sanitize@^1.5.7",
+      "angular-spectrum-colorpicker": "npm:angular-spectrum-colorpicker@^1.4.5",
       "angular-touch": "npm:angular-touch@^1.5.7",
       "angular-ui-bootstrap": "npm:angular-ui-bootstrap@^2.1.4",
       "angular-ui-grid": "npm:angular-ui-grid@^3.2.8",
@@ -138,6 +139,7 @@
       "polymer": "github:Polymer/polymer@^1.4.0",
       "q": "npm:q@1.4.1",
       "screenfull": "npm:screenfull@^3.0.2",
+      "spectrum-colorpicker": "npm:spectrum-colorpicker@^1.8.0",
       "text": "github:systemjs/plugin-text@^0.0.9",
       "ui-codemirror": "github:angular-ui/ui-codemirror@^0.3.0",
       "ui-select": "npm:ui-select@^0.19.4",
@@ -347,7 +349,8 @@
       "dataset/**",
       ".tmp/**",
       "builds/**",
-      "jspm.**.js"
+      "jspm.**.js",
+      "scripts/*.js"
     ],
     "rules": {
       "no-console": "warn",

@@ -82,6 +82,7 @@ SystemJS.config({
     "angular-marked": "npm:angular-marked@1.2.2",
     "angular-route": "npm:angular-route@1.5.8",
     "angular-sanitize": "npm:angular-sanitize@1.5.8",
+    "angular-spectrum-colorpicker": "npm:angular-spectrum-colorpicker@1.4.5",
     "angular-touch": "npm:angular-touch@1.5.8",
     "angular-ui-bootstrap": "npm:angular-ui-bootstrap@1.3.3",
     "angular-ui-grid": "npm:angular-ui-grid@3.2.9",
@@ -169,6 +170,7 @@ SystemJS.config({
     "querystring": "github:jspm/nodelibs-querystring@0.2.0-alpha",
     "screenfull": "npm:screenfull@2.0.0",
     "source-map": "npm:source-map@0.1.43",
+    "spectrum-colorpicker": "npm:spectrum-colorpicker@1.8.0",
     "stream": "github:jspm/nodelibs-stream@0.2.0-alpha",
     "string_decoder": "github:jspm/nodelibs-string_decoder@0.2.0-alpha",
     "text": "github:systemjs/plugin-text@0.0.8",
@@ -1214,6 +1216,12 @@ SystemJS.config({
     "npm:d3-scale-chromatic@1.0.2": {
       "map": {
         "d3-interpolate": "npm:d3-interpolate@1.1.1"
+      }
+    },
+    "npm:angular-spectrum-colorpicker@1.4.5": {
+      "map": {
+        "spectrum-colorpicker": "npm:spectrum-colorpicker@1.8.0",
+        "angular": "npm:angular@1.5.8"
       }
     }
   }

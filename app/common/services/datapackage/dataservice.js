@@ -1,5 +1,5 @@
 // import ono from 'ono';
-import {toJS, autorun, isObservable} from 'mobx';
+import {toJS, autorun, isObservable, transaction} from 'mobx';
 
 import {default as dp, Package, makeResource} from './datapackage';
 
@@ -10,6 +10,7 @@ export function run ($http) {
   dp.loader.fetch = url => $http({
     url,
     method: 'GET',
+    cache: false,
     transformResponse: data => data
   })
   .then(res => res.data);
@@ -20,8 +21,11 @@ export function dataservice ($log, growl) {
   if (DEBUG) {
     const processResource = dp.processor.resource.bind(dp.processor);
     dp.processor.resource = resource => {
+      console.time(resource.name);  // eslint-disable-line no-console
       $log.debug('Processing', resource.name);
-      return processResource(resource);
+      const r = processResource(resource);
+      console.timeEnd(resource.name); // eslint-disable-line no-console
+      return r;
     };
 
     const index = dp.Normalizer.index.bind(dp.Normalizer);
@@ -48,7 +52,7 @@ export function dataservice ($log, growl) {
     },
     async loadPackage (datapackage) { // TODO: errors
       try {
-        return await makePackage(datapackage).load();
+        return await transaction(() => makePackage(datapackage).load());
       } catch (err) {
         const msg = (err.status) ? `${err.statusText}; ${err.data}` : String(err);
         return dataservice.error(msg, {title: 'Error loading DataPackage'});
@@ -59,7 +63,7 @@ export function dataservice ($log, growl) {
     },
     async loadResource (datapackage, res) {  // TODO: move to datapackage store action
       try {
-        return await makeResource(datapackage, res).load();
+        return await transaction(() => makeResource(datapackage, res).load());
       } catch (err) {
         const msg = (err.status) ? `${err.statusText}; ${err.data}` : String(err);
         return dataservice.error(msg, {title: 'Error loading resource'});

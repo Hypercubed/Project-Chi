@@ -31,4 +31,7 @@ export default angular
   .config(['$logProvider', '$compileProvider', function ($logProvider, $compileProvider) {
     $logProvider.debugEnabled(!System.production);
     $compileProvider.debugInfoEnabled(!System.production);
+  }])
+  .config(['$animateProvider', function ($animateProvider) {
+    $animateProvider.classNameFilter(/ng-animate-enabled/);
   }]);

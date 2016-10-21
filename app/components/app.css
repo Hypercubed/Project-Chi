@@ -105,3 +105,7 @@ body {
     max-width: 800px;
   }
 }
+
+.header .dropdown-menu a {
+  text-align: left;
+}

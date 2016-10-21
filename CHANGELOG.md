@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Added angular-spectrum-colorpicker
+* Make ng-animate opt in by class name filter
 
 --------------------
 
