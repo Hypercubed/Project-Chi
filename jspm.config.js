@@ -122,6 +122,7 @@ SystemJS.config({
     "d3-scale": "npm:d3-scale@1.0.3",
     "d3-scale-chromatic": "npm:d3-scale-chromatic@1.0.2",
     "d3-selection": "npm:d3-selection@1.0.2",
+    "d3-shape": "npm:d3-shape@1.0.3",
     "d3-svg-legend": "npm:d3-svg-legend@1.12.0",
     "d3-tip": "github:Hypercubed/d3-tip@master",
     "d3-transition": "npm:d3-transition@1.0.2",
@@ -1222,6 +1223,11 @@ SystemJS.config({
       "map": {
         "spectrum-colorpicker": "npm:spectrum-colorpicker@1.8.0",
         "angular": "npm:angular@1.5.8"
+      }
+    },
+    "npm:d3-shape@1.0.3": {
+      "map": {
+        "d3-path": "npm:d3-path@1.0.2"
       }
     }
   }
