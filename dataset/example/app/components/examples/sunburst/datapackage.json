@@ -1,0 +1,20 @@
+{
+	"name": "Sunburst",
+	"title": "sunburst",
+	"description": "A sunburst that represent package hierarchy and size in a radial distribution",
+	"resources": [
+		{"path": "../../../bundles/app-bundle.tsv", "schema": "treemap-schema" },
+		{"path": "../../../bundles/deps-bundle.tsv", "schema": "treemap-schema" }
+	],
+	"schemas": {
+		"treemap-schema": {
+			"fields": [
+				{ "name": "Source", "type": "string", "constraints": { "required": true } },
+				{ "name": "Size", "type": "number", "constraints": { "required": true } },
+				{ "name": "Tag", "type": "string" }
+			]
+		}
+	},
+	"image": "thumbnail.png",
+	"readme": "README.md"
+}

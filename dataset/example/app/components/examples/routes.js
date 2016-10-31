@@ -9,6 +9,7 @@ import chiasmComponent from 'components/examples/chiasm/chiasm';
 import bioJSComponent from 'components/examples/biojs/biojs';
 import barsComponent from 'components/examples/bars/bars';
 import treemapComponent from 'components/examples/treemap/treemap';
+import sunburstComponent from 'components/examples/sunburst/sunburst';
 import polymerComponent from 'components/examples/polymer/bar-chart';
 import universeComponent from 'components/examples/universe/universe';
 import vegaComponent from 'components/examples/vega/bars';
@@ -28,6 +29,7 @@ export default angular
   // .component('trains', trainsComponent)
   .component('polymer', polymerComponent)
   .component('treemapPage', treemapComponent)
+  .component('sunburstPage', sunburstComponent)
   .component('universe', universeComponent)
   .component('vega', vegaComponent)
   .config(['$routeProvider', $routeProvider => {
@@ -51,6 +53,10 @@ export default angular
       .when('/examples/treemap', {
         template: '<treemap-page data-package="$resolve.dataPackage"></treemap-page>',
         datapackageUrl: 'components/examples/treemap/datapackage.json'
+      })
+      .when('/examples/sunburst', {
+        template: '<sunburst-page data-package="$resolve.dataPackage"></sunburst-page>',
+        datapackageUrl: 'components/examples/sunburst/datapackage.json'
       })
       .when('/examples/polymer', {
         template: '<polymer data-package="$resolve.dataPackage"></polymer>',

@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Improved package editor
+* Added Sunburst Partition by mhebrard
 
 --------------------
 
