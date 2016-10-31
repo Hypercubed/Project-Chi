@@ -117,6 +117,9 @@ SystemJS.config({
     "cuid": "npm:cuid@1.3.8",
     "d3": "npm:d3@3.5.17",
     "d3-color": "npm:d3-color@1.0.1",
+    "d3-dispatch": "npm:d3-dispatch@1.0.1",
+    "d3-drag": "npm:d3-drag@1.0.1",
+    "d3-force": "npm:d3-force@1.0.3",
     "d3-hierarchy": "npm:d3-hierarchy@1.0.2",
     "d3-plugins": "github:d3/d3-plugins@master",
     "d3-scale": "npm:d3-scale@1.0.3",
@@ -174,6 +177,7 @@ SystemJS.config({
     "stream": "github:jspm/nodelibs-stream@0.2.0-alpha",
     "string_decoder": "github:jspm/nodelibs-string_decoder@0.2.0-alpha",
     "text": "github:systemjs/plugin-text@0.0.8",
+    "three": "npm:three@0.82.1",
     "tls": "github:jspm/nodelibs-tls@0.2.0-alpha",
     "tty": "github:jspm/nodelibs-tty@0.2.0-alpha",
     "tweetnacl": "npm:tweetnacl@0.14.3",
@@ -1222,6 +1226,20 @@ SystemJS.config({
       "map": {
         "spectrum-colorpicker": "npm:spectrum-colorpicker@1.8.0",
         "angular": "npm:angular@1.5.8"
+      }
+    },
+    "npm:d3-force@1.0.3": {
+      "map": {
+        "d3-dispatch": "npm:d3-dispatch@1.0.1",
+        "d3-timer": "npm:d3-timer@1.0.3",
+        "d3-collection": "npm:d3-collection@1.0.1",
+        "d3-quadtree": "npm:d3-quadtree@1.0.1"
+      }
+    },
+    "npm:d3-drag@1.0.1": {
+      "map": {
+        "d3-selection": "npm:d3-selection@1.0.2",
+        "d3-dispatch": "npm:d3-dispatch@1.0.1"
       }
     }
   }

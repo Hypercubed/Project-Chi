@@ -98,7 +98,7 @@ export function setFilter (state, type, value) {
 }
 
 export function setFilter$ (state, onUpdate) {
-  return function send (type, value) {
+  return function (type, value) {
     setFilter(state, type, value);
     onUpdate(state);
   };

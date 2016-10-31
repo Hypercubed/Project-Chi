@@ -36,6 +36,7 @@ function controller ($log, $timeout, $element) {
   });
 
   function draw () {
+    // console.log('draw');
     angular.forEach($element.find('treemap'), d => {
       const elm = angular.element(d);
       const name = elm.attr('data-name');

@@ -1,9 +1,9 @@
 import proc from 'child_process';
 
+import electron from 'electron';
 import gulp from 'gulp';
 import runSequence from 'run-sequence';
 import packager from 'electron-packager';
-import electron from 'electron';
 
 import config from '../config';
 

@@ -33,7 +33,7 @@ const ENVIRONMENTS = {
 /**
  * These tasks force ENVIRONMENTS.PRODUCTION
  */
-const PRODTASKS = ['build', 'dist', 'deploy', 'dist-electron', 'build-electron'];
+const PRODTASKS = ['build', 'dist', 'deploy', 'dist-electron', 'build-electron', 'e2e'];
 
 const BASE = 'app';
 const DIST = 'dist';

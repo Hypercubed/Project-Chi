@@ -14,15 +14,8 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
 
   const enableFileDownload = hasPackage && hasResources;
 
-  return Object.assign($ctrl, {
-    // internal state
-    activeTab: 0,
-    resources: hasResources ? $ctrl.options.data.resources.slice() : [],
-    panel: {
-      open: false
-    },
-
-    // user config defaults
+  // user config defaults
+  Object.assign($ctrl.options, {
     enableOpen: hasPackage,
     enableFileDownload,
     enableSvgDownload: true,
@@ -33,8 +26,35 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
     types: Object.keys(dataservice.translators),
     defaultFormat: hasResources ? $ctrl.options.data.resources[0].format : 'txt',
     defaultSchema: hasResources ? $ctrl.options.data.resources[0].schema : undefined,
+    onChange: () => {},
+    ...$ctrl.options
+  });
 
-    // methodsz
+  return Object.assign($ctrl, {
+    // internal state
+    activeTab: 0,
+    resources: hasResources ? $ctrl.options.data.resources.slice() : [],
+    panel: {
+      open: false
+    },
+
+    // user config defaults
+    /* enableOpen: hasPackage,
+    enableFileDownload,
+    enableSvgDownload: true,
+    enablePngDownload: !isSafari && !isIE,
+    enableAdd: true,
+    enableDrop: false,
+    enableProtected: false,
+    types: Object.keys(dataservice.translators),
+    defaultFormat: hasResources ? $ctrl.options.data.resources[0].format : 'txt',
+    defaultSchema: hasResources ? $ctrl.options.data.resources[0].schema : undefined,
+
+    // user config event
+    onChange: () => {},  // called when datapackage updates
+    */
+
+    // methods
     // change: updateResource,
     remove: removeResourceByIndex,
     // rename: resourceRenamed,
@@ -57,13 +77,10 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
           $ctrl.ui.refresh();
         }, 100);
       }
-    },
-
-    // user config event
-    onChange: () => {}  // called when datapackage updates
+    }
 
     // svgsFrom: '#chart' // TODO
-  }, this.options);
+  });
 
   function cancel (form) {
     $log.debug('cancel');
@@ -88,19 +105,20 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
         }
       }
       $timeout(() => {
-        $ctrl.onChange();
+        // console.log($ctrl.options.onChange);
+        $ctrl.options.onChange();
       });
     }
   }
 
   function createNewResource (name, content = '') {
-    name = name || `new.${$ctrl.defaultFormat}`;
+    name = name || `new.${$ctrl.options.defaultFormat}`;
     return {
       path: name,
       name,
       mediatype: dataservice.mime.lookup(name),
       content,
-      schema: $ctrl.defaultSchema
+      schema: $ctrl.options.defaultSchema
     };
   }
 
@@ -131,9 +149,10 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
   }
 
   function play () {
-    if ($ctrl.data && $ctrl.data.readme) {
+    // TODO: redo this... hide readme, don't delete it
+    /* if ($ctrl.data && $ctrl.data.readme) {
       $ctrl.data.readme = null;
-    }
+    } */
     tooglePanel();
   }
 

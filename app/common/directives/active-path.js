@@ -9,7 +9,7 @@ export default activePath.name;
 activePathDirective.$inject = ['$log', '$location'];
 function activePathDirective ($log, $location) {
   return {
-    link: function postLink (scope, element, attrs) {
+    link (scope, element, attrs) {
       const re = new RegExp(attrs.activePath);
       scope.$watch(() => $location.path(), value => {
         if (re.test(value)) {

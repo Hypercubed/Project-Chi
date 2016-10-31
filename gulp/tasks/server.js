@@ -1,6 +1,7 @@
 import gulp from 'gulp';
-import browserSync from 'browser-sync';
+import {default as browserSync} from 'browser-sync';
 import runSequence from 'run-sequence';
+import execa from 'execa';
 
 import config from '../config';
 
@@ -34,6 +35,17 @@ gulp.task('dist', cb => {
   runSequence('build',
               'watch-dist',
               'server-dist',
+              cb);
+});
+
+gulp.task('cypress-run', () =>
+  execa('cypress', ['run', config.paths.dataset], {stdio: 'inherit'}));
+
+gulp.task('e2e', cb => {
+  runSequence('set-prod-node-env',
+              'build',
+              'server-dist',
+              'cypress-run',
               cb);
 });
 

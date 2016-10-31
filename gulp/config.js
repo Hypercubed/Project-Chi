@@ -122,7 +122,7 @@ const config = {
 overideFiles.forEach(file => {
   if (existsSync(file)) {
     gutil.log('Found additional gulp config at', gutil.colors.magenta(file));
-    const overides = require(file).default;
+    const overides = require(file).default;  // eslint-disable-line import/no-dynamic-require
     extend(config, overides);
   }
 });
