@@ -116,12 +116,15 @@ SystemJS.config({
     "css": "github:systemjs/plugin-css@0.1.30",
     "cuid": "npm:cuid@1.3.8",
     "d3": "npm:d3@3.5.17",
+    "d3-array": "npm:d3-array@1.0.1",
+    "d3-axis": "npm:d3-axis@1.0.3",
     "d3-color": "npm:d3-color@1.0.1",
     "d3-hierarchy": "npm:d3-hierarchy@1.0.2",
     "d3-plugins": "github:d3/d3-plugins@master",
     "d3-scale": "npm:d3-scale@1.0.3",
     "d3-scale-chromatic": "npm:d3-scale-chromatic@1.0.2",
     "d3-selection": "npm:d3-selection@1.0.2",
+    "d3-shape": "npm:d3-shape@1.0.3",
     "d3-svg-legend": "npm:d3-svg-legend@1.12.0",
     "d3-tip": "github:Hypercubed/d3-tip@master",
     "d3-transition": "npm:d3-transition@1.0.2",
@@ -1222,6 +1225,11 @@ SystemJS.config({
       "map": {
         "spectrum-colorpicker": "npm:spectrum-colorpicker@1.8.0",
         "angular": "npm:angular@1.5.8"
+      }
+    },
+    "npm:d3-shape@1.0.3": {
+      "map": {
+        "d3-path": "npm:d3-path@1.0.2"
       }
     }
   }
