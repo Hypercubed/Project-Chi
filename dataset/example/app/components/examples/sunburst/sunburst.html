@@ -1,0 +1,17 @@
+<div datapackage-edit="$ctrl.editorOptions"></div>
+
+<marked src="$ctrl.dataPackage.readme"></marked>
+
+<div id="charts" class="container">
+  <div class="row">
+    <div id="_examples_sunburst__chart" class="_examples_sunburst__bars" on-resize="$ctrl.draw()">
+
+      <div ng-repeat="item in $ctrl.dataPackage.resources">
+        <h2>{{item.name}}</h2>
+        <sunburst class="sunburst" ng-attr-data-name="{{item.name}}"></sunburst>
+        <button class="btn btn-link" ng-click="$ctrl.fullscreen($event)">Fullscreen</button>
+      </div>
+
+    </div>
+  </div>
+</div>
