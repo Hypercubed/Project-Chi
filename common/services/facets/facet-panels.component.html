@@ -10,10 +10,10 @@
   ng-repeat="facet in $ctrl.facets"
   ng-if="!facet.hidden">
   <div class="panel-heading" ng-click="facet.collapsed = !facet.collapsed">
-    <h3 class="panel-title" uib-tooltip-html="::facet.description" tooltip-placement="right" tooltip-append-to-body="true">
-      {{(facet.displayName || facet.key)}} <small>{{facet.query.data.length}}</small>
-      <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': facet.collapsed, 'glyphicon-chevron-right': !facet.collapsed}"></i>
-    </h3>
+    <h4 class="panel-title" uib-tooltip-html="::facet.description" tooltip-placement="right" tooltip-append-to-body="true">
+          {{(facet.displayName || facet.key)}} <small>{{facet.query.data.length}}</small>
+          <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-right': facet.collapsed, 'glyphicon-chevron-down': !facet.collapsed}"></i>
+    </h4>
   </div>
   <div class="panel-body" uib-collapse="facet.collapsed">
     <small>

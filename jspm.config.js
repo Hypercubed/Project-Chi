@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 SystemJS.config({
   nodeConfig: {
     "paths": {
@@ -84,6 +82,7 @@ SystemJS.config({
     "angular-marked": "npm:angular-marked@1.2.2",
     "angular-route": "npm:angular-route@1.5.8",
     "angular-sanitize": "npm:angular-sanitize@1.5.8",
+    "angular-spectrum-colorpicker": "npm:angular-spectrum-colorpicker@1.4.5",
     "angular-touch": "npm:angular-touch@1.5.8",
     "angular-ui-bootstrap": "npm:angular-ui-bootstrap@1.3.3",
     "angular-ui-grid": "npm:angular-ui-grid@3.2.9",
@@ -98,7 +97,7 @@ SystemJS.config({
     "blobjs": "github:eligrey/Blob.js@master",
     "bootstrap": "github:twbs/bootstrap@3.3.7",
     "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
-    "chi-datapackage": "npm:chi-datapackage@5.0.1",
+    "chi-datapackage": "npm:chi-datapackage@5.0.3",
     "chiasm": "npm:chiasm@0.3.0",
     "chiasm-charts": "npm:chiasm-charts@0.1.5",
     "chiasm-component": "npm:chiasm-component@0.2.3",
@@ -117,9 +116,18 @@ SystemJS.config({
     "css": "github:systemjs/plugin-css@0.1.30",
     "cuid": "npm:cuid@1.3.8",
     "d3": "npm:d3@3.5.17",
+    "d3-array": "npm:d3-array@1.0.1",
+    "d3-axis": "npm:d3-axis@1.0.3",
+    "d3-color": "npm:d3-color@1.0.1",
+    "d3-dispatch": "npm:d3-dispatch@1.0.1",
+    "d3-drag": "npm:d3-drag@1.0.1",
+    "d3-force": "npm:d3-force@1.0.3",
     "d3-hierarchy": "npm:d3-hierarchy@1.0.2",
     "d3-plugins": "github:d3/d3-plugins@master",
+    "d3-scale": "npm:d3-scale@1.0.3",
+    "d3-scale-chromatic": "npm:d3-scale-chromatic@1.0.2",
     "d3-selection": "npm:d3-selection@1.0.2",
+    "d3-shape": "npm:d3-shape@1.0.3",
     "d3-svg-legend": "npm:d3-svg-legend@1.12.0",
     "d3-tip": "github:Hypercubed/d3-tip@master",
     "d3-transition": "npm:d3-transition@1.0.2",
@@ -168,9 +176,11 @@ SystemJS.config({
     "querystring": "github:jspm/nodelibs-querystring@0.2.0-alpha",
     "screenfull": "npm:screenfull@2.0.0",
     "source-map": "npm:source-map@0.1.43",
+    "spectrum-colorpicker": "npm:spectrum-colorpicker@1.8.0",
     "stream": "github:jspm/nodelibs-stream@0.2.0-alpha",
     "string_decoder": "github:jspm/nodelibs-string_decoder@0.2.0-alpha",
     "text": "github:systemjs/plugin-text@0.0.8",
+    "three": "npm:three@0.82.1",
     "tls": "github:jspm/nodelibs-tls@0.2.0-alpha",
     "tty": "github:jspm/nodelibs-tty@0.2.0-alpha",
     "tweetnacl": "npm:tweetnacl@0.14.3",
@@ -266,7 +276,7 @@ SystemJS.config({
     "npm:chiasm@0.3.0": {
       "map": {
         "es6-promise": "npm:es6-promise@3.3.1",
-        "lodash": "npm:lodash@3.10.1",
+        "lodash": "npm:lodash@4.16.3",
         "model-js": "npm:model-js@0.2.5"
       }
     },
@@ -697,13 +707,13 @@ SystemJS.config({
         "chiasm-component": "npm:chiasm-component@0.2.3",
         "d3": "npm:d3@3.5.17",
         "model-js": "npm:model-js@0.2.5",
-        "lodash": "npm:lodash@3.10.1"
+        "lodash": "npm:lodash@4.16.3"
       }
     },
     "github:frictionlessdata/jsontableschema-js@master": {
       "map": {
-        "moment": "npm:moment@2.14.1",
-        "lodash": "npm:lodash@4.15.0",
+        "moment": "npm:moment@2.15.1",
+        "lodash": "npm:lodash@4.16.3",
         "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
         "d3-time-format": "npm:d3-time-format@2.0.2",
         "tv4": "npm:tv4@1.2.7",
@@ -943,26 +953,6 @@ SystemJS.config({
         "css": "github:systemjs/plugin-css@0.1.30"
       }
     },
-    "npm:chi-datapackage@5.0.1": {
-      "map": {
-        "babyparse": "npm:babyparse@0.4.6",
-        "crlf-helper": "npm:crlf-helper@0.1.0",
-        "cuid": "npm:cuid@1.3.8",
-        "js-yaml": "npm:js-yaml@3.6.1",
-        "json5": "npm:json5@0.5.0",
-        "mime-lookup": "npm:mime-lookup@0.0.2",
-        "mobx-utils": "npm:mobx-utils@1.1.0",
-        "debug": "npm:debug@2.2.0",
-        "jsonpointer": "npm:jsonpointer@4.0.0",
-        "lodash.merge": "npm:lodash.merge@4.6.0",
-        "datapackage-identifier": "npm:datapackage-identifier@0.4.2",
-        "d3-time-format": "npm:d3-time-format@2.0.2",
-        "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
-        "urijs": "npm:urijs@1.18.2",
-        "parse-iso-duration": "npm:parse-iso-duration@1.0.0",
-        "mobx": "npm:mobx@2.6.0"
-      }
-    },
     "npm:venn.js@0.2.12": {
       "map": {
         "d3-selection": "npm:d3-selection@1.0.2",
@@ -1022,7 +1012,7 @@ SystemJS.config({
     },
     "npm:angular-ui-grid@3.2.9": {
       "map": {
-        "angular": "npm:angular@1.4.12"
+        "angular": "npm:angular@1.5.8"
       }
     },
     "npm:reductio@0.6.3": {
@@ -1099,7 +1089,7 @@ SystemJS.config({
     },
     "github:twbs/bootstrap@3.3.7": {
       "map": {
-        "jquery": "npm:jquery@2.2.4"
+        "jquery": "npm:jquery@3.1.1"
       }
     },
     "npm:component-matches-selector@0.1.6": {
@@ -1197,6 +1187,67 @@ SystemJS.config({
     "npm:pbkdf2@3.0.9": {
       "map": {
         "create-hmac": "npm:create-hmac@1.1.4"
+      }
+    },
+    "npm:chi-datapackage@5.0.3": {
+      "map": {
+        "cuid": "npm:cuid@1.3.8",
+        "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
+        "jsonpointer": "npm:jsonpointer@4.0.0",
+        "lodash.merge": "npm:lodash.merge@4.6.0",
+        "js-yaml": "npm:js-yaml@3.6.1",
+        "json5": "npm:json5@0.5.0",
+        "urijs": "npm:urijs@1.18.2",
+        "debug": "npm:debug@2.2.0",
+        "datapackage-identifier": "npm:datapackage-identifier@0.4.2",
+        "crlf-helper": "npm:crlf-helper@0.1.0",
+        "babyparse": "npm:babyparse@0.4.6",
+        "d3-time-format": "npm:d3-time-format@2.0.2",
+        "parse-iso-duration": "npm:parse-iso-duration@1.0.0",
+        "mime-lookup": "npm:mime-lookup@0.0.2",
+        "mobx-utils": "npm:mobx-utils@1.1.0",
+        "mobx": "npm:mobx@2.6.0"
+      }
+    },
+    "npm:d3-scale@1.0.3": {
+      "map": {
+        "d3-array": "npm:d3-array@1.0.1",
+        "d3-interpolate": "npm:d3-interpolate@1.1.1",
+        "d3-color": "npm:d3-color@1.0.1",
+        "d3-format": "npm:d3-format@1.0.2",
+        "d3-time": "npm:d3-time@1.0.4",
+        "d3-time-format": "npm:d3-time-format@2.0.2",
+        "d3-collection": "npm:d3-collection@1.0.1"
+      }
+    },
+    "npm:d3-scale-chromatic@1.0.2": {
+      "map": {
+        "d3-interpolate": "npm:d3-interpolate@1.1.1"
+      }
+    },
+    "npm:angular-spectrum-colorpicker@1.4.5": {
+      "map": {
+        "spectrum-colorpicker": "npm:spectrum-colorpicker@1.8.0",
+        "angular": "npm:angular@1.5.8"
+      }
+    },
+    "npm:d3-force@1.0.3": {
+      "map": {
+        "d3-dispatch": "npm:d3-dispatch@1.0.1",
+        "d3-timer": "npm:d3-timer@1.0.3",
+        "d3-collection": "npm:d3-collection@1.0.1",
+        "d3-quadtree": "npm:d3-quadtree@1.0.1"
+      }
+    },
+    "npm:d3-drag@1.0.1": {
+      "map": {
+        "d3-selection": "npm:d3-selection@1.0.2",
+        "d3-dispatch": "npm:d3-dispatch@1.0.1"
+      }
+    },
+    "npm:d3-shape@1.0.3": {
+      "map": {
+        "d3-path": "npm:d3-path@1.0.2"
       }
     }
   }

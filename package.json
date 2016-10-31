@@ -11,24 +11,5 @@
   },
   "author": "",
   "license": "MIT",
-  "xo": {
-    "esnext": true,
-    "space": 2,
-    "envs": [
-      "node",
-      "browser"
-    ],
-    "rules": {
-      "no-console": "error",
-      "import/no-extraneous-dependencies": 0,
-      "space-before-function-paren": [
-        2,
-        {
-          "anonymous": "always",
-          "named": "always"
-        }
-      ],
-      "no-warning-comments": 0
-    }
-  }
+  "xo": false
 }

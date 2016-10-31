@@ -12,15 +12,9 @@
     </style>
 	  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 
-    
-    <link rel="stylesheet" type="text/css" href="bundles/deps-bundle.css?citzg8p8x0000qfw70udu0faz">
-    
-    
-    <link rel="stylesheet" type="text/css" href="bundles/app-bundle.css?citzg8p8x0000qfw70udu0faz">
-    
-    
-    <link rel="import" href="bundles/deps-bundle.html?citzg8p8x0000qfw70udu0faz">
-    
+    <link rel="stylesheet" type="text/css" href="bundles/deps-bundle.css?ciuxu00vt00003zq8via0uhoj">
+    <link rel="stylesheet" type="text/css" href="bundles/app-bundle.css?ciuxu00vt00003zq8via0uhoj">
+    <link rel="import" href="bundles/deps-bundle.html?ciuxu00vt00003zq8via0uhoj">
   </head>
   <body ng-cloak>
 
@@ -38,20 +32,19 @@
 
     <app></app>
 
-    
     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      if (!window.require) {
+        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+        }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-       ga('create', 'UA-49359515-2');
-       ga('send', 'pageview');
+        ga('create', 'UA-49359515-2');
+        ga('send', 'pageview');
+      }
     </script>
-    
     <script src="jspm_packages/system.js"></script>
 
-    
     <script src="jspm.browser.js"></script>
     
     <script src="jspm.config.js"></script>
@@ -66,12 +59,8 @@
       }
     </script>
 
-    
-    <script src="bundles/deps-bundle.js?citzg8p8x0000qfw70udu0faz"></script>
-    
-    
-    <script src="bundles/app-bundle.js?citzg8p8x0000qfw70udu0faz"></script>
-    
+    <script src="bundles/deps-bundle.js?ciuxu00vt00003zq8via0uhoj"></script>
+    <script src="bundles/app-bundle.js?ciuxu00vt00003zq8via0uhoj"></script>
 
     <script>
     
@@ -80,7 +69,6 @@
         window.addEventListener('WebComponentsReady', $$boot);
       }).catch($$boot);
     
-
       function $$boot () {
         System.import('components/boot.js')
           .catch(function (e) {
