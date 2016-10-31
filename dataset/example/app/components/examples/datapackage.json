@@ -12,6 +12,10 @@
       "link": "#/examples/treemap/"
     },
     {
+      "path": "sunburst/datapackage.json",
+      "link": "#/examples/sunburst/"
+    },
+    {
       "path": "biojs/datapackage.json",
       "link": "#/examples/biojs/"
     },
