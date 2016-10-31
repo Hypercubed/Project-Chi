@@ -1,6 +1,6 @@
 import {hierarchy, partition} from 'd3-hierarchy';
 import {scaleOrdinal, scaleLinear} from 'd3-scale';
-import {select, selectAll} from 'd3-selection';
+import {select, selectAll, event} from 'd3-selection';
 import {arc} from 'd3-shape';
 import {transition} from 'd3-transition';
 
@@ -10,7 +10,7 @@ if (d3.version) { // d3v3.x present as global
   d4 = {
     hierarchy, partition,
     scaleOrdinal, scaleLinear,
-    select, selectAll,
+    select, selectAll, event,
     arc,
     transition
   };
@@ -45,13 +45,20 @@ export default function Sun () {
     });
     // compute coordinates
     d4.partition()(root);
-    // console.log('root', root);
+    console.log('root', root);
 
     // SVG
     const svg = d4.select(div).append('svg')
       .attr('title', 'sunburst')
       .attr('width', width)
       .attr('height', height);
+
+    // backgroung
+    svg.append('rect')
+      .attr('width', '100%')
+      .attr('height', '100%')
+      .attr('fill', '#fff')
+      .attr('class', 'bg');
 
     // group for visual elements
     const visual = svg.append('g').datum(root)
@@ -67,10 +74,32 @@ export default function Sun () {
     .attr('d', d => arc(d))
     .style('stroke', '#fff')
     .style('fill', d => color(d.data.name.split('•')[0]))
-    .style('fill-rule', 'evenodd');
-    // .on('mouseover', function(d){ tip('show',d); })
-    // .on('mousemove', function(d) { tip('move'); })
-    // .on('mouseout', function(d){ tip('hide'); })
+    .style('fill-rule', 'evenodd')
+    .on('mouseover', d => tip('show', d))
+    // .on('mousemove', d => tip('move'))
+    .on('mouseout', tip('hide'));
+
+    // group for label elements
+    const label = svg.append('g').datum(root)
+      .attr('transform', `translate(${width / 2},${height / 2})`)
+      .classed('label', true);
+    label.selectAll('text').data(d => d.data.name.split('•'))
+      .enter().append('text')
+      .attr('text-anchor', 'middle')
+      .attr('dy', (d, i) => `${-2.5 + (i * 2)}ex`)
+      .text(d => d);
+
+    function tip (state, n) {
+      if (state === 'show') {
+        d4.select(div).select('.label')
+        .selectAll('text').data(n.data.name.split('•'))
+        .text(d => d);
+      } else {
+        d4.select(div).select('.label')
+        .selectAll('text').data(root.data.name.split('•'))
+        .text(d => d);
+      }
+    } // end tip
   } // end sun
   return sun;
 }
