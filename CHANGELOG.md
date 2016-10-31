@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Improved package editor
-* Added Sunburst Partition by mhebrard
+_(none)_
 
 --------------------
+
+## 1.0.0-rc.14 (2016-10-31)
+* Improved package editor
+* Added Sunburst Partition by mhebrard
 
 ## 1.0.0-rc.13 (2016-10-21)
 * Added angular-spectrum-colorpicker
