@@ -166,7 +166,7 @@ describe('Project χ - examples', () => {
       cy.visit(`/examples/network`);
     });
 
-    it.only('should generate a graph', () => {
+    it('should generate a graph', () => {
       cy.get('#_network__chart')
         .find('svg').should('have.length', 1);
 
