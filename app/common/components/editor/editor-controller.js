@@ -14,6 +14,8 @@ export default function controller ($scope, $cookies, $timeout, $log, growl, dat
 
   const enableFileDownload = hasPackage && hasResources;
 
+  $scope.$ctrl.options = $ctrl.options || {};
+
   // user config defaults
   Object.assign($ctrl.options, {
     enableOpen: hasPackage,

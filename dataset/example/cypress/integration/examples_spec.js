@@ -1,5 +1,5 @@
 /* global describe, beforeEach, it, cy, context */
-/* eslint xo/filename-case: 0 */
+/* eslint unicorn/filename-case: 0 */
 
 describe('Project χ - examples', () => {
   context('examples/bars', () => {
@@ -53,6 +53,20 @@ describe('Project χ - examples', () => {
         .get('#datapckage-editor').find('button[type="submit"]').click()
         .get('#_examples_treemap__chart')
           .find('.treemap').should('have.length', 1);
+    });
+  });
+
+  context('sunburst', () => {
+    beforeEach(() => {
+      cy.visit(`/examples/sunburst`);
+    });
+
+    it('should generate a sunburst', () => {
+      cy.get('#_examples_sunburst__chart')
+        .find('svg').should('have.length', 2);
+
+      cy.get('#datapckage-editor .btn-toolbar')
+        .find('button').should('have.length', 4);
     });
   });
 
@@ -144,6 +158,26 @@ describe('Project χ - examples', () => {
     it('should generate a charts', () => {
       cy.get('#charts').find('svg')
         .should('have.length', 3);
+    });
+  });
+
+  context('network', () => {
+    beforeEach(() => {
+      cy.visit(`/examples/network`);
+    });
+
+    it.only('should generate a graph', () => {
+      cy.get('#_network__chart')
+        .find('svg').should('have.length', 1);
+
+      cy.get('#_network__chart svg')
+        .should('have.attr', 'title', 'Network');
+
+      cy.get('#_network__chart svg')
+        .find('.node').should('have.length', 77);
+
+      cy.get('#_network__chart svg')
+        .find('.link').should('have.length', 254);
     });
   });
 });

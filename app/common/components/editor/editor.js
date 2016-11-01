@@ -32,7 +32,7 @@ const editor = angular
     restrict: 'A',
     scope: {},
     bindToController: {
-      options: '=datapackageEdit'
+      options: '=?datapackageEdit'
     },
     controller,
     controllerAs: '$ctrl',
@@ -44,7 +44,7 @@ const editor = angular
     controller,
     transclude: true,
     bindings: {
-      options: '='
+      options: '=?'
     }
   })
   ;

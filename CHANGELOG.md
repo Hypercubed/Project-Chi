@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Added network example
+* Fix error when no options are supplied to packageEditor component
 
 --------------------
 

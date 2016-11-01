@@ -21,7 +21,7 @@ function controller ($log, $timeout, $element) {
   return Object.assign($ctrl, {
     editorOptions: {
       data: $ctrl.dataPackage,
-      enableSvgDownload: false,
+      enableSvgDownload: true,
       enablePngDownload: false,
       onChange: draw
     },
