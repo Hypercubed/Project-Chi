@@ -53,8 +53,8 @@ common/services/datapackage/dataservice.js	6109
 common/services/datapackage/index.js	638
 common/services/datapackage/datapackage.js	691
 common/components/editor/editor.html	6827
-common/components/editor/editor-controller.js	3774
-common/components/editor/editor.js	1384
+common/components/editor/editor-controller.js	3813
+common/components/editor/editor.js	1386
 common/services/loading-bar/loading-bar.html	440
 common/services/loading-bar/loading-bar.js	897
 common/services/dynamic-title/dynamic-title.js	1250
