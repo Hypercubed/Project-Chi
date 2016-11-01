@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Added network example
-* Fix error when no options are supplied to packageEditor component
+_(none)_
 
 --------------------
+
+## 1.0.0-rc.15 (2016-11-01)
+* Added network example
+* Fix error when no options are supplied to packageEditor component
 
 ## 1.0.0-rc.14 (2016-10-31)
 * Improved package editor
