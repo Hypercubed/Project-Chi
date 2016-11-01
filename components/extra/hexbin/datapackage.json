@@ -1,6 +1,6 @@
 {
 	"name": "Dynamic Hexbin",
-	"title": "HTML only d3 visualization",
+	"title": "Dynamic Hexbin d3 visualization",
 	"description": "Computing hexbins from a constantly-fluctuating sample of 2,000 random points.",
 	"image": "thumbnail.png"
 }

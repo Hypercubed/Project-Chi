@@ -1,7 +1,7 @@
 {
   "name": "Vega Example",
 	"title": "Vega and Vega-lite",
-	"description": "An example using [Vega](https://github.com/vega/vega).",
+	"description": "An example using [Vega and Vega-lite](https://github.com/vega/vega).\n\nConfiguration loaded from a YML file.",
 	"resources": [
     "vega-lite-bars.yaml",
 		{

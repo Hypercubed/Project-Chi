@@ -1,0 +1,14 @@
+{
+  "name": "Force-Directed Graph",
+  "title": "Force-Directed Graph",
+  "description": "An example force-directed graph rendered in SVG (using [d3 v4](https://github.com/d3/d3)) and WebGL (using [three.js](https://github.com/mrdoob/three.js/)).",
+  "resources": [
+    "https://bost.ocks.org/mike/miserables/miserables.json"
+  ],
+  "readme": "README.md",
+  "sources": [{
+    "name": "The Stanford GraphBase: A Platform for Combinatorial Computing",
+    "web": "http://www-cs-faculty.stanford.edu/~uno/sgb.html"
+  }],
+  "image": "thumbnail.png"
+}

@@ -1,7 +1,7 @@
 {
 	"name": "Treemap",
 	"title": "webtreemap",
-	"description": "A simple treemap implementation using web technologies (DOM nodes, CSS styling and transitions) rather than a big canvas/svg/plugin.",
+	"description": "A simple treemap implementation using web technologies (DOM nodes, CSS styling and transitions) rather than a canvas/svg/plugin.",
 	"resources": [
 		{"path": "../../../bundles/app-bundle.tsv", "schema": "treemap-schema" },
 		{"path": "../../../bundles/deps-bundle.tsv", "schema": "treemap-schema" }

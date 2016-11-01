@@ -1,7 +1,7 @@
 {
 	"name": "Chiasm Example",
 	"title": "Chiasm and Chiasm plugins",
-	"description": "An example using [Chiasm](https://github.com/chiasm-project/chiasm).",
+	"description": "An example using [Chiasm](https://github.com/chiasm-project/chiasm).\n\nConfiguration loaded from a JSON file.",
 	"resources": [
     {
       "name": "letterFrequency",

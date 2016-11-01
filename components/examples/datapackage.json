@@ -34,6 +34,10 @@
     {
       "path": "universe/datapackage.json",
       "link": "#/examples/universe/"
+    },
+    {
+      "path": "network/datapackage.json",
+      "link": "#/examples/network/"
     }
   ]
 }
