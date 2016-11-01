@@ -3,6 +3,9 @@ import angular from 'angular';
 import grid from 'common/services/grid/grid';
 import facets from 'common/services/facets/facets';
 
+import 'ui-select/dist/select';
+import 'ui-select/dist/select.css!';
+
 // examples
 import examplesComponent from 'components/examples/index';
 import chiasmComponent from 'components/examples/chiasm/chiasm';
@@ -13,6 +16,7 @@ import sunburstComponent from 'components/examples/sunburst/sunburst';
 import polymerComponent from 'components/examples/polymer/bar-chart';
 import universeComponent from 'components/examples/universe/universe';
 import vegaComponent from 'components/examples/vega/bars';
+import networkComponent from './network/network.component';
 
 import 'd3-plugins/hexbin/hexbin';  // needed for /examples/hexbin
 
@@ -20,13 +24,15 @@ export default angular
   .module('examples', [
     'projectX.dataService',
     grid,
-    facets
+    facets,
+    'ui.select'
   ])
   .component('bars', barsComponent)
   .component('examples', examplesComponent)
   .component('biojs', bioJSComponent)
   .component('chiasm', chiasmComponent)
   // .component('trains', trainsComponent)
+  .component('network', networkComponent)
   .component('polymer', polymerComponent)
   .component('treemapPage', treemapComponent)
   .component('sunburstPage', sunburstComponent)
@@ -69,5 +75,9 @@ export default angular
       .when('/examples/universe', {
         template: '<universe data-package="$resolve.dataPackage"></universe>',
         datapackageUrl: 'components/examples/universe/datapackage.json'
+      })
+      .when('/examples/network', {
+        template: '<network data-package="$resolve.dataPackage"></network>',
+        datapackageUrl: 'components/examples/network/datapackage.json'
       });
   }]);

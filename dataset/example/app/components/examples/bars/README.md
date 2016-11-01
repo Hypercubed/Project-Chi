@@ -1,6 +1,6 @@
-# d3 reusable chart as CommonJS module
+# d3 reusable chart
 
-An example using a CommonJS module that exports a d3 reusable chart as [described by M. Bostock](http://bost.ocks.org/mike/chart/)
+An example using a d3 reusable chart as [described by M. Bostock](http://bost.ocks.org/mike/chart/)
 
 Visualization by [M. Bostock](http://bl.ocks.org/mbostock/3885304).  Data Source: [Cryptological Mathematics](http://books.google.com/books?id=dx8zM-VeKI8C&lpg=PP1&dq=LEWAND%2C%20Robert.%20Cryptological%20mathematics&pg=PA36#v=onepage&q=letter%20frequency&f=false), Robert Lewand.
 
