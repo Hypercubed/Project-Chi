@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Fix missing resources in packageEditor component
-* Update jspm deps
+_(none)_
 
 --------------------
+
+## 1.0.0-rc.16 (2016-11-02)
+* Fix missing resources in packageEditor component
+* Update jspm deps
 
 ## 1.0.0-rc.15 (2016-11-01)
 * Added network example
