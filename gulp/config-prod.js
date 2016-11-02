@@ -20,7 +20,7 @@ export default {
   },
   builder: {
     bundles: {
-      'deps-bundle': `${TMP}/${BUILD} - [${TMP}/**/*] - [${TMP}/**/*!css] - [${TMP}/**/*!text] - [${TMP}/**/*!md] + util`,
+      'deps-bundle': `${TMP}/${BUILD} + text - [${TMP}/**/*] - [${TMP}/**/*!css] - [${TMP}/**/*!text] - [${TMP}/**/*!md] + util`,
       'app-bundle': `${TMP}/${BUILD} - ${TMP}/bundles/deps-bundle.js`
     },
     config: {
@@ -40,7 +40,7 @@ export default {
       minify: true,
       mangle: false,
       runtime: false,
-      esOptimize: true,
+      esOptimize: false,
       cssOptimize: true,
       rollup: true
     }

@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Fix missing resources in packageEditor component
+* Update jspm deps
 
 --------------------
 

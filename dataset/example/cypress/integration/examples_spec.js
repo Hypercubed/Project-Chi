@@ -13,6 +13,15 @@ describe('Project χ - examples', () => {
 
       cy.get('#_examples_bars__chart svg')
         .find('rect').should('have.length', 26);
+
+      cy.get('#datapckage-editor .btn-toolbar')
+        .find('button').should('have.length', 4);
+
+      cy.get('#data-download')
+        .find('li:not(.ng-hide)').should('have.length', 2);
+
+      cy.get('#svg-download')
+        .find('li:not(.ng-hide)').should('have.length', 1);
     });
 
     it('should update a resource', () => {

@@ -9,7 +9,7 @@ describe('Project χ', () => {
 
     it('<title> is correct and have an index', () => {
       cy.title().should('include', 'Project-χ');
-      cy.get('index').find('.card').should('have.length', 7);
+      cy.get('index').find('.card').should('have.length', 9);
     });
   });
 });

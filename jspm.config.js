@@ -84,9 +84,9 @@ SystemJS.config({
     "angular-sanitize": "npm:angular-sanitize@1.5.8",
     "angular-spectrum-colorpicker": "npm:angular-spectrum-colorpicker@1.4.5",
     "angular-touch": "npm:angular-touch@1.5.8",
-    "angular-ui-bootstrap": "npm:angular-ui-bootstrap@1.3.3",
+    "angular-ui-bootstrap": "npm:angular-ui-bootstrap@2.2.0",
     "angular-ui-grid": "npm:angular-ui-grid@3.2.9",
-    "angularjs-slider": "npm:angularjs-slider@2.14.0",
+    "angularjs-slider": "npm:angularjs-slider@5.8.1",
     "animate": "npm:animate.css@3.5.2",
     "assert": "npm:jspm-nodelibs-assert@0.2.0",
     "babel-plugin-transform-builtin-extend": "npm:babel-plugin-transform-builtin-extend@1.1.0",
@@ -105,15 +105,15 @@ SystemJS.config({
     "chiasm-layout": "github:chiasm-project/chiasm-layout@0.3.0",
     "chiasm-links": "npm:chiasm-links@0.2.3",
     "child_process": "npm:jspm-nodelibs-child_process@0.2.0",
-    "clipboard": "npm:clipboard@1.5.12",
+    "clipboard": "npm:clipboard@1.5.15",
     "codemirror": "github:codemirror/codemirror@5.19.0",
     "constants": "npm:jspm-nodelibs-constants@0.2.0",
-    "core-decorators": "npm:core-decorators@0.12.3",
+    "core-decorators": "npm:core-decorators@0.14.0",
     "core-js": "npm:core-js@1.2.7",
     "crlf-helper": "npm:crlf-helper@0.1.0",
     "crossfilter": "npm:crossfilter2@1.4.0-alpha.6",
     "crypto": "npm:jspm-nodelibs-crypto@0.2.0",
-    "css": "github:systemjs/plugin-css@0.1.30",
+    "css": "github:systemjs/plugin-css@0.1.32",
     "cuid": "npm:cuid@1.3.8",
     "d3": "npm:d3@3.5.17",
     "d3-array": "npm:d3-array@1.0.1",
@@ -130,14 +130,14 @@ SystemJS.config({
     "d3-shape": "npm:d3-shape@1.0.3",
     "d3-svg-legend": "npm:d3-svg-legend@1.12.0",
     "d3-tip": "github:Hypercubed/d3-tip@master",
-    "d3-transition": "npm:d3-transition@1.0.2",
-    "d3plus-text": "npm:d3plus-text@0.4.5",
+    "d3-transition": "npm:d3-transition@1.0.3",
+    "d3plus-text": "npm:d3plus-text@0.9.8",
     "dgram": "npm:jspm-nodelibs-dgram@0.2.0",
     "dns": "npm:jspm-nodelibs-dns@0.2.0",
     "domain": "npm:jspm-nodelibs-domain@0.2.0",
     "ecc-jsbn": "npm:ecc-jsbn@0.1.1",
     "events": "npm:jspm-nodelibs-events@0.2.0",
-    "font-awesome": "npm:font-awesome@4.6.3",
+    "font-awesome": "npm:font-awesome@4.7.0",
     "fs": "npm:jspm-nodelibs-fs@0.2.0",
     "html": "github:Hypercubed/systemjs-plugin-html@0.0.8",
     "http": "npm:jspm-nodelibs-http@0.2.0",
@@ -148,18 +148,18 @@ SystemJS.config({
     "jquery": "npm:jquery@3.1.1",
     "js-yaml": "npm:js-yaml@3.6.1",
     "jsbn": "npm:jsbn@0.1.0",
-    "json": "github:systemjs/plugin-json@0.1.2",
+    "json": "github:systemjs/plugin-json@0.2.1",
     "json5": "npm:json5@0.5.0",
     "jsontableschema": "github:frictionlessdata/jsontableschema-js@master",
     "jspm/nodelibs-assert": "npm:jspm-nodelibs-assert@0.2.0",
     "less": "github:systemjs/plugin-less@0.1.2",
-    "lodash": "npm:lodash@4.16.3",
+    "lodash": "npm:lodash@4.16.6",
     "md": "github:Hypercubed/system-md-marked@1.0.1",
     "mime-lookup": "npm:mime-lookup@0.0.2",
     "ml-matrix": "github:Hypercubed/matrix@babel2",
     "ml-pca": "npm:ml-pca@1.1.2",
-    "mobx": "npm:mobx@2.6.0",
-    "mobx-utils": "npm:mobx-utils@1.1.0",
+    "mobx": "npm:mobx@2.6.1",
+    "mobx-utils": "npm:mobx-utils@1.1.1",
     "model-js": "npm:model-js@0.2.5",
     "module": "npm:jspm-nodelibs-module@0.2.0",
     "mongodb-extended-json": "npm:mongodb-extended-json@1.7.1",
@@ -185,13 +185,13 @@ SystemJS.config({
     "tty": "npm:jspm-nodelibs-tty@0.2.0",
     "tweetnacl": "npm:tweetnacl@0.14.3",
     "ui-codemirror": "github:angular-ui/ui-codemirror@0.3.0",
-    "ui-select": "npm:ui-select@0.16.1",
+    "ui-select": "npm:ui-select@0.20.0",
     "universe": "npm:universe@0.8.0",
     "url": "npm:jspm-nodelibs-url@0.2.0",
     "util": "npm:jspm-nodelibs-util@0.2.0",
     "vega": "github:vega/vega@2.6.3",
     "vega-lite": "github:vega/vega-lite@1.2.0",
-    "venn.js": "npm:venn.js@0.2.12",
+    "venn.js": "npm:venn.js@0.2.13",
     "vm": "npm:jspm-nodelibs-vm@0.2.0",
     "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.22",
     "webtreemap": "github:martine/webtreemap@gh-pages",
@@ -276,7 +276,7 @@ SystemJS.config({
     "npm:chiasm@0.3.0": {
       "map": {
         "es6-promise": "npm:es6-promise@3.3.1",
-        "lodash": "npm:lodash@4.16.3",
+        "lodash": "npm:lodash@4.16.6",
         "model-js": "npm:model-js@0.2.5"
       }
     },
@@ -397,9 +397,6 @@ SystemJS.config({
       "map": {}
     },
     "npm:through@2.3.8": {
-      "map": {}
-    },
-    "npm:ui-select@0.16.1": {
       "map": {}
     },
     "npm:universe@0.8.0": {
@@ -667,13 +664,13 @@ SystemJS.config({
         "chiasm-component": "npm:chiasm-component@0.2.3",
         "d3": "npm:d3@3.5.17",
         "model-js": "npm:model-js@0.2.5",
-        "lodash": "npm:lodash@4.16.3"
+        "lodash": "npm:lodash@4.16.6"
       }
     },
     "github:frictionlessdata/jsontableschema-js@master": {
       "map": {
         "moment": "npm:moment@2.15.1",
-        "lodash": "npm:lodash@4.16.3",
+        "lodash": "npm:lodash@4.16.6",
         "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
         "d3-time-format": "npm:d3-time-format@2.0.2",
         "tv4": "npm:tv4@1.2.7",
@@ -725,26 +722,6 @@ SystemJS.config({
         "d3-scale": "npm:d3-scale@0.1.5",
         "d3-time": "npm:d3-time@0.0.7",
         "d3-arrays": "npm:d3-arrays@0.4.1"
-      }
-    },
-    "npm:d3-scale@0.1.5": {
-      "map": {
-        "d3-time": "npm:d3-time@0.0.7",
-        "d3-time-format": "npm:d3-time-format@0.1.5",
-        "d3-arrays": "npm:d3-arrays@0.3.1",
-        "d3-color": "npm:d3-color@0.2.8",
-        "d3-interpolate": "npm:d3-interpolate@0.1.4",
-        "d3-format": "npm:d3-format@0.3.6"
-      }
-    },
-    "npm:d3-time-format@0.1.5": {
-      "map": {
-        "d3-time": "npm:d3-time@0.0.7"
-      }
-    },
-    "npm:d3-interpolate@0.1.4": {
-      "map": {
-        "d3-color": "npm:d3-color@0.2.8"
       }
     },
     "github:Hypercubed/system-md-marked@1.0.1": {
@@ -819,15 +796,6 @@ SystemJS.config({
         "jsbn": "npm:jsbn@0.1.0"
       }
     },
-    "npm:stream-http@2.4.0": {
-      "map": {
-        "readable-stream": "npm:readable-stream@2.1.5",
-        "xtend": "npm:xtend@4.0.1",
-        "inherits": "npm:inherits@2.0.3",
-        "to-arraybuffer": "npm:to-arraybuffer@1.0.1",
-        "builtin-status-codes": "npm:builtin-status-codes@2.0.0"
-      }
-    },
     "npm:buffer@4.9.1": {
       "map": {
         "base64-js": "npm:base64-js@1.2.0",
@@ -868,23 +836,13 @@ SystemJS.config({
     },
     "github:systemjs/plugin-less@0.1.2": {
       "map": {
-        "css": "github:systemjs/plugin-css@0.1.30"
+        "css": "github:systemjs/plugin-css@0.1.32"
       }
     },
     "github:Hypercubed/d3-tip@master": {
       "map": {
         "d3-collection": "npm:d3-collection@1.0.1",
         "d3-selection": "npm:d3-selection@1.0.2"
-      }
-    },
-    "npm:d3-transition@1.0.2": {
-      "map": {
-        "d3-selection": "npm:d3-selection@1.0.2",
-        "d3-color": "npm:d3-color@1.0.1",
-        "d3-ease": "npm:d3-ease@1.0.1",
-        "d3-dispatch": "npm:d3-dispatch@1.0.1",
-        "d3-timer": "npm:d3-timer@1.0.3",
-        "d3-interpolate": "npm:d3-interpolate@1.1.1"
       }
     },
     "npm:d3-interpolate@1.1.1": {
@@ -898,27 +856,9 @@ SystemJS.config({
         "ml-matrix": "github:Hypercubed/matrix@babel2"
       }
     },
-    "npm:font-awesome@4.6.3": {
-      "map": {
-        "css": "github:systemjs/plugin-css@0.1.30"
-      }
-    },
-    "npm:venn.js@0.2.12": {
-      "map": {
-        "d3-selection": "npm:d3-selection@1.0.2",
-        "d3-transition": "npm:d3-transition@1.0.2"
-      }
-    },
     "npm:pivottable@2.1.0": {
       "map": {
         "jquery": "npm:jquery@3.1.1"
-      }
-    },
-    "npm:d3plus-text@0.4.5": {
-      "map": {
-        "d3-selection": "npm:d3-selection@0.7.3",
-        "d3-transition": "npm:d3-transition@0.2.10",
-        "d3-array": "npm:d3-array@0.7.1"
       }
     },
     "npm:mongodb-extended-json@1.7.1": {
@@ -933,31 +873,9 @@ SystemJS.config({
         "bson": "npm:bson@0.5.5"
       }
     },
-    "npm:d3-transition@0.2.10": {
-      "map": {
-        "d3-selection": "npm:d3-selection@0.7.3",
-        "d3-dispatch": "npm:d3-dispatch@0.4.4",
-        "d3-ease": "npm:d3-ease@0.7.0",
-        "d3-interpolate": "npm:d3-interpolate@0.8.3",
-        "d3-color": "npm:d3-color@0.4.2",
-        "d3-timer": "npm:d3-timer@0.4.4"
-      }
-    },
-    "npm:clipboard@1.5.12": {
-      "map": {
-        "select": "npm:select@1.0.6",
-        "good-listener": "npm:good-listener@1.1.8",
-        "tiny-emitter": "npm:tiny-emitter@1.1.0"
-      }
-    },
     "npm:angular-marked@1.2.2": {
       "map": {
         "marked": "npm:marked@0.3.6"
-      }
-    },
-    "npm:d3-interpolate@0.8.3": {
-      "map": {
-        "d3-color": "npm:d3-color@0.4.2"
       }
     },
     "npm:angular-ui-grid@3.2.9": {
@@ -970,11 +888,6 @@ SystemJS.config({
         "crossfilter2": "npm:crossfilter2@1.4.0-alpha.6"
       }
     },
-    "npm:good-listener@1.1.8": {
-      "map": {
-        "delegate": "npm:delegate@3.0.2"
-      }
-    },
     "npm:JSONStream@1.2.1": {
       "map": {
         "jsonparse": "npm:jsonparse@1.2.0",
@@ -984,7 +897,7 @@ SystemJS.config({
     "npm:babel-template@6.16.0": {
       "map": {
         "babel-runtime": "npm:babel-runtime@6.11.6",
-        "lodash": "npm:lodash@4.16.3",
+        "lodash": "npm:lodash@4.16.6",
         "babel-types": "npm:babel-types@6.16.0",
         "babel-traverse": "npm:babel-traverse@6.16.0",
         "babylon": "npm:babylon@6.11.4"
@@ -1001,11 +914,6 @@ SystemJS.config({
         "from": "npm:from@0.1.3"
       }
     },
-    "npm:delegate@3.0.2": {
-      "map": {
-        "component-closest": "npm:component-closest@1.0.1"
-      }
-    },
     "npm:raf@3.3.0": {
       "map": {
         "performance-now": "npm:performance-now@0.2.0"
@@ -1014,14 +922,9 @@ SystemJS.config({
     "npm:babel-types@6.16.0": {
       "map": {
         "babel-runtime": "npm:babel-runtime@6.11.6",
-        "lodash": "npm:lodash@4.16.3",
+        "lodash": "npm:lodash@4.16.6",
         "to-fast-properties": "npm:to-fast-properties@1.0.2",
         "esutils": "npm:esutils@2.0.2"
-      }
-    },
-    "npm:component-closest@1.0.1": {
-      "map": {
-        "component-matches-selector": "npm:component-matches-selector@0.1.6"
       }
     },
     "npm:babel-traverse@6.16.0": {
@@ -1030,7 +933,7 @@ SystemJS.config({
         "debug": "npm:debug@2.2.0",
         "babel-types": "npm:babel-types@6.16.0",
         "babylon": "npm:babylon@6.11.4",
-        "lodash": "npm:lodash@4.16.3",
+        "lodash": "npm:lodash@4.16.6",
         "invariant": "npm:invariant@2.2.1",
         "babel-messages": "npm:babel-messages@6.8.0",
         "globals": "npm:globals@8.18.0",
@@ -1040,11 +943,6 @@ SystemJS.config({
     "github:twbs/bootstrap@3.3.7": {
       "map": {
         "jquery": "npm:jquery@3.1.1"
-      }
-    },
-    "npm:component-matches-selector@0.1.6": {
-      "map": {
-        "component-query": "npm:component-query@0.0.3"
       }
     },
     "npm:request@2.75.0": {
@@ -1155,19 +1053,8 @@ SystemJS.config({
         "d3-time-format": "npm:d3-time-format@2.0.2",
         "parse-iso-duration": "npm:parse-iso-duration@1.0.0",
         "mime-lookup": "npm:mime-lookup@0.0.2",
-        "mobx-utils": "npm:mobx-utils@1.1.0",
-        "mobx": "npm:mobx@2.6.0"
-      }
-    },
-    "npm:d3-scale@1.0.3": {
-      "map": {
-        "d3-array": "npm:d3-array@1.0.1",
-        "d3-interpolate": "npm:d3-interpolate@1.1.1",
-        "d3-color": "npm:d3-color@1.0.1",
-        "d3-format": "npm:d3-format@1.0.2",
-        "d3-time": "npm:d3-time@1.0.4",
-        "d3-time-format": "npm:d3-time-format@2.0.2",
-        "d3-collection": "npm:d3-collection@1.0.1"
+        "mobx-utils": "npm:mobx-utils@1.1.1",
+        "mobx": "npm:mobx@2.6.1"
       }
     },
     "npm:d3-scale-chromatic@1.0.2": {
@@ -1222,7 +1109,7 @@ SystemJS.config({
     },
     "npm:jspm-nodelibs-http@0.2.0": {
       "map": {
-        "http-browserify": "npm:stream-http@2.4.0"
+        "http-browserify": "npm:stream-http@2.4.1"
       }
     },
     "npm:jspm-nodelibs-os@0.2.0": {
@@ -1248,6 +1135,96 @@ SystemJS.config({
     "npm:jspm-nodelibs-url@0.2.0": {
       "map": {
         "url-browserify": "npm:url@0.11.0"
+      }
+    },
+    "npm:clipboard@1.5.15": {
+      "map": {
+        "good-listener": "npm:good-listener@1.2.0",
+        "tiny-emitter": "npm:tiny-emitter@1.1.0",
+        "select": "npm:select@1.1.0"
+      }
+    },
+    "npm:d3-transition@1.0.3": {
+      "map": {
+        "d3-color": "npm:d3-color@1.0.1",
+        "d3-interpolate": "npm:d3-interpolate@1.1.1",
+        "d3-timer": "npm:d3-timer@1.0.3",
+        "d3-ease": "npm:d3-ease@1.0.1",
+        "d3-selection": "npm:d3-selection@1.0.2",
+        "d3-dispatch": "npm:d3-dispatch@1.0.1"
+      }
+    },
+    "npm:good-listener@1.2.0": {
+      "map": {
+        "delegate": "npm:delegate@3.1.0"
+      }
+    },
+    "npm:font-awesome@4.7.0": {
+      "map": {
+        "css": "github:systemjs/plugin-css@0.1.32"
+      }
+    },
+    "npm:venn.js@0.2.13": {
+      "map": {
+        "d3-transition": "npm:d3-transition@1.0.3",
+        "d3-selection": "npm:d3-selection@1.0.2"
+      }
+    },
+    "npm:d3plus-text@0.9.8": {
+      "map": {
+        "d3-selection": "npm:d3-selection@1.0.2",
+        "d3-transition": "npm:d3-transition@1.0.3",
+        "d3-array": "npm:d3-array@1.0.1",
+        "d3plus-common": "npm:d3plus-common@0.6.5"
+      }
+    },
+    "npm:d3plus-common@0.6.5": {
+      "map": {
+        "d3-array": "npm:d3-array@1.0.1",
+        "d3-selection": "npm:d3-selection@1.0.2",
+        "d3-transition": "npm:d3-transition@1.0.3",
+        "d3-collection": "npm:d3-collection@1.0.1",
+        "i18next": "npm:i18next@3.4.4"
+      }
+    },
+    "npm:d3-scale@1.0.3": {
+      "map": {
+        "d3-array": "npm:d3-array@1.0.1",
+        "d3-color": "npm:d3-color@1.0.1",
+        "d3-collection": "npm:d3-collection@1.0.1",
+        "d3-interpolate": "npm:d3-interpolate@1.1.1",
+        "d3-time": "npm:d3-time@1.0.4",
+        "d3-time-format": "npm:d3-time-format@2.0.2",
+        "d3-format": "npm:d3-format@1.0.2"
+      }
+    },
+    "npm:stream-http@2.4.1": {
+      "map": {
+        "readable-stream": "npm:readable-stream@2.1.5",
+        "to-arraybuffer": "npm:to-arraybuffer@1.0.1",
+        "xtend": "npm:xtend@4.0.1",
+        "builtin-status-codes": "npm:builtin-status-codes@2.0.0",
+        "inherits": "npm:inherits@2.0.3"
+      }
+    },
+    "npm:d3-scale@0.1.5": {
+      "map": {
+        "d3-arrays": "npm:d3-arrays@0.3.1",
+        "d3-time": "npm:d3-time@0.0.7",
+        "d3-time-format": "npm:d3-time-format@0.1.5",
+        "d3-color": "npm:d3-color@0.2.8",
+        "d3-interpolate": "npm:d3-interpolate@0.1.4",
+        "d3-format": "npm:d3-format@0.3.6"
+      }
+    },
+    "npm:d3-time-format@0.1.5": {
+      "map": {
+        "d3-time": "npm:d3-time@0.0.7"
+      }
+    },
+    "npm:d3-interpolate@0.1.4": {
+      "map": {
+        "d3-color": "npm:d3-color@0.2.8"
       }
     }
   }

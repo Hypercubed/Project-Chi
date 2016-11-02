@@ -113,7 +113,7 @@
         </button>
         <ul class="dropdown-menu" role="menu">
           <li class="dropdown-header">Data Resources</li>
-          <li ng-repeat="file in $ctrl.data.resources" ng-hide="file.hide">
+          <li ng-repeat="file in $ctrl.resources" ng-hide="file.hide">
             <a class="btn btn-link" file-download="file" title="{{file.description}}">{{file.name}}</a>
           </li>
         </ul>
