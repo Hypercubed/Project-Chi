@@ -20,7 +20,7 @@ export default {
   },
   builder: {
     bundles: {
-      'deps-bundle': `${TMP}/${BUILD} + text - [${TMP}/**/*] - [${TMP}/**/*!css] - [${TMP}/**/*!text] - [${TMP}/**/*!md] + util`,
+      'deps-bundle': `${TMP}/${BUILD} - [${TMP}/**/*] - [${TMP}/**/*!css] - [${TMP}/**/*!text] - [${TMP}/**/*!md] + util + text + json + util/isBuffer`,
       'app-bundle': `${TMP}/${BUILD} - ${TMP}/bundles/deps-bundle.js`
     },
     config: {
@@ -37,12 +37,12 @@ export default {
     },
     bundle: {
       sourceMaps: true,
-      minify: true,
+      minify: false,
       mangle: false,
       runtime: false,
       esOptimize: false,
       cssOptimize: true,
-      rollup: true
+      rollup: false
     }
   }
 };

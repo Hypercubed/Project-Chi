@@ -170,7 +170,7 @@ SystemJS.config({
     "pivottable": "npm:pivottable@2.1.0",
     "plugin-babel": "npm:systemjs-plugin-babel@0.0.12",
     "polymer": "github:Polymer/polymer@1.7.0",
-    "process": "npm:jspm-nodelibs-process@0.2.0",
+    "process": "github:jspm/nodelibs-process@0.2.0-alpha",
     "punycode": "npm:jspm-nodelibs-punycode@0.2.0",
     "q": "npm:q@1.4.1",
     "querystring": "npm:jspm-nodelibs-querystring@0.2.0",
@@ -188,7 +188,7 @@ SystemJS.config({
     "ui-select": "npm:ui-select@0.20.0",
     "universe": "npm:universe@0.8.0",
     "url": "npm:jspm-nodelibs-url@0.2.0",
-    "util": "npm:jspm-nodelibs-util@0.2.0",
+    "util": "npm:jspm-nodelibs-util@0.2.1",
     "vega": "github:vega/vega@2.6.3",
     "vega-lite": "github:vega/vega-lite@1.2.0",
     "venn.js": "npm:venn.js@0.2.13",
@@ -628,7 +628,7 @@ SystemJS.config({
         "create-hash": "npm:create-hash@1.1.2",
         "evp_bytestokey": "npm:evp_bytestokey@1.0.0",
         "pbkdf2": "npm:pbkdf2@3.0.9",
-        "asn1.js": "npm:asn1.js@4.8.1"
+        "asn1.js": "npm:asn1.js@4.9.0"
       }
     },
     "npm:sha.js@2.4.5": {
@@ -814,13 +814,6 @@ SystemJS.config({
         "inherits": "npm:inherits@2.0.3",
         "brorand": "npm:brorand@1.0.6",
         "hash.js": "npm:hash.js@1.0.3"
-      }
-    },
-    "npm:asn1.js@4.8.1": {
-      "map": {
-        "bn.js": "npm:bn.js@4.11.6",
-        "inherits": "npm:inherits@2.0.3",
-        "minimalistic-assert": "npm:minimalistic-assert@1.0.0"
       }
     },
     "npm:node-fetch@1.6.3": {
@@ -1225,6 +1218,13 @@ SystemJS.config({
     "npm:d3-interpolate@0.1.4": {
       "map": {
         "d3-color": "npm:d3-color@0.2.8"
+      }
+    },
+    "npm:asn1.js@4.9.0": {
+      "map": {
+        "bn.js": "npm:bn.js@4.11.6",
+        "inherits": "npm:inherits@2.0.3",
+        "minimalistic-assert": "npm:minimalistic-assert@1.0.0"
       }
     }
   }
