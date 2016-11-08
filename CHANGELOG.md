@@ -6,6 +6,9 @@ _(none)_
 
 --------------------
 
+## 1.0.0-rc.17 (2016-11-07)
+_(none)_
+
 ## 1.0.0-rc.16 (2016-11-02)
 * Fix missing resources in packageEditor component
 * Update jspm deps
