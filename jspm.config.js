@@ -131,7 +131,7 @@ SystemJS.config({
     "d3-svg-legend": "npm:d3-svg-legend@1.12.0",
     "d3-tip": "github:Hypercubed/d3-tip@master",
     "d3-transition": "npm:d3-transition@1.0.3",
-    "d3plus-text": "npm:d3plus-text@0.9.8",
+    "d3plus-text": "npm:d3plus-text@0.4.5",
     "dgram": "npm:jspm-nodelibs-dgram@0.2.0",
     "dns": "npm:jspm-nodelibs-dns@0.2.0",
     "domain": "npm:jspm-nodelibs-domain@0.2.0",
@@ -170,7 +170,7 @@ SystemJS.config({
     "pivottable": "npm:pivottable@2.1.0",
     "plugin-babel": "npm:systemjs-plugin-babel@0.0.12",
     "polymer": "github:Polymer/polymer@1.7.0",
-    "process": "github:jspm/nodelibs-process@0.2.0-alpha",
+    "process": "npm:jspm-nodelibs-process@0.2.0",
     "punycode": "npm:jspm-nodelibs-punycode@0.2.0",
     "q": "npm:q@1.4.1",
     "querystring": "npm:jspm-nodelibs-querystring@0.2.0",
@@ -1163,23 +1163,6 @@ SystemJS.config({
         "d3-selection": "npm:d3-selection@1.0.2"
       }
     },
-    "npm:d3plus-text@0.9.8": {
-      "map": {
-        "d3-selection": "npm:d3-selection@1.0.2",
-        "d3-transition": "npm:d3-transition@1.0.3",
-        "d3-array": "npm:d3-array@1.0.1",
-        "d3plus-common": "npm:d3plus-common@0.6.5"
-      }
-    },
-    "npm:d3plus-common@0.6.5": {
-      "map": {
-        "d3-array": "npm:d3-array@1.0.1",
-        "d3-selection": "npm:d3-selection@1.0.2",
-        "d3-transition": "npm:d3-transition@1.0.3",
-        "d3-collection": "npm:d3-collection@1.0.1",
-        "i18next": "npm:i18next@3.4.4"
-      }
-    },
     "npm:d3-scale@1.0.3": {
       "map": {
         "d3-array": "npm:d3-array@1.0.1",
@@ -1225,6 +1208,28 @@ SystemJS.config({
         "bn.js": "npm:bn.js@4.11.6",
         "inherits": "npm:inherits@2.0.3",
         "minimalistic-assert": "npm:minimalistic-assert@1.0.0"
+      }
+    },
+    "npm:d3plus-text@0.4.5": {
+      "map": {
+        "d3-array": "npm:d3-array@0.7.1",
+        "d3-selection": "npm:d3-selection@0.7.3",
+        "d3-transition": "npm:d3-transition@0.2.10"
+      }
+    },
+    "npm:d3-transition@0.2.10": {
+      "map": {
+        "d3-color": "npm:d3-color@0.4.2",
+        "d3-dispatch": "npm:d3-dispatch@0.4.4",
+        "d3-ease": "npm:d3-ease@0.7.0",
+        "d3-interpolate": "npm:d3-interpolate@0.8.3",
+        "d3-timer": "npm:d3-timer@0.4.4",
+        "d3-selection": "npm:d3-selection@0.7.3"
+      }
+    },
+    "npm:d3-interpolate@0.8.3": {
+      "map": {
+        "d3-color": "npm:d3-color@0.4.2"
       }
     }
   }
