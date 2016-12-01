@@ -94,7 +94,7 @@
       "biojs-vis-example": "npm:biojs-vis-example@^0.1.4",
       "blobjs": "github:eligrey/Blob.js@master",
       "bootstrap": "github:twbs/bootstrap@^3.3.7",
-      "chi-datapackage": "npm:chi-datapackage@5.0.3",
+      "chi-datapackage": "npm:chi-datapackage@^5.0.5",
       "chiasm": "npm:chiasm@^0.3.0",
       "chiasm-charts": "npm:chiasm-charts@^0.1.5",
       "chiasm-component": "npm:chiasm-component@^0.2.3",
@@ -260,6 +260,20 @@
           }
         }
       },
+      "npm:debug@2.3.3": {
+        "main": "browser.js",
+        "jspmNodeConversion": false,
+        "format": "cjs",
+        "map": {
+          "./browser.js": {
+            "node": "./node.js"
+          },
+          "fs": "@node/fs",
+          "net": "@node/net",
+          "tty": "@node/tty",
+          "util": "@node/util"
+        }
+      },
       "npm:esprima@2.7.3": {
         "jspmNodeConversion": false
       },
@@ -342,6 +356,10 @@
         "jspmNodeConversion": false
       },
       "npm:ms@0.7.1": {
+        "jspmNodeConversion": false,
+        "format": "cjs"
+      },
+      "npm:ms@0.7.2": {
         "jspmNodeConversion": false,
         "format": "cjs"
       }

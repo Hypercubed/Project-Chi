@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Rolled back d3plus-text
+* Bump chi-datapackage
 
 --------------------
 
