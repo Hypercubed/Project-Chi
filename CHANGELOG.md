@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Rolled back d3plus-text
-* Bump chi-datapackage
+_(none)_
 
 --------------------
+
+## 1.0.0-rc.18 (2016-12-01)
+* Rolled back d3plus-text
+* Bump chi-datapackage
 
 ## 1.0.0-rc.17 (2016-11-07)
 _(none)_
