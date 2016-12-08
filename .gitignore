@@ -51,6 +51,7 @@ Desktop.ini
 dataset/*
 !dataset/example/
 **/cypress/screenshots/
+**/cypress/videos/
 
 # Tools
 scripts
