@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Install source-map-explorer from npm
+_(none)_
 
 --------------------
+
+## 1.0.0-rc.19 (2016-12-08)
+* Install source-map-explorer from npm
 
 ## 1.0.0-rc.18 (2016-12-01)
 * Rolled back d3plus-text
