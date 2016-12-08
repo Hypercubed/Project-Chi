@@ -6,6 +6,9 @@ _(none)_
 
 --------------------
 
+## 1.0.0 (2016-12-08)
+_(none)_
+
 ## 1.0.0-rc.19 (2016-12-08)
 * Install source-map-explorer from npm
 
