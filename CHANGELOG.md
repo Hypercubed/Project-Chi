@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Install source-map-explorer from npm
 
 --------------------
 
