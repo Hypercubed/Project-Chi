@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Should minify in production
+_(none)_
 
 --------------------
+
+## 1.0.1 (2016-12-08)
+* Should minify in production
 
 ## 1.0.0 (2016-12-08)
 _(none)_
