@@ -6,6 +6,19 @@ _(none)_
 
 --------------------
 
+## 1.0.1 (2016-12-08)
+* Should minify in production
+
+## 1.0.0 (2016-12-08)
+_(none)_
+
+## 1.0.0-rc.19 (2016-12-08)
+* Install source-map-explorer from npm
+
+## 1.0.0-rc.18 (2016-12-01)
+* Rolled back d3plus-text
+* Bump chi-datapackage
+
 ## 1.0.0-rc.17 (2016-11-07)
 _(none)_
 

@@ -24,6 +24,7 @@ export default {
       'app-bundle': `${TMP}/${BUILD} - ${TMP}/bundles/deps-bundle.js`
     },
     config: {
+      production: true,
       buildCSS: true,
       buildHTML: true,
       separateCSS: true,
@@ -37,12 +38,12 @@ export default {
     },
     bundle: {
       sourceMaps: true,
-      minify: false,
+      minify: true,
       mangle: false,
       runtime: false,
       esOptimize: false,
       cssOptimize: true,
-      rollup: false
+      rollup: true
     }
   }
 };
