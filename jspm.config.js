@@ -69,6 +69,7 @@ SystemJS.config({
   map: {
     "Hypercubed/d3-tip": "github:Hypercubed/d3-tip@master",
     "angular-animate": "npm:angular-animate@1.5.8",
+    "angular-breadcrumbs": "npm:angular-breadcrumbs@0.5.3",
     "angular-downloadsvg-directive": "npm:angular-downloadsvg-directive@0.2.0",
     "FileSaver": "github:eligrey/FileSaver.js@master",
     "URIjs": "npm:URIjs@1.16.1",

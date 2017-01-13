@@ -73,6 +73,7 @@
       "URIjs": "npm:URIjs@^1.16.1",
       "_F": "github:Hypercubed/_F@^0.0.11",
       "angular-animate": "npm:angular-animate@1.5.8",
+      "angular-breadcrumbs": "npm:angular-breadcrumbs@^0.5.3",
       "angular-cookies": "npm:angular-cookies@^1.5.8",
       "angular-downloadsvg-directive": "npm:angular-downloadsvg-directive@0.2.0",
       "angular-growl": "npm:angular-growl-v2@^0.7.5",
