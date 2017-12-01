@@ -69,6 +69,7 @@ SystemJS.config({
   map: {
     "Hypercubed/d3-tip": "github:Hypercubed/d3-tip@master",
     "angular-animate": "npm:angular-animate@1.5.8",
+    "angular-breadcrumbs": "npm:angular-breadcrumbs@0.5.3",
     "angular-downloadsvg-directive": "npm:angular-downloadsvg-directive@0.2.0",
     "FileSaver": "github:eligrey/FileSaver.js@master",
     "URIjs": "npm:URIjs@1.16.1",
@@ -118,11 +119,13 @@ SystemJS.config({
     "d3": "npm:d3@3.5.17",
     "d3-array": "npm:d3-array@1.0.1",
     "d3-axis": "npm:d3-axis@1.0.3",
-    "d3-color": "npm:d3-color@1.0.1",
+    "d3-collection": "npm:d3-collection@1.0.4",
+    "d3-color": "npm:d3-color@1.0.3",
     "d3-dispatch": "npm:d3-dispatch@1.0.1",
     "d3-drag": "npm:d3-drag@1.0.1",
     "d3-force": "npm:d3-force@1.0.3",
     "d3-hierarchy": "npm:d3-hierarchy@1.0.2",
+    "d3-interpolate": "npm:d3-interpolate@1.1.6",
     "d3-plugins": "github:d3/d3-plugins@master",
     "d3-scale": "npm:d3-scale@1.0.3",
     "d3-scale-chromatic": "npm:d3-scale-chromatic@1.0.2",
@@ -170,7 +173,7 @@ SystemJS.config({
     "pivottable": "npm:pivottable@2.1.0",
     "plugin-babel": "npm:systemjs-plugin-babel@0.0.12",
     "polymer": "github:Polymer/polymer@1.7.0",
-    "process": "github:jspm/nodelibs-process@0.2.0-alpha",
+    "process": "npm:jspm-nodelibs-process@0.2.1",
     "punycode": "npm:jspm-nodelibs-punycode@0.2.0",
     "q": "npm:q@1.4.1",
     "querystring": "npm:jspm-nodelibs-querystring@0.2.0",
@@ -823,7 +826,7 @@ SystemJS.config({
     },
     "npm:d3-interpolate@1.1.1": {
       "map": {
-        "d3-color": "npm:d3-color@1.0.1"
+        "d3-color": "npm:d3-color@1.0.3"
       }
     },
     "npm:ml-pca@1.1.2": {
@@ -1102,7 +1105,7 @@ SystemJS.config({
     },
     "npm:d3-transition@1.0.3": {
       "map": {
-        "d3-color": "npm:d3-color@1.0.1",
+        "d3-color": "npm:d3-color@1.0.3",
         "d3-interpolate": "npm:d3-interpolate@1.1.1",
         "d3-timer": "npm:d3-timer@1.0.3",
         "d3-ease": "npm:d3-ease@1.0.1",
@@ -1129,7 +1132,7 @@ SystemJS.config({
     "npm:d3-scale@1.0.3": {
       "map": {
         "d3-array": "npm:d3-array@1.0.1",
-        "d3-color": "npm:d3-color@1.0.1",
+        "d3-color": "npm:d3-color@1.0.3",
         "d3-collection": "npm:d3-collection@1.0.1",
         "d3-interpolate": "npm:d3-interpolate@1.1.1",
         "d3-time": "npm:d3-time@1.0.4",
@@ -1274,6 +1277,11 @@ SystemJS.config({
     "npm:debug@3.1.0": {
       "map": {
         "ms": "npm:ms@2.0.0"
+      }
+    },
+    "npm:d3-interpolate@1.1.6": {
+      "map": {
+        "d3-color": "npm:d3-color@1.0.3"
       }
     }
   }
