@@ -170,7 +170,7 @@ SystemJS.config({
     "pivottable": "npm:pivottable@2.1.0",
     "plugin-babel": "npm:systemjs-plugin-babel@0.0.12",
     "polymer": "github:Polymer/polymer@1.7.0",
-    "process": "npm:jspm-nodelibs-process@0.2.0",
+    "process": "github:jspm/nodelibs-process@0.2.0-alpha",
     "punycode": "npm:jspm-nodelibs-punycode@0.2.0",
     "q": "npm:q@1.4.1",
     "querystring": "npm:jspm-nodelibs-querystring@0.2.0",
@@ -194,7 +194,7 @@ SystemJS.config({
     "venn.js": "npm:venn.js@0.2.13",
     "vm": "npm:jspm-nodelibs-vm@0.2.0",
     "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.22",
-    "webtreemap": "github:martine/webtreemap@gh-pages",
+    "webtreemap": "github:evmar/webtreemap@v1",
     "zlib": "npm:jspm-nodelibs-zlib@0.2.0"
   },
   packages: {
@@ -664,7 +664,12 @@ SystemJS.config({
         "d3-time-format": "npm:d3-time-format@2.0.2",
         "tv4": "npm:tv4@1.2.7",
         "stream-transform": "npm:stream-transform@0.1.1",
-        "csv-parse": "npm:csv-parse@1.1.7"
+        "csv-parse": "npm:csv-parse@1.1.7",
+        "regenerator-runtime": "npm:regenerator-runtime@0.11.0",
+        "es6-error": "npm:es6-error@4.0.2",
+        "stream-to-async-iterator": "npm:stream-to-async-iterator@0.2.0",
+        "csv": "npm:csv@1.2.1",
+        "axios": "npm:axios@0.16.2"
       }
     },
     "npm:isomorphic-fetch@2.2.1": {
@@ -1240,6 +1245,35 @@ SystemJS.config({
     "npm:sha.js@2.4.8": {
       "map": {
         "inherits": "npm:inherits@2.0.3"
+      }
+    },
+    "npm:csv@1.2.1": {
+      "map": {
+        "csv-parse": "npm:csv-parse@1.3.3",
+        "csv-generate": "npm:csv-generate@1.1.2",
+        "stream-transform": "npm:stream-transform@0.2.2",
+        "csv-stringify": "npm:csv-stringify@1.1.2"
+      }
+    },
+    "npm:axios@0.16.2": {
+      "map": {
+        "is-buffer": "npm:is-buffer@1.1.6",
+        "follow-redirects": "npm:follow-redirects@1.2.6"
+      }
+    },
+    "npm:follow-redirects@1.2.6": {
+      "map": {
+        "debug": "npm:debug@3.1.0"
+      }
+    },
+    "npm:csv-stringify@1.1.2": {
+      "map": {
+        "lodash.get": "npm:lodash.get@4.4.2"
+      }
+    },
+    "npm:debug@3.1.0": {
+      "map": {
+        "ms": "npm:ms@2.0.0"
       }
     }
   }
