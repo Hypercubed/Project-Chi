@@ -4,7 +4,7 @@
 	"description": "An example using a CommonJS NPM module that is part of the [BioJS registry](http://biojs.io/).",
 	"resources": [
 		{
-      "path": "https://cdn.rawgit.com/biojs-io/biojs-io-fasta/master/test/foo.fasta",
+      "path": "https://cdn.jsdelivr.net/gh/biojs-io/biojs-io-fasta@master/test/foo.fasta",
       "mediatype": "text/plain"
     }
 	],

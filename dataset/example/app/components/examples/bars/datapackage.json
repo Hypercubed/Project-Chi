@@ -4,7 +4,7 @@
 	"description": "An example using a d3 reusable chart as [described by M. Bostock](http://bost.ocks.org/mike/chart/)",
 	"resources": [
 		{
-			"url": "https://cdn.rawgit.com/curran/data/gh-pages/d3Examples/letterFrequency/letterFrequency.tsv",
+			"url": "https://cdn.jsdelivr.net/gh/curran/data@gh-pages/d3Examples/letterFrequency/letterFrequency.tsv",
 			"schema": "letterFrequency"
 		}
 	],
