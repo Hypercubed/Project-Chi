@@ -5,7 +5,7 @@
 	"resources": [
     {
       "name": "letterFrequency",
-			"url": "https://cdn.rawgit.com/curran/data/gh-pages/d3Examples/letterFrequency/letterFrequency.tsv",
+			"url": "https://cdn.jsdelivr.net/gh/curran/data@gh-pages/d3Examples/letterFrequency/letterFrequency.tsv",
 			"schema": {
 				"fields": [
 					{ "name": "letter", "type": "string", "constraints": { "required": true } },
@@ -15,7 +15,7 @@
 		},
     {
       "name": "iris",
-      "url": "https://cdn.rawgit.com/curran/data/60e8c1cec25523e0aeba3b2aa46d25fe0b4e3251/Rdatasets/csv/datasets/iris.csv",
+      "url": "https://cdn.jsdelivr.net/gh/curran/data@60e8c1cec25523e0aeba3b2aa46d25fe0b4e3251/Rdatasets/csv/datasets/iris.csv",
       "schema": {
         "fields": [
           {"name": "Sepal.Length", "type": "number", "label": "Sepal Length", "constraints": { "required": true }},
@@ -28,7 +28,7 @@
     },
 		{
       "name": "temperature",
-			"url": "https://cdn.rawgit.com/curran/data/60e8c1cec25523e0aeba3b2aa46d25fe0b4e3251/senseYourCity/week_temperature_sf.csv",
+			"url": "https://cdn.jsdelivr.net/gh/curran/data@60e8c1cec25523e0aeba3b2aa46d25fe0b4e3251/senseYourCity/week_temperature_sf.csv",
 			"schema": "temperature-schema"
 		},
     {
